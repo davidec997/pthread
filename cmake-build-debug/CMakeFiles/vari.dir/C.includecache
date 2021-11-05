@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/barbiere_addormentato.c
+unistd.h
+-
+pthread.h
+-
+stdio.h
+-
+stdlib.h
+-
+semaphore.h
+-
+

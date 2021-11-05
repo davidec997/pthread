@@ -1,0 +1,3 @@
+/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles/vari.dir
