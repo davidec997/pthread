@@ -11,7 +11,7 @@
 char *nomi_mosse[3] = {"carta", "sasso", "forbice"};
 sem_t sem_arbitro, sem_g1, sem_g2,m;
 int mossag1,mossag2;
-
+int arbitro_ok=1;
 
 void pausetta(void)
 {
@@ -57,12 +57,15 @@ void *arbitro(void *arg)
     char via;
     int vincitore=-1;
     while(1){
+        if(!arbitro_ok){
+            sem_wait(&sem_arbitro);
+        } else {
         printf("premi un tasto per giocare...\n");
         scanf("%c",&via);
         sem_post(&sem_g1);
         sem_post(&sem_g2);
        // sleep(1);
-        printf("ehi mann");
+        printf("ho dato il via\n");
         sem_wait(&sem_arbitro) ;
         sem_wait(&sem_arbitro);
         sem_wait(&m);
@@ -79,12 +82,11 @@ void *arbitro(void *arg)
                 printf("il g1 ha tirato %s e g2 %s\t VINCE G2\n",nomi_mosse[mossag1],nomi_mosse[mossag2]);
                 break;
         }
-
         sem_post(&m);
+        pausetta();
         //sem_wait(&sem_arbitro);
         //sem_wait(&sem_arbitro);
-
-
+            }
 }
 
 }
@@ -93,24 +95,29 @@ void *giocatore1(void *arg)
 {
     while(1) {
         //sleep(1);
+        //sem_wait(&m);
+        arbitro_ok =0;
         printf("ciao sono il giocatore 1\n");
         sem_wait(&sem_g1);
         printf("wait1 passata\n");
         mossag1 = rand() % 3;
         printf("Il giocatore1 ha effettuato la mossa \t %s\n", nomi_mosse[mossag1]);
         sem_post(&sem_arbitro);
+        //sem_post(&m);
+
     }
 }
 void *giocatore2(void *arg)
 {
     while(1) {
-        sleep(1);
+        //sem_wait(&m);
         printf("ciao sono il giocatore 2\n");
         sem_wait(&sem_g2);
         printf("wait2 passata\n");
         mossag2 = rand() % 3;
         printf("Il giocatore2 ha effettuato la mossa \t %s\n", nomi_mosse[mossag2]);
         sem_post(&sem_arbitro);
+        //sem_post(&m);
     }
 }
 

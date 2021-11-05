@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/vari.dir/barbiere_addormentato.c.o"
+  "CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.o"
+  "CMakeFiles/vari.dir/modelli_generali/leonardi.c.o"
   "vari"
   "vari.pdb"
 )

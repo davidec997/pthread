@@ -66,30 +66,45 @@ include CMakeFiles/vari.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/vari.dir/flags.make
 
-CMakeFiles/vari.dir/barbiere_addormentato.c.o: CMakeFiles/vari.dir/flags.make
-CMakeFiles/vari.dir/barbiere_addormentato.c.o: ../barbiere_addormentato.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/vari.dir/barbiere_addormentato.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vari.dir/barbiere_addormentato.c.o -c "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/barbiere_addormentato.c"
+CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.o: CMakeFiles/vari.dir/flags.make
+CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.o: ../ese_OSD/produttore-consumatore1.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.o -c "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/produttore-consumatore1.c"
 
-CMakeFiles/vari.dir/barbiere_addormentato.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vari.dir/barbiere_addormentato.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/barbiere_addormentato.c" > CMakeFiles/vari.dir/barbiere_addormentato.c.i
+CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/produttore-consumatore1.c" > CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.i
 
-CMakeFiles/vari.dir/barbiere_addormentato.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vari.dir/barbiere_addormentato.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/barbiere_addormentato.c" -o CMakeFiles/vari.dir/barbiere_addormentato.c.s
+CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/produttore-consumatore1.c" -o CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.s
+
+CMakeFiles/vari.dir/modelli_generali/leonardi.c.o: CMakeFiles/vari.dir/flags.make
+CMakeFiles/vari.dir/modelli_generali/leonardi.c.o: ../modelli_generali/leonardi.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/vari.dir/modelli_generali/leonardi.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vari.dir/modelli_generali/leonardi.c.o -c "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/modelli_generali/leonardi.c"
+
+CMakeFiles/vari.dir/modelli_generali/leonardi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vari.dir/modelli_generali/leonardi.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/modelli_generali/leonardi.c" > CMakeFiles/vari.dir/modelli_generali/leonardi.c.i
+
+CMakeFiles/vari.dir/modelli_generali/leonardi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vari.dir/modelli_generali/leonardi.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/modelli_generali/leonardi.c" -o CMakeFiles/vari.dir/modelli_generali/leonardi.c.s
 
 # Object files for target vari
 vari_OBJECTS = \
-"CMakeFiles/vari.dir/barbiere_addormentato.c.o"
+"CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.o" \
+"CMakeFiles/vari.dir/modelli_generali/leonardi.c.o"
 
 # External object files for target vari
 vari_EXTERNAL_OBJECTS =
 
-vari: CMakeFiles/vari.dir/barbiere_addormentato.c.o
+vari: CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.o
+vari: CMakeFiles/vari.dir/modelli_generali/leonardi.c.o
 vari: CMakeFiles/vari.dir/build.make
 vari: CMakeFiles/vari.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable vari"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable vari"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vari.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

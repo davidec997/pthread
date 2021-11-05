@@ -129,29 +129,53 @@ vari/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/build
 .PHONY : vari/fast
 
-barbiere_addormentato.o: barbiere_addormentato.c.o
-.PHONY : barbiere_addormentato.o
+ese_OSD/produttore-consumatore1.o: ese_OSD/produttore-consumatore1.c.o
+.PHONY : ese_OSD/produttore-consumatore1.o
 
 # target to build an object file
-barbiere_addormentato.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/barbiere_addormentato.c.o
-.PHONY : barbiere_addormentato.c.o
+ese_OSD/produttore-consumatore1.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.o
+.PHONY : ese_OSD/produttore-consumatore1.c.o
 
-barbiere_addormentato.i: barbiere_addormentato.c.i
-.PHONY : barbiere_addormentato.i
+ese_OSD/produttore-consumatore1.i: ese_OSD/produttore-consumatore1.c.i
+.PHONY : ese_OSD/produttore-consumatore1.i
 
 # target to preprocess a source file
-barbiere_addormentato.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/barbiere_addormentato.c.i
-.PHONY : barbiere_addormentato.c.i
+ese_OSD/produttore-consumatore1.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.i
+.PHONY : ese_OSD/produttore-consumatore1.c.i
 
-barbiere_addormentato.s: barbiere_addormentato.c.s
-.PHONY : barbiere_addormentato.s
+ese_OSD/produttore-consumatore1.s: ese_OSD/produttore-consumatore1.c.s
+.PHONY : ese_OSD/produttore-consumatore1.s
 
 # target to generate assembly for a file
-barbiere_addormentato.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/barbiere_addormentato.c.s
-.PHONY : barbiere_addormentato.c.s
+ese_OSD/produttore-consumatore1.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.s
+.PHONY : ese_OSD/produttore-consumatore1.c.s
+
+modelli_generali/leonardi.o: modelli_generali/leonardi.c.o
+.PHONY : modelli_generali/leonardi.o
+
+# target to build an object file
+modelli_generali/leonardi.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/modelli_generali/leonardi.c.o
+.PHONY : modelli_generali/leonardi.c.o
+
+modelli_generali/leonardi.i: modelli_generali/leonardi.c.i
+.PHONY : modelli_generali/leonardi.i
+
+# target to preprocess a source file
+modelli_generali/leonardi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/modelli_generali/leonardi.c.i
+.PHONY : modelli_generali/leonardi.c.i
+
+modelli_generali/leonardi.s: modelli_generali/leonardi.c.s
+.PHONY : modelli_generali/leonardi.s
+
+# target to generate assembly for a file
+modelli_generali/leonardi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/modelli_generali/leonardi.c.s
+.PHONY : modelli_generali/leonardi.c.s
 
 # Help Target
 help:
@@ -162,9 +186,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... vari"
-	@echo "... barbiere_addormentato.o"
-	@echo "... barbiere_addormentato.i"
-	@echo "... barbiere_addormentato.s"
+	@echo "... ese_OSD/produttore-consumatore1.o"
+	@echo "... ese_OSD/produttore-consumatore1.i"
+	@echo "... ese_OSD/produttore-consumatore1.s"
+	@echo "... modelli_generali/leonardi.o"
+	@echo "... modelli_generali/leonardi.i"
+	@echo "... modelli_generali/leonardi.s"
 .PHONY : help
 
 
