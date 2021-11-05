@@ -15,6 +15,14 @@ int clienti_attesa;
 int macchinetta = A;
 int aranciate_bevute;
 
+void pausetta(void)
+{
+    struct timespec t;
+    t.tv_sec = 0;
+    t.tv_nsec = (rand()%10+1)*1000000;
+    nanosleep(&t,NULL);
+}
+
 void myInit(void)
 {
     sem_init(&m,0,1);
@@ -48,7 +56,7 @@ void bevi_aranciata(int pi){
     sem_wait(&m);
     aranciate_bevute++;
     macchinetta --;
-    sleep(2);
+    pausetta();
     printf("Ciao sono %d ho appena bevuto un'aranciata. Con questa siamo a %d aranciate bevute\n",pi,aranciate_bevute);
     sem_post(&m);
 }

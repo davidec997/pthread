@@ -4,6 +4,7 @@ project(vari C)
 set(CMAKE_C_STANDARD 99)
 
 #add_executable(vari internet/fornaio.c)
-add_executable(vari ese_OSD/produttore-consumatore1.c modelli_generali/leonardi.c)
+#add_executable(vari ese_OSD/produttore-consumatore1.c)
+add_executable(vari internet/distributore_aranciata.c)
 
 target_link_libraries(vari pthread)

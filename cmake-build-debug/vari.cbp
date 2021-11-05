@@ -76,10 +76,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/produttore-consumatore1.c">
-			<Option target="vari"/>
-		</Unit>
-		<Unit filename="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/modelli_generali/leonardi.c">
+		<Unit filename="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/internet/distributore_aranciata.c">
 			<Option target="vari"/>
 		</Unit>
 		<Unit filename="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/CMakeLists.txt">

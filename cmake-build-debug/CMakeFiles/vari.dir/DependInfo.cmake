@@ -8,8 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/produttore-consumatore1.c" "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.o"
-  "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/modelli_generali/leonardi.c" "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles/vari.dir/modelli_generali/leonardi.c.o"
+  "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/internet/distributore_aranciata.c" "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles/vari.dir/internet/distributore_aranciata.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

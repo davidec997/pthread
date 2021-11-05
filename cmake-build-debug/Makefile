@@ -129,53 +129,29 @@ vari/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/build
 .PHONY : vari/fast
 
-ese_OSD/produttore-consumatore1.o: ese_OSD/produttore-consumatore1.c.o
-.PHONY : ese_OSD/produttore-consumatore1.o
+internet/distributore_aranciata.o: internet/distributore_aranciata.c.o
+.PHONY : internet/distributore_aranciata.o
 
 # target to build an object file
-ese_OSD/produttore-consumatore1.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.o
-.PHONY : ese_OSD/produttore-consumatore1.c.o
+internet/distributore_aranciata.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/internet/distributore_aranciata.c.o
+.PHONY : internet/distributore_aranciata.c.o
 
-ese_OSD/produttore-consumatore1.i: ese_OSD/produttore-consumatore1.c.i
-.PHONY : ese_OSD/produttore-consumatore1.i
-
-# target to preprocess a source file
-ese_OSD/produttore-consumatore1.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.i
-.PHONY : ese_OSD/produttore-consumatore1.c.i
-
-ese_OSD/produttore-consumatore1.s: ese_OSD/produttore-consumatore1.c.s
-.PHONY : ese_OSD/produttore-consumatore1.s
-
-# target to generate assembly for a file
-ese_OSD/produttore-consumatore1.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/produttore-consumatore1.c.s
-.PHONY : ese_OSD/produttore-consumatore1.c.s
-
-modelli_generali/leonardi.o: modelli_generali/leonardi.c.o
-.PHONY : modelli_generali/leonardi.o
-
-# target to build an object file
-modelli_generali/leonardi.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/modelli_generali/leonardi.c.o
-.PHONY : modelli_generali/leonardi.c.o
-
-modelli_generali/leonardi.i: modelli_generali/leonardi.c.i
-.PHONY : modelli_generali/leonardi.i
+internet/distributore_aranciata.i: internet/distributore_aranciata.c.i
+.PHONY : internet/distributore_aranciata.i
 
 # target to preprocess a source file
-modelli_generali/leonardi.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/modelli_generali/leonardi.c.i
-.PHONY : modelli_generali/leonardi.c.i
+internet/distributore_aranciata.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/internet/distributore_aranciata.c.i
+.PHONY : internet/distributore_aranciata.c.i
 
-modelli_generali/leonardi.s: modelli_generali/leonardi.c.s
-.PHONY : modelli_generali/leonardi.s
+internet/distributore_aranciata.s: internet/distributore_aranciata.c.s
+.PHONY : internet/distributore_aranciata.s
 
 # target to generate assembly for a file
-modelli_generali/leonardi.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/modelli_generali/leonardi.c.s
-.PHONY : modelli_generali/leonardi.c.s
+internet/distributore_aranciata.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/internet/distributore_aranciata.c.s
+.PHONY : internet/distributore_aranciata.c.s
 
 # Help Target
 help:
@@ -186,12 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... vari"
-	@echo "... ese_OSD/produttore-consumatore1.o"
-	@echo "... ese_OSD/produttore-consumatore1.i"
-	@echo "... ese_OSD/produttore-consumatore1.s"
-	@echo "... modelli_generali/leonardi.o"
-	@echo "... modelli_generali/leonardi.i"
-	@echo "... modelli_generali/leonardi.s"
+	@echo "... internet/distributore_aranciata.o"
+	@echo "... internet/distributore_aranciata.i"
+	@echo "... internet/distributore_aranciata.s"
 .PHONY : help
 
 

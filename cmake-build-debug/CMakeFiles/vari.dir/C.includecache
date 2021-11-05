@@ -6,14 +6,14 @@
 
 #IncludeRegexTransform: 
 
-/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/produttore-consumatore1.c
-stdio.h
--
-stdlib.h
+/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/internet/distributore_aranciata.c
+unistd.h
 -
 pthread.h
 -
-unistd.h
+stdio.h
+-
+stdlib.h
 -
 semaphore.h
 -

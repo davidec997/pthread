@@ -81,12 +81,12 @@ clean: CMakeFiles/vari.dir/clean
 CMakeFiles/vari.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles" --progress-num=1,2,3 "Built target vari"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles" --progress-num=1,2 "Built target vari"
 .PHONY : CMakeFiles/vari.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/vari.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles" 3
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles" 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/vari.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles" 0
 .PHONY : CMakeFiles/vari.dir/rule
