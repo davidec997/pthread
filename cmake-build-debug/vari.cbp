@@ -76,7 +76,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/internet/distributore_aranciata.c">
+		<Unit filename="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/Sistemi_Embedded/morra_cinese.c">
 			<Option target="vari"/>
 		</Unit>
 		<Unit filename="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/CMakeLists.txt">

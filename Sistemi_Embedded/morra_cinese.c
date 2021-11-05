@@ -11,7 +11,7 @@
 char *nomi_mosse[3] = {"carta", "sasso", "forbice"};
 sem_t sem_arbitro, sem_g1, sem_g2,m;
 int mossag1,mossag2;
-int arbitro_ok=1;
+int arbitro_ok=1,giocatore1ok,giocatore2ok;
 
 void pausetta(void)
 {
@@ -28,6 +28,7 @@ void myInit(void)
     sem_init(&m,0,1);
 
     mossag1 = mossag2 =-1;
+    giocatore1ok = giocatore2ok = 0;
 }
 
 int decreta_vincitore(int g1, int g2){
@@ -60,33 +61,38 @@ void *arbitro(void *arg)
         if(!arbitro_ok){
             sem_wait(&sem_arbitro);
         } else {
-        printf("premi un tasto per giocare...\n");
-        scanf("%c",&via);
-        sem_post(&sem_g1);
-        sem_post(&sem_g2);
-       // sleep(1);
-        printf("ho dato il via\n");
-        sem_wait(&sem_arbitro) ;
-        sem_wait(&sem_arbitro);
-        sem_wait(&m);
-        vincitore = decreta_vincitore(mossag1,mossag2);
-        printf("sono qui.. vincitore %d\n",vincitore);
-        switch (vincitore) {
-            case 0:
-                printf("il g1 ha tirato %s e g2 %s\t PAREGGIO\n",nomi_mosse[mossag1],nomi_mosse[mossag2]);
-                break;
-            case 1:
-                printf("il g1 ha tirato %s e g2 %s\t VINCE G1\n",nomi_mosse[mossag1],nomi_mosse[mossag2]);
-                break;
-            case 2:
-                printf("il g1 ha tirato %s e g2 %s\t VINCE G2\n",nomi_mosse[mossag1],nomi_mosse[mossag2]);
-                break;
-        }
-        sem_post(&m);
-        pausetta();
-        //sem_wait(&sem_arbitro);
-        //sem_wait(&sem_arbitro);
+            printf("premi un tasto per giocare...\n");
+            scanf("%c", &via);
+            giocatore1ok = giocatore2ok = 1;
+            sem_post(&sem_g1);
+            sem_post(&sem_g2);
+            printf("ho dato il via\n");
+            if (!arbitro_ok){
+                sem_wait(&sem_arbitro);
+            } else {
+                sem_wait(&sem_g1); //arbitr_sem
+                sem_wait(&sem_g2);
+                sem_wait(&m);
+                vincitore = decreta_vincitore(mossag1, mossag2);
+                printf("sono qui.. vincitore %d\n", vincitore);
+                switch (vincitore) {
+                    case 0:
+                        printf("il g1 ha tirato %s e g2 %s\t PAREGGIO\n", nomi_mosse[mossag1], nomi_mosse[mossag2]);
+                        break;
+                    case 1:
+                        printf("il g1 ha tirato %s e g2 %s\t VINCE G1\n", nomi_mosse[mossag1], nomi_mosse[mossag2]);
+                        break;
+                    case 2:
+                        printf("il g1 ha tirato %s e g2 %s\t VINCE G2\n", nomi_mosse[mossag1], nomi_mosse[mossag2]);
+                        break;
+                }
+                giocatore1ok =giocatore2ok = 0;
+                sem_post(&m);
+                pausetta();
+                //sem_wait(&sem_arbitro);
+                //sem_wait(&sem_arbitro);
             }
+        }
 }
 
 }
@@ -96,28 +102,41 @@ void *giocatore1(void *arg)
     while(1) {
         //sleep(1);
         //sem_wait(&m);
-        arbitro_ok =0;
-        printf("ciao sono il giocatore 1\n");
-        sem_wait(&sem_g1);
-        printf("wait1 passata\n");
-        mossag1 = rand() % 3;
-        printf("Il giocatore1 ha effettuato la mossa \t %s\n", nomi_mosse[mossag1]);
-        sem_post(&sem_arbitro);
-        //sem_post(&m);
+        if (!giocatore1ok) {
+            sem_wait(&sem_g1);
+        } else {
+            arbitro_ok = 0;
+            printf("ciao sono il giocatore 1\n");
+            //sem_wait(&sem_g1);
+            printf("wait1 passata\n");
+            mossag1 = rand() % 3;
+            printf("Il giocatore1 ha effettuato la mossa \t %s\n", nomi_mosse[mossag1]);
 
+            sem_post(&sem_g1);
+            sem_post(&sem_arbitro);
+            arbitro_ok = 1;
+            //sem_post(&m);
+        }
     }
 }
 void *giocatore2(void *arg)
 {
     while(1) {
-        //sem_wait(&m);
-        printf("ciao sono il giocatore 2\n");
-        sem_wait(&sem_g2);
-        printf("wait2 passata\n");
-        mossag2 = rand() % 3;
-        printf("Il giocatore2 ha effettuato la mossa \t %s\n", nomi_mosse[mossag2]);
-        sem_post(&sem_arbitro);
-        //sem_post(&m);
+        if (!giocatore2ok) {
+            sem_wait(&sem_g2);
+        } else {
+            arbitro_ok = 0;
+            printf("ciao sono il giocatore 2\n");
+            //sem_wait(&sem_g1);
+            printf("wait2 passata\n");
+            mossag1 = rand() % 3;
+            printf("Il giocatore2 ha effettuato la mossa \t %s\n", nomi_mosse[mossag2]);
+
+            sem_post(&sem_g2); //seve?
+            sem_post(&sem_arbitro);
+            arbitro_ok = 1;
+            //sem_post(&m);
+        }
     }
 }
 

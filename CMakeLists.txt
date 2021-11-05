@@ -5,6 +5,7 @@ set(CMAKE_C_STANDARD 99)
 
 #add_executable(vari internet/fornaio.c)
 #add_executable(vari ese_OSD/produttore-consumatore1.c)
-add_executable(vari internet/distributore_aranciata.c)
+#add_executable(vari internet/distributore_aranciata.c)
+add_executable(vari Sistemi_Embedded/morra_cinese.c)
 
 target_link_libraries(vari pthread)

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/vari.dir/internet/distributore_aranciata.c.o"
+  "CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese.c.o"
   "vari"
   "vari.pdb"
 )

@@ -129,29 +129,29 @@ vari/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/build
 .PHONY : vari/fast
 
-internet/distributore_aranciata.o: internet/distributore_aranciata.c.o
-.PHONY : internet/distributore_aranciata.o
+Sistemi_Embedded/morra_cinese.o: Sistemi_Embedded/morra_cinese.c.o
+.PHONY : Sistemi_Embedded/morra_cinese.o
 
 # target to build an object file
-internet/distributore_aranciata.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/internet/distributore_aranciata.c.o
-.PHONY : internet/distributore_aranciata.c.o
+Sistemi_Embedded/morra_cinese.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese.c.o
+.PHONY : Sistemi_Embedded/morra_cinese.c.o
 
-internet/distributore_aranciata.i: internet/distributore_aranciata.c.i
-.PHONY : internet/distributore_aranciata.i
+Sistemi_Embedded/morra_cinese.i: Sistemi_Embedded/morra_cinese.c.i
+.PHONY : Sistemi_Embedded/morra_cinese.i
 
 # target to preprocess a source file
-internet/distributore_aranciata.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/internet/distributore_aranciata.c.i
-.PHONY : internet/distributore_aranciata.c.i
+Sistemi_Embedded/morra_cinese.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese.c.i
+.PHONY : Sistemi_Embedded/morra_cinese.c.i
 
-internet/distributore_aranciata.s: internet/distributore_aranciata.c.s
-.PHONY : internet/distributore_aranciata.s
+Sistemi_Embedded/morra_cinese.s: Sistemi_Embedded/morra_cinese.c.s
+.PHONY : Sistemi_Embedded/morra_cinese.s
 
 # target to generate assembly for a file
-internet/distributore_aranciata.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/internet/distributore_aranciata.c.s
-.PHONY : internet/distributore_aranciata.c.s
+Sistemi_Embedded/morra_cinese.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese.c.s
+.PHONY : Sistemi_Embedded/morra_cinese.c.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... vari"
-	@echo "... internet/distributore_aranciata.o"
-	@echo "... internet/distributore_aranciata.i"
-	@echo "... internet/distributore_aranciata.s"
+	@echo "... Sistemi_Embedded/morra_cinese.o"
+	@echo "... Sistemi_Embedded/morra_cinese.i"
+	@echo "... Sistemi_Embedded/morra_cinese.s"
 .PHONY : help
 
 
