@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese.c.o"
+  "CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.o"
   "vari"
   "vari.pdb"
 )

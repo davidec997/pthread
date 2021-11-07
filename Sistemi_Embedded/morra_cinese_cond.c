@@ -13,7 +13,7 @@ char *nomi_mosse[3] = {"carta", "sasso", "forbice"};
 pthread_mutex_t m;
 pthread_cond_t g1,g2,ar;
 int mossag1,mossag2;
-int a,gio1,gio2;
+int a,giocatore1ok,giocatore2ok,turno;
 
 
 void pausetta(void)
@@ -31,8 +31,9 @@ void myInit(void)
     pthread_mutex_init(&m,NULL);
 
     mossag1 = mossag2 =-1;
-    gio1 = gio2 =0;
+    giocatore1ok = giocatore2ok =0;
     a=1;
+    turno = 0;
 }
 
 int decreta_vincitore(int g1, int g2){
@@ -61,73 +62,83 @@ void *arbitro(void *arg)
     printf("Sono l'arbitro e sto per dare il via al gioco..\n");
     char via;
     int vincitore=-1;
+    int id = (int) arg;
     while(1){
-        pthread_mutex_lock(&m);
-        if(!a) pthread_cond_wait(&ar,&m);
-
-        printf("premi un tasto per giocare...\n");
-        scanf("%c",&via);
-        pthread_cond_signal(&g1);
-        pthread_cond_signal(&g1);
-        // sleep(1);
-        gio1 = gio2 = 1;
-        a=0;
-        printf("ehi mann\n");
-        pthread_cond_wait(&g1,&m);
-        pthread_cond_wait(&g2,&m);
-
-        //pthread_cond_wait(&gio1,&m);
-        //pthread_cond_wait(&gio2,&m);
-        vincitore = decreta_vincitore(mossag1,mossag2);
-        printf("sono qui.. vincitore %d\n",vincitore);
-        switch (vincitore) {
-            case 0:
-                printf("il g1 ha tirato %s e g2 %s\t PAREGGIO\n",nomi_mosse[mossag1],nomi_mosse[mossag2]);
-                break;
-            case 1:
-                printf("il g1 ha tirato %s e g2 %s\t VINCE G1\n",nomi_mosse[mossag1],nomi_mosse[mossag2]);
-                break;
-            case 2:
-                printf("il g1 ha tirato %s e g2 %s\t VINCE G2\n",nomi_mosse[mossag1],nomi_mosse[mossag2]);
-                break;
+        while(id != turno){
+            pthread_cond_wait(&ar,&m);
         }
-        pthread_mutex_unlock(&m);
-        //sem_wait(&sem_arbitro);
-        //sem_wait(&sem_arbitro);
-    }
+            //pthread_mutex_lock(&m);
+            printf("premi un tasto per giocare...\n");
+            scanf("%c", &via);
+            printf("ho dato il viaaaaaaaaaaaa\n");
+            turno = 1;
+            pthread_cond_signal(&g1);
+            pthread_cond_signal(&g2);
+            printf("ho dato il via\n");
+            pthread_mutex_unlock(&m);
+            while (turno != id){
+                pthread_cond_wait(&ar,&m);
+            }
+            //pthread_mutex_lock(&m);
+            vincitore = decreta_vincitore(mossag1, mossag2);
+            printf("sono qui.. vincitore %d\n", vincitore);
+            switch (vincitore) {
+                case 0:
+                    printf("il g1 ha tirato %s e g2 %s\t PAREGGIO\n", nomi_mosse[mossag1], nomi_mosse[mossag2]);
+                    break;
+                case 1:
+                    printf("il g1 ha tirato %s e g2 %s\t VINCE G1\n", nomi_mosse[mossag1], nomi_mosse[mossag2]);
+                    break;
+                case 2:
+                    printf("il g1 ha tirato %s e g2 %s\t VINCE G2\n", nomi_mosse[mossag1], nomi_mosse[mossag2]);
+                    break;
+            }
+            turno = 0;
+            giocatore1ok = giocatore2ok = 0;
+             pthread_mutex_unlock(&m);
+            pausetta();
+        }
 
 }
 
 void *giocatore1(void *arg)
 {
+    int id = (int) arg;
     while(1) {
-        //sleep(1);
-        pthread_mutex_lock(&m);
-        if(!gio1) pthread_cond_wait(&g1,&m);
-        a=1;
-        gio1=0;
+        while (turno != id) {
+            printf("il gio1 si e blocc\n");
+            pthread_cond_wait(&g1,&m);
+        }
+        //sem_wait(&m);
         printf("ciao sono il giocatore 1\n");
-        pthread_cond_wait(&g1, &m);
-        printf("wait1 passata\n");
         mossag1 = rand() % 3;
         printf("Il giocatore1 ha effettuato la mossa \t %s\n", nomi_mosse[mossag1]);
-        pthread_cond_signal(&ar);
+        giocatore1ok = 1;
+        if (giocatore1ok && giocatore2ok) {
+            turno = 0;
+            pthread_cond_signal(&ar);
+        }
         pthread_mutex_unlock(&m);
-
     }
 }
-void *giocatore2(void *arg) {
-    while (1) {
-        pthread_mutex_lock(&m);
-        if (!gio2) pthread_cond_wait(&g1, &m);
-        a = 1;
-        gio2 = 0;
+
+void *giocatore2(void *arg)
+{
+    int id = (int) arg;
+    while(1) {
+        while (turno != id) {
+            printf("il gio2 si e blocc\n");
+            pthread_cond_wait(&g2,&m);
+        }
+        //sem_wait(&m);
         printf("ciao sono il giocatore 2\n");
-        pthread_cond_wait(&g2, &m);
-        printf("wait1 passata\n");
         mossag1 = rand() % 3;
         printf("Il giocatore2 ha effettuato la mossa \t %s\n", nomi_mosse[mossag2]);
-        pthread_cond_signal(&ar);
+        giocatore2ok = 1;
+        if (giocatore1ok && giocatore2ok) {
+            turno = 0;
+            pthread_cond_signal(&ar);
+        }
         pthread_mutex_unlock(&m);
     }
 }

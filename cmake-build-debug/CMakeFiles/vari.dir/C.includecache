@@ -6,14 +6,14 @@
 
 #IncludeRegexTransform: 
 
-/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/internet/distributore_aranciata.c
-unistd.h
--
-pthread.h
--
+/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/Sistemi_Embedded/morra_cinese_cond.c
 stdio.h
 -
 stdlib.h
+-
+pthread.h
+-
+unistd.h
 -
 semaphore.h
 -

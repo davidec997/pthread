@@ -11,7 +11,7 @@
 char *nomi_mosse[3] = {"carta", "sasso", "forbice"};
 sem_t sem_arbitro, sem_g1, sem_g2,m;
 int mossag1,mossag2;
-int arbitro_ok=1,giocatore1ok,giocatore2ok;
+int arbitro_ok,giocatore1ok,giocatore2ok,turno;
 
 void pausetta(void)
 {
@@ -29,6 +29,8 @@ void myInit(void)
 
     mossag1 = mossag2 =-1;
     giocatore1ok = giocatore2ok = 0;
+    arbitro_ok =1;
+    turno=0;
 }
 
 int decreta_vincitore(int g1, int g2){
@@ -57,21 +59,25 @@ void *arbitro(void *arg)
     printf("Sono l'arbitro e sto per dare il via al gioco..\n");
     char via;
     int vincitore=-1;
+    int id = (int) arg;
     while(1){
-        if(!arbitro_ok){
+        if(id != turno){
             sem_wait(&sem_arbitro);
         } else {
+            sem_wait(&m);
             printf("premi un tasto per giocare...\n");
             scanf("%c", &via);
-            giocatore1ok = giocatore2ok = 1;
+            printf("ho dato il viaaaaaaaaaaaa\n");
+            turno = 1;
             sem_post(&sem_g1);
             sem_post(&sem_g2);
             printf("ho dato il via\n");
-            if (!arbitro_ok){
+            sem_post(&m);
+            if (turno != id){
                 sem_wait(&sem_arbitro);
-            } else {
-                sem_wait(&sem_g1); //arbitr_sem
-                sem_wait(&sem_g2);
+            }
+                //sem_wait(&sem_g1); //arbitr_sem
+                //sem_wait(&sem_g2);
                 sem_wait(&m);
                 vincitore = decreta_vincitore(mossag1, mossag2);
                 printf("sono qui.. vincitore %d\n", vincitore);
@@ -86,57 +92,55 @@ void *arbitro(void *arg)
                         printf("il g1 ha tirato %s e g2 %s\t VINCE G2\n", nomi_mosse[mossag1], nomi_mosse[mossag2]);
                         break;
                 }
-                giocatore1ok =giocatore2ok = 0;
+                turno = 0;
+                giocatore1ok = giocatore2ok = 0;
                 sem_post(&m);
                 pausetta();
-                //sem_wait(&sem_arbitro);
-                //sem_wait(&sem_arbitro);
             }
-        }
+
 }
 
 }
 
 void *giocatore1(void *arg)
 {
+    int id = (int) arg;
     while(1) {
-        //sleep(1);
-        //sem_wait(&m);
-        if (!giocatore1ok) {
-            sem_wait(&sem_g1);
-        } else {
-            arbitro_ok = 0;
+        if (turno != id) {
+            printf("il gio1 si e blocc\n");
+            sem_wait(&sem_g1); // aspetto l arbitro
+        }
+            sem_wait(&m);
             printf("ciao sono il giocatore 1\n");
-            //sem_wait(&sem_g1);
-            printf("wait1 passata\n");
             mossag1 = rand() % 3;
             printf("Il giocatore1 ha effettuato la mossa \t %s\n", nomi_mosse[mossag1]);
+            giocatore1ok = 1;
+            if (giocatore1ok && giocatore2ok) {
+                turno = 0;
+                sem_post(&sem_arbitro);
+            }
+            sem_post(&m);
 
-            sem_post(&sem_g1);
-            sem_post(&sem_arbitro);
-            arbitro_ok = 1;
-            //sem_post(&m);
-        }
     }
 }
 void *giocatore2(void *arg)
 {
+    int id = (int) arg;
     while(1) {
-        if (!giocatore2ok) {
-            sem_wait(&sem_g2);
-        } else {
-            arbitro_ok = 0;
-            printf("ciao sono il giocatore 2\n");
-            //sem_wait(&sem_g1);
-            printf("wait2 passata\n");
-            mossag1 = rand() % 3;
-            printf("Il giocatore2 ha effettuato la mossa \t %s\n", nomi_mosse[mossag2]);
-
-            sem_post(&sem_g2); //seve?
-            sem_post(&sem_arbitro);
-            arbitro_ok = 1;
-            //sem_post(&m);
+        if (turno != id) {
+            printf("il gio2 si e blocc\n");
+            sem_wait(&sem_g2); // aspetto l arbitro
         }
+        sem_wait(&m);
+        printf("ciao sono il giocatore 1\n");
+        mossag2 = rand() % 3;
+        printf("Il giocatore2 ha effettuato la mossa \t %s\n", nomi_mosse[mossag2]);
+        giocatore2ok = 1;
+        if (giocatore1ok && giocatore2ok) {
+            turno = 0;
+            sem_post(&sem_arbitro);
+        }
+        sem_post(&m);
     }
 }
 
