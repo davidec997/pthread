@@ -129,29 +129,29 @@ vari/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/build
 .PHONY : vari/fast
 
-Sistemi_Embedded/morra_cinese_cond.o: Sistemi_Embedded/morra_cinese_cond.c.o
-.PHONY : Sistemi_Embedded/morra_cinese_cond.o
+Sistemi_Embedded/2/ese2p2.o: Sistemi_Embedded/2/ese2p2.c.o
+.PHONY : Sistemi_Embedded/2/ese2p2.o
 
 # target to build an object file
-Sistemi_Embedded/morra_cinese_cond.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.o
-.PHONY : Sistemi_Embedded/morra_cinese_cond.c.o
+Sistemi_Embedded/2/ese2p2.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/2/ese2p2.c.o
+.PHONY : Sistemi_Embedded/2/ese2p2.c.o
 
-Sistemi_Embedded/morra_cinese_cond.i: Sistemi_Embedded/morra_cinese_cond.c.i
-.PHONY : Sistemi_Embedded/morra_cinese_cond.i
+Sistemi_Embedded/2/ese2p2.i: Sistemi_Embedded/2/ese2p2.c.i
+.PHONY : Sistemi_Embedded/2/ese2p2.i
 
 # target to preprocess a source file
-Sistemi_Embedded/morra_cinese_cond.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.i
-.PHONY : Sistemi_Embedded/morra_cinese_cond.c.i
+Sistemi_Embedded/2/ese2p2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/2/ese2p2.c.i
+.PHONY : Sistemi_Embedded/2/ese2p2.c.i
 
-Sistemi_Embedded/morra_cinese_cond.s: Sistemi_Embedded/morra_cinese_cond.c.s
-.PHONY : Sistemi_Embedded/morra_cinese_cond.s
+Sistemi_Embedded/2/ese2p2.s: Sistemi_Embedded/2/ese2p2.c.s
+.PHONY : Sistemi_Embedded/2/ese2p2.s
 
 # target to generate assembly for a file
-Sistemi_Embedded/morra_cinese_cond.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.s
-.PHONY : Sistemi_Embedded/morra_cinese_cond.c.s
+Sistemi_Embedded/2/ese2p2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/2/ese2p2.c.s
+.PHONY : Sistemi_Embedded/2/ese2p2.c.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... vari"
-	@echo "... Sistemi_Embedded/morra_cinese_cond.o"
-	@echo "... Sistemi_Embedded/morra_cinese_cond.i"
-	@echo "... Sistemi_Embedded/morra_cinese_cond.s"
+	@echo "... Sistemi_Embedded/2/ese2p2.o"
+	@echo "... Sistemi_Embedded/2/ese2p2.i"
+	@echo "... Sistemi_Embedded/2/ese2p2.s"
 .PHONY : help
 
 
