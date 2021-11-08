@@ -129,29 +129,29 @@ vari/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/build
 .PHONY : vari/fast
 
-ese_OSD/filosofi/filosofi.o: ese_OSD/filosofi/filosofi.c.o
-.PHONY : ese_OSD/filosofi/filosofi.o
+ese_OSD/filosofi/filoLEONARDI1.o: ese_OSD/filosofi/filoLEONARDI1.c.o
+.PHONY : ese_OSD/filosofi/filoLEONARDI1.o
 
 # target to build an object file
-ese_OSD/filosofi/filosofi.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.o
-.PHONY : ese_OSD/filosofi/filosofi.c.o
+ese_OSD/filosofi/filoLEONARDI1.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.o
+.PHONY : ese_OSD/filosofi/filoLEONARDI1.c.o
 
-ese_OSD/filosofi/filosofi.i: ese_OSD/filosofi/filosofi.c.i
-.PHONY : ese_OSD/filosofi/filosofi.i
+ese_OSD/filosofi/filoLEONARDI1.i: ese_OSD/filosofi/filoLEONARDI1.c.i
+.PHONY : ese_OSD/filosofi/filoLEONARDI1.i
 
 # target to preprocess a source file
-ese_OSD/filosofi/filosofi.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.i
-.PHONY : ese_OSD/filosofi/filosofi.c.i
+ese_OSD/filosofi/filoLEONARDI1.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.i
+.PHONY : ese_OSD/filosofi/filoLEONARDI1.c.i
 
-ese_OSD/filosofi/filosofi.s: ese_OSD/filosofi/filosofi.c.s
-.PHONY : ese_OSD/filosofi/filosofi.s
+ese_OSD/filosofi/filoLEONARDI1.s: ese_OSD/filosofi/filoLEONARDI1.c.s
+.PHONY : ese_OSD/filosofi/filoLEONARDI1.s
 
 # target to generate assembly for a file
-ese_OSD/filosofi/filosofi.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.s
-.PHONY : ese_OSD/filosofi/filosofi.c.s
+ese_OSD/filosofi/filoLEONARDI1.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.s
+.PHONY : ese_OSD/filosofi/filoLEONARDI1.c.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... vari"
-	@echo "... ese_OSD/filosofi/filosofi.o"
-	@echo "... ese_OSD/filosofi/filosofi.i"
-	@echo "... ese_OSD/filosofi/filosofi.s"
+	@echo "... ese_OSD/filosofi/filoLEONARDI1.o"
+	@echo "... ese_OSD/filosofi/filoLEONARDI1.i"
+	@echo "... ese_OSD/filosofi/filoLEONARDI1.s"
 .PHONY : help
 
 

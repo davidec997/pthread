@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/filosofi/filosofi.c
+/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/filosofi/filoLEONARDI1.c
+pthread.h
+-
+semaphore.h
+-
 stdio.h
 -
 stdlib.h
 -
-pthread.h
--
 unistd.h
--
-semaphore.h
 -
 

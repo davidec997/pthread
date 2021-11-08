@@ -18,7 +18,7 @@ void *eseguiFilosofo(void *id)
 {
     int *pi = (int *)id;
     int *ptr;
-    int i;
+    int i,j;
 
     ptr = (int *) malloc( sizeof(int));
     if (ptr == NULL)
@@ -30,16 +30,40 @@ void *eseguiFilosofo(void *id)
     /* codice filosofo */
     printf("FILOSOFO con indice %d\n", *pi);
 
-    for (i = 0; i < NTIMES; i++) /* while (true)  i filosofi dovrebbero essere cicli senza fine */
+    if (*pi % 2 == 0)
     {
-        sem_wait(&(S_BASTONCINO[*pi]));
-        sem_wait(&(S_BASTONCINO[(*pi+1)%5]));
-        printf("FILOSOFO con indice %d e identificatore %lu ha ottenuto di poter mangiare (i=%d)\n", *pi, pthread_self(),i);
-        sleep(5); /* simuliamo l'azione di mangiare */
-        sem_post(&(S_BASTONCINO[*pi]));
-        sem_post(&(S_BASTONCINO[(*pi+1)%5]));
-        printf("FILOSOFO con indice %d e identificatore %lu ora pensa (i=%d)\n", *pi, pthread_self(), i);
-        pthread_yield(); /* sleep(5); simuliamo l'azione di pensare */
+        /* codice filosofo pari */
+        printf("FILOSOFO PARI con indice %d\n", *pi);
+
+        for (i = 0; i < NTIMES; i++) /* while (true)  i filosofi dovrebbero essere cicli senza fine */
+        {
+            sem_wait(&(S_BASTONCINO[*pi]));
+            sem_wait(&(S_BASTONCINO[(*pi+1)%5]));
+            printf("FILOSOFO PARI con indice %d e identificatore %lu ha ottenuto di poter mangiare (i=%d)\n", *pi, pthread_self(),i);
+            sleep(5); /* simuliamo l'azione di mangiare */
+            sem_post(&(S_BASTONCINO[*pi]));
+            sem_post(&(S_BASTONCINO[(*pi+1)%5]));
+            printf("FILOSOFO PARI con indice %d e identificatore %lu ora pensa (i=%d)\n", *pi, pthread_self(), i);
+            pthread_yield(); /* sleep(5); simuliamo l'azione di pensare */
+
+        }
+    }
+    else
+    {
+        /* codice filosofo dispari */
+        printf("FILOSOFO DISPARI con indice %d\n", *pi);
+
+        for (j = 0; j < NTIMES; j++) /* while (true)  i filosofi dovrebbero essere cicli senza fine */
+        {
+            sem_wait(&(S_BASTONCINO[(*pi+1)%5]));
+            sem_wait(&(S_BASTONCINO[*pi]));
+            printf("FILOSOFO DISPARI con indice %d e identificatore %lu ha ottenuto di poter mangiare (j=%d)\n", *pi, pthread_self(),j);
+            sleep(5); /* simuliamo l'azione di mangiare */
+            sem_post(&(S_BASTONCINO[(*pi+1)%5]));
+            sem_post(&(S_BASTONCINO[*pi]));
+            printf("FILOSOFO DISPARI con indice %d e identificatore %lu ora pensa (j=%d)\n", *pi, pthread_self(), j);
+            pthread_yield(); /* sleep(5); simuliamo l'azione di pensare */
+        }
     }
 
     /* pthread torna al padre il valore intero dell'indice */

@@ -66,27 +66,27 @@ include CMakeFiles/vari.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/vari.dir/flags.make
 
-CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.o: CMakeFiles/vari.dir/flags.make
-CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.o: ../ese_OSD/filosofi/filosofi.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.o -c "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/filosofi/filosofi.c"
+CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.o: CMakeFiles/vari.dir/flags.make
+CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.o: ../ese_OSD/filosofi/filoLEONARDI1.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.o -c "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/filosofi/filoLEONARDI1.c"
 
-CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/filosofi/filosofi.c" > CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.i
+CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/filosofi/filoLEONARDI1.c" > CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.i
 
-CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/filosofi/filosofi.c" -o CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.s
+CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/filosofi/filoLEONARDI1.c" -o CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.s
 
 # Object files for target vari
 vari_OBJECTS = \
-"CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.o"
+"CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.o"
 
 # External object files for target vari
 vari_EXTERNAL_OBJECTS =
 
-vari: CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.o
+vari: CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.o
 vari: CMakeFiles/vari.dir/build.make
 vari: CMakeFiles/vari.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable vari"
