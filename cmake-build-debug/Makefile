@@ -129,29 +129,29 @@ vari/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/build
 .PHONY : vari/fast
 
-Sistemi_Embedded/2/ese2p2.o: Sistemi_Embedded/2/ese2p2.c.o
-.PHONY : Sistemi_Embedded/2/ese2p2.o
+ese_OSD/filosofi/filosofi.o: ese_OSD/filosofi/filosofi.c.o
+.PHONY : ese_OSD/filosofi/filosofi.o
 
 # target to build an object file
-Sistemi_Embedded/2/ese2p2.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/2/ese2p2.c.o
-.PHONY : Sistemi_Embedded/2/ese2p2.c.o
+ese_OSD/filosofi/filosofi.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.o
+.PHONY : ese_OSD/filosofi/filosofi.c.o
 
-Sistemi_Embedded/2/ese2p2.i: Sistemi_Embedded/2/ese2p2.c.i
-.PHONY : Sistemi_Embedded/2/ese2p2.i
+ese_OSD/filosofi/filosofi.i: ese_OSD/filosofi/filosofi.c.i
+.PHONY : ese_OSD/filosofi/filosofi.i
 
 # target to preprocess a source file
-Sistemi_Embedded/2/ese2p2.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/2/ese2p2.c.i
-.PHONY : Sistemi_Embedded/2/ese2p2.c.i
+ese_OSD/filosofi/filosofi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.i
+.PHONY : ese_OSD/filosofi/filosofi.c.i
 
-Sistemi_Embedded/2/ese2p2.s: Sistemi_Embedded/2/ese2p2.c.s
-.PHONY : Sistemi_Embedded/2/ese2p2.s
+ese_OSD/filosofi/filosofi.s: ese_OSD/filosofi/filosofi.c.s
+.PHONY : ese_OSD/filosofi/filosofi.s
 
 # target to generate assembly for a file
-Sistemi_Embedded/2/ese2p2.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/2/ese2p2.c.s
-.PHONY : Sistemi_Embedded/2/ese2p2.c.s
+ese_OSD/filosofi/filosofi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.s
+.PHONY : ese_OSD/filosofi/filosofi.c.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... vari"
-	@echo "... Sistemi_Embedded/2/ese2p2.o"
-	@echo "... Sistemi_Embedded/2/ese2p2.i"
-	@echo "... Sistemi_Embedded/2/ese2p2.s"
+	@echo "... ese_OSD/filosofi/filosofi.o"
+	@echo "... ese_OSD/filosofi/filosofi.i"
+	@echo "... ese_OSD/filosofi/filosofi.s"
 .PHONY : help
 
 

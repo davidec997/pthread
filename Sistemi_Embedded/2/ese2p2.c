@@ -267,7 +267,7 @@ void EndProcB(void)
 void StartReset(void)
 {
     sem_wait(&m);
-    if (c_A > 0 || c_B > 0 || c_Reset > 0) {
+    if (c_A > 0 || c_B > 0 ) {
         b_Reset++;
     }
     else {
@@ -294,7 +294,6 @@ void EndReset(void)
                 sem_post(&priv_A);
             }
             if (b_B > 0) {
-
                 c_B++;
                 b_B--;
                 sem_post(&priv_B);
@@ -340,13 +339,13 @@ void myprint(char *s, int id)
 }
 void ProcA(int id)
 {
-    printf("THREAD A CON ID %d\n",id);
+    printf("THREAD A CON ID %lu\n",id);
     myprint("%d",id);
 }
 
 void ProcB(int id)
 {
-    printf("THREAD B CON ID %d\n",id);
+    printf("THREAD B CON ID %lu\n",id);
     myprint("%d",id);
 }
 
@@ -368,7 +367,6 @@ void *PA(void *arg)
         ProcA(id);
         EndProcA();
         fprintf(stderr,"a");
-        pausetta();
         sleep(1);
     }
     return 0;
@@ -385,7 +383,7 @@ void *PB(void *arg)
         ProcB(id);
         EndProcB();
         fprintf(stderr,"b");
-        pausetta();
+
         sleep(1);
     }
     return 0;
@@ -425,7 +423,6 @@ int main(int argc, char **argv)
     /* non ho voglia di scrivere 10000 volte join! */
     pthread_attr_setdetachstate(&a, PTHREAD_CREATE_DETACHED);
 
-    pthread_create(&p, &a, PR, 9);
 
     pthread_create(&p, &a, PA, 1);
     pthread_create(&p, &a, PA, 2);
@@ -433,6 +430,8 @@ int main(int argc, char **argv)
     //pthread_create(&p, &a, PB, 3);
     pthread_create(&p, &a, PB, 5);
     pthread_create(&p, &a, PB, 6);
+
+    pthread_create(&p, &a, PR, 0);
 
     pthread_attr_destroy(&a);
 

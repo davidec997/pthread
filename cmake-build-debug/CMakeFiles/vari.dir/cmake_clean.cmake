@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/vari.dir/Sistemi_Embedded/2/ese2p2.c.o"
+  "CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.o"
   "vari"
   "vari.pdb"
 )

@@ -1,1 +1,1 @@
-/usr/bin/cc -g CMakeFiles/vari.dir/Sistemi_Embedded/2/ese2p2.c.o -o vari  -lpthread 
+/usr/bin/cc -g CMakeFiles/vari.dir/ese_OSD/filosofi/filosofi.c.o -o vari  -lpthread 
