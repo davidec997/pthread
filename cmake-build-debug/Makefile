@@ -129,29 +129,29 @@ vari/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/build
 .PHONY : vari/fast
 
-Sistemi_Embedded/morra_cinese_cond.o: Sistemi_Embedded/morra_cinese_cond.c.o
-.PHONY : Sistemi_Embedded/morra_cinese_cond.o
+ese_OSD/filosofi/filoLEONARDI1.o: ese_OSD/filosofi/filoLEONARDI1.c.o
+.PHONY : ese_OSD/filosofi/filoLEONARDI1.o
 
 # target to build an object file
-Sistemi_Embedded/morra_cinese_cond.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.o
-.PHONY : Sistemi_Embedded/morra_cinese_cond.c.o
+ese_OSD/filosofi/filoLEONARDI1.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.o
+.PHONY : ese_OSD/filosofi/filoLEONARDI1.c.o
 
-Sistemi_Embedded/morra_cinese_cond.i: Sistemi_Embedded/morra_cinese_cond.c.i
-.PHONY : Sistemi_Embedded/morra_cinese_cond.i
+ese_OSD/filosofi/filoLEONARDI1.i: ese_OSD/filosofi/filoLEONARDI1.c.i
+.PHONY : ese_OSD/filosofi/filoLEONARDI1.i
 
 # target to preprocess a source file
-Sistemi_Embedded/morra_cinese_cond.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.i
-.PHONY : Sistemi_Embedded/morra_cinese_cond.c.i
+ese_OSD/filosofi/filoLEONARDI1.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.i
+.PHONY : ese_OSD/filosofi/filoLEONARDI1.c.i
 
-Sistemi_Embedded/morra_cinese_cond.s: Sistemi_Embedded/morra_cinese_cond.c.s
-.PHONY : Sistemi_Embedded/morra_cinese_cond.s
+ese_OSD/filosofi/filoLEONARDI1.s: ese_OSD/filosofi/filoLEONARDI1.c.s
+.PHONY : ese_OSD/filosofi/filoLEONARDI1.s
 
 # target to generate assembly for a file
-Sistemi_Embedded/morra_cinese_cond.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.s
-.PHONY : Sistemi_Embedded/morra_cinese_cond.c.s
+ese_OSD/filosofi/filoLEONARDI1.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/filosofi/filoLEONARDI1.c.s
+.PHONY : ese_OSD/filosofi/filoLEONARDI1.c.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... vari"
-	@echo "... Sistemi_Embedded/morra_cinese_cond.o"
-	@echo "... Sistemi_Embedded/morra_cinese_cond.i"
-	@echo "... Sistemi_Embedded/morra_cinese_cond.s"
+	@echo "... ese_OSD/filosofi/filoLEONARDI1.o"
+	@echo "... ese_OSD/filosofi/filoLEONARDI1.i"
+	@echo "... ese_OSD/filosofi/filoLEONARDI1.s"
 .PHONY : help
 
 
