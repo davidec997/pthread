@@ -4,9 +4,15 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <semaphore.h>
+#include <string.h>
 
 #define N 5
-char *buffer[N];
+typedef struct {
+    char dato [5];
+    int iter;
+} Messaggio;
+
+Messaggio  buffer [N];
 sem_t vuoto, pieno, m;
 int head, tail;
 
@@ -17,25 +23,28 @@ void pausetta(void)
     t.tv_nsec = (rand()%10+1)*1000000;
     nanosleep(&t,NULL);
 }
+
 void myInit(void)
 {
     sem_init(&m,0,1);
     sem_init(&vuoto,0,N);
     sem_init(&pieno,0,0);
     head = tail = 0;
+
 }
 
 void *producer(void *arg)
 {
     int *pi = (int *) arg;
-    char message [5];
+    Messaggio p;
     //sleep(1);
     for (int i = 0; i < 100; i++) {
         sem_wait(&vuoto);
         sem_wait(&m);
-        sprintf(message,"%lu\0",*pi);
-        buffer[head] = message;
-        printf("PRODOTTO e messo nel buffer il dato \t%s dalla posizione [%d]\n",message,head);
+        sprintf(p.dato,"%lu\0",*pi);
+        p.iter = i;
+        buffer[head] = p;
+        printf("PRODOTTO e messo nel buffer il dato \t%s Iterazione\t%d\tdalla posizione [%d]\n",p.dato,p.iter,head);
         head = (head + 1) % N;
         sem_post(&pieno);
         sem_post(&m);
@@ -47,14 +56,13 @@ void *producer(void *arg)
 void *consumer(void *arg)
 {
     int *pi = (int *) arg;
-    char message [5];
+    Messaggio p;
 
     for (int i = 0; i < 100; i++) {
         sem_wait(&pieno);
         sem_wait(&m);
-        char *mess;
-        mess = buffer[tail];
-        printf("LETTO e PRELEVATO  dal buffer  il dato \t%s dalla posizione [%d]\n",mess,tail);
+        p = buffer[tail];
+        printf("LETTO e PRELEVATO  dal buffer  il dato \t%s Iterazione\t%d\tdalla posizione [%d]\n",p.dato,p.iter,tail);
         tail = (tail + 1)% N;
         sem_post(&vuoto);
         sem_post(&m);
@@ -131,3 +139,4 @@ int main(int argc, char *argv[]) {
     exit(0);
 
 }
+
