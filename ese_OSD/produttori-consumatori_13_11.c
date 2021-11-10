@@ -41,8 +41,8 @@ void *producer(void *arg)
         sem_post(&m);
         pausetta();
     }
-    pthread_exit(0);
-}
+    *ptr = *pi;
+    pthread_exit((void *) ptr);}
 
 void *consumer(void *arg)
 {
@@ -60,7 +60,8 @@ void *consumer(void *arg)
         sem_post(&m);
         pausetta();
     }
-    pthread_exit(0);
+    *ptr = *pi;
+    pthread_exit((void *) ptr);
 
 }
 

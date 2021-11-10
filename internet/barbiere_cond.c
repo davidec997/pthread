@@ -6,14 +6,19 @@
 #include <stdlib.h>
 #include <semaphore.h>
 
-#define N 3
+#define N 4     //sedie
+#define B 3
 #define ITER 5
-#define DELAY 2000000
+#define SHAVING_IT 2000000
+#define PAY_ITER 100000
 typedef enum {false, true} Boolean;
 
-int sedie_libere = N;
+int sedie_libere;
 pthread_mutex_t m;
 pthread_cond_t cust,barb;
+Boolean barbieri [B];
+Boolean cassiere_occupato;
+int clienti_in_attesa_fuori;
 
 void myInit(void)
 {
@@ -21,44 +26,21 @@ void myInit(void)
     pthread_cond_init(&cust,NULL);
     pthread_cond_init(&barb,NULL);
     sedie_libere = N;
+    for (int i =0;i<B;i++) barbieri[i]=false;
+    cassiere_occupato = false;
+    clienti_in_attesa_fuori = 0;
 
 }
-
-/*void servi(){
-    sem_wait(&custumers); //barber
-    sem_wait(&m);
-    sedie_libere ++;
-    sem_post(&barber); //cust
-    sem_post(&m);
-    printf(" Sono il Barbiere e Sto servendo il cliente...\n ");
-    sleep(3);
-
-}
-
-void richiedi_servizio(int pi){
-    sem_wait(&m);
-    if(sedie_libere >0) {
-        sedie_libere--;
-        printf("SEDIE LIBERE %d\n", sedie_libere);
-        sem_post(&custumers); //barb
-        sem_post(&m);
-        sem_wait(&barber); // cu
-        printf("SONO UN CLIENTE %d... IL BARBIERE MI STA SERVENDO...\n", pi);
-        sleep(2);
-    } else {
-        printf("Il cliente %d ha trovato tutte le sedie occupate e se ne va...\n",pi);
-        sem_post(&m);
-    }
-}*/
 
 void *customerRoutine(int id) {
     while (1) {
         pthread_mutex_lock(&m);
         if (sedie_libere <= 0) {
             //vado via
-            printf("Vado via perche' le sedie sono tutte occupate : %d\n", sedie_libere);
+            printf("Cliente %lu aspetta fuori perche' le sedie sono tutte occupate: %d libere\n",id, sedie_libere);
             pthread_mutex_unlock(&m);
             sleep(3);
+            continue;
         } else {
             //pthread_mutex_lock(&m);
             sedie_libere--;
@@ -76,7 +58,7 @@ void *customerRoutine(int id) {
 
 void *barberRoutine(int id) {
     while(1){
-        pthread_cond_wait(&cust,&m);
+        pthread_cond_wait(&barb,&m); // cust
         //pthread_mutex_lock(&m);
         sedie_libere ++;
         printf("Sono il barbiere e sto servendo un cliente\n");

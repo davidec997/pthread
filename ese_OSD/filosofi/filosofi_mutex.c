@@ -36,9 +36,10 @@ void myInit(void)
 void think(int index){
     pthread_mutex_lock(&m);
     printf("Filosofo %d sta pensando...\n",index);
-    for(int t = 0;t< DELAY; t++);
+    //for(int t = 0;t< DELAY; t++);
     stato[index]= HUNGRY;
     pthread_mutex_unlock(&m);
+    sleep(3);
 }
 
 int puoiMangiare(int indice){
@@ -56,15 +57,16 @@ void preEat(int index){
     } else {
         pthread_mutex_lock(&bastoncini[(index + 4) % N]);
         pthread_mutex_lock(&bastoncini[(index) % N]);
+    }
         stato[index] = EATING;
         printf("Filosofo %d ha ottenuto le bacchette [%d] e [%d]\n", index, ((index) % N), ((index + 4) % N));
-    }
+
     pthread_mutex_unlock(&m);
 }
 
 void postEat(int index){
     pthread_mutex_lock(&m);
-    printf("sono qui\n");
+    //printf("sono qui\n");
     pthread_mutex_unlock(&bastoncini[(index) % N]);
     pthread_mutex_unlock(&bastoncini[(index + 4) % N]);
     stato[index] = THINKING;
@@ -84,7 +86,7 @@ void eat(int index){
     preEat(index);
     printf("Ciao sono il filo %d e sto magnando...\n",index);
     for (int i = 0; i < DELAY; ++i);
-    printf("ehii\n");
+    //printf("ehii\n");
     postEat(index);
 }
 

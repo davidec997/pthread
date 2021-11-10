@@ -1,4 +1,4 @@
-//DEADLOCK DOPO 10 ITER
+//SEMBRA FUNZIONARE
 #include <unistd.h>
 #include <pthread.h>
 #include <stdio.h>
@@ -56,7 +56,7 @@ void richiedi_servizio(int pi){
         sem_post(&custumers); //barb
         sem_post(&m);
         sem_wait(&barber); // cu
-        printf("SONO UN CLIENTE %lu... IL BARBIERE MI STA SERVENDO...\n", pthread_self());
+        printf("SONO IL CLIENTE %lu IL BARBIERE MI STA SERVENDO...\n", pthread_self());
         pausetta();
     }
 }

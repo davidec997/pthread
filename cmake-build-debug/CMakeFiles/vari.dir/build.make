@@ -66,27 +66,27 @@ include CMakeFiles/vari.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/vari.dir/flags.make
 
-CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.o: CMakeFiles/vari.dir/flags.make
-CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.o: ../Sistemi_Embedded/morra_cinese_cond.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.o -c "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/Sistemi_Embedded/morra_cinese_cond.c"
+CMakeFiles/vari.dir/internet/barbiere_cond.c.o: CMakeFiles/vari.dir/flags.make
+CMakeFiles/vari.dir/internet/barbiere_cond.c.o: ../internet/barbiere_cond.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/vari.dir/internet/barbiere_cond.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/vari.dir/internet/barbiere_cond.c.o -c "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/internet/barbiere_cond.c"
 
-CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/Sistemi_Embedded/morra_cinese_cond.c" > CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.i
+CMakeFiles/vari.dir/internet/barbiere_cond.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/vari.dir/internet/barbiere_cond.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/internet/barbiere_cond.c" > CMakeFiles/vari.dir/internet/barbiere_cond.c.i
 
-CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/Sistemi_Embedded/morra_cinese_cond.c" -o CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.s
+CMakeFiles/vari.dir/internet/barbiere_cond.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/vari.dir/internet/barbiere_cond.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/internet/barbiere_cond.c" -o CMakeFiles/vari.dir/internet/barbiere_cond.c.s
 
 # Object files for target vari
 vari_OBJECTS = \
-"CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.o"
+"CMakeFiles/vari.dir/internet/barbiere_cond.c.o"
 
 # External object files for target vari
 vari_EXTERNAL_OBJECTS =
 
-vari: CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.o
+vari: CMakeFiles/vari.dir/internet/barbiere_cond.c.o
 vari: CMakeFiles/vari.dir/build.make
 vari: CMakeFiles/vari.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable vari"

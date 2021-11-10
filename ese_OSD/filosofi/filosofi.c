@@ -119,9 +119,12 @@ void eat(int index){
 
 }
 
-void *dinner(void *arg)
+void *dinner(void *id)
 {
-    int index = (int)arg;
+    int *pi = (int *) id;
+    int *ptr;
+    int index = *pi;
+    //int index = (int)arg;
     for (int f =0;f<20;f++) {
         //printf("Ciaooo sono il filo %d e che esegue un nuovo ciclo \n",index);
        think(index);
@@ -129,7 +132,8 @@ void *dinner(void *arg)
        eat(index);
        postEat(index);
     }
-    return 0;
+
+    pthread_exit(NULL);
 }
 
 

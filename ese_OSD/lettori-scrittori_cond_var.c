@@ -1,4 +1,4 @@
-//PERFETTO
+//FUNZIONA DA VEDERE SOLO L-INDICE DEI THREAD
 #include <unistd.h>
 #include <pthread.h>
 #include <stdio.h>
@@ -6,24 +6,33 @@
 #include <semaphore.h>
 
 #define N 5
-#define NTIMES 10
+#define NTIMES 6
 typedef enum {false,true} Boolean;
 int lettori_attivi, lettori_bloccati;
 int scrittori_attivi, scrittori_bloccati;
-sem_t s_lettori, s_scrittori,m;
+//sem_t s_lettori, s_scrittori,m;
+pthread_cond_t s_lettori,s_scrittori;
+pthread_mutex_t m= PTHREAD_MUTEX_INITIALIZER;
 int risorsa;
 
 void myInit(void)
 {
-    sem_init(&m,0,1);
-    sem_init(&s_lettori,0,0);
-    sem_init(&s_lettori,0,0);
+    pthread_cond_init(&s_lettori,NULL);
+    pthread_cond_init(&s_scrittori,NULL);
     risorsa=0;
     lettori_attivi = lettori_bloccati = scrittori_attivi = scrittori_bloccati = 0;
 }
 
 void inizioLettura(){
-    sem_wait(&m);
+
+    pthread_mutex_lock(&m);
+    while(scrittori_attivi > 0 && scrittori_bloccati >0 ){
+        lettori_bloccati ++;
+        pthread_cond_wait(&s_lettori,&m);
+    }
+    lettori_attivi ++;
+    pthread_mutex_unlock(&m);
+   /* sem_wait(&m);
     if(!scrittori_attivi && !scrittori_bloccati){
         lettori_attivi ++;
         sem_post(&s_lettori); // post previa
@@ -31,22 +40,38 @@ void inizioLettura(){
         lettori_bloccati ++;
     }
     sem_post(&m);
-    sem_wait(&s_lettori);
+    sem_wait(&s_lettori);*/
 }
 
 void fineLettura(){
-    sem_wait(&m);
+    pthread_mutex_lock(&m);
     lettori_attivi --;
-    if(!lettori_attivi && scrittori_bloccati > 0){
+    if (lettori_attivi ==0 && scrittori_bloccati > 0){
+        pthread_cond_signal(&s_scrittori);
+        scrittori_bloccati --;
+        scrittori_attivi ++;
+    }
+    pthread_mutex_unlock(&m);
+   /* sem_wait(&m);
+    lettori_attivi --;
+    if(!lettori_attivi && scrittori_bloccati){
         sem_post(&s_scrittori);
         scrittori_bloccati --;
         scrittori_attivi ++;
     }
-    sem_post(&m);
+    sem_post(&m);*/
 }
 
 void inizioScrittura(){
-    sem_wait(&m);
+
+    pthread_mutex_lock(&m);
+    while(scrittori_attivi > 0 || lettori_attivi > 0){
+        pthread_cond_wait(&s_scrittori,&m);
+        scrittori_bloccati ++;
+    }
+    scrittori_attivi ++;
+    pthread_mutex_unlock(&m);
+    /*sem_wait(&m);
     if(!scrittori_attivi && !lettori_attivi){
         sem_post(&s_scrittori);
         scrittori_attivi++;
@@ -54,25 +79,38 @@ void inizioScrittura(){
         scrittori_bloccati ++;
     }
     sem_post(&m);
-    sem_wait(&s_scrittori);
+    sem_wait(&s_scrittori);*/
 }
 
 void fineScrittura(){
-    sem_wait(&m);
+    pthread_mutex_lock(&m);
+    if(lettori_bloccati > 0){
+        while (lettori_bloccati > 0){
+            lettori_bloccati --;
+            lettori_attivi ++;
+        }
+        pthread_cond_broadcast(&s_lettori);
+    } else if(scrittori_bloccati > 0){
+        scrittori_bloccati --;
+        scrittori_attivi ++;
+        pthread_cond_signal(&s_scrittori);
+    }
+    pthread_mutex_unlock(&m);
+    /*sem_wait(&m);
     scrittori_attivi --;
-    if(lettori_bloccati>0){
-        while(lettori_bloccati > 0) {
+    if(lettori_bloccati){
+        while(lettori_bloccati) {
             lettori_bloccati--;
             lettori_attivi++;
             sem_post(&s_lettori);
         }
-    } else if (scrittori_bloccati  > 0){
+    } else if (scrittori_bloccati){
         scrittori_bloccati--;
         scrittori_attivi ++;
         sem_post(&s_scrittori);
     }
 
-    sem_post(&m);
+    sem_post(&m);*/
 }
 
 void *eseguiScrittura(void *id) {
@@ -87,12 +125,12 @@ void *eseguiScrittura(void *id) {
     for(int t =1;t<NTIMES;t++){
         inizioScrittura();
         risorsa += 1;
-        printf("Thread %d sta SCRIVENDO la risorsa --> %d\n",*pi,risorsa);
-        sleep(1);
+        printf("Thread %lu sta SCRIVENDO la risorsa --> %d\n",*pi,risorsa);
+        sleep(2);
         fineScrittura();
     }
 
-    *ptr = *pi;
+    *ptr = pi;
     pthread_exit((void *) ptr);
 }
 
@@ -107,11 +145,11 @@ void *eseguiLettura(void *id) {
 
     for(int t =1;t<NTIMES;t++){
         inizioLettura();
-        printf("Thread %d sta LEGGENDO la risorsa --> %d\n",*pi,risorsa);
-        sleep(1);
+        printf("Thread %lu sta LEGGENDO la risorsa --> %d\n",*pi,risorsa);
+        sleep(2);
         fineLettura();
     }
-    *ptr = *pi;
+    *ptr = NULL;
     pthread_exit((void *) ptr);
 }
 
@@ -142,11 +180,6 @@ int main (int argc, char **argv)
         perror(error);
         exit(2);
     }
-    if ((NUM_THREADS % 4) != 0){
-        sprintf(error,"Errore: Il parametro deve essere un num multiplo di 4 ma e' %d\n", NUM_THREADS);
-        perror(error);
-        exit(2);
-    }
 
     myInit();
 
@@ -165,12 +198,11 @@ int main (int argc, char **argv)
         exit(4);
     }
 
-    // CREAZIONE PRIMA UN QUARTO LETTORI POI UN QUARTO SCRITTORI....
-    for (i=0; i < NUM_THREADS/4; i++)
+    for (i=0; i < NUM_THREADS/2; i++)
     {
         taskids[i] = i;
         //printf("Sto per creare il thread %d-esimo\n", taskids[i]);
-        if (pthread_create(&threadL[i], NULL, eseguiLettura, (void *) (&taskids[i])) != 0)
+        if (pthread_create(&threadL[i], NULL, eseguiScrittura, (void *) (&taskids[i])) != 0)
         {
             sprintf(error,"SONO IL MAIN E CI SONO STATI PROBLEMI DELLA CREAZIONE DEL thread %d-esimo\n", taskids[i]);
             perror(error);
@@ -178,11 +210,11 @@ int main (int argc, char **argv)
         }
         printf("SONO IL MAIN e ho creato il Pthread LETTORE %i-esimo con id=%lu\n", i, threadL[i]);
     }
-    for (i=NUM_THREADS/4; i < NUM_THREADS/2; i++)
+    for (i=NUM_THREADS/2; i < NUM_THREADS; i++)
     {
         taskids[i] = i;
         //printf("Sto per creare il thread %d-esimo\n", taskids[i]);
-        if (pthread_create(&threadS[i], NULL, eseguiScrittura, (void *) (&taskids[i])) != 0)
+        if (pthread_create(&threadS[i], NULL, eseguiLettura, (void *) (&taskids[i])) != 0)
         {
             sprintf(error,"SONO IL MAIN E CI SONO STATI PROBLEMI DELLA CREAZIONE DEL thread %d-esimo\n", taskids[i]);
             perror(error);
@@ -190,50 +222,27 @@ int main (int argc, char **argv)
         }
         printf("SONO IL MAIN e ho creato il Pthread SCRITTORE %i-esimo con id=%lu\n", i, threadS[i]);
     }
-    for (i=NUM_THREADS/2; i < (NUM_THREADS/2 + NUM_THREADS/4); i++)
-    {
-        taskids[i] = i;
-        //printf("Sto per creare il thread %d-esimo\n", taskids[i]);
-        if (pthread_create(&threadL[i], NULL, eseguiLettura, (void *) (&taskids[i])) != 0)
-        {
-            sprintf(error,"SONO IL MAIN E CI SONO STATI PROBLEMI DELLA CREAZIONE DEL thread %d-esimo\n", taskids[i]);
-            perror(error);
-            exit(5);
-        }
-        printf("SONO IL MAIN e ho creato il Pthread LETTORE %i-esimo con id=%lu\n", i, threadL[i]);
-    }
-    for (i=(NUM_THREADS/2 + NUM_THREADS/4); i < NUM_THREADS; i++)
-    {
-        taskids[i] = i;
-        //printf("Sto per creare il thread %d-esimo\n", taskids[i]);
-        if (pthread_create(&threadL[i], NULL, eseguiLettura, (void *) (&taskids[i])) != 0)
-        {
-            sprintf(error,"SONO IL MAIN E CI SONO STATI PROBLEMI DELLA CREAZIONE DEL thread %d-esimo\n", taskids[i]);
-            perror(error);
-            exit(5);
-        }
-        printf("SONO IL MAIN e ho creato il Pthread LETTORE %i-esimo con id=%lu\n", i, threadL[i]);
-    }
 
     sleep(5);
-    for (i=0; i < NUM_THREADS; i++)
-    {
-        int *ris;
-        /* attendiamo la terminazione di tutti i thread generati */
-        pthread_join(threadL[i], (void**) & p);
-        ris= p;
-        printf("Pthread  %d-esimo restituisce %d\n", i, *ris);
-    }
-    /*for (i=NUM_THREADS/2; i < NUM_THREADS; i++)
+    for (i=0; i < NUM_THREADS/2; i++)
     {
         int ris;
-        *//* attendiamo la terminazione di tutti i thread generati *//*
+        /* attendiamo la terminazione di tutti i thread generati */
+        pthread_join(threadL[i], (void**) & p);
+        ris= *p;
+        printf("Pthread Lettore %d-esimo restituisce %d\n", i, ris);
+    }
+    for (i=NUM_THREADS/2; i < NUM_THREADS; i++)
+    {
+        int ris;
+        /* attendiamo la terminazione di tutti i thread generati */
         pthread_join(threadS[i], (void**) & p);
         ris= *p;
         printf("Pthread Scrittore %d-esimo restituisce %d\n", i, ris);
-    }*/
+    }
 
     exit(0);
 }
+
 
 

@@ -50,7 +50,8 @@ void *producer(void *arg)
         sem_post(&m);
         pausetta();
     }
-    pthread_exit(0);
+
+    pthread_exit((void *) pi);
 }
 
 void *consumer(void *arg)
@@ -68,8 +69,7 @@ void *consumer(void *arg)
         sem_post(&m);
         pausetta();
     }
-    pthread_exit(0);
-
+    pthread_exit((void *) pi);
 }
 
 

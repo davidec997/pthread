@@ -129,29 +129,29 @@ vari/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/build
 .PHONY : vari/fast
 
-Sistemi_Embedded/morra_cinese_cond.o: Sistemi_Embedded/morra_cinese_cond.c.o
-.PHONY : Sistemi_Embedded/morra_cinese_cond.o
+internet/barbiere_cond.o: internet/barbiere_cond.c.o
+.PHONY : internet/barbiere_cond.o
 
 # target to build an object file
-Sistemi_Embedded/morra_cinese_cond.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.o
-.PHONY : Sistemi_Embedded/morra_cinese_cond.c.o
+internet/barbiere_cond.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/internet/barbiere_cond.c.o
+.PHONY : internet/barbiere_cond.c.o
 
-Sistemi_Embedded/morra_cinese_cond.i: Sistemi_Embedded/morra_cinese_cond.c.i
-.PHONY : Sistemi_Embedded/morra_cinese_cond.i
+internet/barbiere_cond.i: internet/barbiere_cond.c.i
+.PHONY : internet/barbiere_cond.i
 
 # target to preprocess a source file
-Sistemi_Embedded/morra_cinese_cond.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.i
-.PHONY : Sistemi_Embedded/morra_cinese_cond.c.i
+internet/barbiere_cond.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/internet/barbiere_cond.c.i
+.PHONY : internet/barbiere_cond.c.i
 
-Sistemi_Embedded/morra_cinese_cond.s: Sistemi_Embedded/morra_cinese_cond.c.s
-.PHONY : Sistemi_Embedded/morra_cinese_cond.s
+internet/barbiere_cond.s: internet/barbiere_cond.c.s
+.PHONY : internet/barbiere_cond.s
 
 # target to generate assembly for a file
-Sistemi_Embedded/morra_cinese_cond.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/morra_cinese_cond.c.s
-.PHONY : Sistemi_Embedded/morra_cinese_cond.c.s
+internet/barbiere_cond.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/internet/barbiere_cond.c.s
+.PHONY : internet/barbiere_cond.c.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... vari"
-	@echo "... Sistemi_Embedded/morra_cinese_cond.o"
-	@echo "... Sistemi_Embedded/morra_cinese_cond.i"
-	@echo "... Sistemi_Embedded/morra_cinese_cond.s"
+	@echo "... internet/barbiere_cond.o"
+	@echo "... internet/barbiere_cond.i"
+	@echo "... internet/barbiere_cond.s"
 .PHONY : help
 
 

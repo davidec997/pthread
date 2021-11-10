@@ -38,7 +38,6 @@ void myInit(void)
 }
 
 int decreta_vincitore(int g1, int g2){
-    printf("allora g1 vale %d e g2 vale %d\n",g1,g2);
     switch (g1) {
         case 0:
             if(g2 == 0) return 0;
@@ -66,33 +65,37 @@ void *arbitro(void *arg)
     int vincitore=-1;
     int *pi = (int *) arg;
     while(1){
+        pthread_mutex_lock(&m);
         while(turno != t){
             pthread_cond_wait(&ar,&m);
+            if (turno == 1) pthread_cond_signal(&g1);
+            if (turno == 2) pthread_cond_signal(&g2);
         }
             //pthread_mutex_lock(&m);
             printf("premi un tasto per giocare...\n");
             scanf("%c", &via);
-            printf("ho dato il viaaaaaaaaaaaa\n");
             turno = 1;
             pthread_cond_signal(&g1);
-            pthread_cond_signal(&g2);
-            printf("ho dato il via\n");
+            //pthread_cond_signal(&g2);
+           // printf("ho dato il via\n");
             pthread_mutex_unlock(&m);
             while (turno != t){
                 pthread_cond_wait(&ar,&m);
+                if (turno == 1) pthread_cond_signal(&g1);
+                if (turno == 2) pthread_cond_signal(&g2);
             }
             //pthread_mutex_lock(&m);
             vincitore = decreta_vincitore(mossag1, mossag2);
-            printf("sto per decretare il vincitore..  %d\n", vincitore);
+            //printf("sto per decretare il vincitore..  %d\n", vincitore);
             switch (vincitore) {
                 case 0:
                     printf("il g1 ha tirato %s e g2 %s\t PAREGGIO\n", nomi_mosse[mossag1], nomi_mosse[mossag2]);
                     break;
                 case 1:
-                    printf("il g1 ha tirato %s e g2 %s\t VINCE G1\n", nomi_mosse[mossag1], nomi_mosse[mossag2]);
+                    printf("il g1 ha tirato %s e g2 %s\t VINCE GIOCATORE 1\n", nomi_mosse[mossag1], nomi_mosse[mossag2]);
                     break;
                 case 2:
-                    printf("il g1 ha tirato %s e g2 %s\t VINCE G2\n", nomi_mosse[mossag1], nomi_mosse[mossag2]);
+                    printf("il g1 ha tirato %s e g2 %s\t VINCE GIOCATORE 2\n", nomi_mosse[mossag1], nomi_mosse[mossag2]);
                     break;
             }
             turno = 0;
@@ -103,28 +106,29 @@ void *arbitro(void *arg)
 
 }
 
-void *giocatore1(void *arg)
+void *th_votante(void *arg)
 {
     //int *pi = (int *) arg;
     int t = 1;
     while(1) {
         while (turno != t) {
-            printf("il gio1 si e blocc\n");
+            //printf("il gio1 si e blocc\n");
             pthread_cond_wait(&g1,&m);
+            if (turno == 0) pthread_cond_signal(&ar);
+            if (turno == 2) pthread_cond_signal(&g2);
         }
-        //sem_wait(&m);
-        printf("ciao sono il giocatore 1\n");
+        //printf("ciao sono il giocatore 1\n");
         mossag1 = rand() % 3;
         printf("Il giocatore1 ha effettuato la mossa \t %s\n", nomi_mosse[mossag1]);
         giocatore1ok = 1;
         turno = 2;
-
+        pthread_cond_signal(&g2);
         /*if (giocatore1ok && giocatore2ok) {
             turno = 0;
             pthread_cond_signal(&ar);
         }*/
         pthread_mutex_unlock(&m);
-        pthread_yield();
+        //pthread_yield();
     }
 }
 
@@ -134,11 +138,13 @@ void *giocatore2(void *arg)
     int t = 2;
     while(1) {
         while (turno != t ) {
-            printf("il gio2 si e blocc\n");
+            //printf("il gio2 si e blocc\n");
             pthread_cond_wait(&g2,&m);
+            if (turno == 0) pthread_cond_signal(&ar);
+            if (turno == 2) pthread_cond_signal(&g2);
         }
-        printf("ciao sono il giocatore 2\n");
-        mossag1 = rand() % 3;
+       // printf("ciao sono il giocatore 2\n");
+        mossag2 = rand() % 3;
         printf("Il giocatore2 ha effettuato la mossa \t %s\n", nomi_mosse[mossag2]);
         giocatore2ok = 1;
         if (giocatore1ok && giocatore2ok) {
