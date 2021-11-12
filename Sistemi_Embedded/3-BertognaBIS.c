@@ -12,6 +12,7 @@ typedef struct busta_t{
     T messaggio;
     int priorita;
 }busta;
+
 int valGlobale=1;
 
 typedef enum {false,true} Boolean;
@@ -23,6 +24,7 @@ struct gestore_t {
     busta mailbox[N];
     sem_t mb_vuota_sem,mb_piena_sem, pool_buste_sem, m;
     T msg;
+    int head,tail;
 }gestore;
 
 //ricevente
@@ -51,12 +53,13 @@ void myInit(struct gestore_t *g)
     g->buste_disp = 4;
     g->msg = -1;
     g->b.messaggio =-1;
-    g->b.priorita=-1;
+    g->b.priorita=0;  // -1
     for(int i=0;i<N;i++) g->mailbox[i]= g->b;
     sem_init(&g->m,0,1);
     sem_init(&g->pool_buste_sem, 0, N);
     sem_init(&g->mb_vuota_sem, 0, N);           // N posti liberi
     sem_init(&g->mb_piena_sem, 0, 0);      // 0 posti occupati
+    g->head= g->tail = 0;
 
 }
 
@@ -71,7 +74,7 @@ struct busta_t richiedi_busta(struct gestore_t *g, int priorita){
         g->mit_b_buste ++;
     }
     sem_post(&g->m);
-    sem_wait(&g->pool_buste_sem);  // receive mi deve fare post senno dedlock
+    sem_wait(&g->pool_buste_sem);  // receive mi deve fare post senno dedlk
     return b1;
 }
 
@@ -85,7 +88,7 @@ void *send(struct gestore_t *g) {
     while (1) {
         //controllo se mb piena
         sem_wait(&g->m);
-        if (&g->mb_liberi <= 0) {
+        if (g->mb_liberi <= 0) {
             //mi blocco
             g->mb_mit++;
             sem_post(&g->m);
@@ -96,6 +99,9 @@ void *send(struct gestore_t *g) {
             busta b = richiedi_busta(g, rand() % 3);
             //sem_wait(&g->m);
             b.messaggio = valGlobale += 1;
+            //metto il msg nella mailbox in pos head
+            g->mailbox[g->head % N] = b;
+            g->head = (g->head + 1 ) % N;
             sem_post(&g->m);                        // VUOTA   N     PIENA  0
             sem_post(&g->mb_piena_sem); // segnalo ai receiver bloccati
         }
@@ -111,17 +117,18 @@ void *receive(struct gestore_t *g)
         if((N - g->mb_liberi) >0){
             sem_wait(&g->mb_piena_sem);
             g->mb_liberi --;
-            for(int i= 0; i<3;i++){
+            /*for(int i= 0; i<3;i++){
                 for(;;);
-            }
-            b  = &g->mailbox[i];
+            }*/
+            b  = g->mailbox[i];
         } else {
 
         }
         sem_wait(&g->mb_piena_sem);
         sem_wait(&g->m);
         //ciclo impossibile che mi dara l indice della casella nella mailbox da estrarre
-        busta r = &g->mailbox[i];
+        busta r = g->mailbox[g->tail];
+        g->tail = (g->tail + 1) % N;
         printf("Ho estratto una busta a priorita %d con messaggio \t%d\n", r.priorita, r.messaggio);
         sem_post(&g->m);
         rimetti_busta(g);
@@ -170,7 +177,7 @@ int main(int argc, char *argv[]) {
         perror("Problemi con l'allocazione dell'array thread\n");
         exit(3);
     }
-    taskids = (int *) malloc(NUM_THREADS_R * sizeof(int));
+    taskids = (int *) malloc((NUM_THREADS_R ) * sizeof(int));
     if (taskids == NULL)
     {
         perror("Problemi con l'allocazione dell'array taskids\n");
@@ -202,7 +209,7 @@ int main(int argc, char *argv[]) {
         //printf("SONO IL MAIN e ho creato il Pthread SCRITTORE %i-esimo con id=%lu\n", i, threadS[i]);
     }
 
-    sleep(5);
+    sleep(10);
     for (i=0; i < NUM_THREADS_M; i++)
     {
         int ris;

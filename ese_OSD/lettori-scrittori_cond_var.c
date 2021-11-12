@@ -1,4 +1,6 @@
 //FUNZIONA DA VEDERE SOLO L-INDICE DEI THREAD
+// NON SONO SICURO CHE FUNZIONI
+//DEADLOCK
 #include <unistd.h>
 #include <pthread.h>
 #include <stdio.h>
@@ -6,11 +8,10 @@
 #include <semaphore.h>
 
 #define N 5
-#define NTIMES 6
+#define NTIMES 10
 typedef enum {false,true} Boolean;
 int lettori_attivi, lettori_bloccati;
 int scrittori_attivi, scrittori_bloccati;
-//sem_t s_lettori, s_scrittori,m;
 pthread_cond_t s_lettori,s_scrittori;
 pthread_mutex_t m= PTHREAD_MUTEX_INITIALIZER;
 int risorsa;
@@ -26,21 +27,13 @@ void myInit(void)
 void inizioLettura(){
 
     pthread_mutex_lock(&m);
-    while(scrittori_attivi > 0 && scrittori_bloccati >0 ){
+    while(scrittori_attivi > 0 || scrittori_bloccati >0 ){
         lettori_bloccati ++;
         pthread_cond_wait(&s_lettori,&m);
     }
     lettori_attivi ++;
     pthread_mutex_unlock(&m);
-   /* sem_wait(&m);
-    if(!scrittori_attivi && !scrittori_bloccati){
-        lettori_attivi ++;
-        sem_post(&s_lettori); // post previa
-    }else{
-        lettori_bloccati ++;
-    }
-    sem_post(&m);
-    sem_wait(&s_lettori);*/
+
 }
 
 void fineLettura(){
@@ -49,17 +42,10 @@ void fineLettura(){
     if (lettori_attivi ==0 && scrittori_bloccati > 0){
         pthread_cond_signal(&s_scrittori);
         scrittori_bloccati --;
-        scrittori_attivi ++;
+        //scrittori_attivi ++;
     }
     pthread_mutex_unlock(&m);
-   /* sem_wait(&m);
-    lettori_attivi --;
-    if(!lettori_attivi && scrittori_bloccati){
-        sem_post(&s_scrittori);
-        scrittori_bloccati --;
-        scrittori_attivi ++;
-    }
-    sem_post(&m);*/
+
 }
 
 void inizioScrittura(){
@@ -71,15 +57,7 @@ void inizioScrittura(){
     }
     scrittori_attivi ++;
     pthread_mutex_unlock(&m);
-    /*sem_wait(&m);
-    if(!scrittori_attivi && !lettori_attivi){
-        sem_post(&s_scrittori);
-        scrittori_attivi++;
-    } else{
-        scrittori_bloccati ++;
-    }
-    sem_post(&m);
-    sem_wait(&s_scrittori);*/
+
 }
 
 void fineScrittura(){
@@ -87,12 +65,12 @@ void fineScrittura(){
     if(lettori_bloccati > 0){
         while (lettori_bloccati > 0){
             lettori_bloccati --;
-            lettori_attivi ++;
+            // l'aumento di lettori attivi lo fa iniziolettura
         }
         pthread_cond_broadcast(&s_lettori);
     } else if(scrittori_bloccati > 0){
         scrittori_bloccati --;
-        scrittori_attivi ++;
+        //scrittori_attivi ++;
         pthread_cond_signal(&s_scrittori);
     }
     pthread_mutex_unlock(&m);
@@ -126,7 +104,7 @@ void *eseguiScrittura(void *id) {
         inizioScrittura();
         risorsa += 1;
         printf("Thread %lu sta SCRIVENDO la risorsa --> %d\n",*pi,risorsa);
-        sleep(2);
+        sleep(1);
         fineScrittura();
     }
 
@@ -202,7 +180,7 @@ int main (int argc, char **argv)
     {
         taskids[i] = i;
         //printf("Sto per creare il thread %d-esimo\n", taskids[i]);
-        if (pthread_create(&threadL[i], NULL, eseguiScrittura, (void *) (&taskids[i])) != 0)
+        if (pthread_create(&threadL[i], NULL, eseguiLettura, (void *) (&taskids[i])) != 0)
         {
             sprintf(error,"SONO IL MAIN E CI SONO STATI PROBLEMI DELLA CREAZIONE DEL thread %d-esimo\n", taskids[i]);
             perror(error);
@@ -214,7 +192,7 @@ int main (int argc, char **argv)
     {
         taskids[i] = i;
         //printf("Sto per creare il thread %d-esimo\n", taskids[i]);
-        if (pthread_create(&threadS[i], NULL, eseguiLettura, (void *) (&taskids[i])) != 0)
+        if (pthread_create(&threadS[i], NULL, eseguiScrittura, (void *) (&taskids[i])) != 0)
         {
             sprintf(error,"SONO IL MAIN E CI SONO STATI PROBLEMI DELLA CREAZIONE DEL thread %d-esimo\n", taskids[i]);
             perror(error);

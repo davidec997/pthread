@@ -129,29 +129,29 @@ vari/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/build
 .PHONY : vari/fast
 
-internet/barbiere_cond.o: internet/barbiere_cond.c.o
-.PHONY : internet/barbiere_cond.o
+ese_OSD/lettori-scrittori_cond_var.o: ese_OSD/lettori-scrittori_cond_var.c.o
+.PHONY : ese_OSD/lettori-scrittori_cond_var.o
 
 # target to build an object file
-internet/barbiere_cond.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/internet/barbiere_cond.c.o
-.PHONY : internet/barbiere_cond.c.o
+ese_OSD/lettori-scrittori_cond_var.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/lettori-scrittori_cond_var.c.o
+.PHONY : ese_OSD/lettori-scrittori_cond_var.c.o
 
-internet/barbiere_cond.i: internet/barbiere_cond.c.i
-.PHONY : internet/barbiere_cond.i
+ese_OSD/lettori-scrittori_cond_var.i: ese_OSD/lettori-scrittori_cond_var.c.i
+.PHONY : ese_OSD/lettori-scrittori_cond_var.i
 
 # target to preprocess a source file
-internet/barbiere_cond.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/internet/barbiere_cond.c.i
-.PHONY : internet/barbiere_cond.c.i
+ese_OSD/lettori-scrittori_cond_var.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/lettori-scrittori_cond_var.c.i
+.PHONY : ese_OSD/lettori-scrittori_cond_var.c.i
 
-internet/barbiere_cond.s: internet/barbiere_cond.c.s
-.PHONY : internet/barbiere_cond.s
+ese_OSD/lettori-scrittori_cond_var.s: ese_OSD/lettori-scrittori_cond_var.c.s
+.PHONY : ese_OSD/lettori-scrittori_cond_var.s
 
 # target to generate assembly for a file
-internet/barbiere_cond.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/internet/barbiere_cond.c.s
-.PHONY : internet/barbiere_cond.c.s
+ese_OSD/lettori-scrittori_cond_var.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/lettori-scrittori_cond_var.c.s
+.PHONY : ese_OSD/lettori-scrittori_cond_var.c.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... vari"
-	@echo "... internet/barbiere_cond.o"
-	@echo "... internet/barbiere_cond.i"
-	@echo "... internet/barbiere_cond.s"
+	@echo "... ese_OSD/lettori-scrittori_cond_var.o"
+	@echo "... ese_OSD/lettori-scrittori_cond_var.i"
+	@echo "... ese_OSD/lettori-scrittori_cond_var.s"
 .PHONY : help
 
 

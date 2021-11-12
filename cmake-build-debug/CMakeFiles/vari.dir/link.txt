@@ -1,1 +1,1 @@
-/usr/bin/cc -g CMakeFiles/vari.dir/internet/barbiere_cond.c.o -o vari  -lpthread 
+/usr/bin/cc -g CMakeFiles/vari.dir/ese_OSD/lettori-scrittori_cond_var.c.o -o vari  -lpthread 

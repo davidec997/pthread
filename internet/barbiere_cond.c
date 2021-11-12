@@ -37,10 +37,9 @@ void *customerRoutine(int id) {
         pthread_mutex_lock(&m);
         if (sedie_libere <= 0) {
             //vado via
-            printf("Cliente %lu aspetta fuori perche' le sedie sono tutte occupate: %d libere\n",id, sedie_libere);
+            printf("Vado via perche' le sedie sono tutte occupate : %d\n", sedie_libere);
             pthread_mutex_unlock(&m);
             sleep(3);
-            continue;
         } else {
             //pthread_mutex_lock(&m);
             sedie_libere--;
