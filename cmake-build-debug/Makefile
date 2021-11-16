@@ -129,29 +129,29 @@ vari/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/build
 .PHONY : vari/fast
 
-ese_OSD/lettori-scrittori_cond_var.o: ese_OSD/lettori-scrittori_cond_var.c.o
-.PHONY : ese_OSD/lettori-scrittori_cond_var.o
+ese_OSD/barbiere/barbiere_cond.o: ese_OSD/barbiere/barbiere_cond.c.o
+.PHONY : ese_OSD/barbiere/barbiere_cond.o
 
 # target to build an object file
-ese_OSD/lettori-scrittori_cond_var.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/lettori-scrittori_cond_var.c.o
-.PHONY : ese_OSD/lettori-scrittori_cond_var.c.o
+ese_OSD/barbiere/barbiere_cond.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/barbiere/barbiere_cond.c.o
+.PHONY : ese_OSD/barbiere/barbiere_cond.c.o
 
-ese_OSD/lettori-scrittori_cond_var.i: ese_OSD/lettori-scrittori_cond_var.c.i
-.PHONY : ese_OSD/lettori-scrittori_cond_var.i
+ese_OSD/barbiere/barbiere_cond.i: ese_OSD/barbiere/barbiere_cond.c.i
+.PHONY : ese_OSD/barbiere/barbiere_cond.i
 
 # target to preprocess a source file
-ese_OSD/lettori-scrittori_cond_var.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/lettori-scrittori_cond_var.c.i
-.PHONY : ese_OSD/lettori-scrittori_cond_var.c.i
+ese_OSD/barbiere/barbiere_cond.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/barbiere/barbiere_cond.c.i
+.PHONY : ese_OSD/barbiere/barbiere_cond.c.i
 
-ese_OSD/lettori-scrittori_cond_var.s: ese_OSD/lettori-scrittori_cond_var.c.s
-.PHONY : ese_OSD/lettori-scrittori_cond_var.s
+ese_OSD/barbiere/barbiere_cond.s: ese_OSD/barbiere/barbiere_cond.c.s
+.PHONY : ese_OSD/barbiere/barbiere_cond.s
 
 # target to generate assembly for a file
-ese_OSD/lettori-scrittori_cond_var.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/lettori-scrittori_cond_var.c.s
-.PHONY : ese_OSD/lettori-scrittori_cond_var.c.s
+ese_OSD/barbiere/barbiere_cond.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/barbiere/barbiere_cond.c.s
+.PHONY : ese_OSD/barbiere/barbiere_cond.c.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... vari"
-	@echo "... ese_OSD/lettori-scrittori_cond_var.o"
-	@echo "... ese_OSD/lettori-scrittori_cond_var.i"
-	@echo "... ese_OSD/lettori-scrittori_cond_var.s"
+	@echo "... ese_OSD/barbiere/barbiere_cond.o"
+	@echo "... ese_OSD/barbiere/barbiere_cond.i"
+	@echo "... ese_OSD/barbiere/barbiere_cond.s"
 .PHONY : help
 
 

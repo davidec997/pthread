@@ -23,7 +23,6 @@ void myInit(void)
 
 }
 
-
 void pausetta(void)
 {
     struct timespec t;
@@ -38,26 +37,25 @@ void servi(){
     sedie_libere ++;
     sem_post(&barber); //cust
     sem_post(&m);
-    printf(" Sono il Barbiere e Sto servendo il cliente...\n ");
-    pausetta();
-
+    printf(" Sono il Barbiere e Sto servendo un cliente...\n ");
+    sleep(2);
 }
+
 
 void richiedi_servizio(int pi){
     sem_wait(&m);
     if(sedie_libere <=0) {
         printf("Il cliente %d ha trovato tutte le sedie occupate e se ne va...\n",pi);
         sem_post(&m);
-        pausetta();
-        pausetta();
+        sleep(2);
     } else {
         sedie_libere--;
         printf("SEDIE LIBERE %d\n", sedie_libere);
         sem_post(&custumers); //barb
         sem_post(&m);
         sem_wait(&barber); // cu
-        printf("SONO IL CLIENTE %lu IL BARBIERE MI STA SERVENDO...\n", pthread_self());
-        pausetta();
+        printf("SONO IL CLIENTE %d IL BARBIERE MI STA SERVENDO...\n", pi);
+        sleep(1);
     }
 }
 

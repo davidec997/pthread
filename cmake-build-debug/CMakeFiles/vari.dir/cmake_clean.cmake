@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/vari.dir/ese_OSD/lettori-scrittori_cond_var.c.o"
+  "CMakeFiles/vari.dir/ese_OSD/barbiere/barbiere_cond.c.o"
   "vari"
   "vari.pdb"
 )

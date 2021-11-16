@@ -9,10 +9,10 @@ void main (){
     int id = 3;
     sprintf(s,"%d\0",id);
     printf("questa e %s",s);*/
-
-    int miovoto;
-    printf("Vota con 0 oppure con 1\n");
-    scanf("%d", &miovoto);
-    printf("Votato %d\n",miovoto);
+/*
+   int soldi = {0,0,0};
+   soldi[2] = 5;
+   soldi[0] = -9;
+    printf(" %d, %d",soldi, soldi[2]);*/
 
 }

@@ -40,6 +40,7 @@ void fineLettura(){
     pthread_mutex_lock(&m);
     lettori_attivi --;
     if (lettori_attivi ==0 && scrittori_bloccati > 0){
+        printf(" lettori attivi %d, lettori bloccati %d, scrittori attivi %d, scrittori bloccati %d\n",lettori_attivi,lettori_bloccati,scrittori_attivi,scrittori_bloccati);
         pthread_cond_signal(&s_scrittori);
         scrittori_bloccati --;
         //scrittori_attivi ++;
@@ -65,9 +66,9 @@ void fineScrittura(){
     if(lettori_bloccati > 0){
         while (lettori_bloccati > 0){
             lettori_bloccati --;
+            pthread_cond_signal(&s_lettori);
             // l'aumento di lettori attivi lo fa iniziolettura
         }
-        pthread_cond_broadcast(&s_lettori);
     } else if(scrittori_bloccati > 0){
         scrittori_bloccati --;
         //scrittori_attivi ++;
@@ -104,8 +105,9 @@ void *eseguiScrittura(void *id) {
         inizioScrittura();
         risorsa += 1;
         printf("Thread %lu sta SCRIVENDO la risorsa --> %d\n",*pi,risorsa);
-        sleep(1);
         fineScrittura();
+        printf("  [L] lettori attivi %d, lettori bloccati %d, scrittori attivi %d, scrittori bloccati %d\n",lettori_attivi,lettori_bloccati,scrittori_attivi,scrittori_bloccati);
+        sleep(1);
     }
 
     *ptr = pi;
@@ -124,8 +126,10 @@ void *eseguiLettura(void *id) {
     for(int t =1;t<NTIMES;t++){
         inizioLettura();
         printf("Thread %lu sta LEGGENDO la risorsa --> %d\n",*pi,risorsa);
-        sleep(2);
         fineLettura();
+        printf("[S] lettori attivi %d, lettori bloccati %d, scrittori attivi %d, scrittori bloccati %d\n",lettori_attivi,lettori_bloccati,scrittori_attivi,scrittori_bloccati);
+
+        sleep(1);
     }
     *ptr = NULL;
     pthread_exit((void *) ptr);
