@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/barbiere/barbiere_cond.c
+/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/lettori-scrittori_cond_var.c
 unistd.h
 -
 pthread.h
