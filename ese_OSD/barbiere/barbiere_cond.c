@@ -16,7 +16,7 @@ typedef enum {false, true} Boolean;
 int sedie_libere;
 pthread_mutex_t m;
 pthread_cond_t cust,barb;
-Boolean barbieri [B];
+Boolean barbieri [B], occupato;
 Boolean cassiere_occupato;
 int clienti_in_attesa_fuori;
 
@@ -29,19 +29,20 @@ void myInit(void)
     for (int i =0;i<B;i++) barbieri[i]=false;
     cassiere_occupato = false;
     clienti_in_attesa_fuori = 0;
+    occupato = false;
 
 }
 
 void *customerRoutine(int id) {
     while (1) {
         pthread_mutex_lock(&m);
-        if (sedie_libere <= 0) {
+        while (sedie_libere <= 0) {
             //vado via
             printf("Vado via perche' le sedie sono tutte occupate : %d\n", sedie_libere);
-            pthread_mutex_unlock(&m);
-            sleep(3);
-        } else {
-            //pthread_mutex_lock(&m);
+            pthread_cond_wait(&cust,&m);
+            clienti_in_attesa_fuori ++;
+        }
+           // clienti_in_attesa_fuori --;
             sedie_libere--;
             printf("Sedie Libere  %d\n", sedie_libere);
             pthread_cond_signal(&cust);
@@ -50,7 +51,7 @@ void *customerRoutine(int id) {
             printf("Sono il cliente %lu e il barbiere mi sta servendo..\n", pthread_self());
             pthread_mutex_unlock(&m);
             //sleep(1);
-        }
+
     }
 }
 

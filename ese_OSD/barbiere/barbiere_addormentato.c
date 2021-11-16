@@ -23,7 +23,6 @@ void myInit(void)
 
 }
 
-
 void pausetta(void)
 {
     struct timespec t;
