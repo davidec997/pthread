@@ -42,7 +42,7 @@ void rilascio_licenze(int l){
 
 
 
-void *eseguiCannibale(void *id)
+void *eseguiUtente(void *id)
 {
     int *pi = (int *)id;
     int *ptr;
