@@ -1,4 +1,5 @@
 // produttori consumatori con stringa [5]. Esercitazione del 13 Novembre 2020
+//PERFETTO
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -37,8 +38,11 @@ void *producer(void *arg)
 {
     int *pi = (int *) arg;
     Messaggio p;
+    int *ptr;
+    ptr = (int *) malloc(sizeof(int));
     //sleep(1);
-    for (int i = 0; i < 100; i++) {
+
+    for (int i = 0; i < 3; i++) {
         sem_wait(&vuoto);
         sem_wait(&m);
         sprintf(p.dato,"%lu\0",*pi);
@@ -46,30 +50,34 @@ void *producer(void *arg)
         buffer[head] = p;
         printf("PRODOTTO e messo nel buffer il dato \t%s Iterazione\t%d\tdalla posizione [%d]\n",p.dato,p.iter,head);
         head = (head + 1) % N;
-        sem_post(&pieno);
         sem_post(&m);
-        pausetta();
+        sem_post(&pieno);
+        sleep(1);
     }
 
-    pthread_exit((void *) pi);
+    *ptr = *pi;
+    pthread_exit((void *) ptr);
 }
 
 void *consumer(void *arg)
 {
     int *pi = (int *) arg;
     Messaggio p;
+    int *ptr;
+    ptr = (int *) malloc(sizeof(int));
 
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 3; i++) {
         sem_wait(&pieno);
         sem_wait(&m);
         p = buffer[tail];
         printf("LETTO e PRELEVATO  dal buffer  il dato \t%s Iterazione\t%d\tdalla posizione [%d]\n",p.dato,p.iter,tail);
         tail = (tail + 1)% N;
-        sem_post(&vuoto);
         sem_post(&m);
-        pausetta();
+        sem_post(&vuoto);
+        sleep(1);
     }
-    pthread_exit((void *) pi);
+    *ptr = *pi;
+    pthread_exit((void *) ptr);
 }
 
 

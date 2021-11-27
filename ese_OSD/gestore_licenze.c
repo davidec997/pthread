@@ -1,18 +1,52 @@
+
+//FUNZIONA
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
 #include <unistd.h>
 #include <semaphore.h>
 
-#define N 5
-int x = 0;
-pthread_mutex_t mtx = PTHREAD_MUTEX_INITIALIZER;
+#define MAX_LICENZE 5
+#define NTIMES 10
+//#define K 7
+
+typedef enum {false, true} Boolean;
+pthread_cond_t vuoto,pieno;
+pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
+int licenze;
+
+void myInit(){
+    pthread_cond_init(&vuoto,NULL);
+    pthread_cond_init(&pieno,NULL);
+    licenze = 15;
+}
+
+int richiedi_licenze(int index,int l){
+    pthread_mutex_lock(&m);
+    printf("Ciao sono il thread CLIENTE %d e devo richiedere %d  licenze\n",index,l);
+
+    while( licenze < l){
+        pthread_cond_wait(&vuoto,&m);
+    }
+    licenze -= l;
+    printf("\t SITUAZIONE ATTUALE\t %d LICENZE:\n",licenze);
+    pthread_mutex_unlock(&m);
+}
+
+void rilascio_licenze(int l){
+    pthread_mutex_lock(&m);
+    licenze += l;
+    pthread_mutex_unlock(&m);
+    pthread_cond_broadcast(&vuoto);
+}
 
 
-void *eseguiCliente(void *id)
+
+void *eseguiCannibale(void *id)
 {
     int *pi = (int *)id;
     int *ptr;
+    int r, licenze_richieste = 0;
 
     ptr = (int *) malloc( sizeof(int));
     if (ptr == NULL)
@@ -21,20 +55,22 @@ void *eseguiCliente(void *id)
         exit(-1);
     }
 
-    pthread_mutex_lock(&mtx);
+    for (int i = 0; i < NTIMES ; i++) {
+        r = rand() % MAX_LICENZE + 1;
 
-    for(int t =0; t<10; t++){
-        x += 1;
-        printf("Thread%d con identificatore %lu  --> valore di x: %d\n", *pi, pthread_self(),x);
+        richiedi_licenze(*pi, r);
+        licenze_richieste += r;
+        sleep(3);
+        rilascio_licenze(r);
+
+        printf("Thread %d HA OTTENUTO %d licenze e se ne va\n",*pi,r);
     }
 
-    pthread_mutex_unlock(&mtx);
-
-
-    /* pthread vuole tornare al padre un valore intero, ad es 1000+id */
-    *ptr = 1000+*pi;
+    *ptr = licenze_richieste;
     pthread_exit((void *) ptr);
 }
+
+
 
 int main (int argc, char **argv)
 {
@@ -75,17 +111,21 @@ int main (int argc, char **argv)
         exit(4);
     }
 
+    myInit();
+    srand(555);
+
+
     for (i=0; i < NUM_THREADS; i++)
     {
         taskids[i] = i;
-        printf("Sto per creare il thread %d-esimo\n", taskids[i]);
-        if (pthread_create(&thread[i], NULL, body, (void *) (&taskids[i])) != 0)
+        // printf("Sto per creare il thread %d-esimo\n", taskids[i]);
+        if (pthread_create(&thread[i], NULL, eseguiUtente, (void *) (&taskids[i])) != 0)
         {
             sprintf(error,"SONO IL MAIN E CI SONO STATI PROBLEMI DELLA CREAZIONE DEL thread %d-esimo\n", taskids[i]);
             perror(error);
             exit(5);
         }
-        printf("SONO IL MAIN e ho creato il Pthread %i-esimo con id=%lu\n", i, thread[i]);
+        //printf("SONO IL MAIN e ho creato il Pthread %i-esimo con id=%lu\n", i, thread[i]);
     }
 
     for (i=0; i < NUM_THREADS; i++)
@@ -97,7 +137,9 @@ int main (int argc, char **argv)
         printf("Pthread %d-esimo restituisce %d\n", i, ris);
     }
 
-    pthread_mutex_destroy(&mtx);
+    pthread_mutex_destroy(&m);
     exit(0);
 }
+
+
 

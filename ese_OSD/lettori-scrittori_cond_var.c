@@ -32,7 +32,10 @@ void inizioLettura(){
         pthread_cond_wait(&s_lettori,&m);
     }
     lettori_attivi ++;
-    pthread_mutex_unlock(&m);
+    printf("[L1] lettori attivi %d, lettori bloccati %d, scrittori attivi %d, scrittori bloccati %d\n",lettori_attivi,lettori_bloccati,scrittori_attivi,scrittori_bloccati);
+    printf("Thread  sta LEGGENDO la risorsa --> %d\n\n",risorsa);
+
+     pthread_mutex_unlock(&m);
 
 }
 
@@ -40,29 +43,34 @@ void fineLettura(){
     pthread_mutex_lock(&m);
     lettori_attivi --;
     if (lettori_attivi ==0 && scrittori_bloccati > 0){
-        printf(" lettori attivi %d, lettori bloccati %d, scrittori attivi %d, scrittori bloccati %d\n",lettori_attivi,lettori_bloccati,scrittori_attivi,scrittori_bloccati);
+        //printf(" lettori attivi %d, lettori bloccati %d, scrittori attivi %d, scrittori bloccati %d\n",lettori_attivi,lettori_bloccati,scrittori_attivi,scrittori_bloccati);
         pthread_cond_signal(&s_scrittori);
         scrittori_bloccati --;
         //scrittori_attivi ++;
     }
+    printf("[L2] lettori attivi %d, lettori bloccati %d, scrittori attivi %d, scrittori bloccati %d\n",lettori_attivi,lettori_bloccati,scrittori_attivi,scrittori_bloccati);
+
     pthread_mutex_unlock(&m);
 
 }
 
-void inizioScrittura(){
+void inizioScrittura(int * pi){
 
     pthread_mutex_lock(&m);
     while(scrittori_attivi > 0 || lettori_attivi > 0){
-        pthread_cond_wait(&s_scrittori,&m);
         scrittori_bloccati ++;
+        pthread_cond_wait(&s_scrittori,&m);
     }
     scrittori_attivi ++;
+    printf("  [S1] lettori attivi %d, lettori bloccati %d, scrittori attivi %d, scrittori bloccati %d\n",lettori_attivi,lettori_bloccati,scrittori_attivi,scrittori_bloccati);
+    printf("Thread %lu sta SCRIVENDO la risorsa --> %d\n\n",*pi,risorsa);
     pthread_mutex_unlock(&m);
 
 }
 
 void fineScrittura(){
     pthread_mutex_lock(&m);
+    scrittori_attivi --;
     if(lettori_bloccati > 0){
         while (lettori_bloccati > 0){
             lettori_bloccati --;
@@ -74,6 +82,7 @@ void fineScrittura(){
         //scrittori_attivi ++;
         pthread_cond_signal(&s_scrittori);
     }
+    printf("  [S2] lettori attivi %d, lettori bloccati %d, scrittori attivi %d, scrittori bloccati %d\n",lettori_attivi,lettori_bloccati,scrittori_attivi,scrittori_bloccati);
     pthread_mutex_unlock(&m);
     /*sem_wait(&m);
     scrittori_attivi --;
@@ -102,12 +111,10 @@ void *eseguiScrittura(void *id) {
     }
 
     for(int t =1;t<NTIMES;t++){
-        inizioScrittura();
+        inizioScrittura(pi);
         risorsa += 1;
-        printf("Thread %lu sta SCRIVENDO la risorsa --> %d\n",*pi,risorsa);
         fineScrittura();
-        printf("  [L] lettori attivi %d, lettori bloccati %d, scrittori attivi %d, scrittori bloccati %d\n",lettori_attivi,lettori_bloccati,scrittori_attivi,scrittori_bloccati);
-        sleep(1);
+        sleep(2);
     }
 
     *ptr = pi;
@@ -125,13 +132,10 @@ void *eseguiLettura(void *id) {
 
     for(int t =1;t<NTIMES;t++){
         inizioLettura();
-        printf("Thread %lu sta LEGGENDO la risorsa --> %d\n",*pi,risorsa);
         fineLettura();
-        printf("[S] lettori attivi %d, lettori bloccati %d, scrittori attivi %d, scrittori bloccati %d\n",lettori_attivi,lettori_bloccati,scrittori_attivi,scrittori_bloccati);
-
         sleep(1);
     }
-    *ptr = NULL;
+    *ptr = *pi;
     pthread_exit((void *) ptr);
 }
 

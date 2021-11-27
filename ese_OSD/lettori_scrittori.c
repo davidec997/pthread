@@ -100,6 +100,7 @@ void *eseguiLettura(void *id) {
     int *pi = (int *) id;
     int *ptr;
     ptr = (int *) malloc(sizeof(int));
+
     if (ptr == NULL) {
         perror("Problemi con l'allocazione di ptr\n");
         exit(-1);

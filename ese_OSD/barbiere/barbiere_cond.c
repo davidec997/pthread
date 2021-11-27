@@ -4,21 +4,17 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <semaphore.h>
 
 #define N 4     //sedie
-#define B 3
-#define ITER 5
-#define SHAVING_IT 2000000
-#define PAY_ITER 100000
+#define NTIMES 5
 typedef enum {false, true} Boolean;
 
 int sedie_libere;
 pthread_mutex_t m;
 pthread_cond_t cust,barb;
-Boolean barbieri [B], occupato;
-Boolean cassiere_occupato;
-int clienti_in_attesa_fuori;
+//Boolean barbieri [B], occupato;
+//Boolean cassiere_occupato;
+int clienti_in_attesa;
 
 void myInit(void)
 {
@@ -26,59 +22,49 @@ void myInit(void)
     pthread_cond_init(&cust,NULL);
     pthread_cond_init(&barb,NULL);
     sedie_libere = N;
-    for (int i =0;i<B;i++) barbieri[i]=false;
-    cassiere_occupato = false;
-    clienti_in_attesa_fuori = 0;
-    occupato = false;
+    /*for (int i =0;i<B;i++) barbieri[i]=false;
+    cassiere_occupato = false;*/
+    clienti_in_attesa = 0;
+    //occupato = false;
 
 }
 
 
 void servi(){
-    while ( sedie_libere == N) pthread_cond_wait(&cust,&m);
+    pthread_mutex_lock(&m);
+    while ( clienti_in_attesa == 0)
+        pthread_cond_wait(&cust,&m);
+    clienti_in_attesa--;
     sedie_libere ++;
-    pthread_cond_signal(&barb);
+    printf(" Sono il Barbiere e Sto servendo un cliente...\n ");
     pthread_mutex_unlock(&m);
-    printf(" Sono il Barbiere e Sto servendo un cliente...\n ");
+    pthread_cond_signal(&barb);
+
     sleep(2);
-    /*sem_wait(&custumers); //barber
-    sem_wait(&m);
-    sedie_libere ++;
-    sem_post(&barber); //cust
-    sem_post(&m);
-    printf(" Sono il Barbiere e Sto servendo un cliente...\n ");
-    sleep(2);*/
+
 }
 
 
 void richiedi_servizio(int pi){
+    int * ptr;
+    ptr = (int *) malloc(sizeof(int));
+
     pthread_mutex_lock(&m);
     while(sedie_libere <= 0){
         printf("Il cliente %d ha trovato tutte le sedie occupate e se ne va...\n",pi);
-        pthread_cond_wait(&cust,&m);
-        sleep(1);
+        //clienti_in_attesa ++;
+        pthread_mutex_unlock(&m);
+        //pthread_cond_wait(&cust,&m);
+        sleep(3);
     }
+    clienti_in_attesa ++;
     sedie_libere--;
     printf("SEDIE LIBERE %d\n", sedie_libere);
-    pthread_cond_signal(&cust); //??
     pthread_mutex_unlock(&m);
-    pthread_cond_signal(&barb);
+    pthread_cond_signal(&cust); //??
+    pthread_cond_wait(&barb,&m);
     printf("SONO IL CLIENTE %d IL BARBIERE MI STA SERVENDO...\n", pi);
     sleep(1);
-   /* sem_wait(&m);
-    if(sedie_libere <=0) {
-        printf("Il cliente %d ha trovato tutte le sedie occupate e se ne va...\n",pi);
-        sem_post(&m);
-        sleep(2);
-    } else {
-        sedie_libere--;
-        printf("SEDIE LIBERE %d\n", sedie_libere);
-        sem_post(&custumers); //barb
-        sem_post(&m);
-        sem_wait(&barber); // cu
-        printf("SONO IL CLIENTE %d IL BARBIERE MI STA SERVENDO...\n", pi);
-        sleep(1);
-    }*/
 }
 
 void *customerRoutine(int id) {
@@ -94,8 +80,6 @@ void *customerRoutine(int id) {
         richiedi_servizio(id);
     }
 
-    //printf("Thread%d partito: Hello World! Ho come identificatore %lu\n", *pi, pthread_self());
-    /* pthread vuole tornare al padre un valore intero, ad es 1000+id */
     *ptr = NULL;
     pthread_exit((void *) ptr);
 }

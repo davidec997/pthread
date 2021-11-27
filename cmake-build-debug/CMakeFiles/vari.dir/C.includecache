@@ -6,15 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/lettori-scrittori_cond_var.c
-unistd.h
--
-pthread.h
--
+/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/cannibali.c
 stdio.h
 -
 stdlib.h
 -
+pthread.h
+-
+unistd.h
+-
 semaphore.h
 -
+
+/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/fumatori.c
 

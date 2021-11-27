@@ -54,7 +54,7 @@ int decreta_vincitore(int g1, int g2){
     }
 }
 
-void *arbitro(void *arg)
+void *tabaccaio(void *arg)
 {
     printf("Sono l'arbitro e sto per dare il via al gioco..\n");
     char via;
@@ -102,9 +102,9 @@ void *arbitro(void *arg)
 
 }
 
-void *giocatore1(void *arg)
+void *genreratore_O(void *arg)
 {
-    int id = (int) arg;
+    int id = (int) id;
     while(1) {
         if (turno != id) {
             printf("il gio1 si e blocc\n");
@@ -123,7 +123,7 @@ void *giocatore1(void *arg)
 
     }
 }
-void *giocatore2(void *arg)
+void *fumatore2(void *arg)
 {
     int id = (int) arg;
     while(1) {

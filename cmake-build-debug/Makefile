@@ -129,29 +129,29 @@ vari/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/build
 .PHONY : vari/fast
 
-ese_OSD/barbiere/barbiere_cond.o: ese_OSD/barbiere/barbiere_cond.c.o
-.PHONY : ese_OSD/barbiere/barbiere_cond.o
+ese_OSD/fumatori.o: ese_OSD/fumatori.c.o
+.PHONY : ese_OSD/fumatori.o
 
 # target to build an object file
-ese_OSD/barbiere/barbiere_cond.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/barbiere/barbiere_cond.c.o
-.PHONY : ese_OSD/barbiere/barbiere_cond.c.o
+ese_OSD/fumatori.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/fumatori.c.o
+.PHONY : ese_OSD/fumatori.c.o
 
-ese_OSD/barbiere/barbiere_cond.i: ese_OSD/barbiere/barbiere_cond.c.i
-.PHONY : ese_OSD/barbiere/barbiere_cond.i
+ese_OSD/fumatori.i: ese_OSD/fumatori.c.i
+.PHONY : ese_OSD/fumatori.i
 
 # target to preprocess a source file
-ese_OSD/barbiere/barbiere_cond.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/barbiere/barbiere_cond.c.i
-.PHONY : ese_OSD/barbiere/barbiere_cond.c.i
+ese_OSD/fumatori.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/fumatori.c.i
+.PHONY : ese_OSD/fumatori.c.i
 
-ese_OSD/barbiere/barbiere_cond.s: ese_OSD/barbiere/barbiere_cond.c.s
-.PHONY : ese_OSD/barbiere/barbiere_cond.s
+ese_OSD/fumatori.s: ese_OSD/fumatori.c.s
+.PHONY : ese_OSD/fumatori.s
 
 # target to generate assembly for a file
-ese_OSD/barbiere/barbiere_cond.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/barbiere/barbiere_cond.c.s
-.PHONY : ese_OSD/barbiere/barbiere_cond.c.s
+ese_OSD/fumatori.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/fumatori.c.s
+.PHONY : ese_OSD/fumatori.c.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... vari"
-	@echo "... ese_OSD/barbiere/barbiere_cond.o"
-	@echo "... ese_OSD/barbiere/barbiere_cond.i"
-	@echo "... ese_OSD/barbiere/barbiere_cond.s"
+	@echo "... ese_OSD/fumatori.o"
+	@echo "... ese_OSD/fumatori.i"
+	@echo "... ese_OSD/fumatori.s"
 .PHONY : help
 
 
