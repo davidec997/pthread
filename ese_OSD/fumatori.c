@@ -38,30 +38,27 @@ void svegliaFumatore(){
     if (!tavolo[0]){
         // il primo elemento e' 0 quindi il tab ha messo sul tavolo gli altri 2
         //allora posso sevgliare il fumatore 0 che con gli ele 1 e 2 puo fumare
-        printf("TABACCAIO SVEGLIA IL FUMATORE 1\n");
+        printf("\tTABACCAIO SVEGLIA IL FUMATORE 1\n");
         sem_post(&m);
         sem_post(&sem_f1);
     }else if (!tavolo[1]){
-        printf("TABACCAIO SVEGLIA IL FUMATORE 2\n");
+        printf("\tTABACCAIO SVEGLIA IL FUMATORE 2\n");
         sem_post(&m);
         sem_post(&sem_f2);
     }else if (!tavolo[2]){
-        printf("TABACCAIO SVEGLIA IL FUMATORE 3\n");
+        printf("\tTABACCAIO SVEGLIA IL FUMATORE 3\n");
         sem_post(&m);
         sem_post(&sem_f3);
     }
-    return;
+    //return;
 }
 
-void *tabaccaio(void *arg)
-{
-    //printf("Sono il tabaccaio e sto per dare mettere sul tavolo 2 elementi..\n");
-
+void *tabaccaio(void *arg){
     int id = (int) arg;
     int e1,e2;
 
     while(1){
-        printf("Sono il tabaccaio e sto per dare mettere sul tavolo 2 elementi..\n");
+        printf("\nSono il tabaccaio e sto per dare mettere sul tavolo 2 elementi..\n");
         sem_wait(&sem_tabaccaio);
         sem_wait(&m);
         e1 = rand() % 3;
@@ -71,10 +68,10 @@ void *tabaccaio(void *arg)
         printf("Metto sul tavolo l'elemento %s e %s \n",nomi[e1],nomi[e2]);
         tavolo[e1]=1;
         tavolo[e2]=1;
-        printf("\tSITUAZIONE [T] TAVOLO [%d]  [%d]  [%d]\n",tavolo[0],tavolo[1],tavolo[2]);
+        printf("\tSITUAZIONE TAVOLO [%d]  [%d]  [%d]\n",tavolo[0],tavolo[1],tavolo[2]);
         // facciamo che il tabaccaio sa quali ele ha messo sul tavolo e sveglia il fortunato che ha il terzo ele
         svegliaFumatore();
-        sleep(5);
+        sleep(2);
     }
 }
 
@@ -87,16 +84,16 @@ void *fumatore1(void *arg)
         sem_wait(&sem_f1);
         sem_wait(&m);
         //tolgo dal tavolo i 2 elementi
-        printf("\tSITUAZIONE [f1 a] TAVOLO [%d]  [%d]  [%d]\n",tavolo[0],tavolo[1],tavolo[2]);
+       // printf("\tSITUAZIONE [f1 a] TAVOLO [%d]  [%d]  [%d]\n",tavolo[0],tavolo[1],tavolo[2]);
         tavolo[1] = 0;
         tavolo[2] = 0;
-        printf("\tSITUAZIONE [f1 b] TAVOLO [%d]  [%d]  [%d]\n",tavolo[0],tavolo[1],tavolo[2]);
+       // printf("\tSITUAZIONE [f1 b] TAVOLO [%d]  [%d]  [%d]\n",tavolo[0],tavolo[1],tavolo[2]);
 
-        printf("\t\tFUMATORE %d STA FUMANDO\n",id+1);
+        printf("~~~~~~~~~~~FUMATORE %d STA FUMANDO~~~~~~~~~~~\n",id+1);
         sem_post(&m);
         //faccio la post al tabaccaio
+        sleep(1);
         sem_post(&sem_tabaccaio);
-        sleep(2);
     }
 
 }
@@ -110,15 +107,15 @@ void *fumatore2(void *arg)
         sem_wait(&sem_f2);
         sem_wait(&m);
         //tolgo dal tavolo i 2 elementi
-        printf("\tSITUAZIONE [f2 a] TAVOLO [%d]  [%d]  [%d]\n",tavolo[0],tavolo[1],tavolo[2]);
+       // printf("\tSITUAZIONE [f2 a] TAVOLO [%d]  [%d]  [%d]\n",tavolo[0],tavolo[1],tavolo[2]);
         tavolo[0] = 0;
         tavolo[2] = 0;
-        printf("\t\tFUMATORE %d STA FUMANDO\n",id+1);
-        printf("\tSITUAZIONE [f2 b] TAVOLO [%d]  [%d]  [%d]\n",tavolo[0],tavolo[1],tavolo[2]);
+        printf("~~~~~~~~~~~FUMATORE %d STA FUMANDO~~~~~~~~~~~\n",id+1);
+        //printf("\tSITUAZIONE [f2 b] TAVOLO [%d]  [%d]  [%d]\n",tavolo[0],tavolo[1],tavolo[2]);
         sem_post(&m);
         //faccio la post al tabaccaio
+        sleep(1);
         sem_post(&sem_tabaccaio);
-        sleep(2);
     }
 
 }
@@ -132,21 +129,22 @@ void *fumatore3(void *arg)
         sem_wait(&sem_f3);
         sem_wait(&m);
         //tolgo dal tavolo i 2 elementi
-        printf("\tSITUAZIONE [f3 a] TAVOLO [%d]  [%d]  [%d]\n",tavolo[0],tavolo[1],tavolo[2]);
+       // printf("\tSITUAZIONE [f3 a] TAVOLO [%d]  [%d]  [%d]\n",tavolo[0],tavolo[1],tavolo[2]);
         tavolo[0] = 0;
         tavolo[1] = 0;
-        printf("\t\tFUMATORE %d STA FUMANDO\n",id+1);
-        printf("\tSITUAZIONE [f3 b] TAVOLO [%d]  [%d]  [%d]\n",tavolo[0],tavolo[1],tavolo[2]);
+        printf("~~~~~~~~~~~FUMATORE %d STA FUMANDO~~~~~~~~~~~\n",id+1);
+        //printf("\tSITUAZIONE [f3 b] TAVOLO [%d]  [%d]  [%d]\n",tavolo[0],tavolo[1],tavolo[2]);
         sem_post(&m);
         //faccio la post al tabaccaio
+        sleep(1);
         sem_post(&sem_tabaccaio);
-        sleep(2);
     }
 
 }
 
 
 int main() {
+
     pthread_attr_t a;
     pthread_t p;
 
@@ -158,8 +156,7 @@ int main() {
 
     pthread_attr_init(&a);
 
-    /* non ho voglia di scrivere 10000 volte join! */
-    pthread_attr_setdetachstate(&a, PTHREAD_CREATE_DETACHED);
+    //pthread_attr_setdetachstate(&a, PTHREAD_CREATE_DETACHED);
 
     pthread_create(&p, &a, tabaccaio, 99);
     pthread_create(&p, &a, fumatore1, 0);
@@ -167,11 +164,14 @@ int main() {
     pthread_create(&p, &a, fumatore3, 2);
 
 
-    pthread_attr_destroy(&a);
+    //pthread_attr_destroy(&a);
 
-    /* aspetto 10 secondi prima di terminare tutti quanti */\
-    sleep(10);
+    //sleep(10);
     pthread_join(&p,NULL);
+    pthread_join(&p,NULL);
+    pthread_join(&p,NULL);
+    pthread_join(&p,NULL);
+
 
 
 }

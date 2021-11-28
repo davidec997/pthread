@@ -62,7 +62,7 @@ void *eseguiCuoco(void * id){
 }
 
 void svegliaCuoco(int id){
-    printf("Thread %d sta svegliando l addetto \n",id);
+    printf("Thread %d sta svegliando il cuoco \n",id);
     pthread_cond_signal(&vuoto);
     pthread_cond_wait(&pieno,&m);
 

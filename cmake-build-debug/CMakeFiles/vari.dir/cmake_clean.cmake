@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/vari.dir/ese_OSD/fumatori.c.o"
+  "CMakeFiles/vari.dir/Sistemi_Embedded/incrocio_stradale.c.o"
   "vari"
   "vari.pdb"
 )

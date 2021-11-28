@@ -129,29 +129,29 @@ vari/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/build
 .PHONY : vari/fast
 
-ese_OSD/fumatori.o: ese_OSD/fumatori.c.o
-.PHONY : ese_OSD/fumatori.o
+Sistemi_Embedded/incrocio_stradale.o: Sistemi_Embedded/incrocio_stradale.c.o
+.PHONY : Sistemi_Embedded/incrocio_stradale.o
 
 # target to build an object file
-ese_OSD/fumatori.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/fumatori.c.o
-.PHONY : ese_OSD/fumatori.c.o
+Sistemi_Embedded/incrocio_stradale.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/incrocio_stradale.c.o
+.PHONY : Sistemi_Embedded/incrocio_stradale.c.o
 
-ese_OSD/fumatori.i: ese_OSD/fumatori.c.i
-.PHONY : ese_OSD/fumatori.i
+Sistemi_Embedded/incrocio_stradale.i: Sistemi_Embedded/incrocio_stradale.c.i
+.PHONY : Sistemi_Embedded/incrocio_stradale.i
 
 # target to preprocess a source file
-ese_OSD/fumatori.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/fumatori.c.i
-.PHONY : ese_OSD/fumatori.c.i
+Sistemi_Embedded/incrocio_stradale.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/incrocio_stradale.c.i
+.PHONY : Sistemi_Embedded/incrocio_stradale.c.i
 
-ese_OSD/fumatori.s: ese_OSD/fumatori.c.s
-.PHONY : ese_OSD/fumatori.s
+Sistemi_Embedded/incrocio_stradale.s: Sistemi_Embedded/incrocio_stradale.c.s
+.PHONY : Sistemi_Embedded/incrocio_stradale.s
 
 # target to generate assembly for a file
-ese_OSD/fumatori.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/ese_OSD/fumatori.c.s
-.PHONY : ese_OSD/fumatori.c.s
+Sistemi_Embedded/incrocio_stradale.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/incrocio_stradale.c.s
+.PHONY : Sistemi_Embedded/incrocio_stradale.c.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... vari"
-	@echo "... ese_OSD/fumatori.o"
-	@echo "... ese_OSD/fumatori.i"
-	@echo "... ese_OSD/fumatori.s"
+	@echo "... Sistemi_Embedded/incrocio_stradale.o"
+	@echo "... Sistemi_Embedded/incrocio_stradale.i"
+	@echo "... Sistemi_Embedded/incrocio_stradale.s"
 .PHONY : help
 
 

@@ -4,7 +4,16 @@
 #include <unistd.h>
 #include <semaphore.h>
 
+typedef enum {false, true} Boolean;
+
 void main (){
+
+    Boolean var = false;
+    for (int i = 0; i <10; i++) {
+        printf("%d\n",var);
+        var = !var;
+    }
+
    /* char s [5];
     int id = 3;
     sprintf(s,"%d\0",id);
