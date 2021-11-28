@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/cannibali.c
+/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/fumatori.c
 stdio.h
 -
 stdlib.h
@@ -17,6 +17,4 @@ unistd.h
 -
 semaphore.h
 -
-
-/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/ese_OSD/fumatori.c
 
