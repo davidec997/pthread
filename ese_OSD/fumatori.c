@@ -105,22 +105,6 @@ void *fumatore2(void *arg)
 {
     int id = (int) arg;
     printf("\tSONO IL FUMATORE %d e HO SOLO %s\n",id,nomi[id]);
-    /*while(1) {
-        if (turno != id) {
-            printf("il gio2 si e blocc\n");
-            sem_wait(&sem_f2); // aspetto l tabaccaio
-        }
-        sem_wait(&m);
-        printf("ciao sono il giocatore 1\n");
-        mossag2 = rand() % 3;
-        printf("Il fumatore2 ha effettuato la mossa \t %s\n", nomi[mossag2]);
-        fumatore2_ok = 1;
-        if (fumatore1_ok && fumatore2_ok) {
-            turno = 0;
-            sem_post(&sem_tabaccaio);
-        }
-        sem_post(&m);
-    }*/
 
     while(1){
         sem_wait(&sem_f2);
@@ -143,22 +127,6 @@ void *fumatore3(void *arg)
 {
     int id = (int) arg;
     printf("\tSONO IL FUMATORE %d e HO SOLO %s\n",id,nomi[id]);
-    /*while(1) {
-        if (turno != id) {
-            printf("il gio2 si e blocc\n");
-            sem_wait(&sem_f2); // aspetto l tabaccaio
-        }
-        sem_wait(&m);
-        printf("ciao sono il giocatore 1\n");
-        mossag2 = rand() % 3;
-        printf("Il fumatore2 ha effettuato la mossa \t %s\n", nomi[mossag2]);
-        fumatore2_ok = 1;
-        if (fumatore1_ok && fumatore2_ok) {
-            turno = 0;
-            sem_post(&sem_tabaccaio);
-        }
-        sem_post(&m);
-    }*/
 
     while(1){
         sem_wait(&sem_f3);
