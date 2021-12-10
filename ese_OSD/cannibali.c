@@ -14,17 +14,15 @@ Boolean addettoAttivo;
 pthread_cond_t vuoto,pieno;
 pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
 int porzioni ;
-//per evitare starvation introduco una variabile int col l'indice del processo che indica se il thread i-esimo ha appen mangiato.
-//in questo caso verra' deschedulato.
-int appena_mangiato;
 
 void myInit(){
 
     pthread_cond_init(&vuoto,NULL);
     pthread_cond_init(&pieno,NULL);
     addettoAttivo = false;
-    porzioni = M;
+    porzioni = 0;
 }
+
 
 
 void cucina(){
@@ -35,7 +33,7 @@ void cucina(){
     printf("Sono IL CUOCO, SONO STATO SVEGLIATO  E ORA CUCINO\n");
     //addettoAttivo = true;
     sleep(3);
-    porzioni = 0;
+    porzioni = M;
     printf("Sono IL CUOCO E HO FINITO DI CUCINARE\n");
     pthread_mutex_unlock(&m);
     pthread_cond_broadcast(&pieno);
@@ -53,19 +51,18 @@ void *eseguiCuoco(void * id){
         exit(-1);
     }
 
-    printf("Ciao sono il thread CUOCO  %d \n",*pi);
+    printf("Ciao sono il thread ADDETTO  %d \n",*pi);
 
     while (1){
         cucina();
     }
 
-    //non arrivo mai qui...
     *ptr = 1000+*pi;
     pthread_exit((void *) ptr);
 }
 
 void svegliaCuoco(int id){
-    printf("CANNIBALE %d sta svegliando il cuoco \n",id);
+    printf("Thread %d sta svegliando il cuoco \n",id);
     pthread_cond_signal(&vuoto);
     pthread_cond_wait(&pieno,&m);
 
@@ -92,30 +89,21 @@ void *eseguiCannibale(void *id)
     for (int i = 0; i < NTIMES; i++) {
         pthread_mutex_lock(&m);
 
-        printf("\nSono il CANNIBALE %d e voglio mangiare\n",*pi,r);
+        printf("Ciao sono il thread CANNIBALE %d e voglio mangiare\n",*pi,r);
         ok_cena = controllaPorzioni();
         //pthread_mutex_unlock(&m);
 
         while( !ok_cena){
-            // I cannibali che non sono in grado di mangiare svegliano il cuoco
             svegliaCuoco(*pi);
             ok_cena = controllaPorzioni();
         }
-        if(appena_mangiato == *pi) {
-            printf("\t\tCANNIBALE  %d ha appena mangiato... vengo deschedulato\n");
-            pthread_cond_broadcast(&pieno);
-            pthread_yield();
-        }
-
         porzioni --;
-        sleep(2); // sleep dentro la SC altrimenti mangiano troppo velocemente
-
-        appena_mangiato = *pi;
+        sleep(2);
         printf("Thread %d CANNIBALE HA MANGIATO e se ne va\n",*pi,r);
         porzioni_prese ++;
-        printf("\t SITUAZIONE ATTUALE: %d <- PORZIONI DISPONIBILI\n",porzioni);
+        printf("\t SITUAZIONE ATTUALE: %d\n",porzioni);
         pthread_mutex_unlock(&m);
-        sleep(2);
+        //vers vecchia
 
     }
 
@@ -188,7 +176,7 @@ int main (int argc, char **argv)
         /* attendiamo la terminazione di tutti i thread generati */
         pthread_join(thread[i], (void**) & p);
         ris= *p;
-        printf("Pthread %d-esimo restituisce %d <- num di volte che ha mangiato\n", i, ris);
+        printf("Pthread %d-esimo restituisce %d\n", i, ris);
     }
 
     pthread_mutex_destroy(&m);
