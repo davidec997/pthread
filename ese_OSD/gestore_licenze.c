@@ -21,9 +21,9 @@ void myInit(){
     licenze = 15;
 }
 
-int richiedi_licenze(int index,int l){
+int richiedi_licenze(int index,int l,int iterazione){
     pthread_mutex_lock(&m);
-    printf("Ciao sono il thread CLIENTE %d e devo richiedere %d  licenze\n",index,l);
+    printf("\nSono il CLIENTE %d iterazione [%d] e devo richiedere %d  licenze\n",index,iterazione,l);
 
     while( licenze < l){
         pthread_cond_wait(&vuoto,&m);
@@ -47,6 +47,7 @@ void *eseguiUtente(void *id)
     int *pi = (int *)id;
     int *ptr;
     int r, licenze_richieste = 0;
+    int iterazione=0;
 
     ptr = (int *) malloc( sizeof(int));
     if (ptr == NULL)
@@ -58,12 +59,15 @@ void *eseguiUtente(void *id)
     for (int i = 0; i < NTIMES ; i++) {
         r = rand() % MAX_LICENZE + 1;
 
-        richiedi_licenze(*pi, r);
+        richiedi_licenze(*pi, r,iterazione);
         licenze_richieste += r;
         sleep(3);
         rilascio_licenze(r);
 
-        printf("Thread %d HA OTTENUTO %d licenze e se ne va\n",*pi,r);
+        printf("Thread %d iterazione [%d] HA OTTENUTO %d licenze e se ne va\n",*pi,iterazione,r);
+        iterazione ++;
+        sleep(2);
+
     }
 
     *ptr = licenze_richieste;
@@ -134,7 +138,7 @@ int main (int argc, char **argv)
         /* attendiamo la terminazione di tutti i thread generati */
         pthread_join(thread[i], (void**) & p);
         ris= *p;
-        printf("Pthread %d-esimo restituisce %d\n", i, ris);
+        printf("Pthread %d-esimo restituisce %d <- num di licenze richieste\n", i, ris);
     }
 
     pthread_mutex_destroy(&m);

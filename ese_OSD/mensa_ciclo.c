@@ -7,6 +7,7 @@
 
 #define M 5
 #define K 6
+#define NTIMES 6
 
 typedef enum {false, true} Boolean;
 Boolean addettoAttivo;
@@ -85,7 +86,7 @@ void *eseguiCliente(void *id)
     int *pi = (int *)id;
     int *ptr;
     int r,index;
-    //int posti_occupati = 0;
+    int posti_occupati = 0;
 
     ptr = (int *) malloc( sizeof(int));
     if (ptr == NULL)
@@ -94,27 +95,32 @@ void *eseguiCliente(void *id)
         exit(-1);
     }
 
-    //niente ciclo per ora, si consiglia invocazione con numero grande... es 100
-    pthread_mutex_lock(&m);
-    r = rand() % 2 + 1;
-    printf("\nCiao sono il thread CLIENTE %d e devo lasciare un vassoio che richiede %d  posti\n",*pi,r);
-    index = controllaSpazio(r);
-    //pthread_mutex_unlock(&m);
+    for (int t = 0; t < NTIMES; ++t) {
 
-    while( index == -1){
-        chiamaAddetto(*pi);
+        pthread_mutex_lock(&m);
+        r = rand() % 2 + 1;
+        printf("\nCiao sono il thread CLIENTE %d e devo lasciare un vassoio che richiede %d  posti\n",*pi,r);
         index = controllaSpazio(r);
+        //pthread_mutex_unlock(&m);
+
+        while( index == -1){
+            chiamaAddetto(*pi);
+            index = controllaSpazio(r);
+
+        }
+        sleep(1);
+        residuo[index] -= r;
+        posti_occupati += r;
+        printf("Thread %d ha lasciato il vassoio in residuo[%d] occupando %d posti e se ne va\n",*pi,index,r);
+        printf("\t SITUAZIONE ATTUALE:\n");
+        for (int t = 0; t < M; t++) {
+            printf(" Nel vasoio %d\t[%d] liberi\n",t,residuo[t]);
+        }
+        pthread_mutex_unlock(&m);
 
     }
-    sleep(1);
-    residuo[index] -= r;
-    printf("Thread %d ha lasciato il vassoio in residuo[%d] occupando %d posti e se ne va\n",*pi,index,r);
-    printf("\t SITUAZIONE ATTUALE:\n");
-    for (int t = 0; t < M; t++) {
-        printf(" Nel vasoio %d\t[%d] liberi\n",t,residuo[t]);
-    }
-    pthread_mutex_unlock(&m);
-    *ptr = *pi;
+
+    *ptr = posti_occupati;
     pthread_exit((void *) ptr);
 }
 
@@ -167,7 +173,7 @@ int main (int argc, char **argv)
     for (i=1; i < NUM_THREADS; i++)
     {
         taskids[i] = i;
-       // printf("Sto per creare il thread %d-esimo\n", taskids[i]);
+        // printf("Sto per creare il thread %d-esimo\n", taskids[i]);
         if (pthread_create(&thread[i], NULL, eseguiCliente, (void *) (&taskids[i])) != 0)
         {
             sprintf(error,"SONO IL MAIN E CI SONO STATI PROBLEMI DELLA CREAZIONE DEL thread %d-esimo\n", taskids[i]);
@@ -183,12 +189,13 @@ int main (int argc, char **argv)
         /* attendiamo la terminazione di tutti i thread generati */
         pthread_join(thread[i], (void**) & p);
         ris= *p;
-        printf("Pthread %d-esimo restituisce %d\n", i, ris);
+        printf("Pthread %d-esimo restituisce %d <- tot posti occupati\n", i, ris);
     }
 
     pthread_mutex_destroy(&m);
     exit(0);
 }
+
 
 
 
