@@ -1,0 +1,24 @@
+PROBLEMI PROPOSTI PER LA TESINA
+1) I SEMAFORI (stradali)
+    Classico incrocio a T con 4 semafori. Le macchine si accodano una dietro l'altra se il corrispondente semaforo
+     e' rosso o giallo.
+    Quando scatta il verde le macchine attraversano l'incrocio rispettando l'ordine di arrivo (quindi FIFO).
+    Un'auto non puo' passare se quella che la precede non ha liberato l'incrocio.
+    Un thread gestisce i semafori: ad esempio ogni 3 secondi setta il rosso sui semafori 0 e 1 ( i semafori
+        sulla stessa strada, ad esempio la direzione verticale).
+    Tutti gli altri threads (parametro passato in input) sono le auto.
+    Opzionale --> l'incrocio puo essere attraversato al max da 4 auto contemporaneamente.
+    Ogni auto esegue le seguenti routine:
+        --> si accoda alle altre se trova il suo semaforo giallo o rosso.
+        --> cotrolla se puo' attraversare ( se il semaforo e' verde ).
+        --> attraversa : (una semplice sleep (1) per simulare il transito.
+        --> fine attraversamento.
+
+    La struttura di questo esercizio credo sia un po complessa: ad esempio ho 4 semafori, quindi 4 code da gestire
+    con politica FIFO. Di conseguenza 4 array circolari che dovrebbero essere usati per memorizzare il *pi per
+    identificare la macchina arrivata per prima all'incrocio.
+    Inoltre come potrei gestire "il risveglio"
+
+
+
+

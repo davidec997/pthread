@@ -1,0 +1,508 @@
+"/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/vari" 10
+Ciao sono il thread ADDETTO  0
+Sono L ADDETTO  e STO DORMENDO
+
+Ciao sono il thread CLIENTE 6 e devo lasciare un vassoio che richiede 1  posti
+Thread 6 ha lasciato il vassoio in residuo [0] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[5] liberi
+ Nel vasoio 1	[6] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 6 e devo lasciare un vassoio che richiede 1  posti
+Thread 6 ha lasciato il vassoio in residuo [0] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[4] liberi
+ Nel vasoio 1	[6] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 6 e devo lasciare un vassoio che richiede 2  posti
+Thread 6 ha lasciato il vassoio in residuo [0] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[2] liberi
+ Nel vasoio 1	[6] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 6 e devo lasciare un vassoio che richiede 1  posti
+Thread 6 ha lasciato il vassoio in residuo [0] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[1] liberi
+ Nel vasoio 1	[6] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 6 e devo lasciare un vassoio che richiede 1  posti
+Thread 6 ha lasciato il vassoio in residuo [0] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[6] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 6 e devo lasciare un vassoio che richiede 2  posti
+Thread 6 ha lasciato il vassoio in residuo [1] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[4] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 8 e devo lasciare un vassoio che richiede 2  posti
+Thread 8 ha lasciato il vassoio in residuo [1] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[2] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 8 e devo lasciare un vassoio che richiede 2  posti
+Thread 8 ha lasciato il vassoio in residuo [1] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 8 e devo lasciare un vassoio che richiede 2  posti
+Thread 8 ha lasciato il vassoio in residuo [2] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[4] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 8 e devo lasciare un vassoio che richiede 1  posti
+Thread 8 ha lasciato il vassoio in residuo [2] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[3] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 8 e devo lasciare un vassoio che richiede 2  posti
+Thread 8 ha lasciato il vassoio in residuo [2] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[1] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 8 e devo lasciare un vassoio che richiede 2  posti
+Thread 8 ha lasciato il vassoio in residuo [3] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[1] liberi
+ Nel vasoio 3	[4] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 7 e devo lasciare un vassoio che richiede 1  posti
+Thread 7 ha lasciato il vassoio in residuo [2] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[4] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 7 e devo lasciare un vassoio che richiede 2  posti
+Thread 7 ha lasciato il vassoio in residuo [3] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[2] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 7 e devo lasciare un vassoio che richiede 2  posti
+Thread 7 ha lasciato il vassoio in residuo [3] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[0] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 7 e devo lasciare un vassoio che richiede 1  posti
+Thread 7 ha lasciato il vassoio in residuo [4] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[0] liberi
+ Nel vasoio 4	[5] liberi
+
+Ciao sono il thread CLIENTE 7 e devo lasciare un vassoio che richiede 2  posti
+Thread 7 ha lasciato il vassoio in residuo [4] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[0] liberi
+ Nel vasoio 4	[3] liberi
+
+Ciao sono il thread CLIENTE 7 e devo lasciare un vassoio che richiede 2  posti
+Thread 7 ha lasciato il vassoio in residuo [4] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[0] liberi
+ Nel vasoio 4	[1] liberi
+
+Ciao sono il thread CLIENTE 3 e devo lasciare un vassoio che richiede 2  posti
+Thread 3 sta svegliando l addetto
+Sono L ADDETTO  e SONO STATO SVEGLIATO
+Sono L ADDETTO  e HO SVUOTATO I VASSOI
+Sono L ADDETTO  e STO DORMENDO
+Thread 3 ha lasciato il vassoio in residuo [-1] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[6] liberi
+ Nel vasoio 1	[6] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 3 e devo lasciare un vassoio che richiede 2  posti
+Thread 3 ha lasciato il vassoio in residuo [0] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[4] liberi
+ Nel vasoio 1	[6] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 3 e devo lasciare un vassoio che richiede 1  posti
+Thread 3 ha lasciato il vassoio in residuo [0] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[3] liberi
+ Nel vasoio 1	[6] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 3 e devo lasciare un vassoio che richiede 2  posti
+Thread 3 ha lasciato il vassoio in residuo [0] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[1] liberi
+ Nel vasoio 1	[6] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 3 e devo lasciare un vassoio che richiede 2  posti
+Thread 3 ha lasciato il vassoio in residuo [1] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[1] liberi
+ Nel vasoio 1	[4] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 3 e devo lasciare un vassoio che richiede 1  posti
+Thread 3 ha lasciato il vassoio in residuo [0] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[4] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 9 e devo lasciare un vassoio che richiede 1  posti
+Thread 9 ha lasciato il vassoio in residuo [1] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[3] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 9 e devo lasciare un vassoio che richiede 1  posti
+Thread 9 ha lasciato il vassoio in residuo [1] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[2] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 9 e devo lasciare un vassoio che richiede 1  posti
+Thread 9 ha lasciato il vassoio in residuo [1] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[1] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 9 e devo lasciare un vassoio che richiede 1  posti
+Thread 9 ha lasciato il vassoio in residuo [1] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 9 e devo lasciare un vassoio che richiede 2  posti
+Thread 9 ha lasciato il vassoio in residuo [2] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[4] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 9 e devo lasciare un vassoio che richiede 1  posti
+Thread 9 ha lasciato il vassoio in residuo [2] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[3] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 1 e devo lasciare un vassoio che richiede 2  posti
+Thread 1 ha lasciato il vassoio in residuo [2] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[1] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 1 e devo lasciare un vassoio che richiede 2  posti
+Thread 1 ha lasciato il vassoio in residuo [3] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[1] liberi
+ Nel vasoio 3	[4] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 1 e devo lasciare un vassoio che richiede 1  posti
+Thread 1 ha lasciato il vassoio in residuo [2] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[4] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 1 e devo lasciare un vassoio che richiede 2  posti
+Thread 1 ha lasciato il vassoio in residuo [3] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[2] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 1 e devo lasciare un vassoio che richiede 1  posti
+Thread 1 ha lasciato il vassoio in residuo [3] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[1] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 1 e devo lasciare un vassoio che richiede 1  posti
+Thread 1 ha lasciato il vassoio in residuo [3] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[0] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 2 e devo lasciare un vassoio che richiede 2  posti
+Pthread 1-esimo restituisce 9 <- tot posti occupati
+Thread 2 ha lasciato il vassoio in residuo [4] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[0] liberi
+ Nel vasoio 4	[4] liberi
+
+Ciao sono il thread CLIENTE 2 e devo lasciare un vassoio che richiede 2  posti
+Thread 2 ha lasciato il vassoio in residuo [4] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[0] liberi
+ Nel vasoio 4	[2] liberi
+
+Ciao sono il thread CLIENTE 2 e devo lasciare un vassoio che richiede 1  posti
+Thread 2 ha lasciato il vassoio in residuo [4] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[0] liberi
+ Nel vasoio 4	[1] liberi
+
+Ciao sono il thread CLIENTE 2 e devo lasciare un vassoio che richiede 1  posti
+Thread 2 ha lasciato il vassoio in residuo [4] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[0] liberi
+ Nel vasoio 4	[0] liberi
+
+Ciao sono il thread CLIENTE 2 e devo lasciare un vassoio che richiede 2  posti
+Thread 2 sta svegliando l addetto
+Sono L ADDETTO  e SONO STATO SVEGLIATO
+Sono L ADDETTO  e HO SVUOTATO I VASSOI
+Sono L ADDETTO  e STO DORMENDO
+Thread 2 ha lasciato il vassoio in residuo [-1] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[6] liberi
+ Nel vasoio 1	[6] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 2 e devo lasciare un vassoio che richiede 1  posti
+Thread 2 ha lasciato il vassoio in residuo [0] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[5] liberi
+ Nel vasoio 1	[6] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 5 e devo lasciare un vassoio che richiede 2  posti
+Pthread 2-esimo restituisce 9 <- tot posti occupati
+Pthread 3-esimo restituisce 10 <- tot posti occupati
+Thread 5 ha lasciato il vassoio in residuo [0] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[3] liberi
+ Nel vasoio 1	[6] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 5 e devo lasciare un vassoio che richiede 2  posti
+Thread 5 ha lasciato il vassoio in residuo [0] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[1] liberi
+ Nel vasoio 1	[6] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 5 e devo lasciare un vassoio che richiede 2  posti
+Thread 5 ha lasciato il vassoio in residuo [1] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[1] liberi
+ Nel vasoio 1	[4] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 5 e devo lasciare un vassoio che richiede 1  posti
+Thread 5 ha lasciato il vassoio in residuo [0] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[4] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 5 e devo lasciare un vassoio che richiede 1  posti
+Thread 5 ha lasciato il vassoio in residuo [1] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[3] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 5 e devo lasciare un vassoio che richiede 1  posti
+Thread 5 ha lasciato il vassoio in residuo [1] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[2] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 4 e devo lasciare un vassoio che richiede 1  posti
+Thread 4 ha lasciato il vassoio in residuo [1] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[1] liberi
+ Nel vasoio 2	[6] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 4 e devo lasciare un vassoio che richiede 2  posti
+Thread 4 ha lasciato il vassoio in residuo [2] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[1] liberi
+ Nel vasoio 2	[4] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 4 e devo lasciare un vassoio che richiede 2  posti
+Thread 4 ha lasciato il vassoio in residuo [2] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[1] liberi
+ Nel vasoio 2	[2] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 4 e devo lasciare un vassoio che richiede 2  posti
+Thread 4 ha lasciato il vassoio in residuo [2] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[1] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[6] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 4 e devo lasciare un vassoio che richiede 2  posti
+Thread 4 ha lasciato il vassoio in residuo [3] occupando 2 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[1] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[4] liberi
+ Nel vasoio 4	[6] liberi
+
+Ciao sono il thread CLIENTE 4 e devo lasciare un vassoio che richiede 1  posti
+Thread 4 ha lasciato il vassoio in residuo [1] occupando 1 posti e se ne va
+	 SITUAZIONE ATTUALE:
+ Nel vasoio 0	[0] liberi
+ Nel vasoio 1	[0] liberi
+ Nel vasoio 2	[0] liberi
+ Nel vasoio 3	[4] liberi
+ Nel vasoio 4	[6] liberi
+Pthread 4-esimo restituisce 10 <- tot posti occupati
+Pthread 5-esimo restituisce 9 <- tot posti occupati
+Pthread 6-esimo restituisce 8 <- tot posti occupati
+Pthread 7-esimo restituisce 10 <- tot posti occupati
+Pthread 8-esimo restituisce 11 <- tot posti occupati
+Pthread 9-esimo restituisce 7 <- tot posti occupati
+
+Process finished with exit code 0
