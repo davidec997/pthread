@@ -23,31 +23,23 @@ void myInit(){
 
 }
 
-int controllaSpazio(int spazio){
-    int i,index;
-    index = -1;
-    //pthread_mutex_lock(&m);
-    for (i = 0; i < M; i++) {
-        if (residuo[i] >= spazio){
-            index = i;
-            break;
-        }
-    }
-    //pthread_mutex_unlock(&m);
-    return index;
-}
 
 void svuotaVassoio(){
     printf("Sono L ADDETTO  e STO DORMENDO\n");
+
     pthread_mutex_lock(&m);
-    pthread_cond_wait(&pieno,&m);
+    while(!addettoAttivo)
+        pthread_cond_wait(&pieno,&m);
+        //pthread_mutex_lock(&m);  SE PRENDO IL MUTEX QUI VA IN DEADLOCK !!!!!!!
+
+
 
     printf("Sono L ADDETTO  e SONO STATO SVEGLIATO\n");
-    //addettoAttivo = true;
     for (int i = 0; i < M; i++) residuo [i] = K;
     sleep(1);
-    //addettoAttivo = false;
+    addettoAttivo = false;
     printf("Sono L ADDETTO  e HO SVUOTATO I VASSOI\n");
+
     pthread_mutex_unlock(&m);
     pthread_cond_broadcast(&vuoto);
 
@@ -74,10 +66,24 @@ void *eseguiAddetto(void * id){
     pthread_exit((void *) ptr);
 }
 
+int controllaSpazio(int spazio){
+    int i,index;
+    index = -1;
+    //pthread_mutex_lock(&m);
+    for (i = 0; i < M; i++) {
+        if (residuo[i] >= spazio){
+            index = i;
+            break;
+        }
+    }
+    //pthread_mutex_unlock(&m);
+    return index;
+}
+
 void chiamaAddetto(int id){
     printf("Thread %d sta svegliando l addetto \n",id);
+    addettoAttivo = true;
     pthread_cond_signal(&pieno);
-    pthread_cond_wait(&vuoto,&m);
 
 }
 
@@ -97,21 +103,21 @@ void *eseguiCliente(void *id)
 
     for (int t = 0; t < NTIMES; ++t) {
 
-        pthread_mutex_lock(&m);
         r = rand() % 2 + 1;
+        pthread_mutex_lock(&m);
+
         printf("\nCiao sono il thread CLIENTE %d e devo lasciare un vassoio che richiede %d  posti\n",*pi,r);
         index = controllaSpazio(r);
-        //pthread_mutex_unlock(&m);
 
-        while( index == -1){
-            chiamaAddetto(*pi);
-            index = controllaSpazio(r);
-
+        while( (controllaSpazio(r) == -1)){
+            if (!addettoAttivo) chiamaAddetto(*pi);
+            pthread_cond_wait(&vuoto,&m);
         }
+
         sleep(1);
         residuo[index] -= r;
         posti_occupati += r;
-        printf("Thread %d ha lasciato il vassoio in residuo[%d] occupando %d posti e se ne va\n",*pi,index,r);
+        printf("Thread %d ha lasciato il vassoio in residuo [%d] occupando %d posti e se ne va\n",*pi,index,r);
         printf("\t SITUAZIONE ATTUALE:\n");
         for (int t = 0; t < M; t++) {
             printf(" Nel vasoio %d\t[%d] liberi\n",t,residuo[t]);

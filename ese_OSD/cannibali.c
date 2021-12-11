@@ -98,12 +98,6 @@ void *eseguiCannibale(void *id)
             pthread_cond_wait(&pieno,&m);
         }
 
-       /* if(appena_mangiato == *pi) {
-            printf("\t\tCANNIBALE  %d ha appena mangiato... vengo deschedulato\n");
-            pthread_cond_broadcast(&pieno);
-            pthread_yield();
-        }*/
-
         porzioni --;
         sleep(2); // sleep dentro la SC altrimenti mangiano troppo velocemente
         printf("Thread %d CANNIBALE HA MANGIATO e se ne va\n",*pi);
