@@ -5,7 +5,6 @@
 #include <unistd.h>
 #include <semaphore.h>
 
-#define NTIMES 30
 #define ROSSO 0
 #define GIALLO 1
 #define VERDE 2
@@ -102,7 +101,6 @@ void sveglia_bloccati(struct incrocio_t *s){
 void *timer (void *arg){
     Boolean direzione = false; //0 --> direzione verticale 1--> direzione orizzontale
     while(1){
-        //sleep(1);
         rosso(&incrocio,direzione);
         printf("\t\t\t\t\t\tSEMAFORO [%d] E [%d] ROSSO\n",0,1);
         verde(&incrocio,!direzione);
@@ -173,8 +171,8 @@ void termina_attraversamento (struct incrocio_t *s, int sem_arrivo,int *pi) {
 
 void arrivo_al_semaoro(struct incrocio_t *s,int sem_arrivo,int *pi){
     //registro che sono arrivato al semaforo
-    //inserisco il mio id in coda
     //controllo se c'e' posto nella coda
+    //inserisco il mio id in coda
 
     //MUTEX
     pthread_mutex_lock(&s->mtx);
