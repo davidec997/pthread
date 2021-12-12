@@ -76,7 +76,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/Sistemi_Embedded/incrocio_stradale.c">
+		<Unit filename="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/Sistemi_Embedded/incrocio_semplificato.c">
 			<Option target="vari"/>
 		</Unit>
 		<Unit filename="/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/CMakeLists.txt">
