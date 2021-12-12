@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/Sistemi_Embedded/incrocio_semplificato.c
+/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/Sistemi_Embedded/incrocio_stradale.c
 stdio.h
 -
 stdlib.h

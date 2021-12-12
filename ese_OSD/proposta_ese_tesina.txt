@@ -17,7 +17,8 @@ PROBLEMI PROPOSTI PER LA TESINA
 
 
 
-    Domanda: L'esercizio proposto e' fattibile? Quale sarebbe la complessita'? [facile] [medio] [complesso]
+    Domanda: L'esercizio proposto e' fattibile? Quale sarebbe la complessita'? [facile] [medio] [complesso].
+
 
 
 

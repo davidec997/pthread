@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/Sistemi_Embedded/incrocio_semplificato.c" "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles/vari.dir/Sistemi_Embedded/incrocio_semplificato.c.o"
+  "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/Sistemi_Embedded/incrocio_stradale.c" "/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/CMakeFiles/vari.dir/Sistemi_Embedded/incrocio_stradale.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

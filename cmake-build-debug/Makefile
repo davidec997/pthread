@@ -129,29 +129,29 @@ vari/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/build
 .PHONY : vari/fast
 
-Sistemi_Embedded/incrocio_semplificato.o: Sistemi_Embedded/incrocio_semplificato.c.o
-.PHONY : Sistemi_Embedded/incrocio_semplificato.o
+Sistemi_Embedded/incrocio_stradale.o: Sistemi_Embedded/incrocio_stradale.c.o
+.PHONY : Sistemi_Embedded/incrocio_stradale.o
 
 # target to build an object file
-Sistemi_Embedded/incrocio_semplificato.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/incrocio_semplificato.c.o
-.PHONY : Sistemi_Embedded/incrocio_semplificato.c.o
+Sistemi_Embedded/incrocio_stradale.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/incrocio_stradale.c.o
+.PHONY : Sistemi_Embedded/incrocio_stradale.c.o
 
-Sistemi_Embedded/incrocio_semplificato.i: Sistemi_Embedded/incrocio_semplificato.c.i
-.PHONY : Sistemi_Embedded/incrocio_semplificato.i
+Sistemi_Embedded/incrocio_stradale.i: Sistemi_Embedded/incrocio_stradale.c.i
+.PHONY : Sistemi_Embedded/incrocio_stradale.i
 
 # target to preprocess a source file
-Sistemi_Embedded/incrocio_semplificato.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/incrocio_semplificato.c.i
-.PHONY : Sistemi_Embedded/incrocio_semplificato.c.i
+Sistemi_Embedded/incrocio_stradale.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/incrocio_stradale.c.i
+.PHONY : Sistemi_Embedded/incrocio_stradale.c.i
 
-Sistemi_Embedded/incrocio_semplificato.s: Sistemi_Embedded/incrocio_semplificato.c.s
-.PHONY : Sistemi_Embedded/incrocio_semplificato.s
+Sistemi_Embedded/incrocio_stradale.s: Sistemi_Embedded/incrocio_stradale.c.s
+.PHONY : Sistemi_Embedded/incrocio_stradale.s
 
 # target to generate assembly for a file
-Sistemi_Embedded/incrocio_semplificato.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/incrocio_semplificato.c.s
-.PHONY : Sistemi_Embedded/incrocio_semplificato.c.s
+Sistemi_Embedded/incrocio_stradale.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vari.dir/build.make CMakeFiles/vari.dir/Sistemi_Embedded/incrocio_stradale.c.s
+.PHONY : Sistemi_Embedded/incrocio_stradale.c.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... vari"
-	@echo "... Sistemi_Embedded/incrocio_semplificato.o"
-	@echo "... Sistemi_Embedded/incrocio_semplificato.i"
-	@echo "... Sistemi_Embedded/incrocio_semplificato.s"
+	@echo "... Sistemi_Embedded/incrocio_stradale.o"
+	@echo "... Sistemi_Embedded/incrocio_stradale.i"
+	@echo "... Sistemi_Embedded/incrocio_stradale.s"
 .PHONY : help
 
 
