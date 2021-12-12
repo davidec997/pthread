@@ -86,23 +86,8 @@ void giallo(struct incrocio_t *s){
 void sveglia_bloccati(struct incrocio_t *s){
     // il semaforo verde si occupa di svegliare la  macchina se e' bloccata
 
-     //faccio n post
-    //pthread_mutex_lock(&s->mtx);
-
-    /*for (int i = 0; i < s->coda_macchine; i++) {
-        //sem_post(&s->semaforo);
-        s->coda_macchine --;
-    }*/
-    //pthread_mutex_unlock(&s->mtx);
-
     pthread_cond_broadcast(&s->stop);
 
-   /* if (s->stato == VERDE && s->coda_macchine > 0) {
-        for (int j = 0; j < s->coda_macchine; ++j) {
-            sem_post(&s->semaforo);
-            s->coda_macchine --;
-        }
-    }*/
 }
 
 
