@@ -28,10 +28,10 @@ void servi(){
     sem_wait(&m);
     sedie_libere ++;
     printf("\tSono il Barbiere e Sto servendo un cliente...\n ");
+    sleep(1);
     sem_post(&m);
     sem_post(&barber);
 
-    sleep(2);
 }
 
 

@@ -123,7 +123,7 @@ void *eseguiCliente(void *id)
             printf(" Nel vasoio %d\t[%d] liberi\n",t,residuo[t]);
         }
         pthread_mutex_unlock(&m);
-
+        sleep(2);
     }
 
     *ptr = posti_occupati;

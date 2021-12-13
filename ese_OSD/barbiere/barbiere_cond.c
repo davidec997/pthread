@@ -32,15 +32,12 @@ void myInit(void)
 
 void servi(){
     pthread_mutex_lock(&m);
-    while ( clienti_in_attesa == 0)
-        pthread_cond_wait(&cust,&m);
+    pthread_cond_wait(&cust,&m);
     clienti_in_attesa--;
     sedie_libere ++;
     printf(" Sono il Barbiere e Sto servendo un cliente...\n ");
     pthread_mutex_unlock(&m);
-    pthread_cond_signal(&barb);
-
-    sleep(2);
+    pthread_cond_broadcast( &barb);
 
 }
 
@@ -50,21 +47,23 @@ void richiedi_servizio(int pi){
     ptr = (int *) malloc(sizeof(int));
 
     pthread_mutex_lock(&m);
-    while(sedie_libere <= 0){
+    if(sedie_libere <= 0){
         printf("Il cliente %d ha trovato tutte le sedie occupate e se ne va...\n",pi);
         //clienti_in_attesa ++;
         pthread_mutex_unlock(&m);
         //pthread_cond_wait(&cust,&m);
         sleep(3);
+    } else{
+        clienti_in_attesa ++;
+        sedie_libere--;
+        printf("SEDIE LIBERE %d\n", sedie_libere);
+        pthread_mutex_unlock(&m);
+        pthread_cond_signal(&cust); //??
+        pthread_cond_wait(&barb,&m);
+        printf("SONO IL CLIENTE %d IL BARBIERE MI STA SERVENDO...\n", pi);
     }
-    clienti_in_attesa ++;
-    sedie_libere--;
-    printf("SEDIE LIBERE %d\n", sedie_libere);
-    pthread_mutex_unlock(&m);
-    pthread_cond_signal(&cust); //??
-    pthread_cond_wait(&barb,&m);
-    printf("SONO IL CLIENTE %d IL BARBIERE MI STA SERVENDO...\n", pi);
-    sleep(1);
+
+    //sleep(2);
 }
 
 void *customerRoutine(int id) {

@@ -14,16 +14,13 @@ Boolean cuoco_sveglio;
 pthread_cond_t vuoto,pieno;
 pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
 int porzioni ;
-//per evitare starvation introduco una variabile int col l'indice del processo che indica se il thread i-esimo ha appen mangiato.
-//in questo caso verra' deschedulato.
-int appena_mangiato;
 
 void myInit(){
 
     pthread_cond_init(&vuoto,NULL);
     pthread_cond_init(&pieno,NULL);
     cuoco_sveglio = false;
-    porzioni = M;
+    porzioni = 0;
 }
 
 
