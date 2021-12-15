@@ -1,5 +1,4 @@
-
-// devo farlo senza ciclo.. e fare che una macchina che e' arrivata dopo ad un incrocio, non puo passare se quella che la precede non ha attraversato
+//ok
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -16,13 +15,12 @@ typedef int T;
 
 int valGlobale;
 struct mailbox_t {
-    int stato;
     int* coda_circolare;
     int head , tail;
     int n_msg;
     pthread_cond_t vuota,piena,letto_da_tutti,nuovo_msg,stop;
     pthread_mutex_t mtx;
-    int conferma_lettura[3];
+    int *conferma_lettura[3];
  }mailbox;
 /*
 
@@ -31,33 +29,25 @@ struct busta_t{
     int priorita;
 }busta;
 */
+Boolean check_lettura (struct mailbox_t *mb);
 
 void init_mailbox(struct mailbox_t *mb){
 
     pthread_cond_init(&mb->vuota, NULL);
     pthread_cond_init(&mb->piena, NULL);
     pthread_cond_init(&mb->letto_da_tutti, NULL);
-    pthread_cond_init(&mb->nuovo_msg, NULL);
+    //pthread_cond_init(&mb->nuovo_msg, NULL);
     pthread_cond_init(&mb->stop, NULL);
 
     pthread_mutex_init(&mb->mtx, NULL);
-    mb->stato = -1;
     mb->head = mb->tail = 0;
     mb->coda_circolare = malloc(N * sizeof (int*));
     for (int j = 0; j < N; ++j) mb->coda_circolare[j] = (int*)-1;
-    mb->conferma_lettura[0] = mb->conferma_lettura[1] = mb->conferma_lettura[2] = 0;
+    for (int i = 0; i < 3; ++i) mb->conferma_lettura[i] = (int*)0;
     mb->n_msg = 0;
 
 }
 
-
-/*
-void sveglia_bloccati(struct mailbox_t *s){
-    // il semaforo verde si occupa di svegliare la  macchina se e' bloccata
-
-    pthread_cond_broadcast(&s->stop);
-
-}*/
 
 void genera_msg(struct mailbox_t *mb){
     //controllo se c'e' posto nella mailbox
@@ -71,21 +61,28 @@ void genera_msg(struct mailbox_t *mb){
     T msg = valGlobale;
     valGlobale ++;
     mb->coda_circolare[mb->head] = msg;
-    printf("[SERVER]\t\tHo appena generato un msg e messo in mb[%d]\n",mb->head);
+    printf("\n\n[SERVER]\t\tHO APPENA GENERATO IL MESSAGGIO '%d'E MESSO IN MAILBOX[%d]\n",msg,mb->head);
     mb->head = (mb->head + 1) % N;
     mb->n_msg ++;
 
     pthread_cond_broadcast(&mb->piena);
-    pthread_cond_broadcast(&mb->nuovo_msg);
+    //pthread_cond_broadcast(&mb->nuovo_msg);
 
-    pthread_cond_broadcast(&mb->letto_da_tutti);
-
-
-    //ora spetto che tutti e 3 i receivers abbiano letto il msg
-    // while(!check_lettura(&mailbox))
-    //pthread_cond_wait(&mb->letto_da_tutti,&mb->mtx);
-
+    //pthread_cond_broadcast(&mb->letto_da_tutti);
     pthread_mutex_unlock(&mb->mtx);
+    sleep(4);
+    //ora spetto che tutti e 3 i receivers abbiano letto il msg
+    pthread_mutex_lock(&mb->mtx);
+
+    while(!check_lettura(&mailbox))
+        pthread_cond_wait(&mb->letto_da_tutti,&mb->mtx);
+
+    for (int i = 0; i < 3; ++i) mb->conferma_lettura [i] = (int*)0;
+    mb->tail = (mb->tail + 1) % N;
+    mb->n_msg --;
+    pthread_mutex_unlock(&mb->mtx);
+    pthread_cond_broadcast(&mb->stop);
+
 }
 
 void *generatore (void * id){
@@ -97,8 +94,8 @@ void *generatore (void * id){
         exit(-1);
     }
     while(1){
-        sleep(1);
         genera_msg(&mailbox);
+        //sleep(1);
     }
     *ptr = 0;
     pthread_exit((void *) ptr);
@@ -109,11 +106,10 @@ Boolean check_lettura (struct mailbox_t *mb){
     Boolean  ok = true;
     for (int i = 0; i < 3; i++) {
         if (mb->conferma_lettura[i] != 1) {
-            printf("[CHECK FUNC] HO TROVATO UNO CHE NO HA LETTO [%d] [%d] [%d]\n",mb->conferma_lettura[i]);
+            printf("[CHECK FUNC]\t\t%d --> Non ha ancora letto \n",i);
             ok = false;
         }
     }
-    printf("[CHECK FUNC]  HANNO LETTO TUTTI [%d] [%d] [%d]\n",mb->conferma_lettura[0],mb->conferma_lettura[1],mb->conferma_lettura[2]);
     return ok;
 }
 
@@ -121,41 +117,36 @@ Boolean check_lettura (struct mailbox_t *mb){
 void leggi (struct mailbox_t *mb, int *pi){
     T msg;
     Boolean letto;
-
-    while (&mb->n_msg <= 0)
-        pthread_cond_wait(&mb->piena,&mb->mtx);
-
     //leggo
 
-    //aspetto la notifica di un nuovo messaggio
-    pthread_cond_wait(&mb->nuovo_msg,&mb->mtx);
-
     msg = mb->coda_circolare[mb->tail];
-    printf("[RECEIVER %d]\t\t Ho letto il messaggio\t%d dalla posizione\t[%d]\n",*pi,msg,mb->tail);
+    printf("[RECEIVER %d]\t\t HO LETTO IL MESSAGGIO\t%d DALLA POSIZIONE\t[%d]\n",*pi,msg,mb->tail);
 
     //segno anche che ho letto
-    //printf("\t\t\t\tSTO PER METTERE UN 1 IN POSIZIONE %d\n",*pi);
-    mb->conferma_lettura[*pi] = 1;
+    mb->conferma_lettura[(int)*pi] = (int*)1;
     printf("\t\t\t\t[SITUAZIONE] %d\t%d\t%d\n",mb->conferma_lettura[0],mb->conferma_lettura[1],mb->conferma_lettura[2]);
 
-    letto = check_lettura(mb);
-    if (check_lettura(mb) != true){
+    /*while (check_lettura(mb) != true){
         printf("[RECEIVER %d] MI BLOCCO \n",*pi);
-        pthread_cond_wait(&mb->letto_da_tutti,&mb->mtx);
-        printf("[RECEIVER %d] MI SSBLOCCO \n",*pi);
-    } else {
-        pthread_cond_broadcast(&mb->letto_da_tutti);
-        mb->tail = (mb->tail + 1) % N;
-        mb->n_msg --;
-        for (int i = 0; i < 3; i++) mb->conferma_lettura[i] = 0;
+        pthread_cond_wait(&mb->stop,&mb->mtx);
+    }*/
+    if (check_lettura(mb)){
+        pthread_cond_signal(&mb->letto_da_tutti);
+        printf("[CHECK FUNC]  Hanno letto tutti [%d] [%d] [%d]\n",mb->conferma_lettura[0],mb->conferma_lettura[1],mb->conferma_lettura[2]);
+
     }
+    //printf("[RECEIVER %d] MI SBLOCCO \n",*pi);
+    pthread_cond_signal(&mb->vuota);
+    pthread_cond_wait(&mb->stop,&mb->mtx);
+
+    printf("[RECEIVER %d]\t\tRiparto \n",*pi);
 }
 
 void ricevi (struct mailbox_t *mb, int *pi){
     //controllo se c' e' qualcosa da leggere
     int * indice = (int*) pi;
 
-    printf("ECCO IL MIO INDICE \t\t\t\t\t%d\n",*indice );
+    //printf("ECCO IL MIO INDICE \t\t\t\t\t%d\n",*indice );
 
     pthread_mutex_lock(&mb->mtx);
     while (mb->n_msg <= 0){
@@ -233,26 +224,22 @@ int main (int argc, char **argv)
 
     srand(555);
 
-    taskids[0] = 0; taskids[1] = 1;taskids[2] = 2;taskids[3] = 3;
-    pthread_create(&thread[0], NULL, receiver, (void *) (&taskids[0]));
-    pthread_create(&thread[1], NULL, receiver, (void *) (&taskids[1]));
-    pthread_create(&thread[2], NULL, receiver, (void *) (&taskids[2]));
-    pthread_create(&thread[3], NULL, generatore, (void *) (&taskids[3]));
 
     sleep(2);
-
-    /*for (i=0; i < NUM_THREADS; i++)
-    {
+    for (i=0; i < NUM_THREADS; i++) {
         taskids[i] = i;
-        // printf("Sto per creare il thread %d-esimo\n", taskids[i]);
-        if (pthread_create(&thread[i], NULL, receiver, (void *) (&taskids[i])) != 0)
-        {
-            sprintf(error,"SONO IL MAIN E CI SONO STATI PROBLEMI DELLA CREAZIONE DEL thread %d-esimo\n", taskids[i]);
-            perror(error);
-            exit(5);
+        if (i == NUM_THREADS - 1) {
+
+            pthread_create(&thread[i], NULL, generatore, (void *) (&taskids[i]));
+        } else {
+            if (pthread_create(&thread[i], NULL, receiver, (void *) (&taskids[i])) != 0) {
+                sprintf(error, "SONO IL MAIN E CI SONO STATI PROBLEMI DELLA CREAZIONE DEL thread %d-esimo\n",
+                        taskids[i]);
+                perror(error);
+                exit(5);
+            }
         }
-        //printf("SONO IL MAIN e ho creato il Pthread %i-esimo con id=%lu\n", i, thread[i]);
-    }*/
+    }
 
     for (i=0; i < NUM_THREADS; i++)
     {
