@@ -32,12 +32,15 @@ void myInit(void)
 
 void servi(){
     pthread_mutex_lock(&m);
-    pthread_cond_wait(&cust,&m);
+    if (clienti_in_attesa <= 0)
+        pthread_cond_wait(&cust,&m);
+
     clienti_in_attesa--;
     sedie_libere ++;
-    printf(" Sono il Barbiere e Sto servendo un cliente...\n ");
+    printf("\t\tSono il Barbiere e Sto servendo un cliente...\n ");
+    sleep(2);
     pthread_mutex_unlock(&m);
-    pthread_cond_broadcast( &barb);
+    pthread_cond_signal( &barb);
 
 }
 
@@ -56,18 +59,22 @@ void richiedi_servizio(int pi){
     } else{
         clienti_in_attesa ++;
         sedie_libere--;
-        printf("SEDIE LIBERE %d\n", sedie_libere);
-        pthread_mutex_unlock(&m);
-        pthread_cond_signal(&cust); //??
+        if (clienti_in_attesa <= 1)
+            pthread_cond_signal(&cust);
+
         pthread_cond_wait(&barb,&m);
+
+        printf("SEDIE LIBERE %d\t Clienti in attesa %d\n", sedie_libere, clienti_in_attesa);
+        pthread_mutex_unlock(&m);
+      //  pthread_cond_signal(&cust); //??
         printf("SONO IL CLIENTE %d IL BARBIERE MI STA SERVENDO...\n", pi);
     }
 
-    //sleep(2);
+    sleep(5);
 }
 
-void *customerRoutine(int id) {
-    //int *pi = (int *) id;
+void *customerRoutine(void * id) {
+    int *pi = (int *) id;
     int *ptr;
     ptr = (int *) malloc(sizeof(int));
     if (ptr == NULL) {
@@ -76,7 +83,7 @@ void *customerRoutine(int id) {
     }
     printf("Sono il thread cliente %d\n",id);
     for (;;) {
-        richiedi_servizio(id);
+        richiedi_servizio(pi);
     }
 
     *ptr = NULL;
@@ -85,8 +92,8 @@ void *customerRoutine(int id) {
 
 
 
-void *barberRoutine(int id) {
-    //int *pi = (int *) id;
+void *barberRoutine(void * id) {
+    int *pi = (int *) id;
     int *ptr;
     ptr = (int *) malloc(sizeof(int));
     if (ptr == NULL) {
@@ -94,7 +101,7 @@ void *barberRoutine(int id) {
         exit(-1);
     }
     int clineti_serviti =1;
-    printf("Sono il thread barbiere %d\n",id);
+    printf("Sono il thread barbiere %d\n",pi);
     for (;;){
         //sleep(1);
         servi();
