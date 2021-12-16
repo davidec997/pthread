@@ -1,5 +1,4 @@
-
-//NON VA
+//OK!
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -9,7 +8,7 @@
 #define CARTA 0
 #define SASSO 1
 #define FORBICE 2
-char *nomi_mosse[3] = {"carta", "sasso", "forbice"};
+char *nomi_mosse[3] = {"CARTA", "SASSO", "FORBICE"};
 pthread_mutex_t m;
 pthread_cond_t g1,g2,ar;
 int mossag1,mossag2;
@@ -106,7 +105,7 @@ void *arbitro(void *arg)
 
 }
 
-void *th_votante(void *arg)
+void *giocatore1(void *arg)
 {
     //int *pi = (int *) arg;
     int t = 1;

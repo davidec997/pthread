@@ -43,18 +43,7 @@ void *generatore_H(void *id) {
         write(1,"-H",2);
         write(1,"H",1);
         sem_post(&sem_O);
-        /*if (n_H == 1) {
-            printf("H");
-            n_H = 0;
-            sem_post(&m);
-            sem_post(&sem_O);
-            //sleep(2);
-        } else {
-            printf("-H");
-            n_H = 1;
-            sem_post(&m);
-            sem_post(&sem_H);
-        }*/
+
     }
 
 }
