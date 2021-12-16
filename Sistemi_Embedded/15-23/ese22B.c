@@ -1,16 +1,13 @@
-//non va
-
+//OK
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
 #include <unistd.h>
-#include <semaphore.h>
 
-#define NTIMES 30
 #define N 10 // dimensione coda
 
 typedef enum {false, true} Boolean;
-char *receivers [3] = {"RECEIVER A", "RECEIVER B", "RECEIVER C"};
+//char *receivers [3] = {"RECEIVER A", "RECEIVER B", "RECEIVER C"};
 typedef int T;
 
 int valGlobale;
@@ -18,19 +15,13 @@ struct mailbox_t {
     int* coda_circolare;
     int head , tail;
     int n_msg;
-    pthread_cond_t vuota,piena,letto_da_tutti,asp_index,stop;
+    pthread_cond_t vuota,piena,letto_da_tutti,stop;
     pthread_mutex_t mtx;
     int *conferma_lettura[3];
     pthread_cond_t synch[3];
     int turno;
 }mailbox;
-/*
 
-struct busta_t{
-    T messaggio;
-    int priorita;
-}busta;
-*/
 Boolean check_lettura (struct mailbox_t *mb);
 
 void init_mailbox(struct mailbox_t *mb){
@@ -38,7 +29,6 @@ void init_mailbox(struct mailbox_t *mb){
     pthread_cond_init(&mb->vuota, NULL);
     pthread_cond_init(&mb->piena, NULL);
     pthread_cond_init(&mb->letto_da_tutti, NULL);
-    pthread_cond_init(&mb->asp_index, NULL);
     pthread_cond_init(&mb->stop, NULL);
 
     pthread_mutex_init(&mb->mtx, NULL);
@@ -51,7 +41,6 @@ void init_mailbox(struct mailbox_t *mb){
     }
     mb->n_msg = 0;
     mb->turno = 0;
-
 }
 
 void genera_msg(struct mailbox_t *mb){
@@ -70,6 +59,7 @@ void genera_msg(struct mailbox_t *mb){
     mb->head = (mb->head + 1) % N;
     mb->n_msg ++;
 
+    // introduci int blccati_su_vuota
     pthread_cond_broadcast(&mb->piena);
 
     //pthread_cond_broadcast(&mb->letto_da_tutti);
@@ -158,8 +148,7 @@ void ricevi (struct mailbox_t *mb, int *pi){
     }
     //controllo se il mio indice puo leggere o deve aspettare che leggano prima gli altri
     while(mb->turno != *pi){
-        //if (mb->turno == 1) pthread_cond_signal(&mb->synch[1]);
-        //if (mb->turno == 2) pthread_cond_signal(&mb->synch[2]);
+
         printf("[RECEIVER %d] TURNO %d\n",*pi,mb->turno);
 
         pthread_cond_signal(&mb->synch[mb->turno]);
