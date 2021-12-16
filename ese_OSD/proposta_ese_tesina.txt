@@ -19,6 +19,19 @@ PROBLEMI PROPOSTI PER LA TESINA
 
     Domanda: l'esercizio proposto e' fattibile? Quale sarebbe la complessita'? [facile] [medio] [complesso].
 
+2) Un processo mittente invia periodicamente messaggi di un tipo T , a tre processi
+    riceventi (ricevente1, ricevente2, ricevente3). I messaggi inviati devono essere ricevuti (ovviuamente in
+    ordine FIFO) da tutti e tre i processi riceventi.
+    Il meccanismo di comunicazione e` costituito da una mailbox realizzata tramite un buffer circolare di N
+    posizioni.
+    a)  utilizzando il meccanismo semaforico, realizzare la precedente mailbox rispettando i seguenti criteri:
+    a1) ogni messaggio deve essere ricevuto dai tre riceventi prima di essere eliminato dalla mailbox
+        senza che debba essere previsto nessun ordine particolare fra i processi riceventi (ad esempio un
+        messaggio puo` essere ricevuto prima da ricevente1, poi da ricevente3 e quindi da ricevente2
+        mentre per altri messaggi puo` essere diverso l'ordine di ricezione da parte dei vari riceventi).
+    a2) ripetere la soluzione ma con il vincolo che ogni messaggio deve essere ricevuto esattamenrte nel
+        seguente ordine: prima da ricevente1, poi da ricevente2 e infine da ricevente3.
+
 
 
 
