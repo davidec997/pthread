@@ -22,6 +22,7 @@ struct mailbox_t {
     pthread_mutex_t mtx;
     int *conferma_lettura[3];
     pthread_cond_t synch[3];
+    int turno;
 }mailbox;
 /*
 
@@ -49,9 +50,9 @@ void init_mailbox(struct mailbox_t *mb){
         pthread_cond_init(&mb->synch[i],NULL);
     }
     mb->n_msg = 0;
+    mb->turno = 0;
 
 }
-
 
 void genera_msg(struct mailbox_t *mb){
     //controllo se c'e' posto nella mailbox
@@ -137,54 +138,37 @@ void leggi (struct mailbox_t *mb, int *pi){
     //printf("[RECEIVER %d] MI SBLOCCO \n",*pi);
     pthread_cond_signal(&mb->vuota);
     //prima di bloccarmi devo svegliare i processi bloccati per l'indice
-    if ( *pi == 0 || *pi == 1) pthread_cond_signal(&mb->synch[*pi + 1]);
+    if (mb->turno != 2)
+        mb->turno ++;
+    else mb->turno = 0;
+
+    pthread_cond_signal(&mb->synch[mb->turno]);
     pthread_cond_wait(&mb->stop,&mb->mtx);
 
     printf("[RECEIVER %d]\t\tRiparto \n",*pi);
 }
 
-int read_index (struct  mailbox_t *mb){
-    int i;
-    int index = -1;
-
-    for (i = 0; mb->conferma_lettura[i] != 0; i++);
-   /* for (i = 0; i<3; i++){
-        printf("conferma lettura %d\n",mb->conferma_lettura[i]);
-        if (mb->conferma_lettura[i] == 0){
-            index = i;
-            printf("index %d\n",index);
-        }
-    }*/
-    // i vale 0 se [0] [0] [0] --> deve leggere il primo receiver
-    // i vale 1 se [1] [0] [0] --> deve leggere il secondo
-    // i vale 2 se [1] [1] [0] --> deve leggere il terzo
-    printf("STO PER RITORNARE %d\n",i);
-
-    return index;
-}
-
 void ricevi (struct mailbox_t *mb, int *pi){
     //controllo se c' e' qualcosa da leggere
     int * indice = (int*) pi;
-
-    //printf("ECCO IL MIO INDICE \t\t\t\t\t%d\n",*indice );
-
     pthread_mutex_lock(&mb->mtx);
     while (mb->n_msg <= 0){
         printf("[RECEIVER %d] MAILBOX VUOTA\n",*pi);
         pthread_cond_wait(&mb->piena,&mb->mtx);
     }
-
     //controllo se il mio indice puo leggere o deve aspettare che leggano prima gli altri
-    if (*pi != 0) pthread_cond_wait(&mb->synch[*pi],&mb->mtx);
+    while(mb->turno != *pi){
+        //if (mb->turno == 1) pthread_cond_signal(&mb->synch[1]);
+        //if (mb->turno == 2) pthread_cond_signal(&mb->synch[2]);
+        printf("[RECEIVER %d] TURNO %d\n",*pi,mb->turno);
 
-    /*while ((int *)read_index(mb) > *pi){
-        printf("[RECEIVER %d] ME BLOCCO\n",*pi);
-        pthread_cond_wait(&mb->asp_index,&mb->mtx);
-        printf("[RECEIVER %d] ME SBLOCCO\n",*pi);
+        pthread_cond_signal(&mb->synch[mb->turno]);
+        pthread_cond_wait(&mb->synch[*pi],&mb->mtx);
+        printf("[RECEIVER %d] TURNO %d ME BLOCCO\n",*pi,mb->turno);
 
+    }
 
-    }*/
+    printf("[RECEIVER %d] TURNO %d ME SBLOCCO\n",*pi,mb->turno);
     leggi(&mailbox,indice);
 
     pthread_mutex_unlock(&mb->mtx);
@@ -260,7 +244,6 @@ int main (int argc, char **argv)
     for (i=0; i < NUM_THREADS; i++) {
         taskids[i] = i;
         if (i == NUM_THREADS - 1) {
-
             pthread_create(&thread[i], NULL, generatore, (void *) (&taskids[i]));
         } else {
             if (pthread_create(&thread[i], NULL, receiver, (void *) (&taskids[i])) != 0) {
