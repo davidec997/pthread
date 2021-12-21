@@ -1,4 +1,4 @@
-/*
+/*  DA AGGIUSTARE
  Un gestore G alloca dinamicamente le risorse R1,...., RM, appartenenti ad un pool di risorse equivalenti,
 ai processi P1,..., Pn. Ogni processo puo` richiedere al gestore l'uso di una risorsa, mediante la procedura
 Richiesta1, oppure di due risorse contemporaneamente, mediante la procedura Richiesta2. Dopo l'uso il
@@ -179,7 +179,8 @@ void *eseguiCliente(void *id)
     }
 
     for (int i = 0; i < N; i++) {
-        sleep(rand()%10 + 1);
+       // sleep(rand()%10 + 1);
+        sleep(1);
         r = rand() % 3;
         printf("[PROC %d]\tVUOLE\t%s\n\n",*pi,scelte[r]);
         switch (r) {
