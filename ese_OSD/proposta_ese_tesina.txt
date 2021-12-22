@@ -17,9 +17,8 @@ PROBLEMI PROPOSTI PER LA TESINA
 
 
 
-    Domanda: l'esercizio proposto e' fattibile? Quale sarebbe la complessita'? [facile] [medio] [complesso].
 
-2) Un processo mittente invia periodicamente messaggi di un tipo T , a tre processi
+2) Un processo mittente invia periodicamente messaggi di un tipo T, a tre processi
     riceventi (ricevente1, ricevente2, ricevente3). I messaggi inviati devono essere ricevuti (ovviuamente in
     ordine FIFO) da tutti e tre i processi riceventi.
     Il meccanismo di comunicazione e` costituito da una mailbox realizzata tramite un buffer circolare di N
@@ -32,6 +31,12 @@ PROBLEMI PROPOSTI PER LA TESINA
     a2) ripetere la soluzione ma con il vincolo che ogni messaggio deve essere ricevuto esattamenrte nel
         seguente ordine: prima da ricevente1, poi da ricevente2 e infine da ricevente3.
 
+ Nella sezione Esercizi -> Monitor in pseudo-pascal del link http://didattica.agentgroup.unimo.it/didattica/psoNOD/
+    ho scelto questi 2 esercizi
+
+3) Esercizio del centro prelievi
+
+4) Esercizio dell'autolavaggio
 
 
 
