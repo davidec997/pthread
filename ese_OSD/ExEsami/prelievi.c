@@ -26,7 +26,7 @@ risorse.
 
 //typedef enum {false, true} Boolean;
 
-int lettini_liberi;
+int lettini_liberi, donatori_bloccati, pazienti_bloccati;
 sem_t m, medico, pazienti;
 
 void myInit(void)
@@ -39,7 +39,7 @@ void myInit(void)
 }
 
 
-void servi(){
+void effettua_prelievo(){
     sem_wait(&pazienti);
     sem_wait(&m);
     lettini_liberi ++;
@@ -51,27 +51,22 @@ void servi(){
 }
 
 
-void richiedi_servizio(int pi, int * taglio){
+void richiedi_prelievo(int pi, int * prelievo){
     int * ptr;
     ptr = (int *) malloc(sizeof(int));
     sem_wait(&m);
-    //se mi sono gia tagliato i capelli me ne vado def
-    if (*taglio > 0){
-        *ptr = *taglio;
-        sem_post(&m);
-        pthread_exit((void *) ptr);
-    }
+
 
     if(lettini_liberi <= 0) {
-        printf("Il cliente %d ha trovato tutte le sedie occupate e se ne va...\n",pi);
+        printf("Il paziente %d ha trovato tutti i letini occupati e se ne va...\n",pi);
         sem_post(&m);
         sleep(3);
     } else {
         lettini_liberi--;
-        printf("SEDIE LIBERE %d\n", lettini_liberi);
-        sem_post(&pazienti); //sveglio il barb
-        *taglio += 1;
-        printf("SONO IL CLIENTE %d IL BARBIERE MI STA SERVENDO...\n", pi);
+        printf("LETTINI LIBERI %d\n", lettini_liberi);
+        sem_post(&pazienti); //sveglio il medico
+        *prelievo += 1;
+        printf("SONO IL PAZIENTE %d IL MEDICO MI STA FACENDO IL PRELIEVO...\n", pi);
         sem_post(&m);
         sem_wait(&medico);
         sleep(1);
@@ -87,10 +82,10 @@ void *customerRoutine(void *id) {
         perror("Problemi con l'allocazione di ptr\n");
         exit(-1);
     }
-    printf("Sono il thread cliente %d\n",*pi);
+    printf("Sono il thread paziente %d\n",*pi);
 
     for (int f =0; f< NTIMES; f++) {
-        richiedi_servizio(*pi,&taglio);
+        richiedi_prelievo(*pi, &taglio);
     }
 
     *ptr = taglio;
@@ -99,7 +94,7 @@ void *customerRoutine(void *id) {
 }
 
 
-void *barberRoutine(void * id) {
+void *doctorRoutine(void * id) {
     int *pi = (int *) id;
     int *ptr;
     ptr = (int *) malloc(sizeof(int));
@@ -107,13 +102,13 @@ void *barberRoutine(void * id) {
         perror("Problemi con l'allocazione di ptr\n");
         exit(-1);
     }
-    int clineti_serviti =1;
-    printf("Sono il thread barbiere %d\n",*pi);
+    int pazienti_serviti =1;
+    printf("Sono il thread dottore %d\n",*pi);
     for (;;){
         //sleep(1);
-        servi();
-        printf("\tSono il barbiere e Ho servito  %d clienti ...\n",clineti_serviti);
-        clineti_serviti ++;
+        effettua_prelievo();
+        printf("\tSono il dottore e ho effettuato il prelievo a  %d pazienti ...\n", pazienti_serviti);
+        pazienti_serviti ++;
     }
 
     *ptr = *pi;
@@ -163,7 +158,7 @@ int main (int argc, char **argv)
     }
 
     //genero il trhead 0 barbiere
-    pthread_create(&thread[0], NULL, barberRoutine, (void *) (&taskids[0]));
+    pthread_create(&thread[0], NULL, doctorRoutine, (void *) (&taskids[0]));
 
     for (i=1; i < NUM_THREADS; i++)
     {

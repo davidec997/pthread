@@ -1,21 +1,20 @@
-//PERFETTO
-/*In un autolavaggio vengono lavati due tipi di veicoli: auto
-e camper. L’autolavaggio può lavare più auto
-contemporaneamente. I camper possono essere lavati solo
-se non ci sono né auto né un altro camper in lavaggio, e
-hanno priorità sulle auto. Quando arriva un’auto, deve dare
-la precedenza agli eventuali camper in attesa.
+/*
+ In un centro per il prelievo del sangue lavora un medico
+che ha a disposizione L lettini. Le persone che effettuano il
+prelievo si dividono in due categorie: donatori e pazienti.
+Ogni persona può iniziare il prelievo solo quando è
+disponibile il medico e c’è almeno un lettino vuoto, altrimenti
+aspetta. Dopo che il medico ha iniziato il prelievo, la
+persona aspetta che il medico finisca il prelievo. Terminato il
+prelievo, dopo essersi ripresa, la persona libera il lettino.
+Nella soluzione si tenga presente che i donatori hanno la
+precedenza sui pazienti.
 Si implementi una soluzione usando il costrutto monitor per
-modellare l’autolavaggio e i processi per modellare i
-veicoli e si descriva la sincronizzazione tra i processi. Nella
-soluzione si massimizzi l'utilizzo delle risorse. Si discuta se
-la soluzione proposta può presentare starvation e in caso
-positivo per quali processi, e si propongano modifiche e/o
-aggiunte per evitare starvation.*/
-
-//le auto sono i lettori
-//i camper sono gli scrittori
-
+modellare il centro prelievi e i processi per modellare il
+medico e le persone e si descriva la sincronizzazione tra i
+processi. Nella soluzione si massimizzi l’utilizzo delle
+risorse.
+ * */
 #include <unistd.h>
 #include <pthread.h>
 #include <stdio.h>
@@ -25,56 +24,70 @@ aggiunte per evitare starvation.*/
 #define POSTI 3
 #define NTIMES 10
 typedef enum {false,true} Boolean;
-int auto_in_lavaggio, auto_bloccate;
-int camper_in_lavaggio, camper_bloccati;
-sem_t s_auto, s_camper,m;
+int auto_in_lavaggio, pazienti_blocc;
+int camper_in_lavaggio, donatori_blocc;
+sem_t s_pazienti, s_donatori,m;
 int risorsa;
-int posti_liberi;
+int lettini_liberi;
+Boolean dottore_libero;
 
 void myInit(void)
 {
     sem_init(&m,0,1);
-    sem_init(&s_auto, 0, 0);
-    sem_init(&s_auto, 0, 0);
-    posti_liberi = POSTI;
-    auto_in_lavaggio = auto_bloccate = camper_in_lavaggio = camper_bloccati = 0;
+    sem_init(&s_pazienti, 0, 0);
+    sem_init(&s_pazienti, 0, 0);
+    lettini_liberi = POSTI;
+    auto_in_lavaggio = pazienti_blocc = camper_in_lavaggio = donatori_blocc = 0;
+    dottore_libero = true;
 }
 
-void inizioLettura(){
+void inizio_prelievo( Boolean tipo){
+    // tipo --> se 0 e' un donatore con max priorita, se 1 e' paziente normale.
     sem_wait(&m);
-    if(!camper_in_lavaggio && !camper_bloccati  && posti_liberi > 0){
+    // devo controllare se ci sono lettini liberi e se non ci sono donatori in attesa
+    if (tipo){
+
+    }
+
+    if( dottore_libero && lettini_liberi > 0){
+        if (tipo){
+            // se sono un paziente normale devo dare precendeza ai donatori
+            if ( donatori_blocc > 0){
+
+            }
+        }
         auto_in_lavaggio ++;
-        posti_liberi --;
-        sem_post(&s_auto); // post previa
+        lettini_liberi --;
+        sem_post(&s_pazienti); // post previa
     }else{
-        auto_bloccate ++;
+        pazienti_blocc ++;
     }
     sem_post(&m);
-    sem_wait(&s_auto);
+    sem_wait(&s_pazienti);
 }
 
 void svegliaAuto (){
     int auto_da_svegliare = 0;
-    if (auto_bloccate > POSTI)
+    if (pazienti_blocc > POSTI)
         auto_da_svegliare = POSTI; // se ho piu di NPOSTI auto bloccate, non le sveglio tutte
-     else
-        auto_da_svegliare = auto_bloccate; // altrimenti posso svegliarle tutte
+    else
+        auto_da_svegliare = pazienti_blocc; // altrimenti posso svegliarle tutte
 
     while (auto_da_svegliare > 0){
-        auto_bloccate--;
+        pazienti_blocc--;
         auto_in_lavaggio++;
-        sem_post(&s_auto);
+        sem_post(&s_pazienti);
     }
 }
 
 void fineLettura(){
     sem_wait(&m);
     auto_in_lavaggio --;
-    posti_liberi ++;
+    lettini_liberi ++;
 
-    if(!auto_in_lavaggio && camper_bloccati > 0){
-        sem_post(&s_camper);
-        camper_bloccati --;
+    if(!auto_in_lavaggio && donatori_blocc > 0){
+        sem_post(&s_donatori);
+        donatori_blocc --;
         camper_in_lavaggio ++;
     }
     sem_post(&m);
@@ -83,29 +96,29 @@ void fineLettura(){
 void inizioScrittura(){
     sem_wait(&m);
     if(!camper_in_lavaggio && !auto_in_lavaggio){
-        sem_post(&s_camper);
+        sem_post(&s_donatori);
         camper_in_lavaggio++;
     } else{
-        camper_bloccati ++;
+        donatori_blocc ++;
     }
     sem_post(&m);
-    sem_wait(&s_camper);
+    sem_wait(&s_donatori);
 }
 
 void fineScrittura(){
     sem_wait(&m);
     camper_in_lavaggio --;
-    if(auto_bloccate > 0){
+    if(pazienti_blocc > 0){
         //svegliaAuto();
-        while(auto_bloccate > 0 && posti_liberi > 0) {
-            auto_bloccate--;
+        while(pazienti_blocc > 0 && lettini_liberi > 0) {
+            pazienti_blocc--;
             auto_in_lavaggio++;
-            sem_post(&s_auto);
+            sem_post(&s_pazienti);
         }
-    } else if (camper_bloccati > 0){
-        camper_bloccati--;
+    } else if (donatori_blocc > 0){
+        donatori_blocc--;
         camper_in_lavaggio ++;
-        sem_post(&s_camper);
+        sem_post(&s_donatori);
     }
 
     sem_post(&m);
@@ -143,7 +156,7 @@ void *eseguiAuto(void *id) {
     }
 
     for(int t =1;t<NTIMES;t++){
-        inizioLettura();
+        inizio_prelievo();
         printf("[AUTO %d]  mi sto lavando\n",*pi);
         sleep(3);
         fineLettura();
@@ -246,6 +259,7 @@ int main (int argc, char **argv)
 
     exit(0);
 }
+
 
 
 
