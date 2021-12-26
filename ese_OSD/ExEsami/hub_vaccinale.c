@@ -25,13 +25,12 @@ risorse.
 #include <stdlib.h>
 #include <semaphore.h>
 
-#define POSTI 3
+#define DOTTORI 3
 #define NTIMES 3
 typedef enum {false,true} Boolean;
 int  dosi_blocc [3];
 sem_t prima_dose, seconda_dose, terza_dose, m;
-int lettini_liberi;
-Boolean dottore_libero;
+int dottori_liberi;
 sem_t s_dosi [3];
 char *elenco_dosi [3] = {"PRIMA", "SECONDA", "TERZA"};
 
@@ -43,23 +42,22 @@ void myInit(void)
         dosi_blocc [i] = 0;
     }
 
-    lettini_liberi = POSTI;
-    dottore_libero = true;
+    dottori_liberi = DOTTORI;
 }
 
 void okVaccino ( int * pi, int dose){
-    lettini_liberi --;
-    dottore_libero = false;
+    dottori_liberi --;
+    //dottore_libero = false;
     sem_post(&s_dosi[dose]);
-    printf("[Persona %d] Ok per la %s dose.\n", *pi, elenco_dosi[dose]);
-    printf("\n[SERVICE]\t\t\t Lettini liberi: %d\n",lettini_liberi);
+    printf("[THREAD %d]\tOk per la %s dose.\n", *pi, elenco_dosi[dose]);
+    printf("\n[SERVICE]\t\t Dottori liberi: %d\n", dottori_liberi);
 
 }
 
 void notOkVaccino ( int * pi, int dose){
     dosi_blocc[dose] ++;
-    printf("\t\t[Persona %d] Bloccato per la %s dose.\n", *pi,elenco_dosi[dose]);
-    printf("\n[SERVICE] Bloccati per la %s dose: %d\n",elenco_dosi[dose], dosi_blocc[dose]);
+    printf("[THREAD %d]\tBloccato per la %s dose.\n", *pi,elenco_dosi[dose]);
+    printf("\n[SERVICE]\t\tBloccati per la %s dose: %d\n",elenco_dosi[dose], dosi_blocc[dose]);
 }
 
 void vaccino (int * pi,int dose){
@@ -67,19 +65,19 @@ void vaccino (int * pi,int dose){
     sem_wait(&m);
     switch (dose) {
         case 0:
-            if (lettini_liberi > 0 && dottore_libero)  // posso vaccinarmi
+            if (dottori_liberi > 0 )  // posso vaccinarmi
                 okVaccino(pi,dose);
             else
                 notOkVaccino(pi, dose);
             break;
         case 1:
-            if (lettini_liberi > 0 && dottore_libero && dosi_blocc[0] == 0)
+            if (dottori_liberi > 0 && dosi_blocc[0] == 0)
                 okVaccino(pi,dose);
             else
                 notOkVaccino(pi,dose);
             break;
         case 2:
-            if (lettini_liberi > 0 && dottore_libero && dosi_blocc[0] == 0  && dosi_blocc[1] == 0)
+            if (dottori_liberi > 0 && dosi_blocc[0] == 0 && dosi_blocc[1] == 0)
                 okVaccino(pi, dose);
             else
                 notOkVaccino(pi, dose);
@@ -94,14 +92,13 @@ void vaccino (int * pi,int dose){
 void fine_vaccino ( int * pi){
     // quando qualcuno ha finito di fare il vaccino deve svegliare chi e' in attesa
     sem_wait(&m);
-    dottore_libero = true;
-    lettini_liberi ++;
+    dottori_liberi ++;
 
     for (int i = 0; i < 3; ++i) {
         if (dosi_blocc[i] > 0){
             okVaccino(pi, i);
             dosi_blocc[i] --;
-            printf("[SERVICE]\t\t Ho svegliato qualcuno che deve fare la %s dose\n\n",elenco_dosi[i]);
+            printf("[SERVICE]\t\tHo svegliato qualcuno che deve fare la %s dose\n\n",elenco_dosi[i]);
             break;
         }
     }
@@ -109,7 +106,7 @@ void fine_vaccino ( int * pi){
 }
 
 
-void *eseguiCliente(void *id) {
+void *eseguiVaccini(void *id) {
     int *pi = (int *) id;
     int *ptr;
     ptr = (int *) malloc(sizeof(int));
@@ -122,32 +119,18 @@ void *eseguiCliente(void *id) {
 
     //  ogni persona deve fare 3 dosi
     for(int t = 0; t<NTIMES; t++){
-        printf("[THREAD %d] Devo fare la %s dose del vaccino\n",*pi,elenco_dosi[dose]);
+        sleep(rand() % 8);
+        printf("[THREAD %d]\tDevo fare la %s dose del vaccino\n",*pi,elenco_dosi[dose]);
         vaccino(pi, dose);
-        sleep(2);
+        sleep(3);
+        printf("[THREAD %d]\tMi sto vaccinando....\n",*pi);
         fine_vaccino(pi);
-        printf("[THREAD %d]  Ho fatto la %s dose del vaccino\n",*pi,elenco_dosi[dose]);
+        printf("[THREAD %d]\tHo fatto la %s dose del vaccino\n\n",*pi,elenco_dosi[dose]);
         dose ++;
-
-        sleep(5);
     }
     *ptr = dose;
     pthread_exit((void *) ptr);
 }
-/*
-void *eseguiDottore ( void * id) {
-    *//*int *pi = (int *) id;
-    int *ptr;
-    ptr = (int *) malloc(sizeof(int));
-
-    if (ptr == NULL) {
-        perror("Problemi con l'allocazione di ptr\n");
-        exit(-1);
-    }
-
-    *ptr = *pi;
-    pthread_exit((void *) ptr);*//*
-}*/
 
 int main (int argc, char **argv)
 {
@@ -191,14 +174,11 @@ int main (int argc, char **argv)
         exit(4);
     }
 
-    //genero il trhead 0 dottore
-   // pthread_create(&thread[0], NULL, eseguiDottore, (void *) (&taskids[0]));
-
     for (i=0; i < NUM_THREADS; i++)
     {
         taskids[i] = i;
         // printf("Sto per creare il thread %d-esimo\n", taskids[i]);
-        if (pthread_create(&thread[i], NULL, eseguiCliente, (void *) (&taskids[i])) != 0)
+        if (pthread_create(&thread[i], NULL, eseguiVaccini, (void *) (&taskids[i])) != 0)
         {
             sprintf(error,"SONO IL MAIN E CI SONO STATI PROBLEMI DELLA CREAZIONE DEL thread %d-esimo\n", taskids[i]);
             perror(error);
@@ -213,7 +193,7 @@ int main (int argc, char **argv)
         /* attendiamo la terminazione di tutti i thread customers */
         pthread_join(thread[i], (void**) & p);
         ris= *p;
-        printf("Pthread %d-esimo restituisce %d  -->numero di volte che si e' vaccinato\n", i, ris);
+        printf("Pthread %d-esimo restituisce %d  --> numero di volte che si e' vaccinato\n", i, ris);
     }
 
     //pthread_mutex_destroy(&m);
