@@ -27,11 +27,12 @@ risorse.
 
 #define DOTTORI 3
 #define NTIMES 3
+
 typedef enum {false,true} Boolean;
 int  dosi_blocc [3];
 sem_t prima_dose, seconda_dose, terza_dose, m;
-int dottori_liberi;
 sem_t s_dosi [3];
+int dottori_liberi;
 char *elenco_dosi [3] = {"PRIMA", "SECONDA", "TERZA"};
 
 void myInit(void)
@@ -47,7 +48,6 @@ void myInit(void)
 
 void okVaccino ( int * pi, int dose){
     dottori_liberi --;
-    //dottore_libero = false;
     sem_post(&s_dosi[dose]);
     printf("[THREAD %d]\tOk per la %s dose.\n", *pi, elenco_dosi[dose]);
     printf("\n[SERVICE]\t\t Dottori liberi: %d\n", dottori_liberi);
@@ -67,7 +67,7 @@ void vaccino (int * pi,int dose){
         case 0:
             if (dottori_liberi > 0 )  // posso vaccinarmi
                 okVaccino(pi,dose);
-            else
+            else                     // non posso vaccinarmi
                 notOkVaccino(pi, dose);
             break;
         case 1:
@@ -90,7 +90,7 @@ void vaccino (int * pi,int dose){
 }
 
 void fine_vaccino ( int * pi){
-    // quando qualcuno ha finito di fare il vaccino deve svegliare chi e' in attesa
+    // quando qualcuno ha finito di fare il vaccino deve svegliare chi e' in attesa e ha precedenza
     sem_wait(&m);
     dottori_liberi ++;
 
@@ -110,6 +110,7 @@ void *eseguiVaccini(void *id) {
     int *pi = (int *) id;
     int *ptr;
     ptr = (int *) malloc(sizeof(int));
+
     int dose = 0;
 
     if (ptr == NULL) {
@@ -120,14 +121,17 @@ void *eseguiVaccini(void *id) {
     //  ogni persona deve fare 3 dosi
     for(int t = 0; t<NTIMES; t++){
         sleep(rand() % 8);
+
         printf("[THREAD %d]\tDevo fare la %s dose del vaccino\n",*pi,elenco_dosi[dose]);
         vaccino(pi, dose);
         sleep(3);
+
         printf("[THREAD %d]\tMi sto vaccinando....\n",*pi);
         fine_vaccino(pi);
         printf("[THREAD %d]\tHo fatto la %s dose del vaccino\n\n",*pi,elenco_dosi[dose]);
         dose ++;
     }
+
     *ptr = dose;
     pthread_exit((void *) ptr);
 }
@@ -159,7 +163,7 @@ int main (int argc, char **argv)
     }
 
     myInit();
-    srand(555);
+    srand(time(NULL));
 
     thread=(pthread_t *) malloc(NUM_THREADS * sizeof(pthread_t));
     if (thread == NULL)
