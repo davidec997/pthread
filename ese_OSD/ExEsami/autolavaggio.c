@@ -13,23 +13,22 @@ la soluzione proposta può presentare starvation e in caso
 positivo per quali processi, e si propongano modifiche e/o
 aggiunte per evitare starvation.*/
 
-//le auto sono i lettori
-//i camper sono gli scrittori
-
 #include <unistd.h>
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <semaphore.h>
 
-#define POSTI 3
-#define NTIMES 10
+#define POSTI 4     // numero di auto che l'autolavaggio puo lavare contemporaneamente
+#define NTIMES 5
+
 typedef enum {false,true} Boolean;
+
 int auto_in_lavaggio, auto_bloccate;
 int camper_in_lavaggio, camper_bloccati;
+int posti_liberi;                           // posti disponibili per le macchine
 sem_t s_auto, s_camper,m;
-int risorsa;
-int posti_liberi;
+
 
 void myInit(void)
 {
@@ -40,7 +39,7 @@ void myInit(void)
     auto_in_lavaggio = auto_bloccate = camper_in_lavaggio = camper_bloccati = 0;
 }
 
-void inizio_prelievo(){
+void inizioLavaggio(){
     sem_wait(&m);
     if(!camper_in_lavaggio && !camper_bloccati  && posti_liberi > 0){
         auto_in_lavaggio ++;
@@ -53,34 +52,23 @@ void inizio_prelievo(){
     sem_wait(&s_auto);
 }
 
-void svegliaAuto (){
-    int auto_da_svegliare = 0;
-    if (auto_bloccate > POSTI)
-        auto_da_svegliare = POSTI; // se ho piu di NPOSTI auto bloccate, non le sveglio tutte
-     else
-        auto_da_svegliare = auto_bloccate; // altrimenti posso svegliarle tutte
 
-    while (auto_da_svegliare > 0){
-        auto_bloccate--;
-        auto_in_lavaggio++;
-        sem_post(&s_auto);
-    }
-}
-
-void fineLettura(){
+void fineLavaggio(){
     sem_wait(&m);
     auto_in_lavaggio --;
     posti_liberi ++;
 
-    if(!auto_in_lavaggio && camper_bloccati > 0){
+    if(!auto_in_lavaggio && camper_bloccati > 0 ){
         sem_post(&s_camper);
         camper_bloccati --;
         camper_in_lavaggio ++;
     }
+
     sem_post(&m);
 }
 
-void inizioScrittura(){
+
+void inizioLavaggioCamper(){
     sem_wait(&m);
     if(!camper_in_lavaggio && !auto_in_lavaggio){
         sem_post(&s_camper);
@@ -92,14 +80,15 @@ void inizioScrittura(){
     sem_wait(&s_camper);
 }
 
-void fineScrittura(){
+
+void fineLavaggioCamper(){
     sem_wait(&m);
     camper_in_lavaggio --;
     if(auto_bloccate > 0){
-        //svegliaAuto();
         while(auto_bloccate > 0 && posti_liberi > 0) {
             auto_bloccate--;
             auto_in_lavaggio++;
+            posti_liberi --;
             sem_post(&s_auto);
         }
     } else if (camper_bloccati > 0){
@@ -111,9 +100,11 @@ void fineScrittura(){
     sem_post(&m);
 }
 
+
 void *eseguiCamper(void *id) {
     int *pi = (int *) id;
     int *ptr;
+    int lavaggi = 0;
     ptr = (int *) malloc(sizeof(int));
     if (ptr == NULL) {
         perror("Problemi con l'allocazione di ptr\n");
@@ -121,20 +112,23 @@ void *eseguiCamper(void *id) {
     }
 
     for(int t =1;t<NTIMES;t++){
-        inizioScrittura();
+        inizioLavaggioCamper();
         //risorsa += 1;
-        printf("[CAMPER %d]  mi sto lavando\n",*pi);
-        sleep(6);
-        fineScrittura();
+        printf("[CAMPER %d]\t\tSotto i rulli dell'autolavaggio\n",*pi);
+        sleep(4);
+        fineLavaggioCamper();
+        lavaggi ++;
     }
 
-    *ptr = *pi;
+    *ptr = lavaggi;
     pthread_exit((void *) ptr);
 }
+
 
 void *eseguiAuto(void *id) {
     int *pi = (int *) id;
     int *ptr;
+    int lavaggi = 0;
     ptr = (int *) malloc(sizeof(int));
 
     if (ptr == NULL) {
@@ -143,17 +137,18 @@ void *eseguiAuto(void *id) {
     }
 
     for(int t =1;t<NTIMES;t++){
-        inizioLettura();
-        printf("[AUTO %d]  mi sto lavando\n",*pi);
-        sleep(3);
-        fineLettura();
+        inizioLavaggio();
+        printf("[AUTO %d]\t\tSotto i rulli dell'autolavaggio\n",*pi);
+        sleep(2);
+        fineLavaggio();
+        lavaggi ++;
     }
-    *ptr = *pi;
+    *ptr = lavaggi;
     pthread_exit((void *) ptr);
 }
 
-int main (int argc, char **argv)
-{
+
+int main (int argc, char **argv) {
     pthread_t *thread_auto;
     pthread_t *thread_camper;
 
@@ -211,7 +206,7 @@ int main (int argc, char **argv)
             perror(error);
             exit(5);
         }
-        printf("SONO IL MAIN e ho creato il Pthread AUTO %i-esimo con id=%lu\n", i, thread_auto[i]);
+        //printf("SONO IL MAIN e ho creato il Pthread AUTO %i-esimo con id=%lu\n", i, thread_auto[i]);
     }
     for (i= 0; i < NUM_CAMPER ; i++)
     {
@@ -223,10 +218,11 @@ int main (int argc, char **argv)
             perror(error);
             exit(5);
         }
-        printf("SONO IL MAIN e ho creato il Pthread CAMPER %i-esimo con id=%lu\n", i, thread_camper[i]);
+        //printf("SONO IL MAIN e ho creato il Pthread CAMPER %i-esimo con id=%lu\n", i, thread_camper[i]);
     }
 
     sleep(2);
+
 
     for (i=0; i < NUM_AUTO; i++)
     {
@@ -234,14 +230,14 @@ int main (int argc, char **argv)
         /* attendiamo la terminazione di tutti i thread generati */
         pthread_join(thread_auto[i], (void**) & p);
         ris= p;
-        printf("Pthread  %d-esimo restituisce %d\n", i, *ris);
+        printf("Auto %d-esima restituisce %d <-- numero di volte che e' stata lavata\n", i, *ris);
     }
     for (i=0; i < NUM_CAMPER; i++)
     {
         int ris;
         pthread_join(thread_camper[i], (void**) & p);
         ris= *p;
-        printf("Pthread Scrittore %d-esimo restituisce %d\n", i, ris);
+        printf("Camper %d-esimo restituisce %d <-- numero di volte che e' stato lavato\n", i, ris);
     }
 
     exit(0);
