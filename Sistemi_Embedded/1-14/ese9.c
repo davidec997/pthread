@@ -22,9 +22,10 @@ struct mailbox_t {
     int* coda_circolare;
     int head , tail;
     int n_msg;
-    pthread_cond_t vuota,piena,reset;
+    pthread_cond_t vuota,piena,reset, *synch;
     pthread_mutex_t mtx;
     Boolean mb_ok;
+    int turno;
 }mailbox;
 
 
@@ -34,27 +35,43 @@ void init_mailbox(struct mailbox_t *mb){
     pthread_cond_init(&mb->piena, NULL);
     pthread_cond_init(&mb->reset, NULL);
 
+    mb->synch= malloc(S*sizeof (pthread_cond_t));
 
     pthread_mutex_init(&mb->mtx, NULL);
     mb->head = mb->tail = 0;
     mb->coda_circolare = malloc(S * sizeof (int*));
-    for (int j = 0; j < S; ++j) mb->coda_circolare[j] = (int*)-1;
+    for (int j = 0; j < S; ++j){
+        mb->coda_circolare[j] = (int*)-1;
+        pthread_cond_init(&mb->synch[j],NULL);
+    }
     mb->n_msg = 0;
+    mb->turno = 0;
     mb->mb_ok = false;
-
 }
 
 
 void genera_msg(struct mailbox_t *mb, int *pi){
-    //controllo se c'e' posto nella mailbox
+
+    //controllo se e' il mio turno
+
     pthread_mutex_lock(&mb->mtx);
+
+    while(mb->turno != *pi){
+        printf("[SENDER %d] TURNO %d\n",*pi,mb->turno);
+        pthread_cond_signal(&mb->synch[mb->turno]);
+        printf("[SENDER %d] TURNO %d MI BLOCCO\n",*pi,mb->turno);
+        pthread_cond_wait(&mb->synch[*pi],&mb->mtx);
+    }
+
+
+    //controllo se c'e' posto nella mailbox
     while (mb->n_msg >=S){
         //aspetto perche' la mailbox e' piena
         printf("[SERVER] MAILBOX PIENA\n");
         pthread_cond_wait(&mb->vuota ,&mb->mtx);
     }
     //posso generare il msg
-    T msg = *pi;
+    T msg = rand() % 20;
     //valGlobale ++;
     mb->coda_circolare[mb->head] = msg;
     printf("[SENDER %d]\t\tHo appena generato il msg %d e messo in mb[%d]\n",*pi,msg,mb->head);
@@ -64,12 +81,13 @@ void genera_msg(struct mailbox_t *mb, int *pi){
     if (mb->n_msg == S)  {
         pthread_cond_signal(&mb->piena);
         mb->mb_ok = true;
-    }
+        mb->turno = 0;
+    } else
+        mb->turno = (mb->turno + 1) % S;
 
+    pthread_cond_signal(&mb->synch[mb->turno]);
     pthread_mutex_unlock(&mb->mtx);
-   // pthread_cond_wait(&mb->reset,&mb->mtx);
-   // pthread_mutex_unlock(&mb->mtx);     //???
-
+    //devo svegliare i processi bloccati per l'indice
 }
 
 void *generatore (void * id){
@@ -88,6 +106,20 @@ void *generatore (void * id){
     pthread_exit((void *) ptr);
 }
 
+void resetta (struct mailbox_t *mb){
+
+    pthread_mutex_lock(&mb->mtx);
+    mb->tail = 0;
+    mb->head = 0;
+    mb->n_msg = 0;
+    mb->mb_ok = false;
+    mb->turno = 0;
+    pthread_mutex_unlock(&mb->mtx);
+    pthread_cond_signal(&mb->synch[mb->turno]);
+
+
+}
+
 
 void leggi (struct mailbox_t *mb, int *pi){
     T msg;
@@ -101,16 +133,16 @@ void leggi (struct mailbox_t *mb, int *pi){
         msg = mb->coda_circolare[mb->tail];
         printf("[RECEIVER %d]\t\t Ho letto il messaggio\t%d dalla posizione\t[%d]\n",*pi,msg,mb->tail);
         mb->tail = (mb->tail + 1) % S;
-        mb->n_msg --;
+        //mb->n_msg --;
     }
 
     printf("[RECEIVER %d]\t\t HO SVUOTATO LA MAILBOX.. NUOVO GIRO\n",*pi,msg,mb->tail);
 
-    mb->tail = 0;
-    mb->head = 0;
-    mb->n_msg = 0;
+    //resetta(mb);
     mb->mb_ok = false;
-    pthread_cond_broadcast(&mb->vuota);
+    mb->n_msg = 0;
+
+    pthread_cond_signal(&mb->vuota);
 
 }
 
