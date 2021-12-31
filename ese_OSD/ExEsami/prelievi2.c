@@ -51,7 +51,7 @@ void inizio_prelievo( Boolean tipo){
 
     if( dottore_libero && lettini_liberi > 0){
         if (tipo){
-            // se sono un paziente normale devo dare precendeza ai donatori
+            // se sono un paziente normale devo dare precedenza ai donatori
             if ( donatori_blocc > 0){
 
             }
