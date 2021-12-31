@@ -22,7 +22,7 @@ struct mailbox_t {
     int* coda_circolare;
     int head , tail;
     int n_msg;
-    pthread_cond_t vuota,piena,reset, *synch,gruppo;
+    pthread_cond_t vuota,piena,reset, *synch,gruppo,stop;
     pthread_mutex_t mtx;
     Boolean mb_ok;
     int turno;
@@ -35,6 +35,8 @@ void init_mailbox(struct mailbox_t *mb){
     pthread_cond_init(&mb->vuota, NULL);
     pthread_cond_init(&mb->piena, NULL);
     pthread_cond_init(&mb->reset, NULL);
+    pthread_cond_init(&mb->stop, NULL);
+
 
     mb->synch= malloc(S*sizeof (pthread_cond_t));
 
@@ -65,9 +67,9 @@ void genera_msg(struct mailbox_t *mb, int *pi){
         mygroup = 1;
 
     // VERIFICO SE SONO IL PRIMO AD ENTRARE
-    if (mb->turno == 0 && mb->grp == -1) {
+    if (mb->turno == 0 ) {
         // sono il primo e nessuno ha ancora scritto sulla mb
-        //blocco il mutex del gruppo
+        //setto il gruppo
         // INDICI DA 0 A 4 <-- GRUPPO A    INDICI DA 10 A 14 GRUPPO B
         if (*pi > 9) {
             mb->grp = 2;
@@ -83,6 +85,7 @@ void genera_msg(struct mailbox_t *mb, int *pi){
     }
 
     //controllo se e' il mio turno
+    // DEVI MODIFICARE IL TURNO CHE ORA PUO ARRIVARE FINO A 14
     while(mb->turno != *pi) {
         printf("[SENDER %d] TURNO %d\n",*pi,mb->turno);
         pthread_cond_signal(&mb->synch[mb->turno]);
@@ -113,7 +116,9 @@ void genera_msg(struct mailbox_t *mb, int *pi){
         mb->turno = (mb->turno + 1) % S;
 
     pthread_cond_signal(&mb->synch[mb->turno]);
+    //pthread_cond_wait(&mb->stop,&mb->mtx);
     pthread_mutex_unlock(&mb->mtx);
+
     //devo svegliare i processi bloccati per l'indice
 }
 
@@ -170,6 +175,14 @@ void leggi (struct mailbox_t *mb, int *pi){
     mb->n_msg = 0;
 
     pthread_cond_signal(&mb->vuota);
+    //mb->grp = -1;
+    //pthread_cond_broadcast(&mb->stop);
+    if (mb->grp == 1)
+        mb->grp = 2;
+    else
+        mb->grp = 1;
+
+    pthread_cond_broadcast(&mb->gruppo);
 
 }
 
@@ -211,8 +224,8 @@ void *receiver (void *id) {
 
 int main (int argc, char **argv)
 {
-    pthread_t *thread;
-    int *taskids;
+    pthread_t *thread,*th;
+    int *taskids,*td2;
     int i;
     int *p;
     int NUM_THREADS = 6;
@@ -238,12 +251,15 @@ int main (int argc, char **argv)
     init_mailbox(&mailbox);
 
     thread=(pthread_t *) malloc(NUM_THREADS * sizeof(pthread_t));
+    th=(pthread_t *) malloc((NUM_THREADS-1) * sizeof(pthread_t));
+
     if (thread == NULL)
     {
         perror("Problemi con l'allocazione dell'array thread\n");
         exit(3);
     }
     taskids = (int *) malloc(NUM_THREADS * sizeof(int));
+    td2 = (int *) malloc((NUM_THREADS-1) * sizeof(int));
     if (taskids == NULL)
     {
         perror("Problemi con l'allocazione dell'array taskids\n");
@@ -272,6 +288,19 @@ int main (int argc, char **argv)
         //printf("SONO IL MAIN e ho creato il Pthread %i-esimo con id=%lu\n", i, thread[i]);
     }
 
+    for (i=0; i < NUM_THREADS-1; i++){
+        td2[i] = i+10;
+        pthread_create(&th[i], NULL, generatore, (void *) (&td2[i]));
+    }
+
+/*
+        pthread_create(&th, NULL, generatore, (void*)10);
+    pthread_create(&th, NULL, generatore, (void*)11);
+    pthread_create(&th, NULL, generatore, (void*)12);
+    pthread_create(&th, NULL, generatore, (void*)13);
+    pthread_create(&th, NULL, generatore, (void*)14);*/
+
+
     for (i=0; i < NUM_THREADS; i++)
     {
         int ris;
@@ -280,6 +309,13 @@ int main (int argc, char **argv)
         ris= *p;
         printf("Pthread %d-esimo restituisce %d\n", i, ris);
     }
+
+    pthread_join(th, (void**) & p);
+    pthread_join(th, (void**) & p);
+    pthread_join(th, (void**) & p);
+    pthread_join(th, (void**) & p);
+    pthread_join(th, (void**) & p);
+
 
     exit(0);
 }
