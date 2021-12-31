@@ -24,7 +24,7 @@ risorse.
 #define N 4
 #define NTIMES 5
 
-//typedef enum {false, true} Boolean;
+typedef enum {false, true} Boolean;
 
 int lettini_liberi, donatori_bloccati, pazienti_bloccati;
 sem_t m, medico, pazienti;
@@ -43,7 +43,7 @@ void effettua_prelievo(){
     sem_wait(&pazienti);
     sem_wait(&m);
     lettini_liberi ++;
-    printf("\tSono il Medico e sto facendo un prelievo a un paziente...\n ");
+    printf("\tSono il Medico e sto facendo un prelievo a un cliente ...\n ");
     sleep(1);
     sem_post(&m);
     sem_post(&medico);
@@ -51,17 +51,23 @@ void effettua_prelievo(){
 }
 
 
-void richiedi_prelievo(int pi, int * prelievo){
+void richiedi_prelievo(int pi, int * prelievo, Boolean donatore){
     int * ptr;
     ptr = (int *) malloc(sizeof(int));
     sem_wait(&m);
 
-
-    if(lettini_liberi <= 0) {
+    if(lettini_liberi <= 0 e) {
         printf("Il paziente %d ha trovato tutti i letini occupati e se ne va...\n",pi);
         sem_post(&m);
         sleep(3);
     } else {
+        if (!donatore){
+            // se non sono un donatore devo anche controllare che non ci siano donatori in attesa
+            if ( donatori_bloccati > 0) {
+
+            }
+        }
+
         lettini_liberi--;
         printf("LETTINI LIBERI %d\n", lettini_liberi);
         sem_post(&pazienti); //sveglio il medico
@@ -77,6 +83,7 @@ void *customerRoutine(void *id) {
     int *pi = (int *) id;
     int *ptr;
     int *taglio = 0;
+    Boolean  donatore;
     ptr = (int *) malloc(sizeof(int));
     if (ptr == NULL) {
         perror("Problemi con l'allocazione di ptr\n");
@@ -84,8 +91,10 @@ void *customerRoutine(void *id) {
     }
     printf("Sono il thread paziente %d\n",*pi);
 
+    donatore = rand() % 2;
+
     for (int f =0; f< NTIMES; f++) {
-        richiedi_prelievo(*pi, &taglio);
+        richiedi_prelievo(*pi, &taglio, donatore);
     }
 
     *ptr = taglio;

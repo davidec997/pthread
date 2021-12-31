@@ -43,7 +43,7 @@ void init_mailbox(struct mailbox_t *mb){
     mb->turno = 0;
 }
 
-void genera_msg(struct mailbox_t *mb){
+void send1(struct mailbox_t *mb){
     //controllo se c'e' posto nella mailbox
     pthread_mutex_lock(&mb->mtx);
     while (mb->n_msg >= N){

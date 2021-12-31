@@ -1,4 +1,4 @@
-//
+// aggiusta la terminazione e altri piccoli dettagli
 //Passa 2 parametri M mittenti R ricevitori
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,23 +6,26 @@
 #include <unistd.h>
 
 #define N 10 // dimensione coda
+#define NTIMES 10
 
 typedef enum {false, true} Boolean;
-//char *receivers [3] = {"RECEIVER A", "RECEIVER B", "RECEIVER C"};
 typedef int T;
 
 int valGlobale;
+int R,M;
+
 struct mailbox_t {
     int* coda_circolare;
     int head , tail;
     int n_msg;
     pthread_cond_t vuota,piena;
     pthread_mutex_t mtx;
+    pthread_cond_t *synch;
     int turno;
+    int bloccati_su_vuota, bloccati_su_piena;
 
 }mailbox;
 
-Boolean check_lettura (struct mailbox_t *mb);
 
 void init_mailbox(struct mailbox_t *mb){
 
@@ -33,19 +36,24 @@ void init_mailbox(struct mailbox_t *mb){
     mb->head = mb->tail = 0;
     mb->coda_circolare = malloc(N * sizeof (int*));
     for (int j = 0; j < N; ++j) mb->coda_circolare[j] = (int*)-1;
+    mb->synch = malloc(R * sizeof(pthread_cond_t));
+    for (int i = 0; i < R; i++) pthread_cond_init(&mb->synch[i],NULL);
     mb->n_msg = 0;
     mb->turno = 0;
+    mb->bloccati_su_piena = mb->bloccati_su_vuota = 0;
 
 }
 
-void genera_msg(struct mailbox_t *mb){
+void send1(struct mailbox_t *mb){
     //controllo se c'e' posto nella mailbox
 
     pthread_mutex_lock(&mb->mtx);
     while (mb->n_msg >= N){
         //aspetto perche' la mailbox e' piena
-        printf("[SERVER] MAILBOX PIENA\n");
+        printf("[SERVER]\t\tMAILBOX PIENA\n");
+        mb->bloccati_su_piena ++;
         pthread_cond_wait(&mb->vuota ,&mb->mtx);
+        mb->bloccati_su_piena --;
     }
     //posso generare il msg
     T msg = valGlobale;
@@ -53,86 +61,106 @@ void genera_msg(struct mailbox_t *mb){
     mb->coda_circolare[mb->head] = msg;
     mb->head = (mb->head + 1) % N;
     mb->n_msg ++;
-    printf("\n\n[SERVER]\t\tHO APPENA GENERATO IL MESSAGGIO '%d'E MESSO IN MAILBOX[%d]\n",msg,mb->head);
+    printf("\n\n[SERVER SEND 1]\t\tHO APPENA GENERATO IL MESSAGGIO '%d'E MESSO IN MAILBOX[%d]\n",msg,mb->head);
 
     // introduci int blccati_su_vuota
-    pthread_cond_broadcast(&mb->piena);
-
-    //pthread_cond_broadcast(&mb->letto_da_tutti);
-    pthread_mutex_unlock(&mb->mtx);
-    sleep(4);
-
-    //ora spetto che tutti e 3 i receivers abbiano letto il msg
+    if (mb->bloccati_su_vuota > 0) pthread_cond_broadcast(&mb->piena);
 
     pthread_mutex_unlock(&mb->mtx);
-    //pthread_cond_broadcast(&mb->stop);
+    sleep(2);
+}
 
+void send2(struct mailbox_t *mb){
+    //controllo se c'e' posto nella mailbox
+
+    pthread_mutex_lock(&mb->mtx);
+    while (mb->n_msg > N - 2){          // la send2 deve inserire 2 msg. Controllo quindi che ci siano 2 posti liberi per continuare
+        //aspetto perche' la mailbox e' piena
+        printf("[SERVER]\t\tMAILBOX PIENA\n");
+        mb->bloccati_su_piena ++;
+        pthread_cond_wait(&mb->vuota ,&mb->mtx);
+        mb->bloccati_su_piena --;
+    }
+    //posso generare i 2 msg
+    for (int t = 0; t < 2; ++t) {
+        T msg = valGlobale;
+        valGlobale ++;
+        mb->coda_circolare[mb->head] = msg;
+        mb->head = (mb->head + 1) % N;
+        mb->n_msg ++;
+        printf("\n\n[SERVER SEND2]\t\tHO APPENA GENERATO IL %d MESSAGGIO: '%d'E MESSO IN MAILBOX[%d]\n",t+1,msg,mb->head);
+
+    }
+
+    if (mb->bloccati_su_vuota > 0) pthread_cond_broadcast(&mb->piena); // notifico a tutti la presenza di un nuovo messaggio
+    pthread_mutex_unlock(&mb->mtx);
+    sleep(2);
 }
 
 void *mittente (void * id){
     int *pi = (int *)id;
     int *ptr;
+    int invii = 0;
     ptr = (int *) malloc( sizeof(int));
     int proc = rand() % 2;
     if (ptr == NULL){
         perror("Problemi con l'allocazione di ptr\n");
         exit(-1);
     }
-    while(1){
-        if (proc){
-            genera_msg(&mailbox);
-        }
-        //sleep(1);
+    for (int t = 0; t < NTIMES; t ++ ){
+        if (proc)
+            send1(&mailbox);
+        else
+            send2(&mailbox);
+
+        sleep(3);
+        invii ++;
     }
-    *ptr = 0;
+    *ptr = invii;
     pthread_exit((void *) ptr);
 }
 
 
 void leggi (struct mailbox_t *mb, int *pi){
     T msg;
-    Boolean letto;
     //leggo
 
     msg = mb->coda_circolare[mb->tail];
     printf("[RECEIVER %d]\t\t HO LETTO IL MESSAGGIO\t%d DALLA POSIZIONE\t[%d]\n",*pi,msg,mb->tail);
 
-    //segno anche che ho letto
-
-
-    //printf("[RECEIVER %d] MI SBLOCCO \n",*pi);
+    // aggiorno i dati nella mailbox
+    mb->tail = (mb->tail + 1) % N;
+    mb->n_msg --;
     pthread_cond_signal(&mb->vuota);
-    //prima di bloccarmi devo svegliare i processi bloccati per l'indice
-    if (mb->turno != 2)
-        mb->turno ++;
-    else mb->turno = 0;
+
+    //devo svegliare i processi bloccati per l'indice
+    mb->turno = (mb->turno + 1) % R;
 
     pthread_cond_signal(&mb->synch[mb->turno]);
-    pthread_cond_wait(&mb->stop,&mb->mtx);
-
-    printf("[RECEIVER %d]\t\tRiparto \n",*pi);
+    //printf("[RECEIVER %d]\t\tRiparto \n",*pi);
 }
 
 void ricevi (struct mailbox_t *mb, int *pi){
-    //controllo se c' e' qualcosa da leggere
     int * indice = (int*) pi;
+
     pthread_mutex_lock(&mb->mtx);
+
+    //controllo se c' e' qualcosa da leggere
     while (mb->n_msg <= 0){
-        printf("[RECEIVER %d] MAILBOX VUOTA\n",*pi);
+        printf("[RECEIVER %d qui] MAILBOX VUOTA\n",*pi);
+        mb->bloccati_su_vuota ++;
         pthread_cond_wait(&mb->piena,&mb->mtx);
+        mb->bloccati_su_vuota --;
     }
     //controllo se il mio indice puo leggere o deve aspettare che leggano prima gli altri
     while(mb->turno != *pi){
-
         printf("[RECEIVER %d] TURNO %d\n",*pi,mb->turno);
-
         pthread_cond_signal(&mb->synch[mb->turno]);
+        printf("[RECEIVER %d] TURNO %d MI BLOCCO\n",*pi,mb->turno);
         pthread_cond_wait(&mb->synch[*pi],&mb->mtx);
-        printf("[RECEIVER %d] TURNO %d ME BLOCCO\n",*pi,mb->turno);
-
     }
 
-    printf("[RECEIVER %d] TURNO %d ME SBLOCCO\n",*pi,mb->turno);
+    printf("[RECEIVER %d] TURNO %d MI SBLOCCO\n",*pi,mb->turno);
     leggi(&mailbox,indice);
 
     pthread_mutex_unlock(&mb->mtx);
@@ -141,19 +169,20 @@ void ricevi (struct mailbox_t *mb, int *pi){
 void *receiver (void *id) {
     int *pi = (int *)id;
     int *ptr;
+    int letture = 0;
     ptr = (int *) malloc( sizeof(int));
-    int n_attraversamenti=0;
     if (ptr == NULL){
         perror("Problemi con l'allocazione di ptr\n");
         exit(-1);
     }
 
-    while (1){
+    for (int t = 0; t < NTIMES + 10; t++){
         // printf("ECCO IL MIO INDICE \t%d\n",*pi);
         ricevi(&mailbox,pi);
-        sleep(1);
+        sleep(3);
+        letture ++;
     }
-    *ptr = 0;
+    *ptr = letture;
     pthread_exit((void *) ptr);
 }
 
@@ -165,7 +194,6 @@ int main (int argc, char **argv)
     int *taskidsR, *taskidsM;
     int i;
     int *p;
-    int R,M;
     char error[250];
 
     /* Controllo sul numero di parametri */
