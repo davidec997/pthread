@@ -179,7 +179,6 @@ void gestore_rilascio_busta_vuota(struct gestore_t *g, int b)
 #endif
 
 
-/* mailbox */
 
 /* la mailbox e' la struttura dati condivisa che permette di inviare e
    ricevere messaggi. la sua struttura dati condivisa b e' un array di
