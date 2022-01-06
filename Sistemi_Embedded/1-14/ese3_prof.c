@@ -1,8 +1,5 @@
-//
-// Created by davide on 02/01/22.
-//
-#define USA_SEM
 
+#define USA_SEM
 #include <stdio.h>
 #include <semaphore.h>
 #include <pthread.h>
@@ -11,10 +8,8 @@
 
 // numero buste della mailbox
 #define N 3
-
 // scrittori
 #define M 8
-
 // lettori
 #define R 5
 
@@ -22,14 +17,6 @@
 typedef int T;
 
 #define NESSUNO -1
-
-/* Nota: in questo esempio e' stata enfatizzata la separazione tra
-   gestore e struttura dati condivisa. tutto poteva tranquillamente
-   essere implementato come una sola struttura busta che al suo
-   interno conteneva sia il dato T che l'indice del successivo
-   elemento next */
-
-
 
 #ifdef USA_SEM
 
@@ -54,17 +41,6 @@ struct semaforoprivato_t {
 };
 
 struct gestore_t {
-
-    /* Domandina: questo esempio propone un mutex unico per tutto il
-       gestore... in realta', le funzioni devono eseguire in mutua
-       esclusione solo a coppie, en in particolare:
-
-       - (il punto 1 della send + 3 della receive)
-       - (il punto 3 della send + 1 della receive)
-
-       Perche'???
-       Come si fa a sfruttare il parallelismo tra le due coppie?
-    */
     sem_t mutex;
 
     int next[N];
@@ -200,7 +176,6 @@ void gestore_rilascio_busta_vuota(struct gestore_t *g, int b)
 
 #endif
 
-
 /* mailbox */
 
 /* la mailbox e' la struttura dati condivisa che permette di inviare e
@@ -251,9 +226,6 @@ T receive(struct mailbox_t *m)
     return dato;
 }
 
-
-/* ------------------------------- */
-
 /* alla fine di ogni ciclo ogni thread aspetta un po'.
    Cosa succede se tolgo questa nanosleep?
    di fatto solo i thread di tipo B riescono ad entrare --> starvation!!!!
@@ -267,18 +239,12 @@ void pausetta(void)
     nanosleep(&t,NULL);
 }
 
-
-
 // un contatore
 int cont;
 
-
-
 /* i thread */
 
-
-void *mittente(void *arg)
-{
+void *mittente(void *arg){
     int p = (int)arg; // Priorita'
     T i;
 
@@ -291,10 +257,8 @@ void *mittente(void *arg)
     return 0;
 }
 
-void *ricevente(void *arg)
-{
+void *ricevente(void *arg){
     T i;
-
     for (;;) {
         i = receive(&mailbox);
         fprintf(stderr, " R%10d\n", i);
@@ -302,27 +266,16 @@ void *ricevente(void *arg)
     }
     return 0;
 }
-
-
-
-/* la creazione dei thread */
-
-
-
-int main()
-{
+int main(){
     pthread_attr_t a;
     pthread_t p;
     int i;
-
     /* inizializzo il mio sistema */
     init_mailbox(&mailbox);
-
     /* inizializzo i numeri casuali, usati nella funzione pausetta */
     srand(555);
 
     pthread_attr_init(&a);
-
     /* non ho voglia di scrivere 10000 volte join! */
     pthread_attr_setdetachstate(&a, PTHREAD_CREATE_DETACHED);
 
@@ -332,12 +285,9 @@ int main()
     for (i=0; i<R; i++)
         pthread_create(&p, &a, ricevente, NULL);
 
-
     pthread_attr_destroy(&a);
-
     /* aspetto 10 secondi prima di terminare tutti quanti */
     sleep(3);
-
     return 0;
 }
 

@@ -53,6 +53,7 @@ void controllaAccesso (int *pi, Boolean female){
             max_f --;
         } else
             femmine_attesa ++;
+
         sem_post(&m);
         sem_wait(&s_femmine);
 
@@ -64,6 +65,7 @@ void controllaAccesso (int *pi, Boolean female){
             sem_post(&s_maschi);
         } else
             maschi_attesa ++;
+
         sem_post(&m);
         sem_wait(&s_maschi);
     }
@@ -79,12 +81,13 @@ void esciDalBagno (int *pi , Boolean female){
         if (femmine_in_bagno == 0 && max_f == 0 && maschi_attesa > 0) {
             printf("\t\t\t\t\t\t\t ultima donna fa partire un uomo\n");
             max_m = N - 1;
+            posti --;
             maschi_attesa--;
             maschi_in_bagno++;
             sem_post(&s_maschi);        // se sono gia entrate 5 femmine.. faccio entrare un maschio x evitare starvation
         }
 
-        if ((femmine_in_bagno > 0 || maschi_in_bagno == 0) && femmine_attesa > 0 && max_f>0) {
+        if ((femmine_in_bagno > 0 ) && femmine_attesa > 0 && max_f>0) {
             printf("\t\t\t\t\t\t\t femmina e' qui siiiiiiiiiiiii\n");
             femmine_attesa--;
             posti--;
@@ -99,11 +102,12 @@ void esciDalBagno (int *pi , Boolean female){
             printf("\t\t\t\t\t\t\t ultimo uomo fa partire una donna\n");
             max_f = N -1;
             femmine_attesa --;
+            posti --;
             femmine_in_bagno ++;
             sem_post(&s_femmine);
         }
         if (maschi_in_bagno > 0 && maschi_attesa > 0 && max_m >0) {
-            printf("\t\t\t\t\t\t\t maschio e' qui nooooooooooo\n");
+          //  printf("\t\t\t\t\t\t\t maschio e' qui nooooooooooo\n");
             posti--;
             maschi_in_bagno++;
             maschi_attesa--;
