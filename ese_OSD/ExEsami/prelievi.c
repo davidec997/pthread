@@ -1,14 +1,14 @@
 /*
  In un centro per il prelievo del sangue lavora un medico
 che ha a disposizione L lettini. Le persone che effettuano il
-prelievo si dividono in due categorie: donatori e pazienti.
+prelievo si dividono in due categorie: clienti e clienti.
 Ogni persona può iniziare il prelievo solo quando è
 disponibile il medico e c’è almeno un lettino vuoto, altrimenti
 aspetta. Dopo che il medico ha iniziato il prelievo, la
 persona aspetta che il medico finisca il prelievo. Terminato il
 prelievo, dopo essersi ripresa, la persona libera il lettino.
-Nella soluzione si tenga presente che i donatori hanno la
-precedenza sui pazienti.
+Nella soluzione si tenga presente che i clienti hanno la
+precedenza sui clienti.
 Si implementi una soluzione usando il costrutto monitor per
 modellare il centro prelievi e i processi per modellare il
 medico e le persone e si descriva la sincronizzazione tra i
@@ -27,24 +27,30 @@ risorse.
 typedef enum {false, true} Boolean;
 
 int lettini_liberi, donatori_bloccati, pazienti_bloccati;
-sem_t m, medico, pazienti;
+sem_t m, medico, clienti, pazienti;
+Boolean dottore_libero;
+char * nomi [2] = {"DONATORE", "PAZIENTE"};
 
 void myInit(void)
 {
     sem_init(&m,0,1);
     sem_init(&medico, 0, 0);
+    sem_init(&clienti, 0, 0);
     sem_init(&pazienti, 0, 0);
+
     lettini_liberi = N;
+    dottore_libero = true;
 
 }
 
 
 void effettua_prelievo(){
-    sem_wait(&pazienti);
+    sem_wait(&clienti);
     sem_wait(&m);
-    lettini_liberi ++;
+    dottore_libero = false;
     printf("\tSono il Medico e sto facendo un prelievo a un cliente ...\n ");
     sleep(1);
+    dottore_libero = true;
     sem_post(&m);
     sem_post(&medico);
 
@@ -56,33 +62,50 @@ void richiedi_prelievo(int pi, int * prelievo, Boolean donatore){
     ptr = (int *) malloc(sizeof(int));
     sem_wait(&m);
 
-    if(lettini_liberi <= 0 e) {
-        printf("Il paziente %d ha trovato tutti i letini occupati e se ne va...\n",pi);
+    if(lettini_liberi <= 0 || !dottore_libero) {
+        printf("Il paziente %d ha trovato tutti i letini occupati oppure il dottore occupato... se ne va\n",pi);
         sem_post(&m);
         sleep(3);
     } else {
         if (!donatore){
-            // se non sono un donatore devo anche controllare che non ci siano donatori in attesa
+            // se non sono un donatore devo anche controllare che non ci siano clienti in attesa
             if ( donatori_bloccati > 0) {
-
+                pazienti_bloccati ++;
+                sem_post(&m);
+                sem_wait (&clienti);
             }
         }
 
         lettini_liberi--;
         printf("LETTINI LIBERI %d\n", lettini_liberi);
-        sem_post(&pazienti); //sveglio il medico
+        sem_post(&clienti); //sveglio il medico
         *prelievo += 1;
-        printf("SONO IL PAZIENTE %d IL MEDICO MI STA FACENDO IL PRELIEVO...\n", pi);
+        printf("SONO IL %s %d IL MEDICO MI STA FACENDO IL PRELIEVO...\n",nomi[donatore], pi);
         sem_post(&m);
         sem_wait(&medico);
         sleep(1);
+        printf("SONO IL %s %d  E HO FATTO IL PRELIEVO...\n",nomi[donatore], pi);
     }
 }
+
+void terminaPrelievo (int pi, Boolean donatore){
+    sem_wait(&m);
+    lettini_liberi ++;
+    if (pazienti_bloccati > 0){
+        sem_post(&pazienti);
+        pazienti_bloccati --;
+        printf("SONO IL %s %d  E SONO STATO SVEGLIATO...\n",nomi[donatore], pi);
+
+    }
+
+    sem_post(&m);
+}
+
 
 void *customerRoutine(void *id) {
     int *pi = (int *) id;
     int *ptr;
-    int *taglio = 0;
+    int *prelievi = 0;
     Boolean  donatore;
     ptr = (int *) malloc(sizeof(int));
     if (ptr == NULL) {
@@ -94,10 +117,11 @@ void *customerRoutine(void *id) {
     donatore = rand() % 2;
 
     for (int f =0; f< NTIMES; f++) {
-        richiedi_prelievo(*pi, &taglio, donatore);
+        richiedi_prelievo(*pi, &prelievi, donatore);
+        terminaPrelievo (*pi,donatore);
     }
 
-    *ptr = taglio;
+    *ptr = prelievi;
     pthread_exit((void *) ptr);
 
 }
@@ -116,7 +140,7 @@ void *doctorRoutine(void * id) {
     for (;;){
         //sleep(1);
         effettua_prelievo();
-        printf("\tSono il dottore e ho effettuato il prelievo a  %d pazienti ...\n", pazienti_serviti);
+        printf("\tSono il dottore e ho effettuato il prelievo a  %d clienti ...\n", pazienti_serviti);
         pazienti_serviti ++;
     }
 

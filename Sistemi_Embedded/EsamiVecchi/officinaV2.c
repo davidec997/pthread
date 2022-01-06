@@ -18,7 +18,7 @@ int NR = 7;
 
 struct officina_t {
     pthread_mutex_t m;
-    pthread_cond_t operaio,clienti,officina_libera,ok_rip;
+    pthread_cond_t *operaio,clienti,officina_libera,*ok_rip;
     int in_attesa;
     //int riparazioni_tot, riparazioni_rimanenti;
     //char **riparazioni;
@@ -40,17 +40,17 @@ void myInit(struct officina_t * o)
 {
     pthread_mutex_init(&o->m,NULL);
     pthread_cond_init(&o->officina_libera,NULL);
-    pthread_cond_init(&o->ok_rip,NULL);
-    pthread_cond_init(&o->operaio,NULL);
+    o->ok_rip = malloc(NUM_OPERAI * sizeof (pthread_cond_t));
+    for (int i = 0; i < NUM_OPERAI; i++) pthread_cond_init(&o->ok_rip[i],NULL);
+
+    o->operaio = malloc(NUM_OPERAI * sizeof (pthread_cond_t));
+    for (int i = 0; i < NUM_OPERAI; i++) pthread_cond_init(&o->operaio[i],NULL);
     pthread_cond_init(&o->clienti,NULL);
 
 
     o->officina_occupata = true;
     o->riparazione_finita = false;
     o->in_attesa = 0;
-    o->officina_occupata = false;
-    o->riparazione_finita = false;
-
     o->riparazione = -1;
     o->in_attesa = 0;
     o->b_fuori = 0;
@@ -61,12 +61,12 @@ void attesaCliente ( struct  officina_t *o, int *pi, int riparazione){
 
     while (o->riparazione != riparazione){
         printf("[OPERAIO %d]\t\t\tATTENDE CLIENTE\n",*pi);
-        pthread_cond_wait(&o->operaio, &o->m);
+        pthread_cond_wait(&o->operaio[*pi], &o->m);
     }
 
     // ok un cliente vuole la mia riparazione
     printf("[OPERAIO %d]\t\t\t****INIZIO RIPARAZIONE %s*****\n",*pi, elenco_riparazioni[riparazione]);
-    pausetta();
+    sleep(5);
     pthread_mutex_unlock(&o->m);
 }
 
@@ -77,7 +77,7 @@ void fineServizio (struct officina_t *o, int *pi, int riparazione){
     printf("[OPERAIO %d]\t\t\t#####HA FINITO RIPARAZIONE %s#####\n",*pi, elenco_riparazioni[riparazione]);
 
     pthread_mutex_unlock(&o->m);
-    pthread_cond_signal(&o->ok_rip);
+    pthread_cond_signal(&o->ok_rip[riparazione]);
 
 }
 
@@ -95,7 +95,6 @@ void *eseguiOperaio(void *id) {
     for(;;){
         attesaCliente(&officina,pi,*pi);
         //printf("[OPERAIO %d] SONO UN %s SONO A LAVORO\n",*pi,&officina.riparazioni[*pi]);
-        sleep(8);
         fineServizio(&officina,pi,*pi);
         sleep(2);
     }
@@ -106,7 +105,7 @@ void *eseguiOperaio(void *id) {
 
 void arrivo (struct  officina_t *o, int *pi, int riparazione){
     pthread_mutex_lock(&o->m);
-    while (o->officina_occupata){
+    while (o->in_officina > 0){
         printf("[CLIENTE %d]\t\t IN ATTESA PERCHE' L'OFFICINA E' OCCUPATA\n",*pi);
         o->b_fuori ++;
         printf("\t\t\t\t\t\t\tBLOCCATI FUORI %d\n",o->b_fuori);
@@ -120,7 +119,7 @@ void arrivo (struct  officina_t *o, int *pi, int riparazione){
     printf("\n[CLIENTE %d]\t\t------>RICHIEDE RIPARAZIONE %s\n",*pi, elenco_riparazioni[riparazione]);
     o->riparazione = riparazione;
 
-    pthread_cond_broadcast(&o->operaio);
+    pthread_cond_signal(&o->operaio[riparazione]);
 
     pthread_mutex_unlock(&o->m);
 }
@@ -130,16 +129,20 @@ void attendi_riparazione (struct officina_t *o, int *pi, int riparazione){
 
     while(!o->riparazione_finita){
         printf("[CLIENTE %d]\t\tASPETTA IL COMPLETAMENTO DELLA PRIPARAZIONE %s\n",*pi, elenco_riparazioni[o->riparazione]);
-        pthread_cond_wait(&o->ok_rip,&o->m);
+        pthread_cond_wait(&o->ok_rip[riparazione],&o->m);
     }
 
+    pausetta();
     printf("[CLIENTE %d]\t\t PRIPARAZIONE %s TERMINATA <---------\n",*pi, elenco_riparazioni[o->riparazione]);
     // sveglio il prossimo cliente
 
     o->officina_occupata = false;
-    pthread_mutex_unlock(&o->m);
+    o->in_officina --;
 
     pthread_cond_signal(&o->officina_libera);
+
+    pthread_mutex_unlock(&o->m);
+
 }
 
 void *eseguiCliente(void *id) {
@@ -154,13 +157,13 @@ void *eseguiCliente(void *id) {
     }
 
     for(;;){
-        sleep(rand()%8);
+        sleep(rand()%4);
         printf("[CLINETE %d]\tSono arrivato in Officina\n",*pi);
         riparazione = rand() % NUM_OPERAI;
         arrivo(&officina,pi,riparazione);
-        printf("[CLINETE %d]\t\t\tIN RIPARAZIONE  %d\n",*pi, riparazione);
+        printf("[CLINETE %d]\t\t\tIN RIPARAZIONE  %s\n",*pi, elenco_riparazioni[riparazione]);
         attendi_riparazione(&officina,pi,riparazione);
-        //sleep(rand()%3 + 1);
+        sleep(rand()%3 + 1);
     }
     *ptr = riparazione;
     pthread_exit((void *) ptr);

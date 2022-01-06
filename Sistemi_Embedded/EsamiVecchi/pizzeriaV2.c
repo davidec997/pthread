@@ -1,7 +1,4 @@
-//
-// Created by dada on 31/12/21.
-//
-//
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -18,26 +15,26 @@ int NUM_THREADS;
 
 struct pizzeria_t {
     pthread_mutex_t m;
-    pthread_cond_t entrata,turno,*pizze;
+    sem_t clienti, *pizze,pizzaiolo;
     int b_entrata,b_turno,b_pizze;
     int posti, numero;
     int pizze_tot,pizze_rimanenti;
     int *ordini;
+    int next;
 }pizzeria;
 
-void init_porto (struct pizzeria_t *p){
-    pthread_cond_init(&p->entrata,NULL);
-    pthread_cond_init(&p->turno,NULL);
-
-    p->pizze = malloc((NUM_THREADS-1) * sizeof (pthread_cond_t));
-    for (int i = 0; i < NUM_THREADS-1; i++) pthread_cond_init(&p->pizze[i],NULL);
-
+void init_pizzeria (struct pizzeria_t *p){
+    p->pizze = malloc(NUM_THREADS * sizeof (sem_t));
+    sem_init(&p->pizzaiolo,0,0);
     pthread_mutex_init(&p->m,NULL);
     p->b_entrata = p->pizze_rimanenti = p->pizze_rimanenti = 0;
     p->posti = N;
     p->ordini = malloc((NUM_THREADS-1) * sizeof (int));
-    for (int i = 0; i < NUM_THREADS-1; ++i) p->ordini[i] = 0;
-    p->numero = 0;
+    for (int i = 0; i < NUM_THREADS-1; ++i){
+        sem_init(&p->pizze[i],0,0);
+        p->ordini[i] = 0;
+    }
+    p->next = -1;
 
 }
 
@@ -50,51 +47,43 @@ void pausetta(void)
 }
 
 void entrata_richiesta (struct  pizzeria_t * p, int *pi) {
-
     pthread_mutex_lock(&p->m);
-    while (p->posti <= 0){
-        printf("[CLIENTE %d]\t\t\tMi blocco perche non ci sono posti in pizzeria: POSTI LIBERI: %d\n",*pi,p->posti);
-        p->b_entrata ++;
-        pthread_cond_wait(&p->entrata,&p->m);
-        p->b_entrata --;
+    //controllo se c'e' posto
+    if (p->posti > 0){
+        p->posti --;
+        printf("[CLIENTE %d]\t\tPosso entrare  --> %d posti liberi\n",*pi, p->posti);
+        sem_post(&p->clienti);
+        sem_post(&p->pizzaiolo);
+    } else{
+        printf("[CLIENTE %d]\t\tNon posso entrare  --> %d posti liberi\n",*pi, p->posti);
+     p->b_entrata  ++;
     }
-    p->posti --;
-
-    printf("[CLIENTE %d]\t\t\tPosso entrare in pizzeria\tPOSTI LIBERI: %d\n",*pi,p->posti);
 
     pthread_mutex_unlock(&p->m);
+    sem_wait(&p->clienti);
 }
 
 void ordinaPizze (struct pizzeria_t * p, int * pi){
 
     pthread_mutex_lock(&p->m);
-
-    pausetta();
-    int pizzetot = (rand() % 6) + 1;
-    p->ordini[*pi] = pizzetot;
-
-    printf("[CLIENTE %d]\t\t\tHO ORDINATO %d PIZZE\n",*pi,pizzetot);
-
+    int pizze = (rand()%6) + 1;
+    p->ordini[*pi] = pizze;
+    printf("[CLIENTE %d]\t\tHo ordinato e Sto aspettando le pizze\n",*pi);
     pthread_mutex_unlock(&p->m);
 
 }
 
 void ritiraPizze (struct  pizzeria_t * p , int * pi) {
 
+    sem_wait(&p->pizze[*pi]);
+
     pthread_mutex_lock(&p->m);
-
-    /*while (p->ordini[*pi] >= 0){
-        printf("[CLIENTE %d]\t\t\tSTO ASPETTANDO ALTRE PIZZE: NE MANCANO %d \n",*pi,p->ordini[*pi]);
-    }*/
-    printf("[CLIENTE %d]\t\t\tOOOOOOOOOOOOOO: %d\n",*pi,p->ordini[*pi]);
-
-    pthread_cond_wait(&p->pizze[*pi],&p->m);
-    printf("[CLIENTE %d]\t\t\tHO PRESO TUTTE LE MIE PIZZE: %d\n",*pi,p->ordini[*pi]);
-    p->posti ++;
-
-    // sveglio un cliente fuori dalla porta
-    if (p->b_entrata > 0) pthread_cond_signal(&p->entrata);
-
+    printf("[CLIENTE %d]\t\tHO PRESO LE MIE %d PIZZE\n",*pi,p->ordini[*pi]);
+    // sveglio un cliente in coda
+    if (p->b_entrata >0){
+        p->b_entrata --;
+        sem_post(&p->clienti);
+    }
     pthread_mutex_unlock(&p->m);
 
 }
@@ -125,15 +114,10 @@ void *cliente (void *arg) {
     pthread_exit((void *) ptr);
 }
 
-int prossima_pizza(struct pizzeria_t *p) {
-
-    pthread_mutex_lock(&p->m);
-    // devo determinare il prossimo ordine da soddisfare
-    //la politica e' che eseguo sempre il prossimo ordine con n di pizze minore
-
-    int ord = 0;
-    int c = 0;
-    int min_ele = p->ordini[0] ;
+int nextOrder (struct pizzeria_t *p){
+    int ord;
+    int c = -1;
+    int min_ele = p->ordini[0];
 
     for ( c = 1 ; c < NUM_THREADS -1 ; c++ ){
         printf("\t\t\t%d\t",p->ordini[c]);
@@ -143,36 +127,32 @@ int prossima_pizza(struct pizzeria_t *p) {
             ord = c;
         }
     }
+}
 
-    pthread_mutex_unlock(&p->m);
-    sleep(1);
-    printf("[PIZZAIOLO]\t\tINIZIO A PREPARARE PIZZE PER IL CLIENTE %d\n",ord);
+int prossima_pizza(struct pizzeria_t *p) {
 
+    sem_wait(&p->pizzaiolo);
     pthread_mutex_lock(&p->m);
-
-    while (p->ordini[ord] > 0) {
-        //prepara pizza
-        sleep(1);
-        p->ordini[ord] --;
-        printf("[PIZZAIOLO]\t\tPIZZA PER IL CLIENTE %d PRONTA. NE RESTANO %d\n",ord,p->ordini[ord]);
-    }
-
-    // finito l'ordine
-    //sleep(1);
-    p->ordini[ord] = 0;
-    printf("\t\t\t%d ORD e %d pizze di ORD\n",ord, p->ordini[ord]);
+    // devo determinare il prossimo ordine da soddisfare
+    //la politica e' che eseguo sempre il prossimo ordine con n di pizze minore
+    int ord = 0;
+    if (p->next == -1) ord = nextOrder(&pizzeria);
+    printf("[PIZZAIOLO]\t\t\tORDINE DA EVADERE  %d --> pizze rimanenti : %d\n",ord,p->ordini[ord]);
+    // faccio la pizza
     pthread_mutex_unlock(&p->m);
-    return ord;
 
 }
 
 void consegna_pizza(struct pizzeria_t *p, int ord){
 
     pthread_mutex_lock(&p->m);
-    // sveglio il cliente
-    printf("[PIZZAIOLO]\t\t CLIENTE %d PRONTO X andarsene. \n",p->ordini[ord]);
-
-    pthread_cond_signal(&p->pizze[ord]);
+    p->ordini[ord] --;
+    if (p->ordini[ord] == 0){
+        printf("[PIZZAIOLO]\t\tHO FINITO L'ORDINE %d\n",ord);
+        sem_post(&p->pizze[ord]);
+        p->posti ++;
+        p->next = -1;
+    }
 
     pthread_mutex_unlock(&p->m);
 
@@ -192,6 +172,7 @@ void *pizzaiolo (void * arg){
     while (1){
         ord = prossima_pizza(&pizzeria);
         //cuoci pizzza
+        sleep(2);
         consegna_pizza(&pizzeria,ord);
     }
 
@@ -238,7 +219,7 @@ int main (int argc, char **argv)
         exit(4);
     }
 
-    init_porto(&pizzeria);
+    init_pizzeria(&pizzeria);
     srand(555);
 
     for (i=0; i < NUM_THREADS; i++)
@@ -266,4 +247,6 @@ int main (int argc, char **argv)
 
     exit(0);
 }
+
+
 
