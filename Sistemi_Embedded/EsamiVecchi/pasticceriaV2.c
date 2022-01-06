@@ -1,6 +1,3 @@
-//
-// Created by davide on 29/12/21.
-//
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,33 +5,31 @@
 #include <unistd.h>
 #include <semaphore.h>
 
-#define TORTE_MAX 10
+#define TORTE_MAX 6
 #define TORTE_MIN 3
 
 typedef enum {false, true} Boolean;
 
 struct pasticceria_t {
     pthread_mutex_t m;
-    pthread_cond_t fai_torte,stop_torte,cliente_attesa,commesso,stop_commesso;
-    int in_fila;
+    sem_t cliente, compra_torta, s_torte, s_pasticcere, s_commesso;
+    int in_fila, in_attesa;
     int torte,torte_pronte;
+    Boolean commesso_bloccato;
 }pasticceria;
 
 void init_mr (struct pasticceria_t * p){
 
-    pthread_cond_init(&p->fai_torte,NULL);
-    pthread_cond_init(&p->stop_torte,NULL);
-    pthread_cond_init(&p->cliente_attesa,NULL);
-
-
     pthread_mutex_init(&p->m,NULL);
-    pthread_cond_init(&p->commesso,NULL);
-    pthread_cond_init(&p->stop_commesso,NULL);
-
+    sem_init(&p->s_torte,0,0);
+    sem_init(&p->s_pasticcere,0,0);
+    sem_init(&p->s_commesso,0,0);
+    sem_init(&p->compra_torta,0,0);
 
     p->torte = p->torte_pronte = 0;
     p->in_fila = 0;
-
+    p->in_attesa =0;
+    p->commesso_bloccato = true;
 }
 
 void pausetta(void)
@@ -46,28 +41,16 @@ void pausetta(void)
 }
 
 void acquista_torta (struct pasticceria_t *p, int *pi){
+
     pthread_mutex_lock(&p->m);
-
-    printf("[CLIENTE %d]\t\t VOGLIO UNA TORTA!!\n",*pi);
     p->in_fila ++;
-
-    while (p->torte_pronte <= 0){
-        printf("[CLIENTE %d]\t\t IN ATTESA XK SONO FINITE LE TORTE!!\n",*pi);
-        pthread_cond_signal(&p->stop_commesso);
-        pthread_cond_wait(&p->cliente_attesa,&p->m);
-    }
-
-    printf("[CLIENTE %d]\t\t CHIEDO UNA TORTA AL COMMESSO!!\n",*pi);
-    //pthread_cond_signal(&p->cliente_attesa);// boooo????
-    pthread_cond_wait(&p->commesso,&p->m);
-
-    pausetta();
-    p->in_fila --;
-    printf("[CLIENTE %d]\t\t HO COMPRATO LA TORTA e VADO A MANGIARLA A CASA\n",*pi);
-
+    printf("[CLIENTE %d]\t\tVOGLIO una torta.. La chiedo al commesso\n",*pi);
     pthread_mutex_unlock(&p->m);
-}
 
+    //sem_post(&p->compra_torta);
+    sem_wait(&p->cliente);
+    printf("[CLIENTE %d]\t\tHO COMPRATO LA TORTA\n",*pi);
+}
 
 void *cliente (void *arg) {
     int *pi = (int *)arg;
@@ -75,46 +58,44 @@ void *cliente (void *arg) {
     ptr = (int *) malloc( sizeof(int));
     if (ptr == NULL){
         perror("Problemi con l'allocazione di ptr\n");
-        exit(-1);
-    }
+        exit(-1);}
 
     for(int i =0; i< 10;i++) {
-        sleep(rand()%9);
+        sleep((rand()&10));
         acquista_torta(&pasticceria,pi);
     }
-
     *ptr = *pi;
     pthread_exit((void *) ptr);
 }
 
 void inizio_preparazione(struct pasticceria_t *p){
     pthread_mutex_lock(&p->m);
-    // il commesso attende che le torte disp siano < di MIN
-
-    while (p->torte >= TORTE_MAX){
-        printf("[PASTICCERE]\t\t Non faccio torte perche' ce ne sono ancora %d\n",p->torte);
-        pthread_cond_wait(&p->fai_torte,&p->m);
+    if ( p->torte < TORTE_MAX){
+        printf("[PASTICCERE]\tFACCIO UNA TORTA XK LE TORTE  SONO %d\n",p->torte);
+        //sem_post(&p->s_pasticcere); // post previa
     }
 
-    // se sono qui e' xk i sono meno di MIN torte diponibili
-    printf("[PASTICCERE]\t\tINIZIO a fare torte perche' ce ne sono  %d\n",p->torte);
-
     pthread_mutex_unlock(&p->m);
+    sem_wait(&p->s_pasticcere);
 
 }
 
 void fine_preparazione(struct pasticceria_t *p){
     pthread_mutex_lock(&p->m);
     p->torte ++;
-    printf("[PASTICCERE]\t\tHO APPENA FATTO UNA TORTA.. Ora ce ne sono  %d\n",p->torte);
-    pthread_cond_signal(&p->stop_torte); //?
+    printf("[PASTICCERE]\t\tHO APPENA FATTO UNA TORTA [Non pronta] .. Ora ce ne sono  %d\n",p->torte);
+    if (p->commesso_bloccato) {
+        sem_post(&p->s_commesso);
+        p->commesso_bloccato = false;
+    }
     pthread_mutex_unlock(&p->m);
 }
 
 
 void prepara_torta(struct pasticceria_t *p){
+    pthread_mutex_lock(&p->m);
     sleep(2);
-
+    pthread_mutex_unlock(&p->m);
 }
 void *pasticcere (void *arg) {
     int *pi = (int *)arg;
@@ -137,41 +118,32 @@ void *pasticcere (void *arg) {
 
 void commesso_prende_torta(struct pasticceria_t *p){
     pthread_mutex_lock(&p->m);
-    while(p->torte <= TORTE_MIN){
-        printf("[COMMESSO]\t\tNON CI SONO ABBASTANZA TORTE  %d\n",p->torte);
-        pthread_cond_signal(&p->fai_torte);
-        pthread_cond_wait(&p->stop_torte,&p->m);
+    if (p->torte_pronte < TORTE_MAX){
+        printf("STO CAAA\n"); // questo non va
+        sem_post(&p->s_pasticcere);
     }
 
-    while(p->torte_pronte >= TORTE_MAX){
-        printf("[COMMESSO]\t\tSMETTO DI INCARTARE TORTE \n");
-        //pthread_cond_signal(&p->cliente_attesa);
-        pthread_cond_wait(&p->stop_commesso,&p->m);
+    // incarta una torta
+    if (p->torte > 0 && p->torte_pronte < TORTE_MAX){
+        p->torte --;
+        p->torte_pronte ++;
+        printf("[COMMESSO]\t\tHo incartato una torta... Torte pronte : %d\n",p->torte_pronte);
     }
-
-    printf("[COMMESSO]\t\tIncarto una torta --> TORTE PRONTE %d\n",p->torte_pronte);
-    p->torte --;
-    p->torte_pronte ++;
-
     pthread_mutex_unlock(&p->m);
-    sleep(2);
+    //sleep(2);
 
 }
 
 void commesso_vende_torta(struct pasticceria_t *p){
     pthread_mutex_lock(&p->m);
-    if (p->in_fila <= 0){
-        printf("[COMMESSO]\t\tNON CI SONO CLIENTI.. CONTINUO AD INCARTARE TORTE\n");
-    } else {
-        // se c e un cliente in attesa lo servo
-        if (p->torte_pronte > 0){
-            pthread_cond_signal(&p->cliente_attesa);
-            pausetta();
-            pthread_cond_signal(&p->commesso);
-            p->torte_pronte --;
-            printf("[COMMESSO]\t\tHO VENDUTO UNA TORTA\n");
-        }
+    if (p->in_fila > 0  && p->torte_pronte > 0){
+        // vendo una torta
+        sem_post(&p->cliente);
+        p->torte_pronte --;
+        p->in_fila --;
+        printf("ehii\n");
     }
+
     pthread_mutex_unlock(&p->m);
 }
 
@@ -263,5 +235,6 @@ int main (int argc, char **argv)
 
     exit(0);
 }
+
 
 
