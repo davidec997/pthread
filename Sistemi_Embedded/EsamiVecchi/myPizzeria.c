@@ -46,23 +46,24 @@ void ordinaPizze (struct pizzeria_t * p, int numerocliente, int npizze){
 
     printf("[CLIENTE %d]\tORDINA %d PIZZE\n",numerocliente, npizze);
     p->ordini[numerocliente] = npizze;
-    if (p->in_attesa == 1){
+    if (p->in_attesa == 0){
         printf("SVEGLIO IL PIZZAIOLO\n");
-        p->in_attesa --;
-        p->icc = numerocliente;
+        //p->icc = numerocliente;
         sem_post(&p->pizzaiolo);
-    } else
-        sem_post(&p->m);
+    }
+    p->in_attesa ++;
+
+    sem_post(&p->m);
 
 }
 
 void ritiraPizze (struct  pizzeria_t * p , int numerocliente) {
     sem_wait(&p->cliente[numerocliente]);
 
-    /*sem_wait(&p->m);
+    sem_wait(&p->m);
     printf("[CLIENTE %d]\t\tHO LE MIE PIZZE VADO A MANGIARE\n",numerocliente);
-   // p->in_attesa --;
-    sem_post(&p->m);*/
+    p->in_attesa --;
+    sem_post(&p->m);
 }
 
 
@@ -84,7 +85,7 @@ void *cliente (void *arg) {
     //printf("[CLIENTE %d]\tHo ordinato le pizze...\n",*pi);
     //sleep(2);
     ritiraPizze(&pizzeria,*pi);
-    printf("[CLIENTE %d]\tSto ANDANDO A MANGIARE LE PIZZE...\n",*pi);
+    //printf("[CLIENTE %d]\tSto ANDANDO A MANGIARE LE PIZZE...\n",*pi);
 
 
 
@@ -97,12 +98,12 @@ void prossima_pizza(struct pizzeria_t *p) {
     int i, min , cliente,v;
     sem_wait(&p->m);
 
-   /* if (p->in_attesa == 0){
+    if (p->in_attesa == 0){
         printf("PIZZAIOLO SI BLOCCA XK NON CI SONO CLIENTI\n");// se non ci sono clienti mi blocco
         sem_post(&p->m);
         sem_wait(&p->pizzaiolo);
         sem_wait(&p->m);
-    }*/
+    }
     printf("\tSITUA\t");
     for (int i = 0; i < N; i++) printf("%d\t",p->ordini[i]);
     printf(" indice : %d\n",p->icc);
@@ -111,7 +112,7 @@ void prossima_pizza(struct pizzeria_t *p) {
         // mi serve l'indice
         min = 0;
         cliente = -1;
-        for (int i = 0; i < N; i++) {       // trovo il primo > 0
+        for ( i = 0; i < N; i++) {       // trovo il primo > 0
             if(p->ordini[i] > 0){
                 cliente = i;
                 min = p->ordini[i];
@@ -126,17 +127,16 @@ void prossima_pizza(struct pizzeria_t *p) {
             }
             i ++;
         }
-         if (min == 0){
+        /* if (min == 0){
              printf("PIZZAIOLO SI BLOCCA XK NON CI SONO CLIENTI\n");// se non ci sono clienti mi blocco
              p->in_attesa ++;
              sem_post(&p->m);
              sem_wait(&p->pizzaiolo);
-             //sem_wait(&p->m);
-         } else
-             p->icc = cliente;
+             sem_wait(&p->m);
+         } */
+
+         p->icc = cliente;
         // ho l'indice
-
-
 
     }
 
