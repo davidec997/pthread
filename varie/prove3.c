@@ -6,44 +6,46 @@
 #include <unistd.h>
 #include <string.h>
 
-
-int main(){
-
-    char **riparazioni;
-    riparazioni = malloc(4 * 20);
-    riparazioni[0] = "carrozziere\0";
-    riparazioni[1] = "meccanico\0";
-    riparazioni[1] = "pompista\0";
-    riparazioni[1] = "elettrauto\0";
-
-    int *array;
-    srand(time(NULL));
-
-    array = malloc(10 * sizeof (int ));
+int trovaCassiere (int * arr ){
+    int index = -1;
+    int min = 999;
     for (int i = 0; i < 10; i++) {
-        array[i] = rand() % 10;
-        printf("\t%d\t",array[i]);
-    }
-
-    //printf("%s",riparazioni[0]);
-    int ord = 0;
-    int c = 0;
-    int min_ele = array[0];
-    /*for (int i = 0; i < NUM_THREADS-1; i++) {
-        printf("\t\t\t%d\t",p->ordini[i]);
-        if (p->ordini[i] < p->ordini[ord] && p->ordini[i] > 0)
-            ord = i;
-    }*/
-
-    for ( int i = 0; i< 10; i++ ){
-        //printf("\t%d\t",array[i]);
-
-        if ( array[i] < min_ele ){
-            min_ele = array[i];
-            ord = i;
+        if (arr[i] < min){
+            index = i;
+            min = arr[i];
         }
+
+
     }
 
-    printf("\n MIN ELE %d AT INDEX %d\n",array[ord], ord);
+    if (index == -1) printf("\tERRORR\n");
+    return  index;
+}
+
+
+int *myarr;
+int N;
+sem_t  semaforo;
+
+int main (int argc, char **argv) {
+
+    sem_init(&semaforo,0,5);
+    int val;
+    sem_getvalue(&semaforo,&val);
+
+    printf("VAL DEL SEMAFORO %d\n",val);
+
+
+
+/*
+    int arr[10];
+    for (int i = 0; i < 10; i++) {
+        arr[i] = (rand()% 40) + 1;
+        printf("\t%d\t",arr[i]);
+    }
+
+    int index = trovaCassiere(arr);
+    printf("\nCassiere con meno cosi %d\t\t%d\n",index, arr[index]);*/
+
 
 }

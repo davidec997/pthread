@@ -8,105 +8,113 @@
 #include <stdlib.h>
 #include <semaphore.h>
 
-#define N 4
+#define N 4 // sedie libere
 #define NTIMES 5
 #define BARBIERI 3
 #define CLIENTI 20
 
 typedef enum {false, true} Boolean;
 
-int sedie_libere;
-sem_t m, *barber, custumers,cassiere,stop, poltrone;
-int clienti_in_attesa,cli_blocc_barb;
-Boolean barbieri_occupati[3];
+struct barbiere_t {
+    Boolean occupato;
+    int clienti_serviti;
+    pthread_cond_t barb;
+}barbiere;
+
+struct negozio_t {
+    int sedie_libere, clienti_fuori,attesa_barb ;
+    pthread_cond_t custumers, poltrone,stop;
+    struct barbiere_t barbiere[BARBIERI];
+    pthread_mutex_t m, cassiere;
+}negozio;
 
 
-void myInit(void)
+void myInit(struct negozio_t *n)
 {
-    barber = malloc(BARBIERI * sizeof (sem_t));
     for (int i = 0; i < BARBIERI; i++) {
-        sem_init(&barber[i],0,0);
-        barbieri_occupati[i] = false;
+        pthread_cond_init(&n->barbiere[i].barb,NULL);
+        n->barbiere[i].occupato = false;
+        n->barbiere[i].clienti_serviti = 0;
+    }
+    pthread_mutex_init(&n->m,NULL);
+    pthread_cond_init(&n->custumers,NULL);
+    pthread_mutex_init(&n->cassiere,NULL);
+    pthread_cond_init(&n->stop,NULL);
+
+
+
+    n->sedie_libere = N;
+    n->clienti_fuori = 0;
+    n->attesa_barb = 0;
+}
+
+
+void servi( struct negozio_t *n, int *pi){
+
+    pthread_mutex_lock(&n->m);
+    while (n->attesa_barb == 0){
+        printf("[BARBIERE %d]\t SERVO CLIENTE\n",*pi);
+         pthread_cond_wait(&n->barbiere[*pi].barb,&n->m);
     }
 
-    sem_init(&custumers,0,0);
-    sem_init(&m,0,1);
-    sem_init(&cassiere,0,1);
-    sem_init(&stop,0,0);
+    n->barbiere[*pi].occupato = true;
+    printf("[BARBIERE %d   %d]\t SERVO CLIENTE\n",*pi);
+    //pthread_mutex_unlock(&n->m);
 
-    sedie_libere = N;
-    clienti_in_attesa = 0;
-    cli_blocc_barb = 0;
-
-}
-
-
-void servi( int * pi){
-
-    printf("[BARBIERE %d] Ciao aspetto un cliente\n",*pi);
-    sem_wait(&custumers);
-    sem_wait(&m);
-    barbieri_occupati[*pi] = true;
-    printf("[BARBIERE %d] Servo un cliente un cliente\n",*pi);
-    sem_post(&m);
     sleep(1);
+   // pthread_mutex_lock(&m);
+    n->sedie_libere ++;
+    pthread_cond_signal(&n->custumers);
+    n->barbiere[*pi].occupato = false;
 
-    sem_wait(&m);
-    sedie_libere ++;
-    sem_post(&barber[*pi]);
-    barbieri_occupati[*pi] = false;
-    sem_post(&stop);
-    sem_post(&m);
+    pthread_mutex_unlock(&n->m);
+    //pthread_cond_signal(&stop);
 
 }
 
 
-int checkBarber(){
+int checkBarber(struct  negozio_t *n){
     int index = -1;
-    if (barbieri_occupati[0] == false)
+    if (n->barbiere[0].occupato == false)
         index = 0;
-    else if (barbieri_occupati[1] == false)
+    else if (n->barbiere[1].occupato == false)
         index = 1;
-    else if (barbieri_occupati[2] == false)
+    else if (n->barbiere[2].occupato == false)
         index = 2;
     return index;
 }
 
 
-void richiedi_servizio(int pi){
+void richiedi_servizio(struct negozio_t *n, int pi){
     int * ptr;
     ptr = (int *) malloc(sizeof(int));
-    sem_wait(&m);
     int i;
     //controllo se ci sono poltrone libere
-    if (sedie_libere > 0){
-        // posso accomodarmi
-        sedie_libere --;
-        sem_post(&poltrone);
-    } else clienti_in_attesa ++;
-
-    sem_post(&m);
-    sem_wait(&poltrone);
-
-    // ok sono sulla poltrona
-    printf("\t\tPOLTRONE DISPONIBILI %d\n",sedie_libere);
-
-    sem_post( &custumers);
-    sem_wait(&m);
-    //i = checkBarber();
-    while (checkBarber() == -1) {
-        printf("ERROR\n");
-        sem_post(&m);
-        sem_wait(&stop);
-        sem_wait(&m);
+    pthread_mutex_lock(&n->m);
+    while (n->sedie_libere <= 0){
+        n->clienti_fuori ++;
+        pthread_cond_wait(&n->poltrone,&n->m);
+        n->clienti_fuori ++;
     }
-    i = checkBarber();
-    printf("[CLIENTE %d] VIENE SERVITO DAL BARBIERE %d\n",pi,i);
-    sem_post(&m);
-    sem_wait(&barber[i]);
+
+    printf("[SITUA]: B1 [%d] B2 [%d] B3 [%d]\n",n->barbiere[0].occupato,n->barbiere[1].occupato,n->barbiere[2].occupato);
+    while (checkBarber(n) == -1){
+        //n-> attesa_barb++;
+        pthread_cond_wait(&n->stop,&n->m);
+        //cli_blocc_barb --;
+    }
+
+    //pthread_cond_signal(&custumers);
+    i = checkBarber(n);
+    if (i == -1) printf("ERROR\n");
+
+    printf("[CLIENTE %d] SI FA TAGLIARE I CAPELLI DAL BARBIERE %d\n",pi,i);
+    pthread_cond_signal(&n->custumers);
+    pthread_cond_wait(&n->barbiere[i].barb,&n->m);
+
 
     printf("[CLIENTE %d] MI HA TAGLIATO I CAPELLI IL BARBIERE %d\n",pi,i);
-
+    pthread_mutex_unlock(&n->m);
     /*if(sedie_libere <=0 ) {
         printf("Il cliente %d ha trovato tutte le sedie occupate e se ne va...\n",pi);
         sem_post(&m);
@@ -134,26 +142,26 @@ void richiedi_servizio(int pi){
     }*/
 }
 
-void paga (int * pi){
-    sem_wait(&cassiere);
-    printf("[CASSIERE] Il cliente %d sta pagando\n",*pi);
-    sleep(1);
-    sem_post(&cassiere);
-    sem_wait(&m);
-    if (clienti_in_attesa > 0 && sedie_libere > 0){
-        sem_post(&poltrone);
-        clienti_in_attesa --;
-        sedie_libere --;
-    }
-    printf("\t\tPOLTRONE DISPONIBILI2 %d\n",sedie_libere);
+void paga (struct negozio_t *n, int * pi){
+    pthread_mutex_lock(&n->cassiere);
 
-    sem_post(&m);
+    printf("[CASSIERE] UN CLIENTE MI STA PAGANDO \n");
+    sleep(1);
+    pthread_mutex_unlock(&n->cassiere);
+
+    pthread_mutex_lock(&n->m);
+    if (n->clienti_fuori>0 && n->sedie_libere > 0){
+        n->clienti_fuori --;
+        pthread_cond_signal(&n->poltrone);
+    }
+    pthread_mutex_unlock(&n->m);
+
 }
 
 void *customerRoutine(void *id) {
     int *pi = (int *) id;
     int *ptr;
-    int *taglio = 0;
+    int *taglio;
     ptr = (int *) malloc(sizeof(int));
     if (ptr == NULL) {
         perror("Problemi con l'allocazione di ptr\n");
@@ -161,12 +169,13 @@ void *customerRoutine(void *id) {
     }
     printf("Sono il thread cliente %d\n",*pi);
 
-    for (;;) {
-        richiedi_servizio(*pi);
-        paga(pi);
-    }
+    //for (;;) {
+        sleep(1);
+        richiedi_servizio(&negozio,*pi);
+        paga(&negozio, pi);
+    //}
 
-    *ptr = taglio;
+    *ptr = *pi;
     pthread_exit((void *) ptr);
 
 }
@@ -184,8 +193,8 @@ void *barberRoutine(void * id) {
     printf("Sono il thread barbiere %d\n",*pi);
     for (;;){
         //sleep(1);
-        servi(pi);
-        printf("\tSono il barbiere e Ho servito  %d clienti ...\n",clineti_serviti);
+        servi(&negozio, pi);
+        printf("\tSono il barbiere %d e Ho servito  %d clienti ...\n",*pi,clineti_serviti);
         clineti_serviti ++;
     }
 
@@ -220,7 +229,7 @@ int main (int argc, char **argv)
         exit(2);
     }
 
-    myInit();
+    myInit(&negozio);
 
     thread=(pthread_t *) malloc(NUM_THREADS * sizeof(pthread_t));
     if (thread == NULL)
@@ -258,7 +267,7 @@ int main (int argc, char **argv)
         /* attendiamo la terminazione di tutti i thread customers */
         pthread_join(thread[i], (void**) & p);
         ris= *p;
-        printf("Pthread %d-esimo restituisce %d  -->numero di volte che si e' tagliato i capelli\n", i, ris);
+        printf("Pthread %d-esimo restituisce %d \n", i, ris);
     }
 
     //pthread_mutex_destroy(&m);

@@ -204,6 +204,7 @@ void EndF1(){
     if (f3_b > 0){
         while (n > 0){
             sem_post(&s_f3);
+            precedente = F3;
             f3++;
             f3_b --;
             n--;
@@ -234,6 +235,7 @@ void EndF2(){
     if (f3_b > 0){
         while (n > 0){
             sem_post(&s_f3);
+            precedente = F3;
             f3++;
             f3_b --;
             n--;
@@ -275,6 +277,7 @@ void EndF3(){
             f3_b --;
             f3 ++;
             precedente = F3;
+            n--;
         }
     }
     sem_post(&m);
@@ -292,7 +295,7 @@ void StartF4(){
 
 
     sem_post(&m);
-    sem_wait(&f3);
+    sem_wait(&f4);
 }
 void EndF4(){
     sem_wait(&m);
@@ -306,20 +309,25 @@ void EndF4(){
            sem_post(&s_f5);
            f5 ++;
            f5_b--;
+           precedente = F5;
        } else if (f1_b > 0){
            f1_b --;
            stato = S1;
            f1 ++;
            sem_post(&s_f1);
+           precedente = F1;
        } else if (f2_b){
            f2_b --;
            f2 ++;
            stato = S1;
+           precedente = F2;
            sem_post(&s_f2);
        }
     } else {
         while( n > 0){
             sem_post(&s_f4);
+            n--;
+            precedente = F4;
             f4_b --;
             f4 ++;
         }
@@ -555,18 +563,20 @@ void *PR(void *arg)
 
 void *client ( void * arg) {
 
-    fun1();
+    fun2();
+    //fun4();
     //fun2();
-    sleep(1);
+    //sleep(1);
     fun3();
-    sleep(1);
+   // sleep(1);
+    fun1();
+    fun3();
+   // sleep(1);
 
-    fun3();
-    sleep(1);
-
-    fun3();
     fun4();
-    fun4();
+    fun1();
+    fun2();
+    fun3();
     /*int funzione;
     funzione = rand() % 6;
     switch (funzione) {
