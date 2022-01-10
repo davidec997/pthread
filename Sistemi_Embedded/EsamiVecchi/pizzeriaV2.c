@@ -25,6 +25,7 @@ struct pizzeria_t {
 
 void init_pizzeria (struct pizzeria_t *p){
     p->pizze = malloc(NUM_THREADS * sizeof (sem_t));
+
     sem_init(&p->pizzaiolo,0,0);
     pthread_mutex_init(&p->m,NULL);
     p->b_entrata = p->pizze_rimanenti = p->pizze_rimanenti = 0;
@@ -53,7 +54,7 @@ void entrata_richiesta (struct  pizzeria_t * p, int *pi) {
         p->posti --;
         printf("[CLIENTE %d]\t\tPosso entrare  --> %d posti liberi\n",*pi, p->posti);
         sem_post(&p->clienti);
-        sem_post(&p->pizzaiolo);
+        sem_post(&p->pizzaiolo); // ??
     } else{
         printf("[CLIENTE %d]\t\tNon posso entrare  --> %d posti liberi\n",*pi, p->posti);
      p->b_entrata  ++;
@@ -115,18 +116,33 @@ void *cliente (void *arg) {
 }
 
 int nextOrder (struct pizzeria_t *p){
-    int ord;
-    int c = -1;
-    int min_ele = p->ordini[0];
-
-    for ( c = 1 ; c < NUM_THREADS -1 ; c++ ){
-        printf("\t\t\t%d\t",p->ordini[c]);
-
-        if ( p->ordini[c] < min_ele && p->ordini[c] > 0 ){
-            min_ele = p->ordini[c];
-            ord = c;
+   int min = 0;
+   int cliente = -1;
+   int i;
+    for (i=0; i<NUM_THREADS -1; i++)
+        if (p->ordini[i]) {
+            min = p->ordini[i];
+            cliente = i;
+            break;
         }
+
+    while (i<NUM_THREADS - 1) {
+        if (p->ordini[i] && min > p->ordini[i]) {
+            min = p->ordini[i];
+            cliente = i;
+        }
+        i++;
     }
+
+    // se non ci sono ordini devo bloccarmi
+    if (!min) {
+        //pizzeria->c_p++; ??
+        //sem_post(&pizzeria->m);
+        pthread_mutex_unlock(&p->m);
+       // sem_wait(&p->pizzaiolo); // passaggio del testimone
+    }
+    else
+        p->next = cliente;
 }
 
 int prossima_pizza(struct pizzeria_t *p) {
@@ -141,6 +157,7 @@ int prossima_pizza(struct pizzeria_t *p) {
     // faccio la pizza
     pthread_mutex_unlock(&p->m);
 
+    return ord;
 }
 
 void consegna_pizza(struct pizzeria_t *p, int ord){
@@ -170,9 +187,10 @@ void *pizzaiolo (void * arg){
     sleep(2);
 
     while (1){
+        printf("[PIZZAIOLO]\t\tciaa\n");
         ord = prossima_pizza(&pizzeria);
         //cuoci pizzza
-        sleep(2);
+        sleep(1);
         consegna_pizza(&pizzeria,ord);
     }
 
