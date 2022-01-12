@@ -1,3 +1,5 @@
+//
+// Created by dada on 11/01/22.
 
 #include <unistd.h>
 #include <pthread.h>
@@ -6,40 +8,28 @@
 #include <semaphore.h>
 
 #define NTIMES 3
+#define N 5
+#define C 25
 
 typedef enum {false,true} Boolean;
 int NUM_CASSIERI , NUM_CLIENTI ;
 
 struct supermercato_t {
-    pthread_mutex_t m;
-    sem_t *cassiere, *servito, *cassa;
-    int *oggetti_cassa,*oggetti_tot;
+    sem_t m;
+    sem_t cassiere[N], cliente[N];
+    int oggetti_tot[N];
 
 }supermercato;
 
 void myInit(struct supermercato_t *s)
 {
-    s->cassa  =     malloc(NUM_CASSIERI * sizeof (sem_t));
-    s->cassiere =   malloc(NUM_CASSIERI * sizeof (sem_t));
-    s->servito =    malloc(NUM_CASSIERI * sizeof (sem_t));
-
-    pthread_mutex_init(&s->m,NULL);
-    s->oggetti_cassa = malloc(NUM_CASSIERI* sizeof (int ));
-    s->oggetti_tot = malloc(NUM_CASSIERI* sizeof (int ));
-
-    // s->coda = malloc((4 * NUM_CASSIERI) * sizeof (int));
-
-
+    sem_init(&s->m,0,1);
     for (int i = 0; i < NUM_CASSIERI; i++) {
         sem_init(&s->cassiere[i],0,0);
-        sem_init(&s->cassa[i],0,0);
-        sem_init(&s->servito[i],0,0);
+        sem_init(&s->cliente[i],0,0);
 
         s->oggetti_tot[i] = 0;
-        s->oggetti_cassa[i] = 0;
-        printf( "\t\t\t%d",s->oggetti_tot[i]);
-        printf("\n");
-    }
+   }
 }
 
 void pausetta(void){
@@ -67,28 +57,32 @@ int trovaCassiere (struct supermercato_t *s ){
 }
 
 void cliente_pagamento (struct supermercato_t *s, int *pi, int noggetti){
-    pthread_mutex_lock(&s->m);
-    int index;
-    index= trovaCassiere(s);
-    printf("[CLIENTE %d]\t HO %d oggetti e vado in coda alla cassa %d\n",*pi,noggetti,index);
-    // se il cassiere e' bloccato lo sveglio
-    if (s->oggetti_tot[index] == 0) sem_post(&s->cassiere[index]);
+    sem_wait(&s->m);
 
-    printf("SITUA\t");
-    for (int i = 0; i < NUM_CASSIERI; i++) printf("%d\t",s->oggetti_tot[i]);
-    printf("\n");
+    int index = 0, min = s->oggetti_tot[0];
+    for (int i = 0; i < N; i++) {
+        if(s->oggetti_tot[i] < min){
+            index = i;
+            min= s->oggetti_tot[i];
+        }
+    }
 
+    printf("[CLIENTE %d]\tMI ACCODO ALLA CASSA %d CHE CHE DEVE PASSARE %d OGGETTI + I MIEI %d OGGETTI\n",*pi,index,s->oggetti_tot[index],noggetti);
+    // mi accodo
     s->oggetti_tot[index] += noggetti;
+    // ora spetto
+    sem_post(&s->m);
+    sem_post(&s->cassiere[index]);
+    sem_wait(&s->cliente[index]);   // wait sulla coda clienti formatasi alla cassa index
 
+    // vengo svegliato quando e' il mio turno
 
-    printf("[CLIENTE %d]\t ASPETTO CHE IL CASSIERE FINISCA\n",*pi);
-    pthread_mutex_unlock(&s->m);
-    sem_wait(&s->servito[index]);
+    sem_wait(&s->m);
+    // tolgo i miei ogg dalla cassa
+    printf("[CLIENTE %d]\t\t\tSONO STATO SERVITO, TOLGO I MIEI %d OGGETTI\n",*pi,noggetti);
 
-
-    pthread_mutex_lock(&s->m);
-    s->oggetti_tot[index] -= noggetti;
-    pthread_mutex_unlock(&s->m);
+    s->oggetti_tot[index]-= noggetti;
+    sem_post(&s->m);
 
 }
 
@@ -103,11 +97,11 @@ void *cliente(void *id) {
 
     for(int t =0;t<NTIMES;t++){
         sleep(rand()%20 +1);
-        printf("[CLIENTE %d]\tSono arrivato al supermercato e sto facendo la spesa\n",*pi);
+        //printf("[CLIENTE %d]\tSono arrivato al supermercato e sto facendo la spesa\n",*pi);
         int oggetti = (rand()%30) + 1;
         pausetta();
         cliente_pagamento (&supermercato,pi,oggetti);
-        printf("[CLIENTE %d]\tHo pagato e vado a casa\n",*pi);
+        //printf("[CLIENTE %d]\tHo pagato e vado a casa\n",*pi);
     }
 
     *ptr = *pi;
@@ -115,28 +109,24 @@ void *cliente(void *id) {
 }
 
 void cassiere_servo_cliente (struct supermercato_t *s , int *pi){
-    pthread_mutex_lock(&s->m);
-    printf("\t\t\t\t\t\t\tCIAO SONO IL CASSIERE %d\n",*pi);
-    if (s->oggetti_tot[*pi] == 0){
-        printf("[CASSIERE %d] Mi blocco xk non ho clienti in attesa \n",*pi);
-        pthread_mutex_unlock(&s->m);
-        sem_wait(&s->cassiere[*pi]);
-        pthread_mutex_lock(&s->m);
-    }
+
+    sem_wait(&s->cassiere[*pi]);
+    sem_wait(&s->m);
+
+    printf("\nSITUA\t");
+    for (int i = 0; i < NUM_CASSIERI; i++) printf("%d\t",s->oggetti_tot[i]);
+    printf("\n\n");
 
     printf("[CASSIERE %d]\t\t Sto servendo un cliente\n",*pi);
+    sem_post(&s->m);
     sleep(1);
-    pthread_mutex_unlock(&s->m);
-
 }
 
 void cassiere_fine_cliente (struct supermercato_t *s, int *pi) {
-    pthread_mutex_lock(&s->m);
-    printf("[CASSIERE %d]\t\t SERVITO un cliente\n",*pi);
-    sem_post(&s->servito[*pi]);
-
-    pthread_mutex_unlock(&s->m);
-
+    sem_wait(&s->m);
+    printf("[CASSIERE %d]\t\t\tHO SERVITO UN CLIENTE\n",*pi);
+    sem_post(&s->m);
+    sem_post(&s->cliente[*pi]);
 }
 
 void *cassiere(void *id) {
@@ -149,14 +139,14 @@ void *cassiere(void *id) {
         exit(-1);
     }
 
-  //  printf("\t\t\t\t\t\t\tCIAO SONO IL CASSIERE %d\n",*pi);
+    //  printf("\t\t\t\t\t\t\tCIAO SONO IL CASSIERE %d\n",*pi);
 
     for(;;){
         sleep(1);
         cassiere_servo_cliente(&supermercato,pi); // pi e' numerocassa
         //servo
         pausetta();
-         cassiere_fine_cliente (&supermercato, pi);
+        cassiere_fine_cliente (&supermercato, pi);
     }
     *ptr = *pi;
     pthread_exit((void *) ptr);
@@ -249,3 +239,5 @@ int main (int argc, char **argv) {
 
     exit(0);
 }
+
+
