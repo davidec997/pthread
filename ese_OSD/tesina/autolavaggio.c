@@ -1,4 +1,3 @@
-//PERFETTO
 /*In un autolavaggio vengono lavati due tipi di veicoli: auto
 e camper. L’autolavaggio può lavare più auto
 contemporaneamente. I camper possono essere lavati solo

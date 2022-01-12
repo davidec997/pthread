@@ -220,7 +220,6 @@ void *automobile(void *id)
     for(int t=0; t<N_STAMPE; t++) printf("*");
     printf("\n");
     pthread_mutex_unlock(&incrocio.mtx);
-
     *ptr = n_attraversamenti;
     pthread_exit((void *) ptr);
 }
