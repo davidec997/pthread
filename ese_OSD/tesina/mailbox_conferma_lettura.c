@@ -1,4 +1,4 @@
-//OK
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -7,10 +7,10 @@
 #define N 10 // dimensione coda
 
 typedef enum {false, true} Boolean;
-//char *receivers [3] = {"RECEIVER A", "RECEIVER B", "RECEIVER C"};
 typedef int T;
 
 int valGlobale;
+
 struct mailbox_t {
     int* coda_circolare;
     int head , tail;
