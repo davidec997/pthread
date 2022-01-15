@@ -45,13 +45,13 @@ void fineLavaggio(){
     auto_in_lavaggio --;
     posti_liberi ++;
 
-    printf("\n*[SERVICE]*\tAUTO BLOCCATE %d\tPOSTI LIBERI %d\tCAMPER BLOCCATI %d\n",auto_bloccate,posti_liberi,camper_bloccati);
+    printf("\n\t\t\t\t\t\t\t*[SERVICE]*\tAUTO BLOCCATE %d\tPOSTI LIBERI %d\tCAMPER BLOCCATI %d\n",auto_bloccate,posti_liberi,camper_bloccati);
 
     if(!auto_in_lavaggio && camper_bloccati > 0 ){
         sem_post(&s_camper);
         camper_bloccati --;
         camper_in_lavaggio ++;
-    } else if (auto_bloccate > 0 && posti_liberi > 0){
+    } else if (auto_bloccate > 0 && posti_liberi > 0 && camper_bloccati == 0){
         auto_in_lavaggio ++;
         posti_liberi --;
         auto_bloccate --;
@@ -80,7 +80,7 @@ void fineLavaggioCamper(){
     sem_wait(&m);
     camper_in_lavaggio --;
 
-    printf("\n*[SERVICE]*\tAUTO BLOCCATE %d\tPOSTI LIBERI %d\tCAMPER BLOCCATI %d\n",auto_bloccate,posti_liberi,camper_bloccati);
+    printf("\n\t\t\t\t\t\t\t\t*[SERVICE]*\tAUTO BLOCCATE %d\tPOSTI LIBERI %d\tCAMPER BLOCCATI %d\n",auto_bloccate,posti_liberi,camper_bloccati);
 
 
     if (camper_bloccati > 0){

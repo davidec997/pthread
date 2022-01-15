@@ -1,0 +1,183 @@
+"/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/vari" 30 15
+[AUTO 16]		Sotto i rulli dell'autolavaggio
+[AUTO 9]		Sotto i rulli dell'autolavaggio
+
+							*[SERVICE]*	AUTO BLOCCATE 0	POSTI LIBERI 4	CAMPER BLOCCATI 0
+
+							*[SERVICE]*	AUTO BLOCCATE 1	POSTI LIBERI 5	CAMPER BLOCCATI 1
+[CAMPER 12]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 5	POSTI LIBERI 5	CAMPER BLOCCATI 3
+[CAMPER 1]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 6	POSTI LIBERI 5	CAMPER BLOCCATI 3
+[CAMPER 2]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 6	POSTI LIBERI 5	CAMPER BLOCCATI 2
+[CAMPER 9]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 10	POSTI LIBERI 5	CAMPER BLOCCATI 1
+[CAMPER 14]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 13	POSTI LIBERI 5	CAMPER BLOCCATI 1
+[CAMPER 5]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 14	POSTI LIBERI 5	CAMPER BLOCCATI 0
+[AUTO 24]		Sotto i rulli dell'autolavaggio
+[AUTO 1]		Sotto i rulli dell'autolavaggio
+[AUTO 26]		Sotto i rulli dell'autolavaggio
+[AUTO 8]		Sotto i rulli dell'autolavaggio
+[AUTO 14]		Sotto i rulli dell'autolavaggio
+
+							*[SERVICE]*	AUTO BLOCCATE 11	POSTI LIBERI 1	CAMPER BLOCCATI 3
+
+							*[SERVICE]*	AUTO BLOCCATE 11	POSTI LIBERI 2	CAMPER BLOCCATI 3
+
+							*[SERVICE]*	AUTO BLOCCATE 11	POSTI LIBERI 3	CAMPER BLOCCATI 3
+
+							*[SERVICE]*	AUTO BLOCCATE 11	POSTI LIBERI 4	CAMPER BLOCCATI 3
+
+							*[SERVICE]*	AUTO BLOCCATE 11	POSTI LIBERI 5	CAMPER BLOCCATI 3
+[CAMPER 0]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 13	POSTI LIBERI 5	CAMPER BLOCCATI 2
+[CAMPER 4]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 14	POSTI LIBERI 5	CAMPER BLOCCATI 2
+[CAMPER 10]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 16	POSTI LIBERI 5	CAMPER BLOCCATI 1
+[CAMPER 8]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 17	POSTI LIBERI 5	CAMPER BLOCCATI 2
+[CAMPER 6]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 17	POSTI LIBERI 5	CAMPER BLOCCATI 1
+[CAMPER 11]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 20	POSTI LIBERI 5	CAMPER BLOCCATI 0
+[AUTO 15]		Sotto i rulli dell'autolavaggio
+[AUTO 27]		Sotto i rulli dell'autolavaggio
+[AUTO 17]		Sotto i rulli dell'autolavaggio
+[AUTO 6]		Sotto i rulli dell'autolavaggio
+[AUTO 3]		Sotto i rulli dell'autolavaggio
+
+							*[SERVICE]*	AUTO BLOCCATE 16	POSTI LIBERI 1	CAMPER BLOCCATI 1
+
+							*[SERVICE]*	AUTO BLOCCATE 16	POSTI LIBERI 2	CAMPER BLOCCATI 1
+
+							*[SERVICE]*	AUTO BLOCCATE 16	POSTI LIBERI 3	CAMPER BLOCCATI 1
+
+							*[SERVICE]*	AUTO BLOCCATE 16	POSTI LIBERI 4	CAMPER BLOCCATI 1
+
+							*[SERVICE]*	AUTO BLOCCATE 16	POSTI LIBERI 5	CAMPER BLOCCATI 1
+[CAMPER 7]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 17	POSTI LIBERI 5	CAMPER BLOCCATI 0
+[AUTO 21]		Sotto i rulli dell'autolavaggio
+[AUTO 10]		Sotto i rulli dell'autolavaggio
+[AUTO 28]		Sotto i rulli dell'autolavaggio
+[AUTO 22]		Sotto i rulli dell'autolavaggio
+[AUTO 11]		Sotto i rulli dell'autolavaggio
+
+							*[SERVICE]*	AUTO BLOCCATE 12	POSTI LIBERI 1	CAMPER BLOCCATI 1
+
+							*[SERVICE]*	AUTO BLOCCATE 12	POSTI LIBERI 2	CAMPER BLOCCATI 1
+
+							*[SERVICE]*	AUTO BLOCCATE 12	POSTI LIBERI 3	CAMPER BLOCCATI 1
+
+							*[SERVICE]*	AUTO BLOCCATE 12	POSTI LIBERI 4	CAMPER BLOCCATI 1
+
+							*[SERVICE]*	AUTO BLOCCATE 12	POSTI LIBERI 5	CAMPER BLOCCATI 1
+[CAMPER 3]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 13	POSTI LIBERI 5	CAMPER BLOCCATI 1
+[CAMPER 13]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 13	POSTI LIBERI 5	CAMPER BLOCCATI 0
+[AUTO 23]		Sotto i rulli dell'autolavaggio
+[AUTO 12]		Sotto i rulli dell'autolavaggio
+[AUTO 7]		Sotto i rulli dell'autolavaggio
+[AUTO 19]		Sotto i rulli dell'autolavaggio
+[AUTO 25]		Sotto i rulli dell'autolavaggio
+
+							*[SERVICE]*	AUTO BLOCCATE 8	POSTI LIBERI 1	CAMPER BLOCCATI 0
+[AUTO 18]		Sotto i rulli dell'autolavaggio
+
+							*[SERVICE]*	AUTO BLOCCATE 7	POSTI LIBERI 1	CAMPER BLOCCATI 0
+[AUTO 4]		Sotto i rulli dell'autolavaggio
+
+							*[SERVICE]*	AUTO BLOCCATE 6	POSTI LIBERI 1	CAMPER BLOCCATI 0
+
+							*[SERVICE]*	AUTO BLOCCATE 5	POSTI LIBERI 1	CAMPER BLOCCATI 0
+[AUTO 2]		Sotto i rulli dell'autolavaggio
+
+							*[SERVICE]*	AUTO BLOCCATE 4	POSTI LIBERI 1	CAMPER BLOCCATI 0
+[AUTO 5]		Sotto i rulli dell'autolavaggio
+[AUTO 29]		Sotto i rulli dell'autolavaggio
+
+							*[SERVICE]*	AUTO BLOCCATE 3	POSTI LIBERI 1	CAMPER BLOCCATI 0
+
+							*[SERVICE]*	AUTO BLOCCATE 2	POSTI LIBERI 1	CAMPER BLOCCATI 0
+[AUTO 0]		Sotto i rulli dell'autolavaggio
+[AUTO 20]		Sotto i rulli dell'autolavaggio
+
+							*[SERVICE]*	AUTO BLOCCATE 1	POSTI LIBERI 1	CAMPER BLOCCATI 0
+[AUTO 13]		Sotto i rulli dell'autolavaggio
+
+							*[SERVICE]*	AUTO BLOCCATE 0	POSTI LIBERI 1	CAMPER BLOCCATI 0
+
+							*[SERVICE]*	AUTO BLOCCATE 0	POSTI LIBERI 2	CAMPER BLOCCATI 0
+
+							*[SERVICE]*	AUTO BLOCCATE 0	POSTI LIBERI 3	CAMPER BLOCCATI 0
+
+							*[SERVICE]*	AUTO BLOCCATE 0	POSTI LIBERI 4	CAMPER BLOCCATI 0
+Auto 0 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 1 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 2 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 3 restituisce 1 <-- numero di volte che e' stata lavata
+
+							*[SERVICE]*	AUTO BLOCCATE 0	POSTI LIBERI 5	CAMPER BLOCCATI 0
+Auto 4 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 5 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 6 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 7 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 8 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 9 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 10 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 11 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 12 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 13 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 14 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 15 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 16 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 17 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 18 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 19 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 20 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 21 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 22 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 23 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 24 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 25 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 26 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 27 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 28 restituisce 1 <-- numero di volte che e' stata lavata
+Auto 29 restituisce 1 <-- numero di volte che e' stata lavata
+Camper 0 restituisce 1 <-- numero di volte che e' stato lavato
+Camper 1 restituisce 1 <-- numero di volte che e' stato lavato
+Camper 2 restituisce 1 <-- numero di volte che e' stato lavato
+Camper 3 restituisce 1 <-- numero di volte che e' stato lavato
+Camper 4 restituisce 1 <-- numero di volte che e' stato lavato
+Camper 5 restituisce 1 <-- numero di volte che e' stato lavato
+Camper 6 restituisce 1 <-- numero di volte che e' stato lavato
+Camper 7 restituisce 1 <-- numero di volte che e' stato lavato
+Camper 8 restituisce 1 <-- numero di volte che e' stato lavato
+Camper 9 restituisce 1 <-- numero di volte che e' stato lavato
+Camper 10 restituisce 1 <-- numero di volte che e' stato lavato
+Camper 11 restituisce 1 <-- numero di volte che e' stato lavato
+Camper 12 restituisce 1 <-- numero di volte che e' stato lavato
+Camper 13 restituisce 1 <-- numero di volte che e' stato lavato
+Camper 14 restituisce 1 <-- numero di volte che e' stato lavato
+
+Process finished with exit code 0
