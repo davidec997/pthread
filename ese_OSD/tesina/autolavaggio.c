@@ -1,16 +1,3 @@
-/*In un autolavaggio vengono lavati due tipi di veicoli: auto
-e camper. L’autolavaggio può lavare più auto
-contemporaneamente. I camper possono essere lavati solo
-se non ci sono né auto né un altro camper in lavaggio, e
-hanno priorità sulle auto. Quando arriva un’auto, deve dare
-la precedenza agli eventuali camper in attesa.
-Si implementi una soluzione usando il costrutto monitor per
-modellare l’autolavaggio e i processi per modellare i
-veicoli e si descriva la sincronizzazione tra i processi. Nella
-soluzione si massimizzi l'utilizzo delle risorse. Si discuta se
-la soluzione proposta può presentare starvation e in caso
-positivo per quali processi, e si propongano modifiche e/o
-aggiunte per evitare starvation.*/
 
 #include <unistd.h>
 #include <pthread.h>
@@ -18,7 +5,7 @@ aggiunte per evitare starvation.*/
 #include <stdlib.h>
 #include <semaphore.h>
 
-#define POSTI 4     // numero di auto che l'autolavaggio puo lavare contemporaneamente
+#define POSTI 5     // numero di auto che l'autolavaggio puo lavare contemporaneamente
 #define NTIMES 5
 
 typedef enum {false,true} Boolean;
@@ -29,7 +16,7 @@ int posti_liberi;                           // posti disponibili per le macchine
 sem_t s_auto, s_camper,m;
 
 
-void myInit(void)
+void autolavaggio_init(void)
 {
     sem_init(&m,0,1);
     sem_init(&s_auto, 0, 0);
@@ -40,6 +27,7 @@ void myInit(void)
 
 void inizioLavaggio(){
     sem_wait(&m);
+
     if(!camper_in_lavaggio && !camper_bloccati  && posti_liberi > 0){
         auto_in_lavaggio ++;
         posti_liberi --;
@@ -57,10 +45,17 @@ void fineLavaggio(){
     auto_in_lavaggio --;
     posti_liberi ++;
 
+    printf("\n*[SERVICE]*\tAUTO BLOCCATE %d\tPOSTI LIBERI %d\tCAMPER BLOCCATI %d\n",auto_bloccate,posti_liberi,camper_bloccati);
+
     if(!auto_in_lavaggio && camper_bloccati > 0 ){
         sem_post(&s_camper);
         camper_bloccati --;
         camper_in_lavaggio ++;
+    } else if (auto_bloccate > 0 && posti_liberi > 0){
+        auto_in_lavaggio ++;
+        posti_liberi --;
+        auto_bloccate --;
+        sem_post(&s_auto);
     }
 
     sem_post(&m);
@@ -69,6 +64,7 @@ void fineLavaggio(){
 
 void inizioLavaggioCamper(){
     sem_wait(&m);
+
     if(!camper_in_lavaggio && !auto_in_lavaggio){
         sem_post(&s_camper);
         camper_in_lavaggio++;
@@ -83,17 +79,21 @@ void inizioLavaggioCamper(){
 void fineLavaggioCamper(){
     sem_wait(&m);
     camper_in_lavaggio --;
-    if(auto_bloccate > 0){
+
+    printf("\n*[SERVICE]*\tAUTO BLOCCATE %d\tPOSTI LIBERI %d\tCAMPER BLOCCATI %d\n",auto_bloccate,posti_liberi,camper_bloccati);
+
+
+    if (camper_bloccati > 0){
+        camper_bloccati--;
+        camper_in_lavaggio ++;
+        sem_post(&s_camper);
+    } else if(auto_bloccate > 0){
         while(auto_bloccate > 0 && posti_liberi > 0) {
             auto_bloccate--;
             auto_in_lavaggio++;
             posti_liberi --;
             sem_post(&s_auto);
         }
-    } else if (camper_bloccati > 0){
-        camper_bloccati--;
-        camper_in_lavaggio ++;
-        sem_post(&s_camper);
     }
 
     sem_post(&m);
@@ -109,15 +109,14 @@ void *eseguiCamper(void *id) {
         perror("Problemi con l'allocazione di ptr\n");
         exit(-1);
     }
+    //
+    sleep(rand()%10);
 
-    for(int t =1;t<NTIMES;t++){
-        inizioLavaggioCamper();
-        //risorsa += 1;
-        printf("[CAMPER %d]\t\tSotto i rulli dell'autolavaggio\n",*pi);
-        sleep(4);
-        fineLavaggioCamper();
-        lavaggi ++;
-    }
+    inizioLavaggioCamper();
+    printf("[CAMPER %d]\t\tSotto i rulli dell'autolavaggio\n",*pi);
+    sleep(1);
+    fineLavaggioCamper();
+    lavaggi ++;
 
     *ptr = lavaggi;
     pthread_exit((void *) ptr);
@@ -135,13 +134,13 @@ void *eseguiAuto(void *id) {
         exit(-1);
     }
 
-    for(int t =1;t<NTIMES;t++){
-        inizioLavaggio();
-        printf("[AUTO %d]\t\tSotto i rulli dell'autolavaggio\n",*pi);
-        sleep(2);
-        fineLavaggio();
-        lavaggi ++;
-    }
+    sleep(rand()%10);
+    inizioLavaggio();
+    printf("[AUTO %d]\t\tSotto i rulli dell'autolavaggio\n",*pi);
+    sleep(1);
+    fineLavaggio();
+    lavaggi ++;
+
     *ptr = lavaggi;
     pthread_exit((void *) ptr);
 }
@@ -175,7 +174,7 @@ int main (int argc, char **argv) {
         exit(2);
     }
 
-    myInit();
+    autolavaggio_init();
 
     thread_auto=(pthread_t *) malloc((NUM_AUTO) * sizeof(pthread_t));
     thread_camper=(pthread_t *) malloc((NUM_CAMPER) * sizeof(pthread_t));
@@ -229,14 +228,14 @@ int main (int argc, char **argv) {
         /* attendiamo la terminazione di tutti i thread generati */
         pthread_join(thread_auto[i], (void**) & p);
         ris= p;
-        printf("Auto %d-esima restituisce %d <-- numero di volte che e' stata lavata\n", i, *ris);
+        printf("Auto %d restituisce %d <-- numero di volte che e' stata lavata\n", i, *ris);
     }
     for (i=0; i < NUM_CAMPER; i++)
     {
         int ris;
         pthread_join(thread_camper[i], (void**) & p);
         ris= *p;
-        printf("Camper %d-esimo restituisce %d <-- numero di volte che e' stato lavato\n", i, ris);
+        printf("Camper %d restituisce %d <-- numero di volte che e' stato lavato\n", i, ris);
     }
 
     exit(0);
