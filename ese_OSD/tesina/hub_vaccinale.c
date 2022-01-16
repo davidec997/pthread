@@ -1,6 +1,3 @@
-//
-// Created by davidec on 26/12/21.
-//
 
 /*
  In un centro per il prelievo del sangue lavora un medico
@@ -29,9 +26,9 @@ risorse.
 #define NTIMES 3
 
 typedef enum {false,true} Boolean;
-int  dosi_blocc [3];
-sem_t prima_dose, seconda_dose, terza_dose, m;
+sem_t m;
 sem_t s_dosi [3];
+int  dosi_blocc [3];
 int dottori_liberi;
 char *elenco_dosi [3] = {"PRIMA", "SECONDA", "TERZA"};
 
@@ -46,7 +43,7 @@ void myInit(void)
     dottori_liberi = DOTTORI;
 }
 
-void okVaccino ( int * pi, int dose){
+void okVaccino (int * pi, int dose){
     dottori_liberi --;
     sem_post(&s_dosi[dose]);
     printf("[THREAD %d]\tOk per la %s dose.\n", *pi, elenco_dosi[dose]);
