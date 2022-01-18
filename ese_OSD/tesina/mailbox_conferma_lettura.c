@@ -5,7 +5,7 @@
 
 #define N 10        // dimensione coda
 #define THREAD 4    // Numero di Threads --> 3 ricevitori e un generatore
-#define  NTIMES 25
+#define  NTIMES 25  // numero di ricezioni
 
 typedef enum {false, true} Boolean;
 typedef int T;
