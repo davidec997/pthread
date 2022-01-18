@@ -24,6 +24,7 @@ struct mailbox_t {
 }mailbox;
 
 
+
 void init_mailbox(struct mailbox_t *mb){
 
     pthread_cond_init(&mb->vuota, NULL);
