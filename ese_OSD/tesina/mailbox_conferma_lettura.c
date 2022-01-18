@@ -12,13 +12,13 @@ typedef int T;
 int valGlobale;
 
 struct mailbox_t {
+    pthread_cond_t vuota,piena,letto_da_tutti,stop;
+    pthread_cond_t synch[3];
+    pthread_mutex_t mtx;
     int* coda_circolare;
     int head , tail;
     int n_msg;
-    pthread_cond_t vuota,piena,letto_da_tutti,stop;
-    pthread_mutex_t mtx;
     int *conferma_lettura[3];
-    pthread_cond_t synch[3];
     int turno;
 }mailbox;
 
