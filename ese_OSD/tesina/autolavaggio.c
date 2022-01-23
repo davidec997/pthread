@@ -183,6 +183,9 @@ int main (int argc, char **argv) {
     //inizializziamo la struttura
     autolavaggio_init();
 
+    //inizializziamo il seme per la srand()
+    srand(time(NULL));
+
     //allocazione memoria per i thread
     thread_auto=(pthread_t *) malloc((NUM_AUTO) * sizeof(pthread_t));
     thread_camper=(pthread_t *) malloc((NUM_CAMPER) * sizeof(pthread_t));
