@@ -1,0 +1,26 @@
+[AUTO 16]		Sotto i rulli dell'autolavaggio
+[AUTO 10]		Sotto i rulli dell'autolavaggio
+
+							*[SERVICE]*	AUTO BLOCCATE 0	POSTI LIBERI 4	CAMPER BLOCCATI 0
+[AUTO 42]		Sotto i rulli dell'autolavaggio
+
+							*[SERVICE]*	AUTO BLOCCATE 1	POSTI LIBERI 4	CAMPER BLOCCATI 2
+
+							*[SERVICE]*	AUTO BLOCCATE 6	POSTI LIBERI 5	CAMPER BLOCCATI 2
+[CAMPER 2]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 9	POSTI LIBERI 5	CAMPER BLOCCATI 3
+[CAMPER 9]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 11	POSTI LIBERI 5	CAMPER BLOCCATI 2
+[CAMPER 6]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 11	POSTI LIBERI 5	CAMPER BLOCCATI 1
+[CAMPER 5]		Sotto i rulli dell'autolavaggio
+
+								*[SERVICE]*	AUTO BLOCCATE 15	POSTI LIBERI 5	CAMPER BLOCCATI 0
+[AUTO 32]		Sotto i rulli dell'autolavaggio
+[AUTO 24]		Sotto i rulli dell'autolavaggio
+[AUTO 26]		Sotto i rulli dell'autolavaggio
+[AUTO 12]		Sotto i rulli dell'autolavaggio
+[AUTO 30]		Sotto i rulli dell'autolavaggio
