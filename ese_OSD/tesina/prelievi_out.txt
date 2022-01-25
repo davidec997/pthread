@@ -1,0 +1,424 @@
+"/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/vari" 59
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 0	lettini liberi 3
+[DOTTORE]		Attesa cliente
+[DONATORE]		In attesa per prelievo
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DONATORE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 2	pazienti bloccati 3	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		In attesa per prelievo
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DONATORE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 6	pazienti bloccati 4	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[PAZIENTE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 6	pazienti bloccati 7	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		In attesa per prelievo
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DONATORE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 11	pazienti bloccati 8	lettini liberi 0
+[DOTTORE]		Attesa lettino
+[PAZIENTE]		In attesa per prelievo
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DONATORE]		In attesa per prelievo
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 11	pazienti bloccati 9	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DONATORE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 13	pazienti bloccati 9	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DONATORE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 14	pazienti bloccati 10	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[PAZIENTE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 15	pazienti bloccati 15	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[PAZIENTE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 20	pazienti bloccati 20	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[PAZIENTE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 20	pazienti bloccati 21	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[PAZIENTE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 20	pazienti bloccati 24	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DONATORE]		In attesa per prelievo
+[PAZIENTE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DONATORE]		In attesa per prelievo
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 22	pazienti bloccati 25	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 21	pazienti bloccati 25	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+Pthread 0-esimo restituisce 1  --> numero di prelievi
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 20	pazienti bloccati 25	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 19	pazienti bloccati 25	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 18	pazienti bloccati 25	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 17	pazienti bloccati 25	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 16	pazienti bloccati 25	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 15	pazienti bloccati 25	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 14	pazienti bloccati 25	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 13	pazienti bloccati 25	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 12	pazienti bloccati 25	lettini liberi 0
+[DOTTORE]		Attesa lettino
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 11	pazienti bloccati 25	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 10	pazienti bloccati 25	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 9	pazienti bloccati 25	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 8	pazienti bloccati 25	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 7	pazienti bloccati 25	lettini liberi 0
+[DOTTORE]		Attesa lettino
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 6	pazienti bloccati 25	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 5	pazienti bloccati 25	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 4	pazienti bloccati 25	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 3	pazienti bloccati 25	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 2	pazienti bloccati 25	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 1	pazienti bloccati 25	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un donatore
+[DONATORE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 25	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 24	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 23	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 22	lettini liberi 0
+[DOTTORE]		Attesa lettino
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 21	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 20	lettini liberi 0
+[DOTTORE]		Attesa lettino
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 19	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 18	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+Pthread 1-esimo restituisce 1  --> numero di prelievi
+Pthread 2-esimo restituisce 1  --> numero di prelievi
+Pthread 3-esimo restituisce 1  --> numero di prelievi
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 17	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 16	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 15	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 14	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 13	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 12	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+Pthread 4-esimo restituisce 1  --> numero di prelievi
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 11	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 10	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 9	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 8	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 7	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 6	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 5	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 4	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 3	lettini liberi 2
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+Pthread 5-esimo restituisce 1  --> numero di prelievi
+Pthread 6-esimo restituisce 1  --> numero di prelievi
+Pthread 7-esimo restituisce 1  --> numero di prelievi
+Pthread 8-esimo restituisce 1  --> numero di prelievi
+Pthread 9-esimo restituisce 1  --> numero di prelievi
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 2	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 1	lettini liberi 1
+[DOTTORE]		inizio prelievo ad un paziente
+[PAZIENTE]		STO FACENDO IL PRELIEVO
+Pthread 10-esimo restituisce 1  --> numero di prelievi
+Pthread 11-esimo restituisce 1  --> numero di prelievi
+Pthread 12-esimo restituisce 1  --> numero di prelievi
+Pthread 13-esimo restituisce 1  --> numero di prelievi
+Pthread 14-esimo restituisce 1  --> numero di prelievi
+[DOTTORE]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 0	lettini liberi 2
+[DOTTORE]		Attesa cliente
+Pthread 15-esimo restituisce 1  --> numero di prelievi
+Pthread 16-esimo restituisce 1  --> numero di prelievi
+Pthread 17-esimo restituisce 1  --> numero di prelievi
+Pthread 18-esimo restituisce 1  --> numero di prelievi
+Pthread 19-esimo restituisce 1  --> numero di prelievi
+Pthread 20-esimo restituisce 1  --> numero di prelievi
+Pthread 21-esimo restituisce 1  --> numero di prelievi
+Pthread 22-esimo restituisce 1  --> numero di prelievi
+Pthread 23-esimo restituisce 1  --> numero di prelievi
+Pthread 24-esimo restituisce 1  --> numero di prelievi
+Pthread 25-esimo restituisce 1  --> numero di prelievi
+Pthread 26-esimo restituisce 1  --> numero di prelievi
+Pthread 27-esimo restituisce 1  --> numero di prelievi
+Pthread 28-esimo restituisce 1  --> numero di prelievi
+Pthread 29-esimo restituisce 1  --> numero di prelievi
+Pthread 30-esimo restituisce 1  --> numero di prelievi
+Pthread 31-esimo restituisce 1  --> numero di prelievi
+Pthread 32-esimo restituisce 1  --> numero di prelievi
+Pthread 33-esimo restituisce 1  --> numero di prelievi
+Pthread 34-esimo restituisce 1  --> numero di prelievi
+Pthread 35-esimo restituisce 1  --> numero di prelievi
+Pthread 36-esimo restituisce 1  --> numero di prelievi
+Pthread 37-esimo restituisce 1  --> numero di prelievi
+Pthread 38-esimo restituisce 1  --> numero di prelievi
+Pthread 39-esimo restituisce 1  --> numero di prelievi
+Pthread 40-esimo restituisce 1  --> numero di prelievi
+Pthread 41-esimo restituisce 1  --> numero di prelievi
+Pthread 42-esimo restituisce 1  --> numero di prelievi
+Pthread 43-esimo restituisce 1  --> numero di prelievi
+Pthread 44-esimo restituisce 1  --> numero di prelievi
+Pthread 45-esimo restituisce 1  --> numero di prelievi
+Pthread 46-esimo restituisce 1  --> numero di prelievi
+Pthread 47-esimo restituisce 1  --> numero di prelievi
+Pthread 48-esimo restituisce 1  --> numero di prelievi
+Pthread 49-esimo restituisce 1  --> numero di prelievi
+Pthread 50-esimo restituisce 1  --> numero di prelievi
+Pthread 51-esimo restituisce 1  --> numero di prelievi
+Pthread 52-esimo restituisce 1  --> numero di prelievi
+Pthread 53-esimo restituisce 1  --> numero di prelievi
+Pthread 54-esimo restituisce 1  --> numero di prelievi
+Pthread 55-esimo restituisce 1  --> numero di prelievi
+Pthread 56-esimo restituisce 1  --> numero di prelievi
+Pthread 57-esimo restituisce 1  --> numero di prelievi
+
+Process finished with exit code 0
