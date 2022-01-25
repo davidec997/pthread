@@ -54,9 +54,9 @@ void prelievo (Boolean tipo){
     sem_post(&m);
 }
 
-void finePrelievo (Boolean tipo) {
+void fine_prelievo (Boolean tipo) {
 //ogni cliente aspetta ancora alcuni secondi per riprendersi e poi libera il lettino...
-    sleep(rand()%3 +1);
+    sleep(rand()%4 +1);
     sem_wait(&m);
     lettini_liberi ++;                          //incrementa lettini disponibili
     sem_post(&m);
@@ -68,18 +68,18 @@ void esegui_prelievo(){
     printf("\n[SERVICE]\t\tDonatori bloccati %d\tpazienti bloccati %d\tlettini liberi %d\n",donatori_blocc,pazienti_blocc,lettini_liberi);
 
     if(donatori_blocc == 0 && pazienti_blocc == 0)              //stampo il messaggio solo il dottore si blocca perche' non ci sono ne donatori ne pazienti
-        printf("[DOTTORE]\t\tAttesa cliente\n");
+        printf("[MEDICO]\t\tAttesa cliente\n");
 
     sem_wait(&attesa);                                          //il dottore attende un cliente
 
     if(lettini_liberi == 0)                                     //stampo il messaggio solo il dottore si blocca perche' non ci sono lettini
-        printf("[DOTTORE]\t\tAttesa lettino\n");
+        printf("[MEDICO]\t\tAttesa lettino\n");
 
     sem_wait(&lettino);                                         //il dottore attende un lettino
 
     //il dottore da precedenza ai donatori, solo se non ce ne sono allora sveglia un paziente
     sem_wait(&m);
-    printf("[DOTTORE]\t\tinizio prelievo");
+    printf("[MEDICO]\t\tinizio prelievo");
 
     if (donatori_blocc > 0){
         sem_post(&s_donatori);
@@ -98,12 +98,12 @@ void esegui_prelievo(){
     sleep(1);                               //..ed esegue il prelievo
 
     sem_wait(&m);                                   //mutex solo per stampa di controllo
-    printf("[DOTTORE]\t\tfine prelievo\n");
+    printf("[MEDICO]\t\tfine prelievo\n");
     sem_post(&m);
 
 }
 
-void *eseguiDottore(void *id) {
+void *eseguiMedico(void *id) {
     int *pi = (int *) id;
     int *ptr;
     ptr = (int *) malloc(sizeof(int));
@@ -133,7 +133,7 @@ void *eseguiCliente(void *id) {
 
     prelievo(tipo);
 
-    finePrelievo(tipo);
+    fine_prelievo(tipo);
     prelievi ++;
 
     *ptr = prelievi;                    //non essendoci ciclo, vale al massimo 1
@@ -188,7 +188,7 @@ int main (int argc, char **argv){
     for (i=0; i < NUM_THREADS; i++){
         taskids[i] = i;
         if (i == NUM_THREADS -1)        //l'ultimo thread e' il dottore
-            if (pthread_create(&thread[i], NULL, eseguiDottore, (void *) (&taskids[i])) != 0){
+            if (pthread_create(&thread[i], NULL, eseguiMedico, (void *) (&taskids[i])) != 0){
                 sprintf(error,"SONO IL MAIN E CI SONO STATI PROBLEMI DELLA CREAZIONE DEL thread %d-esimo\n", taskids[i]);
                 perror(error);
                 exit(5);
