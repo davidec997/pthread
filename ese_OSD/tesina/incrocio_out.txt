@@ -1,0 +1,746 @@
+"/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/vari" 59
+						SEMAFORO [0] E [1] ROSSO
+						SEMAFORO [2] E [3] VERDE
+[GESTORE]			[Ho messo la MACCHINA	3 in posizione	[0] nella coda	2
+[AUTO 3]			Sono arrivata sul semaforo 	2
+[GESTORE]			MACCHINA 3 HA IL SEMAFORO	[2] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 3]			Sto attraversando l'incrocio dal semaforo 	2
+[GESTORE]			[Ho messo la MACCHINA	31 in posizione	[0] nella coda	3
+[AUTO 31]			Sono arrivata sul semaforo 	3
+[GESTORE]			MACCHINA 31 HA IL SEMAFORO	[3] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 31]			Sto attraversando l'incrocio dal semaforo 	3
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	0	0	1	************************************************************************************************************************
+[AUTO 3]			ho liberato l'incrocio 2 : sono passato 1 volta
+[GESTORE]			[Ho messo la MACCHINA	32 in posizione	[1] nella coda	2
+[AUTO 32]			Sono arrivata sul semaforo 	2
+[GESTORE]			MACCHINA 32 HA IL SEMAFORO	[2] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 32]			Sto attraversando l'incrocio dal semaforo 	2
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	0	1	0	************************************************************************************************************************
+[AUTO 31]			ho liberato l'incrocio 3 : sono passato 1 volta
+[GESTORE]			[Ho messo la MACCHINA	40 in posizione	[1] nella coda	3
+[AUTO 40]			Sono arrivata sul semaforo 	3
+[GESTORE]			MACCHINA 40 HA IL SEMAFORO	[3] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 40]			Sto attraversando l'incrocio dal semaforo 	3
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	0	0	1	************************************************************************************************************************
+[AUTO 32]			ho liberato l'incrocio 2 : sono passato 1 volta
+[GESTORE]			[Ho messo la MACCHINA	38 in posizione	[0] nella coda	1
+[AUTO 38]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 38 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	1	0	0	************************************************************************************************************************
+[AUTO 40]			ho liberato l'incrocio 3 : sono passato 1 volta
+[GESTORE]			[Ho messo la MACCHINA	58 in posizione	[0] nella coda	0
+[AUTO 58]			Sono arrivata sul semaforo 	0
+[GESTORE]			MACCHINA 58 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	34 in posizione	[2] nella coda	2
+[AUTO 34]			Sono arrivata sul semaforo 	2
+[GESTORE]			MACCHINA 34 HA IL SEMAFORO	[2] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 34]			Sto attraversando l'incrocio dal semaforo 	2
+[GESTORE]			[Ho messo la MACCHINA	42 in posizione	[1] nella coda	1
+[AUTO 42]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 42 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	2 in posizione	[3] nella coda	2
+[AUTO 2]			Sono arrivata sul semaforo 	2
+[GESTORE]			MACCHINA 2 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	23 in posizione	[4] nella coda	2
+[AUTO 23]			Sono arrivata sul semaforo 	2
+[GESTORE]			MACCHINA 23 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	33 in posizione	[1] nella coda	0
+[AUTO 33]			Sono arrivata sul semaforo 	0
+[GESTORE]			MACCHINA 33 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	2	2	0	************************************************************************************************************************
+[AUTO 34]			ho liberato l'incrocio 2 : sono passato 1 volta
+[GESTORE]			MACCHINA 2 HA IL SEMAFORO	[2] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 2]			Sto attraversando l'incrocio dal semaforo 	2
+[GESTORE]			MACCHINA 23 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+						SEMAFORO [2] E [3] GIALLO
+[GESTORE]			[Ho messo la MACCHINA	20 in posizione	[2] nella coda	1
+[AUTO 20]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 20 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	28 in posizione	[5] nella coda	2
+[AUTO 28]			Sono arrivata sul semaforo 	2
+[GESTORE]			MACCHINA 28 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	3	2	0	************************************************************************************************************************
+[AUTO 2]			ho liberato l'incrocio 2 : sono passato 1 volta
+[GESTORE]			MACCHINA 23 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 28 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+						SEMAFORO [2] E [3] ROSSO
+						SEMAFORO [0] E [1] VERDE
+[GESTORE]			MACCHINA 42 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 20 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 58 HA IL SEMAFORO	[0] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 58]			Sto attraversando l'incrocio dal semaforo 	0
+[GESTORE]			MACCHINA 33 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 38 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 38]			Sto attraversando l'incrocio dal semaforo 	1
+[GESTORE]			[Ho messo la MACCHINA	54 in posizione	[2] nella coda	0
+[AUTO 54]			Sono arrivata sul semaforo 	0
+[GESTORE]			MACCHINA 54 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	3	2	0	************************************************************************************************************************
+[AUTO 58]			ho liberato l'incrocio 0 : sono passato 1 volta
+[GESTORE]			MACCHINA 33 HA IL SEMAFORO	[0] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 33]			Sto attraversando l'incrocio dal semaforo 	0
+[GESTORE]			MACCHINA 54 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	2	2	0	************************************************************************************************************************
+[AUTO 38]			ho liberato l'incrocio 1 : sono passato 1 volta
+[GESTORE]			MACCHINA 42 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 42]			Sto attraversando l'incrocio dal semaforo 	1
+[GESTORE]			MACCHINA 20 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 1	2	2	0	************************************************************************************************************************
+[AUTO 33]			ho liberato l'incrocio 0 : sono passato 1 volta
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 1	1	2	0	************************************************************************************************************************
+[AUTO 42]			ho liberato l'incrocio 1 : sono passato 1 volta
+[GESTORE]			MACCHINA 54 HA IL SEMAFORO	[0] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 54]			Sto attraversando l'incrocio dal semaforo 	0
+[GESTORE]			MACCHINA 20 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 20]			Sto attraversando l'incrocio dal semaforo 	1
+[GESTORE]			[Ho messo la MACCHINA	39 in posizione	[3] nella coda	0
+[AUTO 39]			Sono arrivata sul semaforo 	0
+[GESTORE]			MACCHINA 39 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	51 in posizione	[3] nella coda	1
+[AUTO 51]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 51 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	52 in posizione	[2] nella coda	3
+[AUTO 52]			Sono arrivata sul semaforo 	3
+[GESTORE]			MACCHINA 52 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 1	2	2	1	************************************************************************************************************************
+[AUTO 54]			ho liberato l'incrocio 0 : sono passato 1 volta
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 1	1	2	1	************************************************************************************************************************
+[AUTO 20]			ho liberato l'incrocio 1 : sono passato 1 volta
+[GESTORE]			MACCHINA 39 HA IL SEMAFORO	[0] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 39]			Sto attraversando l'incrocio dal semaforo 	0
+[GESTORE]			MACCHINA 51 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 51]			Sto attraversando l'incrocio dal semaforo 	1
+[GESTORE]			[Ho messo la MACCHINA	8 in posizione	[4] nella coda	1
+[AUTO 8]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 8 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	46 in posizione	[6] nella coda	2
+[AUTO 46]			Sono arrivata sul semaforo 	2
+[GESTORE]			MACCHINA 46 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	2	3	1	************************************************************************************************************************
+[AUTO 39]			ho liberato l'incrocio 0 : sono passato 1 volta
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	1	3	1	************************************************************************************************************************
+[AUTO 51]			ho liberato l'incrocio 1 : sono passato 1 volta
+[GESTORE]			MACCHINA 8 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 8]			Sto attraversando l'incrocio dal semaforo 	1
+[GESTORE]			[Ho messo la MACCHINA	7 in posizione	[3] nella coda	3
+[AUTO 7]			Sono arrivata sul semaforo 	3
+[GESTORE]			MACCHINA 7 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	30 in posizione	[5] nella coda	1
+[AUTO 30]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 30 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+						SEMAFORO [0] E [1] GIALLO
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	1	3	2	************************************************************************************************************************
+[AUTO 8]			ho liberato l'incrocio 1 : sono passato 1 volta
+[GESTORE]			MACCHINA 30 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	25 in posizione	[4] nella coda	0
+[AUTO 25]			Sono arrivata sul semaforo 	0
+[GESTORE]			MACCHINA 25 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+						SEMAFORO [0] E [1] ROSSO
+						SEMAFORO [2] E [3] VERDE
+[GESTORE]			MACCHINA 46 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 7 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 23 HA IL SEMAFORO	[2] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 23]			Sto attraversando l'incrocio dal semaforo 	2
+[GESTORE]			MACCHINA 28 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 52 HA IL SEMAFORO	[3] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 52]			Sto attraversando l'incrocio dal semaforo 	3
+[GESTORE]			[Ho messo la MACCHINA	6 in posizione	[4] nella coda	3
+[AUTO 6]			Sono arrivata sul semaforo 	3
+[GESTORE]			MACCHINA 6 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	5 in posizione	[6] nella coda	1
+[AUTO 5]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 5 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	12 in posizione	[5] nella coda	3
+[AUTO 12]			Sono arrivata sul semaforo 	3
+[GESTORE]			MACCHINA 12 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 1	2	2	4	************************************************************************************************************************
+[AUTO 23]			ho liberato l'incrocio 2 : sono passato 1 volta
+[GESTORE]			MACCHINA 46 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 28 HA IL SEMAFORO	[2] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 28]			Sto attraversando l'incrocio dal semaforo 	2
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 1	2	2	3	************************************************************************************************************************
+[AUTO 52]			ho liberato l'incrocio 3 : sono passato 1 volta
+[GESTORE]			MACCHINA 7 HA IL SEMAFORO	[3] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 7]			Sto attraversando l'incrocio dal semaforo 	3
+[GESTORE]			MACCHINA 12 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 6 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	43 in posizione	[6] nella coda	3
+[AUTO 43]			Sono arrivata sul semaforo 	3
+[GESTORE]			MACCHINA 43 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	56 in posizione	[7] nella coda	2
+[AUTO 56]			Sono arrivata sul semaforo 	2
+[GESTORE]			MACCHINA 56 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 1	2	2	4	************************************************************************************************************************
+[AUTO 28]			ho liberato l'incrocio 2 : sono passato 1 volta
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 1	2	2	3	************************************************************************************************************************
+[AUTO 7]			ho liberato l'incrocio 3 : sono passato 1 volta
+[GESTORE]			MACCHINA 43 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 6 HA IL SEMAFORO	[3] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 12 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 46 HA IL SEMAFORO	[2] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 46]			Sto attraversando l'incrocio dal semaforo 	2
+[AUTO 6]			Sto attraversando l'incrocio dal semaforo 	3
+[GESTORE]			MACCHINA 56 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	4 in posizione	[7] nella coda	3
+[AUTO 4]			Sono arrivata sul semaforo 	3
+[GESTORE]			MACCHINA 4 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	27 in posizione	[7] nella coda	1
+[AUTO 27]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 27 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 1	3	1	4	************************************************************************************************************************
+[AUTO 46]			ho liberato l'incrocio 2 : sono passato 1 volta
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 1	3	1	3	************************************************************************************************************************
+[AUTO 6]			ho liberato l'incrocio 3 : sono passato 1 volta
+[GESTORE]			MACCHINA 12 HA IL SEMAFORO	[3] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 12]			Sto attraversando l'incrocio dal semaforo 	3
+[GESTORE]			MACCHINA 56 HA IL SEMAFORO	[2] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 56]			Sto attraversando l'incrocio dal semaforo 	2
+[GESTORE]			MACCHINA 4 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 43 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	1 in posizione	[8] nella coda	1
+[AUTO 1]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 1 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	37 in posizione	[8] nella coda	3
+[AUTO 37]			Sono arrivata sul semaforo 	3
+[GESTORE]			MACCHINA 37 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	50 in posizione	[9] nella coda	3
+[AUTO 50]			Sono arrivata sul semaforo 	3
+[GESTORE]			MACCHINA 50 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 1	4	1	4	************************************************************************************************************************
+[AUTO 12]			ho liberato l'incrocio 3 : sono passato 1 volta
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 1	4	0	4	************************************************************************************************************************
+[AUTO 56]			ho liberato l'incrocio 2 : sono passato 1 volta
+[GESTORE]			MACCHINA 43 HA IL SEMAFORO	[3] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 43]			Sto attraversando l'incrocio dal semaforo 	3
+[GESTORE]			MACCHINA 50 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 37 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 4 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	14 in posizione	[5] nella coda	0
+[AUTO 14]			Sono arrivata sul semaforo 	0
+[GESTORE]			MACCHINA 14 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	16 in posizione	[9] nella coda	1
+[AUTO 16]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 16 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	26 in posizione	[0] nella coda	3
+[AUTO 26]			Sono arrivata sul semaforo 	3
+[GESTORE]			MACCHINA 26 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	35 in posizione	[0] nella coda	1
+[AUTO 35]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 35 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	48 in posizione	[8] nella coda	2
+[AUTO 48]			Sono arrivata sul semaforo 	2
+[GESTORE]			MACCHINA 48 HA IL SEMAFORO	[2] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 48]			Sto attraversando l'incrocio dal semaforo 	2
+						SEMAFORO [2] E [3] GIALLO
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	6	1	4	************************************************************************************************************************
+[AUTO 43]			ho liberato l'incrocio 3 : sono passato 1 volta
+[GESTORE]			MACCHINA 50 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 37 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 26 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 4 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	9 in posizione	[1] nella coda	1
+[AUTO 9]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 9 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	21 in posizione	[9] nella coda	2
+[AUTO 21]			Sono arrivata sul semaforo 	2
+[GESTORE]			MACCHINA 21 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	36 in posizione	[6] nella coda	0
+[AUTO 36]			Sono arrivata sul semaforo 	0
+[GESTORE]			MACCHINA 36 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	49 in posizione	[7] nella coda	0
+[AUTO 49]			Sono arrivata sul semaforo 	0
+[GESTORE]			MACCHINA 49 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 4	7	1	4	************************************************************************************************************************
+[AUTO 48]			ho liberato l'incrocio 2 : sono passato 1 volta
+[GESTORE]			MACCHINA 21 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+						SEMAFORO [2] E [3] ROSSO
+						SEMAFORO [0] E [1] VERDE
+[GESTORE]			MACCHINA 1 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 9 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 27 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 25 HA IL SEMAFORO	[0] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 25]			Sto attraversando l'incrocio dal semaforo 	0
+[GESTORE]			MACCHINA 35 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 49 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 36 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 14 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 5 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 16 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 30 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 30]			Sto attraversando l'incrocio dal semaforo 	1
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 3	7	1	4	************************************************************************************************************************
+[AUTO 25]			ho liberato l'incrocio 0 : sono passato 1 volta
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 3	6	1	4	************************************************************************************************************************
+[AUTO 30]			ho liberato l'incrocio 1 : sono passato 1 volta
+[GESTORE]			MACCHINA 9 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 35 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 49 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 1 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 27 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 14 HA IL SEMAFORO	[0] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 14]			Sto attraversando l'incrocio dal semaforo 	0
+[GESTORE]			MACCHINA 5 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 5]			Sto attraversando l'incrocio dal semaforo 	1
+[GESTORE]			MACCHINA 16 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 36 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	11 in posizione	[1] nella coda	3
+[AUTO 11]			Sono arrivata sul semaforo 	3
+[GESTORE]			MACCHINA 11 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	17 in posizione	[2] nella coda	1
+[AUTO 17]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 17 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	19 in posizione	[0] nella coda	2
+[AUTO 19]			Sono arrivata sul semaforo 	2
+[GESTORE]			MACCHINA 19 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	15 in posizione	[2] nella coda	3
+[AUTO 15]			Sono arrivata sul semaforo 	3
+[GESTORE]			MACCHINA 15 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	45 in posizione	[3] nella coda	1
+[AUTO 45]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 45 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	47 in posizione	[3] nella coda	3
+[AUTO 47]			Sono arrivata sul semaforo 	3
+[GESTORE]			MACCHINA 47 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	53 in posizione	[1] nella coda	2
+[AUTO 53]			Sono arrivata sul semaforo 	2
+[GESTORE]			MACCHINA 53 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	55 in posizione	[4] nella coda	3
+[AUTO 55]			Sono arrivata sul semaforo 	3
+[GESTORE]			MACCHINA 55 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	8	3	8	************************************************************************************************************************
+[AUTO 14]			ho liberato l'incrocio 0 : sono passato 1 volta
+[GESTORE]			MACCHINA 49 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 36 HA IL SEMAFORO	[0] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 36]			Sto attraversando l'incrocio dal semaforo 	0
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	7	3	8	************************************************************************************************************************
+[GESTORE]			MACCHINA 9 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[AUTO 5]			ho liberato l'incrocio 1 : sono passato 1 volta
+[GESTORE]			MACCHINA 35 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 27 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 27]			Sto attraversando l'incrocio dal semaforo 	1
+[GESTORE]			MACCHINA 1 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 17 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 16 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 45 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	10 in posizione	[4] nella coda	1
+[AUTO 10]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 10 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	29 in posizione	[2] nella coda	2
+[AUTO 29]			Sono arrivata sul semaforo 	2
+[GESTORE]			MACCHINA 29 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	57 in posizione	[8] nella coda	0
+[AUTO 57]			Sono arrivata sul semaforo 	0
+[GESTORE]			MACCHINA 57 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	8	4	8	************************************************************************************************************************
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	7	4	8	************************************************************************************************************************
+[AUTO 27]			ho liberato l'incrocio 1 : sono passato 1 volta
+[GESTORE]			MACCHINA 1 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 1]			Sto attraversando l'incrocio dal semaforo 	1
+[GESTORE]			MACCHINA 16 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 35 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 49 HA IL SEMAFORO	[0] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 49]			Sto attraversando l'incrocio dal semaforo 	0
+[GESTORE]			MACCHINA 10 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 9 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 57 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 45 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[AUTO 36]			ho liberato l'incrocio 0 : sono passato 1 volta
+[GESTORE]			MACCHINA 17 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	13 in posizione	[5] nella coda	1
+[AUTO 13]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 13 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	24 in posizione	[6] nella coda	1
+[AUTO 24]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 24 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	44 in posizione	[3] nella coda	2
+[AUTO 44]			Sono arrivata sul semaforo 	2
+[GESTORE]			MACCHINA 44 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	8	5	8	************************************************************************************************************************
+[AUTO 1]			ho liberato l'incrocio 1 : sono passato 1 volta
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 1	8	5	8	************************************************************************************************************************
+[GESTORE]			MACCHINA 24 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+Pthread 1-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 2-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 3-esimo restituisce 1 <-- numero di attraversamenti
+[GESTORE]			MACCHINA 10 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 35 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 13 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 17 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 45 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 9 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[AUTO 49]			ho liberato l'incrocio 0 : sono passato 1 volta
+[GESTORE]			MACCHINA 16 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 16]			Sto attraversando l'incrocio dal semaforo 	1
+[GESTORE]			MACCHINA 57 HA IL SEMAFORO	[0] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 57]			Sto attraversando l'incrocio dal semaforo 	0
+[GESTORE]			[Ho messo la MACCHINA	18 in posizione	[7] nella coda	1
+[AUTO 18]			Sono arrivata sul semaforo 	1
+[GESTORE]			MACCHINA 18 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+						SEMAFORO [0] E [1] GIALLO
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	9	5	8	************************************************************************************************************************
+[AUTO 57]			ho liberato l'incrocio 0 : sono passato 1 volta
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	8	5	8	************************************************************************************************************************
+[AUTO 16]			ho liberato l'incrocio 1 : sono passato 1 volta
+[GESTORE]			MACCHINA 18 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 24 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 45 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 13 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 10 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 17 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 9 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 35 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	41 in posizione	[9] nella coda	0
+[AUTO 41]			Sono arrivata sul semaforo 	0
+[GESTORE]			MACCHINA 41 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+						SEMAFORO [0] E [1] ROSSO
+						SEMAFORO [2] E [3] VERDE
+[GESTORE]			MACCHINA 53 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 19 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 50 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 55 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 4 HA IL SEMAFORO	[3] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 4]			Sto attraversando l'incrocio dal semaforo 	3
+[GESTORE]			MACCHINA 37 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 44 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 29 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 21 HA IL SEMAFORO	[2] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 21]			Sto attraversando l'incrocio dal semaforo 	2
+[GESTORE]			MACCHINA 11 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 47 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 26 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 15 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			[Ho messo la MACCHINA	22 in posizione	[0] nella coda	0
+[AUTO 22]			Sono arrivata sul semaforo 	0
+[GESTORE]			MACCHINA 22 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	8	5	7	************************************************************************************************************************
+[AUTO 4]			ho liberato l'incrocio 3 : sono passato 1 volta
+[GESTORE]			MACCHINA 55 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 50 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+Pthread 4-esimo restituisce 1 <-- numero di attraversamenti
+[GESTORE]			MACCHINA 11 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 37 HA IL SEMAFORO	[3] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+Pthread 5-esimo restituisce 1 <-- numero di attraversamenti
+[AUTO 37]			Sto attraversando l'incrocio dal semaforo 	3
+[GESTORE]			MACCHINA 26 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 47 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 15 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	8	4	7	************************************************************************************************************************
+Pthread 6-esimo restituisce 1 <-- numero di attraversamenti
+[AUTO 21]			ho liberato l'incrocio 2 : sono passato 1 volta
+Pthread 7-esimo restituisce 1 <-- numero di attraversamenti
+[GESTORE]			MACCHINA 53 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 19 HA IL SEMAFORO	[2] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 19]			Sto attraversando l'incrocio dal semaforo 	2
+[GESTORE]			MACCHINA 29 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 44 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+Pthread 8-esimo restituisce 1 <-- numero di attraversamenti
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	8	4	6	************************************************************************************************************************
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	8	3	6	************************************************************************************************************************
+[AUTO 19]			ho liberato l'incrocio 2 : sono passato 1 volta
+[GESTORE]			MACCHINA 44 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 50 HA IL SEMAFORO	[3] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 50]			Sto attraversando l'incrocio dal semaforo 	3
+[GESTORE]			MACCHINA 11 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 26 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 47 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 15 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[AUTO 37]			ho liberato l'incrocio 3 : sono passato 1 volta
+[GESTORE]			MACCHINA 53 HA IL SEMAFORO	[2] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 53]			Sto attraversando l'incrocio dal semaforo 	2
+[GESTORE]			MACCHINA 29 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 55 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	8	3	5	************************************************************************************************************************
+[AUTO 50]			ho liberato l'incrocio 3 : sono passato 1 volta
+[GESTORE]			MACCHINA 11 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 26 HA IL SEMAFORO	[3] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 26]			Sto attraversando l'incrocio dal semaforo 	3
+[GESTORE]			MACCHINA 55 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 15 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	8	2	5	************************************************************************************************************************
+[AUTO 53]			ho liberato l'incrocio 2 : sono passato 1 volta
+[GESTORE]			MACCHINA 44 NON HA IL SEMAFORO	[2] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 47 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 29 HA IL SEMAFORO	[2] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 29]			Sto attraversando l'incrocio dal semaforo 	2
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	8	2	4	************************************************************************************************************************
+[AUTO 26]			ho liberato l'incrocio 3 : sono passato 1 volta
+[GESTORE]			MACCHINA 11 HA IL SEMAFORO	[3] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 11]			Sto attraversando l'incrocio dal semaforo 	3
+[GESTORE]			MACCHINA 15 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 55 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 47 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	8	1	4	************************************************************************************************************************
+[AUTO 29]			ho liberato l'incrocio 2 : sono passato 1 volta
+[GESTORE]			MACCHINA 44 HA IL SEMAFORO	[2] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 44]			Sto attraversando l'incrocio dal semaforo 	2
+						SEMAFORO [2] E [3] GIALLO
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	8	1	3	************************************************************************************************************************
+[AUTO 11]			ho liberato l'incrocio 3 : sono passato 1 volta
+[GESTORE]			MACCHINA 55 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 47 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 15 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 2	8	0	3	************************************************************************************************************************
+[AUTO 44]			ho liberato l'incrocio 2 : sono passato 1 volta
+						SEMAFORO [2] E [3] ROSSO
+						SEMAFORO [0] E [1] VERDE
+[GESTORE]			MACCHINA 24 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 17 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 45 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 41 HA IL SEMAFORO	[0] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 41]			Sto attraversando l'incrocio dal semaforo 	0
+[GESTORE]			MACCHINA 10 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 13 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 35 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 35]			Sto attraversando l'incrocio dal semaforo 	1
+[GESTORE]			MACCHINA 9 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 22 NON HA IL SEMAFORO	[0] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 18 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 1	8	0	3	************************************************************************************************************************
+[AUTO 41]			ho liberato l'incrocio 0 : sono passato 1 volta
+[GESTORE]			MACCHINA 22 HA IL SEMAFORO	[0] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 22]			Sto attraversando l'incrocio dal semaforo 	0
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 1	7	0	3	************************************************************************************************************************
+[AUTO 35]			ho liberato l'incrocio 1 : sono passato 1 volta
+[GESTORE]			MACCHINA 24 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 10 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 13 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 9 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 9]			Sto attraversando l'incrocio dal semaforo 	1
+[GESTORE]			MACCHINA 45 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 17 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 18 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	7	0	3	************************************************************************************************************************
+[AUTO 22]			ho liberato l'incrocio 0 : sono passato 1 volta
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	6	0	3	************************************************************************************************************************
+[AUTO 9]			ho liberato l'incrocio 1 : sono passato 1 volta
+[GESTORE]			MACCHINA 24 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 45 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 17 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 17]			Sto attraversando l'incrocio dal semaforo 	1
+Pthread 9-esimo restituisce 1 <-- numero di attraversamenti
+[GESTORE]			MACCHINA 13 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 18 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 10 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	5	0	3	************************************************************************************************************************
+[AUTO 17]			ho liberato l'incrocio 1 : sono passato 1 volta
+[GESTORE]			MACCHINA 13 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 18 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 45 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 45]			Sto attraversando l'incrocio dal semaforo 	1
+[GESTORE]			MACCHINA 24 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 10 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	4	0	3	************************************************************************************************************************
+[AUTO 45]			ho liberato l'incrocio 1 : sono passato 1 volta
+[GESTORE]			MACCHINA 13 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 18 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 24 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 10 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 10]			Sto attraversando l'incrocio dal semaforo 	1
+						SEMAFORO [0] E [1] GIALLO
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	3	0	3	************************************************************************************************************************
+[AUTO 10]			ho liberato l'incrocio 1 : sono passato 1 volta
+[GESTORE]			MACCHINA 18 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 24 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 13 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+Pthread 10-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 11-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 12-esimo restituisce 1 <-- numero di attraversamenti
+						SEMAFORO [0] E [1] ROSSO
+						SEMAFORO [2] E [3] VERDE
+[GESTORE]			MACCHINA 15 HA IL SEMAFORO	[3] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 15]			Sto attraversando l'incrocio dal semaforo 	3
+[GESTORE]			MACCHINA 55 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 47 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	3	0	2	************************************************************************************************************************
+[AUTO 15]			ho liberato l'incrocio 3 : sono passato 1 volta
+[GESTORE]			MACCHINA 47 HA IL SEMAFORO	[3] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 47]			Sto attraversando l'incrocio dal semaforo 	3
+[GESTORE]			MACCHINA 55 NON HA IL SEMAFORO	[3] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	3	0	1	************************************************************************************************************************
+[AUTO 47]			ho liberato l'incrocio 3 : sono passato 1 volta
+[GESTORE]			MACCHINA 55 HA IL SEMAFORO	[3] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 55]			Sto attraversando l'incrocio dal semaforo 	3
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	3	0	0	************************************************************************************************************************
+[AUTO 55]			ho liberato l'incrocio 3 : sono passato 1 volta
+						SEMAFORO [2] E [3] GIALLO
+						SEMAFORO [2] E [3] ROSSO
+						SEMAFORO [0] E [1] VERDE
+[GESTORE]			MACCHINA 13 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 13]			Sto attraversando l'incrocio dal semaforo 	1
+[GESTORE]			MACCHINA 18 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 24 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	2	0	0	************************************************************************************************************************
+[AUTO 13]			ho liberato l'incrocio 1 : sono passato 1 volta
+[GESTORE]			MACCHINA 18 NON HA IL SEMAFORO	[1] VERDE O NON E' LA PRIMA NELLA CODA.. NON PUO' ATTRAVERSARE
+[GESTORE]			MACCHINA 24 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 24]			Sto attraversando l'incrocio dal semaforo 	1
+Pthread 13-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 14-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 15-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 16-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 17-esimo restituisce 1 <-- numero di attraversamenti
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	1	0	0	************************************************************************************************************************
+[AUTO 24]			ho liberato l'incrocio 1 : sono passato 1 volta
+[GESTORE]			MACCHINA 18 HA IL SEMAFORO	[1] VERDE ED E' LA PRIMA NELLA CODA.. PUO' ATTRAVERSARE
+[AUTO 18]			Sto attraversando l'incrocio dal semaforo 	1
+
+************************************************************************************************************************
+[GESTORE]			Macchine bloccate sui semafori: 0	0	0	0	************************************************************************************************************************
+[AUTO 18]			ho liberato l'incrocio 1 : sono passato 1 volta
+Pthread 18-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 19-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 20-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 21-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 22-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 23-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 24-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 25-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 26-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 27-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 28-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 29-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 30-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 31-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 32-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 33-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 34-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 35-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 36-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 37-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 38-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 39-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 40-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 41-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 42-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 43-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 44-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 45-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 46-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 47-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 48-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 49-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 50-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 51-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 52-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 53-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 54-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 55-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 56-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 57-esimo restituisce 1 <-- numero di attraversamenti
+Pthread 58-esimo restituisce 1 <-- numero di attraversamenti
+
+Process finished with exit code 0
