@@ -1,0 +1,1050 @@
+"/home/dada/Desktop/UNI/Sistemi Embedded/ESE/vari/cmake-build-debug/vari" 59
+[THREAD 5]		Devo fare la PRIMA dose del vaccino
+[THREAD 5]		Ok per la PRIMA dose.
+
+[SERVICE]		 Dottori liberi: 2
+[THREAD 11]		Devo fare la PRIMA dose del vaccino
+[THREAD 11]		Ok per la PRIMA dose.
+
+[SERVICE]		 Dottori liberi: 1
+[THREAD 35]		Devo fare la PRIMA dose del vaccino
+[THREAD 35]		Ok per la PRIMA dose.
+
+[SERVICE]		 Dottori liberi: 0
+[THREAD 56]		Devo fare la PRIMA dose del vaccino
+[THREAD 56]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 1
+[THREAD 2]		Devo fare la PRIMA dose del vaccino
+[THREAD 2]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 2
+[THREAD 17]		Devo fare la PRIMA dose del vaccino
+[THREAD 17]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 3
+[THREAD 26]		Devo fare la PRIMA dose del vaccino
+[THREAD 26]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 4
+[THREAD 32]		Devo fare la PRIMA dose del vaccino
+[THREAD 32]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 5
+[THREAD 41]		Devo fare la PRIMA dose del vaccino
+[THREAD 41]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 6
+[THREAD 46]		Devo fare la PRIMA dose del vaccino
+[THREAD 46]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 7
+[THREAD 55]		Devo fare la PRIMA dose del vaccino
+[THREAD 55]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 8
+[THREAD 8]		Devo fare la PRIMA dose del vaccino
+[THREAD 8]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 9
+[THREAD 21]		Devo fare la PRIMA dose del vaccino
+[THREAD 21]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 10
+[THREAD 12]		Devo fare la PRIMA dose del vaccino
+[THREAD 12]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 11
+[THREAD 29]		Devo fare la PRIMA dose del vaccino
+[THREAD 29]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 12
+[THREAD 14]		Devo fare la PRIMA dose del vaccino
+[THREAD 14]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 13
+[THREAD 34]		Devo fare la PRIMA dose del vaccino
+[THREAD 34]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 14
+[THREAD 47]		Devo fare la PRIMA dose del vaccino
+[THREAD 47]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 15
+[THREAD 51]		Devo fare la PRIMA dose del vaccino
+[THREAD 51]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 16
+[THREAD 53]		Devo fare la PRIMA dose del vaccino
+[THREAD 53]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 17
+[THREAD 57]		Devo fare la PRIMA dose del vaccino
+[THREAD 57]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 18
+[THREAD 5]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 5]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 11]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 11]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 37]		Devo fare la PRIMA dose del vaccino
+[THREAD 37]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 17
+[THREAD 35]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 35]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 44]		Devo fare la PRIMA dose del vaccino
+[THREAD 44]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 17
+[THREAD 50]		Devo fare la PRIMA dose del vaccino
+[THREAD 50]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 18
+[THREAD 24]		Devo fare la PRIMA dose del vaccino
+[THREAD 24]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 19
+[THREAD 18]		Devo fare la PRIMA dose del vaccino
+[THREAD 18]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 20
+[THREAD 27]		Devo fare la PRIMA dose del vaccino
+[THREAD 27]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 21
+[THREAD 45]		Devo fare la PRIMA dose del vaccino
+[THREAD 45]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 22
+[THREAD 4]		Devo fare la PRIMA dose del vaccino
+[THREAD 4]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 23
+[THREAD 10]		Devo fare la PRIMA dose del vaccino
+[THREAD 10]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 24
+[THREAD 9]		Devo fare la PRIMA dose del vaccino
+[THREAD 9]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 25
+[THREAD 31]		Devo fare la PRIMA dose del vaccino
+[THREAD 31]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 26
+[THREAD 36]		Devo fare la PRIMA dose del vaccino
+[THREAD 36]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 27
+[THREAD 48]		Devo fare la PRIMA dose del vaccino
+[THREAD 48]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 28
+[THREAD 39]		Devo fare la PRIMA dose del vaccino
+[THREAD 39]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 29
+[THREAD 56]		Mi sto vaccinando....
+[THREAD 19]		Devo fare la PRIMA dose del vaccino
+[THREAD 23]		Devo fare la PRIMA dose del vaccino
+[THREAD 2]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 56]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 19]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 29
+[THREAD 23]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 30
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 2]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 42]		Devo fare la PRIMA dose del vaccino
+[THREAD 42]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 30
+[THREAD 17]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 17]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 6]		Devo fare la PRIMA dose del vaccino
+[THREAD 6]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 30
+[THREAD 13]		Devo fare la PRIMA dose del vaccino
+[THREAD 13]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 31
+[THREAD 11]		Devo fare la SECONDA dose del vaccino
+[THREAD 11]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 1
+[THREAD 22]		Devo fare la PRIMA dose del vaccino
+[THREAD 22]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 32
+[THREAD 25]		Devo fare la PRIMA dose del vaccino
+[THREAD 25]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 33
+[THREAD 28]		Devo fare la PRIMA dose del vaccino
+[THREAD 28]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 34
+[THREAD 40]		Devo fare la PRIMA dose del vaccino
+[THREAD 40]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 35
+[THREAD 43]		Devo fare la PRIMA dose del vaccino
+[THREAD 43]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 36
+[THREAD 52]		Devo fare la PRIMA dose del vaccino
+[THREAD 52]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 37
+[THREAD 0]		Devo fare la PRIMA dose del vaccino
+[THREAD 0]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 38
+[THREAD 1]		Devo fare la PRIMA dose del vaccino
+[THREAD 1]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 39
+[THREAD 16]		Devo fare la PRIMA dose del vaccino
+[THREAD 16]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 40
+[THREAD 20]		Devo fare la PRIMA dose del vaccino
+[THREAD 20]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 41
+[THREAD 56]		Devo fare la SECONDA dose del vaccino
+[THREAD 56]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 2
+[THREAD 30]		Devo fare la PRIMA dose del vaccino
+[THREAD 30]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 42
+[THREAD 33]		Devo fare la PRIMA dose del vaccino
+[THREAD 33]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 43
+[THREAD 49]		Devo fare la PRIMA dose del vaccino
+[THREAD 49]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 44
+[THREAD 58]		Devo fare la PRIMA dose del vaccino
+[THREAD 58]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 45
+[THREAD 3]		Devo fare la PRIMA dose del vaccino
+[THREAD 3]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 46
+[THREAD 7]		Devo fare la PRIMA dose del vaccino
+[THREAD 7]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 47
+[THREAD 15]		Devo fare la PRIMA dose del vaccino
+[THREAD 15]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 48
+[THREAD 26]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 26]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 32]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 32]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 38]		Devo fare la PRIMA dose del vaccino
+[THREAD 38]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 47
+[THREAD 35]		Devo fare la SECONDA dose del vaccino
+[THREAD 35]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 3
+[THREAD 41]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 41]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 54]		Devo fare la PRIMA dose del vaccino
+[THREAD 54]		Bloccato per la PRIMA dose.
+
+[SERVICE]		Bloccati per la PRIMA dose: 47
+[THREAD 5]		Devo fare la SECONDA dose del vaccino
+[THREAD 5]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 4
+[THREAD 17]		Devo fare la SECONDA dose del vaccino
+[THREAD 17]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 5
+[THREAD 41]		Devo fare la SECONDA dose del vaccino
+[THREAD 41]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 6
+[THREAD 46]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 46]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 55]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 55]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 46]		Devo fare la SECONDA dose del vaccino
+[THREAD 46]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 7
+[THREAD 8]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 8]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 8]		Devo fare la SECONDA dose del vaccino
+[THREAD 8]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 8
+[THREAD 2]		Devo fare la SECONDA dose del vaccino
+[THREAD 2]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 9
+[THREAD 12]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 12]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 21]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 21]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 29]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 29]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 26]		Devo fare la SECONDA dose del vaccino
+[THREAD 26]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 10
+[THREAD 32]		Devo fare la SECONDA dose del vaccino
+[THREAD 32]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 11
+[THREAD 14]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 14]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 12]		Devo fare la SECONDA dose del vaccino
+[THREAD 12]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 12
+[THREAD 34]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 34]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 47]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 47]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 47]		Devo fare la SECONDA dose del vaccino
+[THREAD 47]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 13
+[THREAD 55]		Devo fare la SECONDA dose del vaccino
+[THREAD 55]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 14
+[THREAD 51]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 51]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 53]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 53]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 57]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 57]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 34]		Devo fare la SECONDA dose del vaccino
+[THREAD 34]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 15
+[THREAD 51]		Devo fare la SECONDA dose del vaccino
+[THREAD 51]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 16
+[THREAD 53]		Devo fare la SECONDA dose del vaccino
+[THREAD 53]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 17
+[THREAD 57]		Devo fare la SECONDA dose del vaccino
+[THREAD 57]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 18
+[THREAD 21]		Devo fare la SECONDA dose del vaccino
+[THREAD 21]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 19
+[THREAD 29]		Devo fare la SECONDA dose del vaccino
+[THREAD 29]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 20
+[THREAD 37]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 37]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 44]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 44]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 50]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 50]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 14]		Devo fare la SECONDA dose del vaccino
+[THREAD 14]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 21
+[THREAD 50]		Devo fare la SECONDA dose del vaccino
+[THREAD 50]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 22
+[THREAD 18]		Mi sto vaccinando....
+[THREAD 27]		Mi sto vaccinando....
+[THREAD 24]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 18]		Ho fatto la PRIMA dose del vaccino
+
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 27]		Ho fatto la PRIMA dose del vaccino
+
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 24]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 37]		Devo fare la SECONDA dose del vaccino
+[THREAD 37]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 23
+[THREAD 18]		Devo fare la SECONDA dose del vaccino
+[THREAD 18]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 24
+[THREAD 44]		Devo fare la SECONDA dose del vaccino
+[THREAD 44]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 25
+[THREAD 45]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 45]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 10]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 10]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 10]		Devo fare la SECONDA dose del vaccino
+[THREAD 10]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 26
+[THREAD 4]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 4]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 24]		Devo fare la SECONDA dose del vaccino
+[THREAD 24]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 27
+[THREAD 9]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 9]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 31]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 31]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 36]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 36]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 27]		Devo fare la SECONDA dose del vaccino
+[THREAD 27]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 28
+[THREAD 45]		Devo fare la SECONDA dose del vaccino
+[THREAD 45]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 29
+[THREAD 9]		Devo fare la SECONDA dose del vaccino
+[THREAD 9]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 30
+[THREAD 39]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 39]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 48]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 48]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 36]		Devo fare la SECONDA dose del vaccino
+[THREAD 36]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 31
+[THREAD 19]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 19]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 4]		Devo fare la SECONDA dose del vaccino
+[THREAD 4]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 32
+[THREAD 19]		Devo fare la SECONDA dose del vaccino
+[THREAD 19]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 33
+[THREAD 39]		Devo fare la SECONDA dose del vaccino
+[THREAD 39]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 34
+[THREAD 23]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 23]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 42]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 42]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 6]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 6]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 48]		Devo fare la SECONDA dose del vaccino
+[THREAD 48]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 35
+[THREAD 42]		Devo fare la SECONDA dose del vaccino
+[THREAD 42]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 36
+[THREAD 6]		Devo fare la SECONDA dose del vaccino
+[THREAD 6]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 37
+[THREAD 31]		Devo fare la SECONDA dose del vaccino
+[THREAD 31]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 38
+[THREAD 13]		Mi sto vaccinando....
+[THREAD 22]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 13]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 25]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 22]		Ho fatto la PRIMA dose del vaccino
+
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 25]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 28]		Mi sto vaccinando....
+[THREAD 40]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 28]		Ho fatto la PRIMA dose del vaccino
+
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 40]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 22]		Devo fare la SECONDA dose del vaccino
+[THREAD 22]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 39
+[THREAD 43]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 43]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 25]		Devo fare la SECONDA dose del vaccino
+[THREAD 25]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 40
+[THREAD 23]		Devo fare la SECONDA dose del vaccino
+[THREAD 23]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 41
+[THREAD 28]		Devo fare la SECONDA dose del vaccino
+[THREAD 28]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 42
+[THREAD 43]		Devo fare la SECONDA dose del vaccino
+[THREAD 43]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 43
+[THREAD 52]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 52]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 0]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 0]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 1]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 1]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 13]		Devo fare la SECONDA dose del vaccino
+[THREAD 13]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 44
+[THREAD 52]		Devo fare la SECONDA dose del vaccino
+[THREAD 52]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 45
+[THREAD 16]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 16]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 20]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 20]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 30]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 30]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 40]		Devo fare la SECONDA dose del vaccino
+[THREAD 40]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 46
+[THREAD 1]		Devo fare la SECONDA dose del vaccino
+[THREAD 1]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 47
+[THREAD 33]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 33]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 0]		Devo fare la SECONDA dose del vaccino
+[THREAD 0]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 48
+[THREAD 49]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 49]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 58]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 58]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 16]		Devo fare la SECONDA dose del vaccino
+[THREAD 16]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 49
+[THREAD 58]		Devo fare la SECONDA dose del vaccino
+[THREAD 58]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 50
+[THREAD 7]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 7]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 3]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la PRIMA dose
+
+[THREAD 3]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 15]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 15]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 30]		Devo fare la SECONDA dose del vaccino
+[THREAD 30]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 50
+[THREAD 20]		Devo fare la SECONDA dose del vaccino
+[THREAD 20]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 51
+[THREAD 49]		Devo fare la SECONDA dose del vaccino
+[THREAD 49]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 52
+[THREAD 7]		Devo fare la SECONDA dose del vaccino
+[THREAD 7]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 53
+[THREAD 15]		Devo fare la SECONDA dose del vaccino
+[THREAD 15]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 54
+[THREAD 38]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 38]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 11]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 11]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 54]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 54]		Ho fatto la PRIMA dose del vaccino
+
+[THREAD 33]		Devo fare la SECONDA dose del vaccino
+[THREAD 33]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 52
+[THREAD 54]		Devo fare la SECONDA dose del vaccino
+[THREAD 54]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 53
+[THREAD 56]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 56]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 35]		Mi sto vaccinando....
+[THREAD 5]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 35]		Ho fatto la SECONDA dose del vaccino
+
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 5]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 35]		Devo fare la TERZA dose del vaccino
+[THREAD 35]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 1
+[THREAD 3]		Devo fare la SECONDA dose del vaccino
+[THREAD 3]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 51
+[THREAD 11]		Devo fare la TERZA dose del vaccino
+[THREAD 11]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 2
+[THREAD 41]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 41]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 17]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 17]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 46]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 46]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 38]		Devo fare la SECONDA dose del vaccino
+[THREAD 38]		Bloccato per la SECONDA dose.
+
+[SERVICE]		Bloccati per la SECONDA dose: 49
+[THREAD 56]		Devo fare la TERZA dose del vaccino
+[THREAD 56]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 3
+[THREAD 5]		Devo fare la TERZA dose del vaccino
+[THREAD 5]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 4
+[THREAD 2]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 2]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 8]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 8]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 26]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 26]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 17]		Devo fare la TERZA dose del vaccino
+[THREAD 17]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 5
+[THREAD 2]		Devo fare la TERZA dose del vaccino
+[THREAD 2]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 6
+[THREAD 8]		Devo fare la TERZA dose del vaccino
+[THREAD 8]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 7
+[THREAD 32]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 32]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 12]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 12]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 47]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 47]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 46]		Devo fare la TERZA dose del vaccino
+[THREAD 46]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 8
+[THREAD 32]		Devo fare la TERZA dose del vaccino
+[THREAD 32]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 9
+[THREAD 41]		Devo fare la TERZA dose del vaccino
+[THREAD 41]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 10
+[THREAD 55]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 55]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 12]		Devo fare la TERZA dose del vaccino
+[THREAD 12]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 11
+[THREAD 47]		Devo fare la TERZA dose del vaccino
+[THREAD 47]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 12
+[THREAD 34]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 34]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 51]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 51]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 51]		Devo fare la TERZA dose del vaccino
+[THREAD 51]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 13
+[THREAD 26]		Devo fare la TERZA dose del vaccino
+[THREAD 26]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 14
+[THREAD 57]		Mi sto vaccinando....
+[THREAD 53]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 57]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 21]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 21]		Ho fatto la SECONDA dose del vaccino
+
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 53]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 34]		Devo fare la TERZA dose del vaccino
+[THREAD 34]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 15
+[THREAD 29]		Mi sto vaccinando....
+[THREAD 50]		Mi sto vaccinando....
+[THREAD 14]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 29]		Ho fatto la SECONDA dose del vaccino
+
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 50]		Ho fatto la SECONDA dose del vaccino
+
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 14]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 55]		Devo fare la TERZA dose del vaccino
+[THREAD 55]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 16
+[THREAD 37]		Mi sto vaccinando....
+[THREAD 29]		Devo fare la TERZA dose del vaccino
+[THREAD 18]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 37]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 29]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 17
+[THREAD 44]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 18]		Ho fatto la SECONDA dose del vaccino
+
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 44]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 50]		Devo fare la TERZA dose del vaccino
+[THREAD 50]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 18
+[THREAD 37]		Devo fare la TERZA dose del vaccino
+[THREAD 18]		Devo fare la TERZA dose del vaccino
+[THREAD 44]		Devo fare la TERZA dose del vaccino
+[THREAD 37]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 19
+[THREAD 18]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 20
+[THREAD 44]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 21
+[THREAD 21]		Devo fare la TERZA dose del vaccino
+[THREAD 21]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 22
+[THREAD 57]		Devo fare la TERZA dose del vaccino
+[THREAD 57]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 23
+[THREAD 53]		Devo fare la TERZA dose del vaccino
+[THREAD 53]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 24
+[THREAD 10]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 10]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 27]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 27]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 24]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 24]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 14]		Devo fare la TERZA dose del vaccino
+[THREAD 14]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 25
+[THREAD 45]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 45]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 36]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 36]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 9]		Mi sto vaccinando....
+[THREAD 27]		Devo fare la TERZA dose del vaccino
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 9]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 27]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 26
+[THREAD 10]		Devo fare la TERZA dose del vaccino
+[THREAD 10]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 27
+[THREAD 36]		Devo fare la TERZA dose del vaccino
+[THREAD 36]		Bloccato per la TERZA dose.
+
+[SERVICE]		Bloccati per la TERZA dose: 28
+[THREAD 4]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 4]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 39]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 39]		Ho fatto la SECONDA dose del vaccino
+
+[THREAD 19]		Mi sto vaccinando....
+[SERVICE]		Ho svegliato qualcuno che deve fare la SECONDA dose
+
+[THREAD 19]		Ho fatto la SECONDA dose del vaccino
+
