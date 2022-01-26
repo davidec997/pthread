@@ -1,4 +1,3 @@
-
 #include <unistd.h>
 #include <pthread.h>
 #include <stdio.h>
@@ -7,18 +6,18 @@
 
 #define DOTTORI 3                                               //numero di dottori disponibili
 #define NTIMES 3                                                //numero di vaccini da effettuare
-#define DELAY 10                                                //usato per distribuire nel tempo l'arrivo dei cittadini
+#define DELAY 10                                                //max ritardo d'esecuzione per i thread
 
 sem_t m;                                                        //mutex
 sem_t s_dosi [3];                                               //ogni dose ha il suo semaforo
-int  dosi_blocc [3];                                            //ogni dose ha la sua variabile che indica il numero di cittadini in attesa per quella dose
+int dosi_blocc [3];                                             //ogni dose ha la sua variabile che indica il numero di cittadini in attesa per quella dose
 int dottori_liberi;                                             //indica il num di dottori liberi
 char *elenco_dosi [3] = {"PRIMA", "SECONDA", "TERZA"};          //per stampe di controllo
 
 void myInit(void){
     sem_init(&m,0,1);
 
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < NTIMES; ++i) {
         sem_init(&s_dosi[i], 0, 0);
         dosi_blocc [i] = 0;
     }
@@ -79,10 +78,10 @@ void fine_vaccino (){
     sem_wait(&m);
     dottori_liberi ++;
 
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < NTIMES; ++i) {
         if (dosi_blocc[i] > 0){                         //appena trovo una coda non vuota..
             dottori_liberi --;                          //decremento il num di dott liberi
-            sem_post(&s_dosi[i]);                       //sveglio il primo in fila per quella dose
+            sem_post(&s_dosi[i]);                  //sveglio il primo in fila per quella dose
             dosi_blocc[i] --;                           //e lo tolgo dalla fila
             printf("[SERVICE]\t\tHo svegliato qualcuno che deve fare la %s dose\n\n",elenco_dosi[i]);
             break;
@@ -110,7 +109,7 @@ void *eseguiVaccini(void *id) {
 
         printf("[THREAD %d]\t\tDevo fare la %s dose del vaccino\n",*pi,elenco_dosi[dose]);
         vaccino(pi, dose);
-        sleep(3);           //tempo vaccino
+        sleep(3);               //tempo vaccino
 
         printf("[THREAD %d]\t\tMi sto vaccinando....\n",*pi);
         fine_vaccino();

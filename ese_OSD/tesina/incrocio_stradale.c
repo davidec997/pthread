@@ -12,7 +12,7 @@
 #define N 10
 
 // parametro per stampe di controllo
-#define N_STAMPE 120
+#define N_STAMPE 80
 
 //timer semaforo
 #define SEM_TIMER 5
@@ -32,7 +32,7 @@ struct incrocio_t {
 }incrocio;
 
 
-void sveglia_bloccati(struct incrocio_t *s, Boolean direzione);         // prototipo funzione sveglia_bloccati
+void sveglia_bloccati(struct incrocio_t *s, Boolean direzione);                // prototipo funzione sveglia_bloccati
 
 
 void init_incrocio(struct incrocio_t *s){
@@ -40,12 +40,12 @@ void init_incrocio(struct incrocio_t *s){
     pthread_mutex_init(&s->mtx,NULL);                          //inizializzo il mutex
 
     for (int i = 0; i < 4; i++) {
-        pthread_cond_init(&s->stop[i],NULL);                   //inizializzo le condition variables
+        pthread_cond_init(&s->stop[i],NULL);                    //inizializzo le condition variables
 
-        s->coda_macchine[i] = 0;                                        //inizializzo a 0 in num di macchine in coda su ogni semaforo
-        s->stato[i] = -1;                                               //inizializzo lo stato dei semafori ad uno stato non valido
+        s->coda_macchine[i] = 0;                                              //inizializzo a 0 in num di macchine in coda su ogni semaforo
+        s->stato[i] = -1;                                                     //inizializzo lo stato dei semafori ad uno stato non valido
         for (int j = 0; j < N; ++j) s->code_circolari[i][j] = -1;
-        s->head[i] = s->tail[i] = 0;                                    // setto tutti gli elementi della coda a -1
+        s->head[i] = s->tail[i] = 0;                                          // setto tutti gli elementi della coda a -1
     }
 }
 
@@ -109,14 +109,14 @@ void *timer (void *arg){
     Boolean direzione = false; //0 --> direzione verticale         1--> direzione orizzontale
     while(1){
         rosso(&incrocio,direzione);                                 //rosso per direzione 1
-        verde(&incrocio,!direzione);                                //verde per direzione 0
-        sveglia_bloccati(&incrocio,!direzione);                     //sveglio i thread bloccati sulla direzione dove e' appena scattato il verde
+        verde(&incrocio,!direzione);                       //verde per direzione 0
+        sveglia_bloccati(&incrocio,!direzione);            //sveglio i thread bloccati sulla direzione dove e' appena scattato il verde
         sleep(SEM_TIMER);
 
-        giallo(&incrocio,!direzione);                               //giallo per direzione 0
-        sleep(1);                                           //il giallo dura solo 1 secondo
+        giallo(&incrocio,!direzione);                       //giallo per direzione 0
+        sleep(1);                                              //il giallo dura solo 1 secondo
 
-        rosso(&incrocio,!direzione);                                //rosso per direzione 0
+        rosso(&incrocio,!direzione);                        //rosso per direzione 0
         verde(&incrocio,direzione);                                 //verde per direzione 1
         sveglia_bloccati(&incrocio,direzione);                      //sveglio i bloccati su direzione 1
         sleep(SEM_TIMER);
@@ -164,13 +164,14 @@ void termina_attraversamento (struct incrocio_t *s, int sem_arrivo,int *pi) {
     for(int t=0; t<N_STAMPE; t++) printf("*");
     printf("\n[GESTORE]\t\t\tMacchine bloccate sui semafori: ");
     for (int i = 0; i<4; i++) printf("%d\t",s->coda_macchine[i]);
+    printf("\n");
     for(int t=0; t<N_STAMPE; t++) printf("*");
 
     printf("\n");
     //stampe di controllo ---------------------------------------------------
 
     pthread_mutex_unlock(&s->mtx);
-    pthread_cond_broadcast(&s->stop[sem_arrivo]);               //sveglio solo le auto del mio semaforo
+    pthread_cond_broadcast(&s->stop[sem_arrivo]);           //sveglio solo le auto del mio semaforo
 }
 
 void arrivo_al_semaforo(struct incrocio_t *s,int sem_arrivo,int *pi){
@@ -180,7 +181,6 @@ void arrivo_al_semaforo(struct incrocio_t *s,int sem_arrivo,int *pi){
     int *ptr;
     ptr = (int *) malloc( sizeof(int));
 
-    //MUTEX
     pthread_mutex_lock(&s->mtx);
 
     if (s->coda_macchine[sem_arrivo] < N){
@@ -192,9 +192,9 @@ void arrivo_al_semaforo(struct incrocio_t *s,int sem_arrivo,int *pi){
     } else {
         //non c' e' posto in coda... inversione a u e vado via
         printf("\t[AUTO %d]\t\t\t NON E' RIUSCITA AD ACCODARSI... CODA [%d] PIENA... ESCO\n",*pi,sem_arrivo);       // se non c'e' posto nella coda..
-        pthread_mutex_unlock(&s->mtx);      //rilascio il mutex...
-        *ptr = -1;                          //valore di ritorno -1 per segnalare di non essersi accodata..
-        pthread_exit((void *) ptr);         //..ed esco
+        pthread_mutex_unlock(&s->mtx);                                  //rilascio il mutex...
+        *ptr = -1;                                                            //valore di ritorno -1 per segnalare di non essersi accodata..
+        pthread_exit((void *) ptr);                                     //..ed esco
     }
 
     printf("[AUTO %d]\t\t\tSono arrivata sul semaforo \t%d\n",*pi,sem_arrivo);
@@ -286,7 +286,6 @@ int main (int argc, char **argv){
     //inizializziamo il seme della rand()
     srand(time(NULL));
 
-    //sleep(1);
 
     //creazione dei threads
     for (i=1; i < NUM_THREADS; i++){

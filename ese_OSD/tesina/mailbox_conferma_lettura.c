@@ -56,24 +56,24 @@ void genera_msg(struct mailbox_t *mb){
 
     while (mb->n_msg >= N){                                         //se la mailbox e' piena...
         printf("[SERVER]\t\tMAILBOX PIENA\n");
-        pthread_cond_wait(&mb->vuota ,&mb->mtx);                    //...aspetto
+        pthread_cond_wait(&mb->vuota ,&mb->mtx);        //...aspetto
     }
 
     //posso generare il msg
-    T msg = valGlobale;                                             //
+    T msg = valGlobale;
     valGlobale ++;                                                  //incremento valGlobale
     mb->coda_circolare[mb->head] = msg;                             //inserisco il messaggio nella mailbox
     printf("\n\n[SERVER]\t\t\tHO APPENA GENERATO IL MESSAGGIO '%d'E MESSO IN MAILBOX[%d]\n",msg,mb->head);
     mb->head = (mb->head + 1) % N;                                  //aggiorno la head
     mb->n_msg ++;                                                   //e il numero di messaggio nella mailbox
 
-    pthread_cond_broadcast(&mb->piena);                             //sveglio eventuali ricevitori bloccati a causa di mailbox vuota
+    pthread_cond_broadcast(&mb->piena);                        //sveglio eventuali ricevitori bloccati a causa di mailbox vuota
 
     pthread_mutex_unlock(&mb->mtx);
 }
 
 void *generatore (void * id){
-    int *pi = (int *)id;
+    //int *pi = (int *)id;
     int *ptr;
     ptr = (int *) malloc( sizeof(int));
     if (ptr == NULL){
@@ -124,14 +124,14 @@ void leggi (struct mailbox_t *mb, int *pi){
 
     //controllo se hanno letto tutti
     if (check_lettura(mb)){
-        pthread_cond_broadcast(&mb->letto_da_tutti);                         //se si, sveglio tutti i ricevitori bloccati in attesa del completamento del ciclo di lettura
+        pthread_cond_broadcast(&mb->letto_da_tutti);                        //se si, sveglio tutti i ricevitori bloccati in attesa del completamento del ciclo di lettura
         printf("[CHECK FUNC]\t\tHanno letto tutti [%d] [%d] [%d]\n",mb->conferma_lettura[0],mb->conferma_lettura[1],mb->conferma_lettura[2]);
-        for (int i = 0; i < 3; ++i) mb->conferma_lettura [i] = 0;            //azzero i valori dell'array conferma_lettura
-        mb->tail = (mb->tail + 1) % N;                                       //aggiorno la tail
-        mb->n_msg --;                                                        //decremento il num di msg nella mailbox
-        pthread_cond_signal(&mb->vuota);                                     //se il processo generatore e' bloccato per mailbox piena, lo sveglio
+        for (int i = 0; i < 3; ++i) mb->conferma_lettura [i] = 0;               //azzero i valori dell'array conferma_lettura
+        mb->tail = (mb->tail + 1) % N;                                          //aggiorno la tail
+        mb->n_msg --;                                                           //decremento il num di msg nella mailbox
+        pthread_cond_signal(&mb->vuota);                                   //se il processo generatore e' bloccato per mailbox piena, lo sveglio
     } else
-        pthread_cond_wait(&mb->letto_da_tutti,&mb->mtx);                     //altrimenti mi blocco
+        pthread_cond_wait(&mb->letto_da_tutti,&mb->mtx);            //altrimenti mi blocco
 }
 
 void ricevi (struct mailbox_t *mb, int *pi){
@@ -142,13 +142,13 @@ void ricevi (struct mailbox_t *mb, int *pi){
     //se la mailbox e' vuota...
     while (mb->n_msg <= 0){
         printf("[RECEIVER %d]\t\tMAILBOX VUOTA\n",*pi);
-        pthread_cond_wait(&mb->piena,&mb->mtx);                     //..mi blocco
+        pthread_cond_wait(&mb->piena,&mb->mtx);                             //..mi blocco
     }
 
     //controllo se il mio indice puo leggere o deve aspettare che leggano prima gli altri
     while(mb->turno != *pi){
         printf("[RECEIVER %d]\t\tTURNO %d\n",*pi,mb->turno);
-        pthread_cond_signal(&mb->synch[mb->turno]);                         //se non e' il mio turno, sveglio il ricevitore giusto...
+        pthread_cond_signal(&mb->synch[mb->turno]);                                //se non e' il mio turno, sveglio il ricevitore giusto...
         pthread_cond_wait(&mb->synch[*pi],&mb->mtx);                        //..e mi blocco
         printf("[RECEIVER %d]\t\tTURNO %d MI BLOCCO\n",*pi,mb->turno);
     }
@@ -162,7 +162,7 @@ void ricevi (struct mailbox_t *mb, int *pi){
 
 void *receiver (void *id) {
     int *pi = (int *)id;
-    int letture = 0;                                //ogni ricevitore segna il numero di letture effettuate
+    int letture = 0;                             //ogni ricevitore segna il numero di letture effettuate
     int *ptr;
     ptr = (int *) malloc( sizeof(int));
     if (ptr == NULL){
@@ -173,7 +173,7 @@ void *receiver (void *id) {
     for (int t = 0; t < NTIMES; t++ ){
         ricevi(&mailbox,pi);                                    //leggo
         sleep(1);
-        letture ++;                                            //incremento le letture
+        letture ++;                                                 //incremento le letture
     }
     *ptr = letture;
     pthread_exit((void *) ptr);                               //ritorno il numero di letture effettuate
