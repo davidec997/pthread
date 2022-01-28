@@ -1,4 +1,3 @@
-
 #include <unistd.h>
 #include <pthread.h>
 #include <stdio.h>
@@ -7,18 +6,18 @@
 
 #define DOTTORI 3                                               //numero di dottori disponibili
 #define NTIMES 3                                                //numero di vaccini da effettuare
-#define DELAY 10                                                //usato per distribuire nel tempo l'arrivo dei cittadini
+#define DELAY 10                                                //max ritardo d'esecuzione per i thread
 
 sem_t m;                                                        //mutex
 sem_t s_dosi [3];                                               //ogni dose ha il suo semaforo
-int  dosi_blocc [3];                                            //ogni dose ha la sua variabile che indica il numero di cittadini in attesa per quella dose
+int dosi_blocc [3];                                             //ogni dose ha la sua variabile che indica il numero di cittadini in attesa per quella dose
 int dottori_liberi;                                             //indica il num di dottori liberi
 char *elenco_dosi [3] = {"PRIMA", "SECONDA", "TERZA"};          //per stampe di controllo
 
 void myInit(void){
     sem_init(&m,0,1);
 
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < NTIMES; ++i) {
         sem_init(&s_dosi[i], 0, 0);
         dosi_blocc [i] = 0;
     }
@@ -30,19 +29,15 @@ void okVaccino (int * pi, int dose){
     //se posso fare il vaccino --> decremento il num di dottori liberi e faccio la post sul semaforo della dose corrispondente
     dottori_liberi --;
     sem_post(&s_dosi[dose]);
-    //sem_wait(&m);
     printf("[THREAD %d]\t\tOk per la %s dose.\n", *pi, elenco_dosi[dose]);
     printf("\n[SERVICE]\t\t Dottori liberi: %d\n", dottori_liberi);
-    //sem_post(&m);
 }
 
 void notOkVaccino ( int * pi, int dose){
     //se non posso fare il vaccino --> registro che sono bloccato
     dosi_blocc[dose] ++;
-    //sem_wait(&m);
     printf("[THREAD %d]\t\tBloccato per la %s dose.\n", *pi,elenco_dosi[dose]);
     printf("\n[SERVICE]\t\tBloccati per la %s dose: %d\n",elenco_dosi[dose], dosi_blocc[dose]);
-    //sem_post(&m);
 }
 
 void vaccino (int * pi,int dose){
@@ -79,7 +74,7 @@ void fine_vaccino (){
     sem_wait(&m);
     dottori_liberi ++;
 
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < NTIMES; ++i) {
         if (dosi_blocc[i] > 0){                         //appena trovo una coda non vuota..
             dottori_liberi --;                          //decremento il num di dott liberi
             sem_post(&s_dosi[i]);                       //sveglio il primo in fila per quella dose
@@ -110,9 +105,9 @@ void *eseguiVaccini(void *id) {
 
         printf("[THREAD %d]\t\tDevo fare la %s dose del vaccino\n",*pi,elenco_dosi[dose]);
         vaccino(pi, dose);
-        sleep(3);           //tempo vaccino
-
         printf("[THREAD %d]\t\tMi sto vaccinando....\n",*pi);
+        sleep(3);                       //tempo vaccino
+
         fine_vaccino();
         printf("[THREAD %d]\t\tHo fatto la %s dose del vaccino\n\n",*pi,elenco_dosi[dose]);
         dose ++;
@@ -184,7 +179,3 @@ int main (int argc, char **argv){
 
     exit(0);
 }
-
-
-
-
