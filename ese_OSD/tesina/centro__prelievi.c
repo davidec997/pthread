@@ -26,8 +26,8 @@ void myInit(void){
 }
 
 void inizio_prelievo(int *pi, Boolean tipo){
-    sem_post(&attesa);                                      //post su attesa per 'svegliare' il dottore se addormentato
 
+    //ho spostato la post su attesa dopo l'if
     sem_wait(&m);
     if(tipo){                                               //a seconda del tipo (0-->donatore   1-->paziente)...
         printf("[PAZIENTE %d]\t\tIn attesa per prelievo\n",*pi);
@@ -38,6 +38,8 @@ void inizio_prelievo(int *pi, Boolean tipo){
         donatori_blocc ++;                                  //.. o un donatore in attesa
     }
     sem_post(&m);
+
+    sem_post(&attesa);                                      //post su attesa per 'svegliare' il dottore se addormentato
 
     if (tipo)
         sem_wait(&s_pazienti);                              //aspetto l'ok dal dottore, sempre in base al tipo di cliente
