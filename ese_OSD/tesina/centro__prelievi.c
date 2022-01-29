@@ -65,18 +65,24 @@ void fine_prelievo (int *pi, int tipo) {
     else
         printf("[DONATORE %d]\t\tME NE VADO...\n",*pi);
     sem_post(&m);
+    printf("[SERVICE]\t\tdonatori bloccati %d\tpazienti bloccati %d\tlettini disponibili %d\n",donatori_blocc,pazienti_blocc,lettini_liberi);
     sem_post(&lettino);                                     //e fa una post su lettino
 }
 
 void esegui_prelievo(){
     //stampa di controllo
+    int val;
     printf("\n[SERVICE]\t\tDonatori bloccati %d\tpazienti bloccati %d\tlettini liberi %d\n",donatori_blocc,pazienti_blocc,lettini_liberi);
 
     if(donatori_blocc == 0 && pazienti_blocc == 0)                  //stampo il messaggio solo il dottore si blocca perche' non ci sono ne donatori ne pazienti
         printf("[MEDICO]\t\tAttesa cliente\n");
 
+    sem_getvalue(&attesa,&val);
+    printf("Valore semaforo attesa : %d\n",val);
     sem_wait(&attesa);                                              //il dottore attende un cliente
 
+    sem_getvalue(&lettino,&val);
+    printf("Valore semaforo lettino : %d\n",val);
     if(lettini_liberi == 0)                                          //stampo il messaggio solo il dottore si blocca perche' non ci sono lettini
         printf("[MEDICO]\t\tAttesa lettino\n");
 
@@ -192,7 +198,7 @@ int main (int argc, char **argv){
     //creazione thread
     for (i=0; i < NUM_THREADS; i++){
         taskids[i] = i;
-        if (i == NUM_THREADS -1)        //l'ultimo thread e' il dottore
+        if (i == NUM_THREADS -1)        //l'ultimo thread e' il medico
             if (pthread_create(&thread[i], NULL, eseguiMedico, (void *) (&taskids[i])) != 0){
                 sprintf(error,"SONO IL MAIN E CI SONO STATI PROBLEMI DELLA CREAZIONE DEL thread %d-esimo\n", taskids[i]);
                 perror(error);
