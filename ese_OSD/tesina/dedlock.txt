@@ -1,0 +1,97 @@
+/home/davidec/CLionProjects/pthread/cmake-build-debug/vari 10
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 0	lettini liberi 3
+[MEDICO]		Attesa cliente
+[PAZIENTE 0]		In attesa per prelievo
+[MEDICO]		inizio prelievo ad un paziente
+[PAZIENTE 0]		STO FACENDO IL PRELIEVO
+[MEDICO]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 0	lettini liberi 2
+[MEDICO]		Attesa cliente
+[DONATORE 7]		In attesa per prelievo
+[MEDICO]		inizio prelievo ad un donatore
+[DONATORE 7]		STO FACENDO IL PRELIEVO
+[MEDICO]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 0	lettini liberi 1
+[MEDICO]		Attesa cliente
+[DONATORE 7]		ME NE VADO...
+[SERVICE]		donatori bloccati 0	pazienti bloccati 0	lettini disponibili 2
+[PAZIENTE 0]		ME NE VADO...
+[SERVICE]		donatori bloccati 0	pazienti bloccati 0	lettini disponibili 3
+Pthread 0-esimo restituisce 1  --> numero di prelievi
+[DONATORE 6]		In attesa per prelievo
+[MEDICO]		inizio prelievo ad un donatore
+[DONATORE 6]		STO FACENDO IL PRELIEVO
+[PAZIENTE 3]		In attesa per prelievo
+[MEDICO]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 1	lettini liberi 2
+[MEDICO]		inizio prelievo ad un paziente
+[PAZIENTE 3]		STO FACENDO IL PRELIEVO
+[PAZIENTE 4]		In attesa per prelievo
+[MEDICO]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 1	lettini liberi 1
+[MEDICO]		inizio prelievo ad un paziente
+[PAZIENTE 4]		STO FACENDO IL PRELIEVO
+[PAZIENTE 3]		ME NE VADO...
+[SERVICE]		donatori bloccati 0	pazienti bloccati 0	lettini disponibili 1
+[DONATORE 6]		ME NE VADO...
+[SERVICE]		donatori bloccati 0	pazienti bloccati 0	lettini disponibili 2
+[MEDICO]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 0	lettini liberi 2
+[MEDICO]		Attesa cliente
+[PAZIENTE 4]		ME NE VADO...
+[SERVICE]		donatori bloccati 0	pazienti bloccati 0	lettini disponibili 3
+[PAZIENTE 5]		In attesa per prelievo
+[MEDICO]		inizio prelievo ad un paziente
+[PAZIENTE 5]		STO FACENDO IL PRELIEVO
+[MEDICO]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 0	lettini liberi 2
+[MEDICO]		Attesa cliente
+[MEDICO]		inizio prelievo[DONATORE 9]		In attesa per prelievo
+[PAZIENTE 8]		In attesa per prelievo
+[MEDICO]		fine prelievo
+
+[SERVICE]		Donatori bloccati 1	pazienti bloccati 1	lettini liberi 1
+[MEDICO]		inizio prelievo ad un donatore
+[DONATORE 9]		STO FACENDO IL PRELIEVO
+[PAZIENTE 2]		In attesa per prelievo
+[MEDICO]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 2	lettini liberi 0
+[MEDICO]		Attesa lettino
+[PAZIENTE 1]		In attesa per prelievo
+[PAZIENTE 5]		ME NE VADO...
+[SERVICE]		donatori bloccati 0	pazienti bloccati 3	lettini disponibili 1
+[MEDICO]		inizio prelievo ad un paziente
+[PAZIENTE 8]		STO FACENDO IL PRELIEVO
+[DONATORE 9]		ME NE VADO...
+[SERVICE]		donatori bloccati 0	pazienti bloccati 2	lettini disponibili 1
+[MEDICO]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 2	lettini liberi 1
+[MEDICO]		inizio prelievo ad un paziente
+[PAZIENTE 2]		STO FACENDO IL PRELIEVO
+[MEDICO]		fine prelievo
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 1	lettini liberi 0
+[PAZIENTE 8]		ME NE VADO...
+[SERVICE]		donatori bloccati 0	pazienti bloccati 1	lettini disponibili 1
+[PAZIENTE 2]		ME NE VADO...
+[SERVICE]		donatori bloccati 0	pazienti bloccati 1	lettini disponibili 2
+
+
+
+
+
+
+[SERVICE]		Donatori bloccati 0	pazienti bloccati 1	lettini liberi 1
+Valore semaforo attesa : 0
+[PAZIENTE 7]		ME NE VADO...
+[SERVICE]		donatori bloccati 0	pazienti bloccati 1	lettini disponibili 2
+Pthread 7-esimo restituisce 1  --> numero di prelievi
