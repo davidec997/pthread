@@ -5,7 +5,7 @@
 #include <semaphore.h>
 
 #define L 3                                             //lettini disponibili
-#define DELAY 20                                        //max ritardo d'esecuzione per i thread
+#define DELAY 5                                        //max ritardo d'esecuzione per i thread
 
 typedef enum {false,true} Boolean;
 int  pazienti_blocc;                                    //indica il numero di pazienti in attesa
@@ -19,9 +19,9 @@ void myInit(void){
     sem_init(&s_pazienti, 0, 0);
     sem_init(&s_donatori, 0, 0);
     sem_init(&attesa, 0, 0);
-    sem_init(&lettino, 0, L);                           //inizializzato con il numero di lettini disponibili
+    sem_init(&lettino, 0, L);                          //inizializzato con il numero di lettini disponibili
 
-    lettini_liberi = L;                                 //inizializzato con il numero di lettini disponibili
+    lettini_liberi = L;                                                 //inizializzato con il numero di lettini disponibili
     pazienti_blocc = donatori_blocc = 0;
 }
 
@@ -79,12 +79,12 @@ void esegui_prelievo(){
     if(donatori_blocc == 0 && pazienti_blocc == 0)                  //stampo il messaggio solo il dottore si blocca perche' non ci sono ne donatori ne pazienti
         printf("[MEDICO]\t\tAttesa cliente\n");
 
-    sem_getvalue(&attesa,&val);
-    printf("Valore semaforo attesa : %d\n",val);
+    //sem_getvalue(&attesa,&val);
+    //printf("Valore semaforo attesa : %d\n",val);
     sem_wait(&attesa);                                              //il dottore attende un cliente
 
-    sem_getvalue(&lettino,&val);
-    printf("Valore semaforo lettino : %d\n",val);
+    //sem_getvalue(&lettino,&val);
+    //printf("Valore semaforo lettino : %d\n",val);
     if(lettini_liberi == 0)                                          //stampo il messaggio solo il dottore si blocca perche' non ci sono lettini
         printf("[MEDICO]\t\tAttesa lettino\n");
 
@@ -105,10 +105,10 @@ void esegui_prelievo(){
         printf(" ad un paziente\n");
     }
 
-    lettini_liberi --;                                      //decrementa il num di lettini liberi...
+    lettini_liberi --;                                          //decrementa il num di lettini liberi...
     sem_post(&m);
 
-    sleep(1);                                               //..ed esegue il prelievo
+    sleep(1);                                            //..ed esegue il prelievo
 
     sem_wait(&m);                                           //mutex solo per stampa di controllo
     printf("[MEDICO]\t\tfine prelievo\n");
@@ -134,13 +134,13 @@ void *eseguiCliente(void *id) {
     int *ptr;
     ptr = (int *) malloc(sizeof(int));
     Boolean tipo;
-    int prelievi = 0;                       //numero di prelievi effettuati
+    int prelievi = 0;                           //numero di prelievi effettuati
     if (ptr == NULL) {
         perror("Problemi con l'allocazione di ptr\n");
         exit(-1);
     }
 
-    tipo = rand() % 2;                      //0-->donatore   1-->paziente
+    tipo = rand() % 2;                              //0-->donatore   1-->paziente
     sleep(rand()%DELAY);                    //distribuisco nel tempo l'arrivo dei clienti
     inizio_prelievo(pi,tipo);
 
