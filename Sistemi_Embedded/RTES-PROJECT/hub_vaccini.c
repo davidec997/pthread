@@ -14,7 +14,11 @@ int dosi_blocc [3];                                             //ogni dose ha l
 int dottori_liberi;                                             //indica il num di dottori liberi
 char *elenco_dosi [3] = {"PRIMA", "SECONDA", "TERZA"};          //per stampe di controllo
 
+int NUM_THREADS;
+
 void myInit(void){
+    NUM_THREADS = (rand() % 50) + 5;
+    printf("[SERVICE]\t\tCREO %d THREDS \n",NUM_THREADS);
     sem_init(&m,0,1);
 
     for (int i = 0; i < NTIMES; ++i) {
@@ -122,10 +126,10 @@ int main (int argc, char **argv){
     int *taskids;
     int i;
     int *p;
-    int NUM_THREADS;
+    //int NUM_THREADS;
     char error[250];
 
-    // Controllo sul numero di parametri
+    /*// Controllo sul numero di parametri
     if (argc != 2 ){
         // Deve essere passato esattamente un parametro
         sprintf(error,"Errore nel numero dei parametri %d\n", argc-1);
@@ -139,12 +143,14 @@ int main (int argc, char **argv){
         sprintf(error,"Errore: Il primo parametro non e' un numero strettamente maggiore di 0 ma e' %d\n", NUM_THREADS);
         perror(error);
         exit(2);
-    }
+    }*/
+
+    //init seme per rand()
+    srand(time(NULL));
 
     //init variabili globali
     myInit();
-    //init seme per rand()
-    srand(time(NULL));
+
 
     //allocazione memoria per i thread
     thread=(pthread_t *) malloc(NUM_THREADS * sizeof(pthread_t));
