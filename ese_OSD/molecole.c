@@ -89,11 +89,11 @@ int main() {
     pthread_attr_destroy(&a);
 
     /* aspetto 10 secondi prima di terminare tutti quanti */\
-    sleep(10);
+    //sleep(10);
     pthread_join(&p,NULL);
     pthread_join(&p,NULL);
 
-    exit(0);
+    //exit(0);
 
 }
 
