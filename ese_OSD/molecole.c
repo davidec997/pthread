@@ -1,4 +1,4 @@
-//NON VA
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -34,7 +34,7 @@ void *generatore_H(void *id) {
     ptr = (int *) malloc(sizeof(int));
     printf("Sono Il generatore di H\n");
 
-    for(int t = 0; t< NTIMES*2; t++) {
+    for(;;) {
         sleep(1);
         sem_wait(&sem_H);
         sem_wait(&sem_H);
@@ -97,30 +97,3 @@ int main() {
 
 }
 
-
-
-
-/*
-
-    for(int i= 0; i< NTIMES; i++) {
-        sem_wait(&m);
-        if(!ok_H){
-            sem_post(&m);
-            sem_wait(&sem_H);
-        }
-        //genero una H
-        if (n_H ==1){
-            printf("H");
-            ok_H = 0;
-            ok_O = 1;
-            sem_post(&m);
-            sem_post(&sem_O);
-        } else{
-            printf("-H");
-            ok_H = 1;
-            ok_O = 0;
-            sem_post(&m);
-            sem_post(&sem_H);
-        }
-    }
-*/
