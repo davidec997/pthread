@@ -54,7 +54,7 @@ void *genreratore_O(void *id) {
     ptr = (int *) malloc(sizeof(int));
     printf("Sono Il generatore di O\n");
 
-    for(int t = 0; t< NTIMES; t++) {         //int t = 0; t< NTIMES; t++
+    for(;;){         //int t = 0; t< NTIMES; t++
         sem_wait(&sem_O);
         write(1,"O",1);
         sem_post(&sem_H);
