@@ -305,7 +305,7 @@ int main (int argc, char **argv){
     }
 
     // aspetto la terminazione solo dei thread auto
-    for (i=1; i < NUM_THREADS; i++){
+    for (i=0; i < NUM_THREADS; i++){
         int ris;
         pthread_join(thread[i], (void**) & p);
         ris= *p;
