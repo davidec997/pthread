@@ -3,7 +3,7 @@
 #include <pthread.h>
 #include <unistd.h>
 
-#define  NTIMES 20                                      // numero di letture da effettuare
+#define  NTIMES 10                                      // numero di letture da effettuare
 
 #define N 10                                            //dimensione coda
 #define THREAD 4                                        //Numero di Threads --> 3 ricevitori e un generatore
