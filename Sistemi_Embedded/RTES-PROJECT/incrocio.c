@@ -9,7 +9,7 @@
 #define VERDE 2
 
 // DIM coda --> max macchine ammesse nella coda
-#define N 10
+#define N 20
 
 // parametro per stampe di controllo
 #define N_STAMPE 120
@@ -238,7 +238,7 @@ void *automobile(void *id){
 
 
     *ptr = n_attraversamenti;
-    pthread_exit((void *) ptr);
+    //pthread_exit((void *) ptr);
 }
 
 
