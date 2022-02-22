@@ -125,7 +125,7 @@ void *eseguiCamper(void *id) {
     lavaggi ++;
 
     *ptr = lavaggi;                     //ritorna il numero di lavaggi effettuati --> non essendoci ciclo puo' essere solo 0 o 1
-    pthread_exit((void *) ptr);
+   // pthread_exit((void *) ptr);
 }
 
 
@@ -152,7 +152,7 @@ void *eseguiAuto(void *id) {
     lavaggi ++;
 
     *ptr = lavaggi;                         //ritorna il numero di lavaggi effettuati --> non essendoci ciclo puo' essere solo 0 o 1
-    pthread_exit((void *) ptr);
+    //pthread_exit((void *) ptr);
 }
 
 
@@ -244,7 +244,7 @@ int main (int argc, char **argv) {
         printf("Camper %d restituisce %d <-- numero di volte che e' stato lavato\n", i, ris);
     }
 
-    exit(0);
+    //exit(0);
 }
 
 
