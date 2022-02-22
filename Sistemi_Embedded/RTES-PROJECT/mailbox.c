@@ -233,5 +233,5 @@ int main (int argc, char **argv){
         printf("Pthread %d-esimo restituisce %d <-- numero di letture effettuate\n", i, ris);
     }
 
-    exit(0);
+    //exit(0);
 }
