@@ -85,8 +85,8 @@ void *generatore (void * id){
     }
 
     //non arrivero' mai qui
-    *ptr = 0;
-    pthread_exit((void *) ptr);
+   //*ptr = 0;
+   // pthread_exit((void *) ptr);
 }
 
 
@@ -173,8 +173,8 @@ void *receiver (void *id) {
         sleep(1);
         letture ++;                                             //incremento le letture
     }
-    *ptr = letture;
-    pthread_exit((void *) ptr);                                 //ritorno il numero di letture effettuate
+   *ptr = letture;
+   // pthread_exit((void *) ptr);                                 //ritorno il numero di letture effettuate
 }
 
 
