@@ -116,7 +116,6 @@ void *eseguiVaccini(void *id) {
     }
 
     *ptr = dose;                        //ritorna il numero di dosi fatte
-    //pthread_exit((void *) ptr);
 }
 
 int main (int argc, char **argv){
@@ -173,13 +172,7 @@ int main (int argc, char **argv){
         }
     }
 
-    /* for (i=0; i < NUM_THREADS; i++){
-        int ris;
-        //attendiamo la terminazione di tutti i thread
-        pthread_join(thread[i], (void**) & p);
-        ris= *p;
-        printf("Pthread %d-esimo restituisce %d  --> numero di volte che si e' vaccinato\n", i, ris);
-    } */
+  
     sleep (50);
     return 0;
 }
