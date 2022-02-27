@@ -238,7 +238,6 @@ void *automobile(void *id){
 
 
     *ptr = n_attraversamenti;
-    //pthread_exit((void *) ptr);
 }
 
 
@@ -308,15 +307,8 @@ int main (int argc, char **argv){
         }
     }
 
-     // aspetto la terminazione solo dei thread auto
-    /* for (i=0; i < NUM_THREADS; i++){
-        int ris;
-        pthread_join(thread[i], (void**) & p);
-        ris= *p;
-        printf("Pthread %d-esimo restituisce %d <-- numero di attraversamenti\n", i, ris);
-    }  */
-
     sleep (30);
+   
     return 0;
 }
 
