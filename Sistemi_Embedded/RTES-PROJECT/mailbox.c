@@ -173,9 +173,7 @@ void *receiver (void *id) {
         sleep(1);
         letture ++;                                             //incremento le letture
     }
-   //*ptr = letture;
-    //pthread_exit((void *) ptr);                                 //ritorno il numero di letture effettuate
-	//return letture;
+   
 }
 
 
@@ -225,16 +223,8 @@ int main (int argc, char **argv){
             }
         }
     }
-
-   // for (i=0; i < NUM_THREADS-1; i++){
-     //   int ris;
-       // // attendiamo la terminazione di tutti i thread generati
-       // pthread_join(thread[i], (void**) & p);
-       // ris= *p;
-       // printf("Pthread %d-esimo restituisce %d <-- numero di letture effettuate\n", i, ris);
-   // }
 	
-	sleep (20);
+    sleep (20);
 
     return 0;
 }
